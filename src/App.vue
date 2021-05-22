@@ -2,7 +2,7 @@
   <div id="app">
   <nav>
     <b-navbar toggleable="lg" type="dark" class="nature-bg fixed-top">
-    <b-navbar-brand href="#">
+    <b-navbar-brand href="#sec1">
       <img src="../public/images/company/logo-small.png" alt="健康綠生活" />
           <div class="nature-word">
             <p>NatureLife 綠生活</p>
