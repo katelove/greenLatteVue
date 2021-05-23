@@ -28,7 +28,12 @@
             <div v-for="item in groupItems"
                  :key="item.id"
                  class="col-lg-4" >
+              <div class="img-div">
               <img :src=item.image />
+               <div class="img-word">
+                 <h4>{{item.word}}</h4>
+               </div>
+              </div>
               <h2 >{{item.text}}</h2>
             </div>
 
@@ -77,6 +82,7 @@ export default {
   align-items: center;
  img {
   width: 500px;
+  position: relative;
   }
 }
 .worker_word {
@@ -190,4 +196,30 @@ img{width: 300px;}
   border-radius: 30px;
   }
 }
+
+.img-word h4{
+  display: none;
+}
+
+.img-div:hover{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  h4{
+    display: block;
+  }
+ .img-word{
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  background-color: rgb(49, 49, 49);
+  opacity: 0.7;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+}
+
 </style>
