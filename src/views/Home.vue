@@ -3,7 +3,7 @@
 <section id="sec1"><Carousel/></section>
 <ParaagraphOne/>
 <section id="sec2"><BodyDA/></section>
-<section id="sec3"></section>
+<section id="sec3"><HealthTest/></section>
 <section id="sec4"></section>
 <section id="sec5"></section>
 <section id="sec6"></section>
@@ -18,11 +18,12 @@
 import Carousel from '../components/Carousel'
 import BodyDA from '../components/BodyDA'
 import ParaagraphOne from '../components/ParaagraphOne'
+import HealthTest from '../components/HealthTest'
 
 export default {
   name: 'carousel',
   components: {
-    Carousel, BodyDA, ParaagraphOne
+    Carousel, BodyDA, ParaagraphOne, HealthTest
   }
 }
 </script>

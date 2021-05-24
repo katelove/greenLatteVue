@@ -35,9 +35,20 @@
                 </div>
               </div>
               <div class="base_two">
-                <h4>2. 請輸入體脂數(%)</h4>
-                <input type="text" name="bodyFat" id="bodyFat" required> %
+                <h4>2. 請輸入性別/年齡/體脂數(%)</h4>
+                <b-form-group label="性別" >
+                  <b-form-radio-group
+                  id="radio-group-1"
+                  v-model="selectedGender"
+                  :options="options"
+                  name="radio-options" required
+                  ></b-form-radio-group>
+                </b-form-group>
+                <input type="text" name="ageFat" id="ageFat" v-model.number="ageFat" required> 歲
+                <input type="text" name="bodyFat" id="bodyFat" v-model.number="bodyFat" required> %
                 <span>請輸入2~3個數字</span>
+                <!-- <input type="radio" name="boy" id="boy" v-model="boy">男性
+                <input type="radio" name="girl" id="girl" v-model="girl">女性 -->
               </div>
               <div class="base_third">
                 <h4>3. 請輸入膽固醇脂數(%)</h4>
@@ -52,14 +63,21 @@
           <!-- 基本測量回答 -->
           <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 chk_base back">
             <div class="inner">
-               <div class="base_one">
-                 <h4>1. 計算身體質量指數 </h4>
-                 <h6>你的體重:{{weightV}} / 你的身高:{{heighV/100}}**2</h6>
-                 <h5>你的BMI值: <b>{{bmiValue()}}</b></h5>
-                 <h5>肥胖指數: <b>{{fatValue()}}</b></h5>
-              </div>
-            <div class="base_two"></div>
-            <div class="base_third"></div>
+            <div class="base_one">
+              <h4>1. 計算身體質量指數 </h4>
+              <h6>你的體重:{{weightV}} / 你的身高:{{heighV/100}}**2</h6>
+              <h5>你的BMI值: <b>{{bmiValue()}}</b></h5>
+              <h5>肥胖指數: <b>{{fatValue()}}</b></h5>
+            </div>
+            <div class="base_two">
+              <h4>2. 男女體脂肪表準表</h4>
+              <h6>你是: <b>{{selectedGender}}</b></h6>
+              <h6>你的年齡:<b>{{ageFat}}</b>歲</h6>
+              <h5>你的體脂為<b>{{bodyfatNum()}}</b></h5>
+            </div>
+            <div class="base_third">
+
+            </div>
             </div>
           </div>
             <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 chk_base">
@@ -127,7 +145,14 @@ export default {
   data () {
     return {
       heighV: '',
-      weightV: ''
+      weightV: '',
+      selectedGender: '',
+      options: [
+        { text: '男生', value: '男生' },
+        { text: '女生', value: '女生' }
+      ],
+      ageFat: '',
+      bodyFat: ''
     }
   },
   methods: {
@@ -159,6 +184,43 @@ export default {
           return '中度肥胖'
         } else {
           return '重度肥胖'
+        }
+      }
+    },
+    bodyfatNum: function () {
+      console.log('性別:' + this.selectedGender + '年齡:' + this.ageFat + '體脂:' + this.bodyfat)
+      if (this.selectedGender === '男生') {
+        if (this.ageFat <= 30 && this.ageFat > 18) {
+          // 18~30
+          if (this.bodyFat >= 14 && this.bodyFat <= 20) {
+            return '理想'
+          } else if (this.bodyFat > 25) {
+            return '肥胖'
+          }
+        } else if (this.ageFat > 30 && this.ageFat <= 69) {
+          // 30~69
+          if (this.bodyFat >= 17 && this.bodyFat <= 23) {
+            return '理想'
+          } else if (this.bodyFat > 25) {
+            return '肥胖'
+          }
+        }
+      } else {
+        // 女生
+        if (this.ageFat <= 30 && this.ageFat > 18) {
+          // 18~30
+          if (this.bodyFat >= 17 && this.bodyFat <= 24) {
+            return '理想'
+          } else if (this.bodyFat > 30) {
+            return '肥胖'
+          }
+        } else if (this.ageFat > 30 && this.ageFat <= 69) {
+          // 30~69
+          if (this.bodyFat >= 20 && this.bodyFat <= 27) {
+            return '理想'
+          } else if (this.bodyFat > 30) {
+            return '肥胖'
+          }
         }
       }
     }
