@@ -51,21 +51,21 @@
                 <input type="radio" name="girl" id="girl" v-model="girl">女性 -->
               </div>
               <div class="base_third">
-                <h4>3. 請輸入膽固醇脂數(%)</h4>
-                <input type="text" name="choleValue" id="choleValue" required> %
+                <h4>3. 請輸入總膽固醇脂數(TC)</h4>
+                <input type="text" name="choleValue" id="choleValue" v-model.number="choleValue" required> mg/dl
                 <span>請輸入2~3個數字</span>
               </div>
               <div class="baseBtn">
-                <a href="">送出</a>
+                <a href="#baseAnswer">送出</a>
               </div>
             </form>
           </div>
           <!-- 基本測量回答 -->
-          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 chk_base back">
+          <div id="baseAnswer" class="col-sm-12 col-md-12 col-lg-3 col-xl-3 chk_base back">
             <div class="inner">
             <div class="base_one">
               <h4>1. 計算身體質量指數 </h4>
-              <h6>你的體重:{{weightV}} / 你的身高:{{heighV/100}}**2</h6>
+              <h6>BMI計算方式=>你的體重:{{weightV}} / 你的身高:{{heighV/100}}**2</h6>
               <h5>你的BMI值: <b>{{bmiValue()}}</b></h5>
               <h5>肥胖指數: <b>{{fatValue()}}</b></h5>
             </div>
@@ -76,7 +76,8 @@
               <h5>你的體脂為<b>{{bodyfatNum()}}</b></h5>
             </div>
             <div class="base_third">
-
+              <h4>3. 膽固醇健康指數</h4>
+              <h5>你的總膽固醇 <b>{{choleNum()}}</b></h5>
             </div>
             </div>
           </div>
@@ -152,7 +153,8 @@ export default {
         { text: '女生', value: '女生' }
       ],
       ageFat: '',
-      bodyFat: ''
+      bodyFat: '',
+      choleValue: ''
     }
   },
   methods: {
@@ -168,8 +170,7 @@ export default {
       }
     },
     fatValue: function () {
-      console.log('BMI值:' + this.bmiValue() + 'typeof:' + typeof this.bmiValue())
-      if (isNaN(this.bmiValue()) || typeof this.bmiValue() === 'string') {
+      if (typeof this.bmiValue() === 'string') {
         return ''
       } else if (this.bmiValue() < 18.5) {
         return '體重過輕'
@@ -188,7 +189,6 @@ export default {
       }
     },
     bodyfatNum: function () {
-      console.log('性別:' + this.selectedGender + '年齡:' + this.ageFat + '體脂:' + this.bodyfat)
       if (this.selectedGender === '男生') {
         if (this.ageFat <= 30 && this.ageFat > 18) {
           // 18~30
@@ -222,6 +222,17 @@ export default {
             return '肥胖'
           }
         }
+      }
+    },
+    choleNum: function () {
+      if (typeof this.choleValue === 'string') {
+        return ''
+      } else if (this.choleValue < 200) {
+        return '正常值'
+      } else if (this.choleValue >= 200 && this.choleValue <= 239) {
+        return '警戒值'
+      } else {
+        return '危險值'
       }
     }
   }
