@@ -1,7 +1,7 @@
 <template>
    <div class="container">
-          <!-- 檢視健康 -->
-          <div class="row">
+    <!-- 檢視健康 -->
+      <div class="row">
             <div class="col-sm-12 -col-md-12 col-lg-12">
               <div class="chk_Title">
                 <img src="../../public/images/company/leaf.png" />
@@ -20,18 +20,17 @@
           </div>
           <!-- 檢視健康 問題篇 -->
         <div class="row">
-          <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 chk_base front">
+          <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 chk_base">
+          <div class=" front">
             <h2>基本測量</h2>
-            <form class="inner">
+            <form class="base_test">
               <div class="base_one">
                   <h4>1. 請輸入身高/體重</h4>
                 <div class="heightW">
                   身高: <input type="text" name="heighV" id="heighV" required v-model.number="heighV"/>公分
-                  <span>請輸入2~3個數字</span>
                 </div>
                 <div class="weightW">
                   體重: <input type="text" name="weightV" id="weightV" required v-model.number="weightV"/>公斤
-                  <span>請輸入2~3個數字</span>
                 </div>
               </div>
               <div class="base_two">
@@ -46,23 +45,18 @@
                 </b-form-group>
                 <input type="text" name="ageFat" id="ageFat" v-model.number="ageFat" required> 歲
                 <input type="text" name="bodyFat" id="bodyFat" v-model.number="bodyFat" required> %
-                <span>請輸入2~3個數字</span>
-                <!-- <input type="radio" name="boy" id="boy" v-model="boy">男性
-                <input type="radio" name="girl" id="girl" v-model="girl">女性 -->
               </div>
               <div class="base_third">
                 <h4>3. 請輸入總膽固醇脂數(TC)</h4>
                 <input type="text" name="choleValue" id="choleValue" v-model.number="choleValue" required> mg/dl
-                <span>請輸入2~3個數字</span>
               </div>
-              <div class="baseBtn">
+              <button class="baseBtn" value="送出" @click="answerBlock()">
                 <a href="#baseAnswer">送出</a>
-              </div>
+              </button>
             </form>
           </div>
           <!-- 基本測量回答 -->
-          <div id="baseAnswer" class="col-sm-12 col-md-12 col-lg-3 col-xl-3 chk_base back">
-            <div class="inner">
+          <div v-show="display=='block'?true:false" class="back">
             <div class="base_one">
               <h4>1. 計算身體質量指數 </h4>
               <h6>BMI計算方式=>你的體重:{{weightV}} / 你的身高:{{heighV/100}}**2</h6>
@@ -79,7 +73,7 @@
               <h4>3. 膽固醇健康指數</h4>
               <h5>你的總膽固醇 <b>{{choleNum()}}</b></h5>
             </div>
-            </div>
+          </div>
           </div>
             <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 chk_base">
               <h2>你是久坐族嗎?</h2>
@@ -97,7 +91,6 @@
                   <input type="radio" />5~10次
                 </div>
               </div>
-
               <div class="choice_block">
                 <h4>3. 每次起來走動約幾分鐘?</h4>
                 <div class="choice_detail">
@@ -154,7 +147,8 @@ export default {
       ],
       ageFat: '',
       bodyFat: '',
-      choleValue: ''
+      choleValue: '',
+      display: 'none'
     }
   },
   methods: {
@@ -234,6 +228,9 @@ export default {
       } else {
         return '危險值'
       }
+    },
+    answerBlock: function () {
+      this.display = 'block'
     }
   }
 }
@@ -335,11 +332,6 @@ img {
 /* 檢視健康-送出按鈕 */
 
 .baseBtn {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-}
-.baseBtn a {
   background-color: #2f5a28;
   text-align: center;
   border-radius: 20px;
@@ -349,6 +341,27 @@ img {
   padding: 10px 20px;
   height: 50px;
   font-size: 1em;
+  a{
+    color: white;
+  }
+}
+
+// 翻轉方式
+.front{
+  position: relative;
+}
+
+.back{
+  background: #2f5a28;
+  color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+border-radius: 15px;
+
 }
 
 </style>
