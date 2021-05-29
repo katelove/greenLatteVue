@@ -23,7 +23,7 @@ import WeekProject from '../components/WeekProject'
 import Example from '../components/Example'
 
 export default {
-  name: 'Home',
+  name: 'carousel',
   components: {
     Carousel, BodyDA, ParaagraphOne, HealthTest, WeekProject, Example
   }
