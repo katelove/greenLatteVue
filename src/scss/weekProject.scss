@@ -1,0 +1,150 @@
+  ul,
+  li {
+    list-style: none;
+  }
+  .board-style {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  #tool {
+    width: 120px;
+    border-right: #2f5a28 2px solid;
+  }
+  
+  #tool ul li ul li img {
+    width: 50px;
+  }
+  #tool ul li div,
+  #tool ul li div ul {
+    display: inline;
+  }
+  
+  /* 一開始工具選單做隱藏 */
+  #tool ul li ul {
+    display: none;
+  }
+  
+  /* 框線 */
+  #tool ul li {
+    display: inline-block;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100px;
+    height: 85px;
+    text-align: center;
+  }
+  
+  #tool ul li h1 {
+    color: #2f5a28;
+  }
+  /* 工具裡選單 */
+  #tool ul li ul li {
+    border: none;
+    height: auto;
+    width: auto;
+    display: block;
+    cursor: pointer;
+  }
+  
+  #tool ul li ul li:hover {
+    background-color: rgb(172, 204, 193);
+    color: #2f5a28;
+    width: auto;
+  }
+  
+  /* 字體顏色 */
+  #tool ul li .tool-color,
+  #tool ul li ul .t-c-red {
+    background-color: rgb(231, 31, 31);
+    height: 20px;
+    width: 50px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  
+  #tool ul li ul .t-c-blue {
+    background-color: rgb(34, 13, 221);
+    height: 20px;
+    width: 50px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  
+  #tool ul li ul .t-c-green {
+    background-color: #2f5a28;
+    height: 20px;
+    width: 50px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  
+  /* 貼圖 */
+  #tool ul li img {
+    width: 50px;
+  }
+  
+  /* 綠拿鐵體驗方式 */
+  
+  #tool ul .tool-try h4 {
+    margin: 5px;
+    background-color: #2f5a28;
+    padding: 5px;
+    color: white;
+    text-align: center;
+  }
+  
+  /* ====================畫板============================= */
+  
+  /* 顯示年+按鈕 */
+  #topTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0px;
+  }
+  .dateWord {
+    color: #2f5a28;
+  }
+  
+  .btnStyle {
+    background-color: #2f5a28;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    margin-right: 20px;
+    padding-top: 5px;
+  }
+  
+  .rightOption {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+  /* 月曆 */
+  #calendarTag {
+    display: inline-block;
+    width: 800px;
+  }
+  #calendarsite {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 30px 0px 30px;
+  }
+  /* 下方按鈕 */
+  #bottomBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px 0px;
+  }
+  
+  .th-row th,
+  table tbody tr td {
+    width: 50px;
+    height: 100px;
+  }
+  
