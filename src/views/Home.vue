@@ -4,7 +4,7 @@
 <ParaagraphOne/>
 <section id="sec2"><BodyDA/></section>
 <section id="sec3"><HealthTest/></section>
-<section id="sec4"><Example/></section>
+<section id="sec4"></section>
 <section id="sec5"><WeekProject/></section>
 <section id="sec6"></section>
 <section id="sec7"></section>
@@ -20,12 +20,11 @@ import BodyDA from '../components/BodyDA'
 import ParaagraphOne from '../components/ParaagraphOne'
 import HealthTest from '../components/HealthTest'
 import WeekProject from '../components/WeekProject'
-import Example from '../components/Example'
 
 export default {
   name: 'carousel',
   components: {
-    Carousel, BodyDA, ParaagraphOne, HealthTest, WeekProject, Example
+    Carousel, BodyDA, ParaagraphOne, HealthTest, WeekProject
   }
 }
 </script>
