@@ -106,8 +106,8 @@
   <div id="topTitle">
     <h3 class='dateWord'>2021年6月</h3>
       <div class="rightOption">
-        <div id='teamTimeBtn' class='btnStyle'>下午茶</div>
-        <div id='nightBtn' class='btnStyle'>宵夜</div>
+        <div id='teamTimeBtn' class='btnStyle'>清除</div>
+        <!-- <div id='nightBtn' class='btnStyle'>宵夜</div> -->
       </div>
   </div>
   <!-- 月曆 -->
