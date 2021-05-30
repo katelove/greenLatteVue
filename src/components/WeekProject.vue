@@ -20,7 +20,7 @@
        <!-- 字的顏色 -->
         <div class="tool-size" v-on:click="active = ! active">
           <h5>字的顏色</h5>
-          <div class="tool-color"></div>
+          <div><font-awesome-icon icon="palette"/></div>
         </div>
         <transition name="ul">
           <ul v-if="active" class="ul-box">
@@ -30,23 +30,23 @@
           </ul>
         </transition>
       <!-- 貼圖 -->
-          <div class="tool-size" v-on:click="picture = ! picture">
+          <div class="tool-size" v-on:click="picture = !picture">
             <h5>貼圖</h5>
-            <div><img src="../../public/images/pic/crown.png" alt="" /></div>
+            <div><font-awesome-icon icon="icons"/></div>
           </div>
           <transition name="ul">
-            <ul v-if="picture" class="ul-box">
+            <ul :style="picture ? '' : 'display:none;'" class="ul-box" id="sitckers">
               <li>
-                <img src="../../public/images/pic/crown.png" id="texture1" alt="" />
+                <img src="../../public/images/pic/crown.png" />
               </li>
               <li>
-                <img src="../../public/images/pic/hearts.png" id="texture2" alt="" />
+                <img src="../../public/images/pic/hearts.png" />
               </li>
               <li>
-                <img src="../../public/images/pic/smile.png" id="texture3" alt="" />
+                <img src="../../public/images/pic/smile.png"/>
               </li>
               <li>
-                <img src="../../public/images/pic/confetti.png" id="texture4" alt="" />
+                <img src="../../public/images/pic/confetti.png"/>
               </li>
             </ul>
           </transition>
@@ -54,18 +54,17 @@
           <!-- DIY綠拿鐵 -->
           <div class="tool-size" v-on:click="diyGreen = ! diyGreen">
             <h5>DIY綠拿鐵</h5>
-            <div><img src="../../public/images/pic/dragon-fruit.png" alt="" /></div>
+            <div><font-awesome-icon icon="leaf"/></div>
           </div>
           <transition name="ul">
-            <ul v-if="diyGreen" class="ul-box">
+            <ul :style="diyGreen ? '' : 'display:none;'" class="ul-box" id="sitckers">
               <li><img src="../../public/images/pic/dragon-fruit.png" alt="" /></li>
-              <li></li>
             </ul>
           </transition>
           <!-- 健康餐 -->
           <div class="tool-size" v-on:click="healthMeal = ! healthMeal">
             <h4>健康餐</h4>
-            <div><img src="../../public/images/pic/fried-rice.png" alt="" /></div>
+            <div><font-awesome-icon icon="utensils"/></div>
           </div>
           <transition name="ul">
             <ul v-if="healthMeal" class="ul-box">
@@ -107,7 +106,6 @@
     <h3 class='dateWord'>2021年6月</h3>
       <div class="rightOption">
         <div id='teamTimeBtn' class='btnStyle'>清除</div>
-        <!-- <div id='nightBtn' class='btnStyle'>宵夜</div> -->
       </div>
   </div>
   <!-- 月曆 -->
@@ -128,33 +126,33 @@
     <tbody>
       <tr>
         <td>早</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
       </tr>
       <tr>
         <td>中</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
       </tr>
       <tr>
         <td>晚</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
+        <td class="calendersSB"></td>
       </tr>
       <tr>
         <td>備註</td>
@@ -182,6 +180,7 @@
  </div>
 </template>
 <script>
+import Sortable from 'sortablejs'
 
 export default {
   data () {
@@ -193,6 +192,29 @@ export default {
       healthMeal: false,
       sugGreen: false
     }
+  },
+  mounted () {
+    var sitckers = document.getElementById('sitckers')
+
+    /* eslint-disable no-new */
+    new Sortable(sitckers, {
+      group: {
+        name: 'shared',
+        pull: 'clone'
+      },
+      animation: 150
+    })
+
+    var calenders = document.getElementsByClassName('calendersSB')
+    calenders.forEach((el) => {
+      new Sortable(el, {
+        group: 'shared',
+        animation: 150
+
+      })
+    })
+  },
+  methods: {
   }
 }
 </script>
@@ -211,5 +233,10 @@ export default {
 .ul-enter,
 .ul-leave-to {
   height: 0;
+}
+
+/* 移動圖片到td格裡 */
+.calendersSB li img{
+  width: 50px;
 }
 </style>
