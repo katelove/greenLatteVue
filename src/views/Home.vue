@@ -3,6 +3,7 @@
 <section id="sec1"><Carousel/></section>
 <ParaagraphOne/>
 <section id="sec2"><BodyDA/></section>
+<div class="site"></div>
 <section id="sec3"><HealthTest/></section>
 <section id="sec4"></section>
 <section id="sec5"><WeekProject/></section>
@@ -48,5 +49,7 @@ section {
   justify-content: center;
   align-items: center;
    }
-
+.site{
+  height: 80px;
+}
 </style>
