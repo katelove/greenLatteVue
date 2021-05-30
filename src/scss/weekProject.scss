@@ -10,8 +10,11 @@
   #tool {
     width: 120px;
     border-right: #2f5a28 2px solid;
-    div {
+    .tool-size {
       color: #2f5a28;
+      width: 100px;
+      height: 85px;
+      text-align: center;
     // 圖片
       img {
         width: 50px;

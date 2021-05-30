@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 <template>
  <div class="container">
    <div class="row">
@@ -5,7 +6,7 @@
       <!-- 工具列 -->
       <div id="tool">
        <!-- 字的大小 -->
-        <div v-on:click="show = !show">
+        <div class="tool-size" v-on:click="show = !show">
           <h5>字級</h5>
           <h1>A</h1>
         </div>
@@ -17,7 +18,7 @@
           </ul>
         </transition>
        <!-- 字的顏色 -->
-        <div v-on:click="active = ! active">
+        <div class="tool-size" v-on:click="active = ! active">
           <h5>字的顏色</h5>
           <div class="tool-color"></div>
         </div>
@@ -29,7 +30,7 @@
           </ul>
         </transition>
       <!-- 貼圖 -->
-          <div v-on:click="picture = ! picture">
+          <div class="tool-size" v-on:click="picture = ! picture">
             <h5>貼圖</h5>
             <div><img src="../../public/images/pic/crown.png" alt="" /></div>
           </div>
@@ -51,7 +52,7 @@
           </transition>
 
           <!-- DIY綠拿鐵 -->
-          <div v-on:click="diyGreen = ! diyGreen">
+          <div class="tool-size" v-on:click="diyGreen = ! diyGreen">
             <h5>DIY綠拿鐵</h5>
             <div><img src="../../public/images/pic/dragon-fruit.png" alt="" /></div>
           </div>
@@ -62,7 +63,7 @@
             </ul>
           </transition>
           <!-- 健康餐 -->
-          <div v-on:click="healthMeal = ! healthMeal">
+          <div class="tool-size" v-on:click="healthMeal = ! healthMeal">
             <h4>健康餐</h4>
             <div><img src="../../public/images/pic/fried-rice.png" alt="" /></div>
           </div>
@@ -73,7 +74,7 @@
           </transition>
 
           <!-- 推薦綠拿鐵 -->
-          <div v-on:click="sugGreen = ! sugGreen">
+          <div class="tool-size" v-on:click="sugGreen = ! sugGreen">
             <h5>推薦<br />綠拿鐵</h5>
           </div>
           <transition name="ul">
@@ -93,7 +94,7 @@
             </ul>
           </transition>
 
-          <div class="tool-try">
+          <div class="tool-try tool-size">
             <h5>漸進式</h5>
             <h5>體驗式</h5>
             <h5>全面式</h5>
