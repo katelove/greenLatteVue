@@ -5,9 +5,11 @@
 <section id="sec2"><BodyDA/></section>
 <div class="site"></div>
 <section id="sec3"><HealthTest/></section>
-<section id="sec4"></section>
-<section id="sec5"><WeekProject/></section>
-<section id="sec6"></section>
+<div class="site"></div>
+<section id="sec4"><GreenLatte/></section>
+<div class="site"></div>
+<section id="sec5"></section>
+<section id="sec6"><WeekProject/></section>
 <section id="sec7"></section>
 <section id="sec8"></section>
 <section id="sec9"></section>
@@ -21,11 +23,12 @@ import BodyDA from '../components/BodyDA'
 import ParaagraphOne from '../components/ParaagraphOne'
 import HealthTest from '../components/HealthTest'
 import WeekProject from '../components/WeekProject'
+import GreenLatte from '../components/GreenLatte'
 
 export default {
   name: 'carousel',
   components: {
-    Carousel, BodyDA, ParaagraphOne, HealthTest, WeekProject
+    Carousel, BodyDA, ParaagraphOne, HealthTest, WeekProject, GreenLatte
   }
 }
 </script>
