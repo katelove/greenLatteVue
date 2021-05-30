@@ -1,0 +1,179 @@
+  ul,
+  li {
+    list-style: none;
+  }
+  .board-style {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  #tool {
+    width: 120px;
+    border-right: #2f5a28 2px solid;
+    .tool-size {
+      color: #2f5a28;
+      width: 100px;
+      height: 85px;
+      text-align: center;
+    // 圖片
+      img {
+        width: 50px;
+      }
+    }
+    /* 框線 */
+    ul li {
+      padding: 0.5em 0.5em 0.5em 0.5em;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100px;
+      height: 85px;
+      text-align: center;
+      border: none;
+      height: auto;
+      width: auto;
+      display: block;
+    }
+    // 選取工具單
+    ul li:hover {
+      background-color: rgb(172, 204, 193);
+      color: #2f5a28;
+      width: auto;
+    }
+  }
+
+  
+  /* 字體顏色 */
+ .tool-color,.t-c-red {
+    background-color: rgb(231, 31, 31);
+    height: 20px;
+    width: 50px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  
+  .t-c-blue {
+    background-color: rgb(34, 13, 221);
+    height: 20px;
+    width: 50px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  
+  .t-c-green {
+    background-color: #2f5a28;
+    height: 20px;
+    width: 50px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+  
+  /* 貼圖 */
+  #tool ul li img {
+    width: 50px;
+  }
+  
+  /* 綠拿鐵體驗方式 */
+  .tool-try h5 {
+    margin: 5px;
+    background-color: #2f5a28;
+    padding: 5px;
+    color: white;
+    text-align: center;
+  }
+  
+  /* ====================畫板============================= */
+  #calendarsite {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 30px 0px 30px;
+    width: 800px;
+  }
+  /* 顯示年+按鈕 */
+  #topTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0px;
+    .dateWord {
+      color: #2f5a28;
+    }
+  
+  }
+ 
+  .rightOption {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+
+  // 按鈕樣式
+  .btnStyle {
+    background-color: #2f5a28;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    height: 30px;
+    width: 100px;
+    margin-right: 20px;
+    padding-top: 5px;
+  }
+   
+  /* 月曆 */
+  #calendarTag {
+    display: inline-block;
+    width: 800px;
+  }
+ 
+  /* 下方按鈕 */
+  #bottomBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px 0px;
+    flex-direction: row;
+    div{
+      display: inline-block;
+    }
+  }
+  
+  //每個td大小
+  .th-row th,
+  table tbody tr td {
+    width: 50px;
+    height: 100px;
+  }
+  
+  // 首欄背景為綠底
+  #calendarTag table tbody tr td:first-child{
+    background-color:#2f5a28;
+    color:white;
+    text-align:center;
+    border-top: 2px solid white;
+  }
+
+   //第一列背景為綠底
+   .th-row th{
+    background-color:#2f5a28;
+    color:white;
+    text-align:center;
+    border-left: 2px white solid;
+   }
+
+   //table 增加 border
+   #calendarTag table tbody tr td{
+    border-left:2px #2f5a28 solid;
+    border-top:2px #2f5a28 solid;
+    padding:0px;
+    margin:0px;
+   }
+
+    //td 左邊多餘的border 
+    #calendarTag table tbody tr td:nth-of-type(2){
+      border-left:none;
+    }
+
+    table{
+      border:2px #2f5a28 solid;
+      border-radius:0 0 10px 10px;
+      width:100%;
+    }

@@ -5,7 +5,7 @@
 <section id="sec2"><BodyDA/></section>
 <section id="sec3"><HealthTest/></section>
 <section id="sec4"></section>
-<section id="sec5"></section>
+<section id="sec5"><WeekProject/></section>
 <section id="sec6"></section>
 <section id="sec7"></section>
 <section id="sec8"></section>
@@ -19,11 +19,12 @@ import Carousel from '../components/Carousel'
 import BodyDA from '../components/BodyDA'
 import ParaagraphOne from '../components/ParaagraphOne'
 import HealthTest from '../components/HealthTest'
+import WeekProject from '../components/WeekProject'
 
 export default {
   name: 'carousel',
   components: {
-    Carousel, BodyDA, ParaagraphOne, HealthTest
+    Carousel, BodyDA, ParaagraphOne, HealthTest, WeekProject
   }
 }
 </script>
@@ -33,6 +34,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+   font-family: "微軟正黑體";
   }
 html,body {
   height: 100%;

@@ -167,7 +167,7 @@
   </div>
 </template>
 
-<script>
+<script >
 export default {
   data () {
     return {
@@ -340,133 +340,7 @@ export default {
     }
   }
 }
+
 </script>
 
-<style lang="scss">
-.chk_Title {
-  display: flex;
-  align-items: center;
-  img:last-of-type {
-  transform: scaleX(-1);
-  }
-}
-
-@media (max-width: 992px) {
-  .chk_Title {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-img {
-  display: none;
-}
-  }
-}
-.chk_all {
-  display: inline-block;
-  .chk_Word h2 {
-  background-color: #2f5a28;
-  color: white;
-  padding: 10px 10px;
-  display: inline-block;
-  }
-  .chk_article h4,p {
-  color: #2f5a28;
-  display: inline-block;
-  }
-}
-
-/* 基本測量 */
-.chk_quest {
-  padding-top: 20px;
-  display: flex;
-  flex-direction: row;
-}
-
-/* 久坐族 */
-
-.chk_base {
-  border: solid 3px;
-  border-radius: 20px;
-  margin: 5px;
-  height: 600px;
-  padding: 20px 10px 0 10px;
-  display: inline-block;
-  h2 {
-  color: #2f5a28;
-  text-align: center;
-  padding-bottom: 20px;
-  }
-  .base_one input,
- .base_two input,
- .base_third input {
-  border: solid 1px #2f5a28;
-  border-radius: 10px;
-  width: 100px;
-  height: 30px;
- }
-}
-
-.heightW,
-.weightW {
-  padding-left: 20px;
-  padding-top: 5px;
-}
-
-.base_one,
-.base_two,
-.base_third {
-  padding-bottom: 30px;
-  padding-left: 10px;
-}
-
-.base_two input,
-.base_third input {
-  margin-left: 60px;
-}
-.choice_block {
-  padding-bottom: 30px;
-  padding-left: 10px;
-}
-// .choice_detail {
-//   padding-top: 10px;
-//   display: flex;
-//   justify-content: space-evenly;
-//   align-items: center;
-// }
-
-/* 檢視健康-送出按鈕 */
-
-.baseBtn {
-  background-color: #2f5a28;
-  text-align: center;
-  border-radius: 20px;
-  color: white;
-  text-decoration: none;
-  width: 100px;
-  padding: 10px 20px;
-  height: 50px;
-  font-size: 1em;
-  p{
-    color: white;
-  }
-}
-
-// 翻轉方式
-.front{
-  position: relative;
-}
-
-.back{
-  background: #2f5a28;
-  color: white;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 999;
-  bottom: 0;
-  left: 0;
-border-radius: 15px;
-
-}
-
-</style>
+<style lang="scss">@import "../scss/healthTest.scss"; </style>
