@@ -1,4 +1,5 @@
 <template>
+
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 market-title">
@@ -14,7 +15,7 @@
           <VueSlickCarousel v-bind="settings">
             <div><img src="../../public/images/carousel/v_01.png" ></div>
             <div><img src="../../public/images/carousel/v_02.png" ></div>
-            <div><img src="../../public/images/carousel/v_03.png" /></div>
+            <div><img src="../../public/images/carousel/v_03.png" @click="showModal"/></div>
             <div><img src="../../public/images/carousel/v_04.png" /></div>
           </VueSlickCarousel>
         </div>
@@ -42,12 +43,22 @@
           </div>
         </div>
     </div>
+
+    <!-- 產品說明 -->
+    <b-modal ref="my-modal" size="xl" hide-footer="true">
+      <div class="d-block text-center">
+        <ProductDetail/>
+      </div>
+    </b-modal>
+
+    <div>
+    </div>
 </div>
 
 </template>
 
 <script>
-
+import ProductDetail from '../components/ProductDetail'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
@@ -93,10 +104,26 @@ export default {
       ]
     }
   }),
+  methods: {
+    // for modal
+    showModal () {
+      this.$refs['my-modal'].show()
+    },
+    hideModal () {
+      this.$refs['my-modal'].hide()
+    },
+    toggleModal () {
+      // We pass the ID of the button that we want to return focus to
+      // when the modal has hidden
+      this.$refs['my-modal'].toggle('#toggle-btn')
+    }
+  },
   name: 'MyComponent',
-  components: { VueSlickCarousel }
+  components: { VueSlickCarousel, ProductDetail }
 
 }
 </script>
 
-<style lang="scss">@import "../scss/market.scss"; </style>
+<style lang="scss">@import "../scss/market.scss";
+
+</style>
