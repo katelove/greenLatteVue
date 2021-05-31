@@ -8,7 +8,8 @@
 <div class="site"></div>
 <section id="sec4"><GreenLatte/></section>
 <div class="site"></div>
-<section id="sec5"></section>
+<section id="sec5"><Market/></section>
+<div class="site"></div>
 <section id="sec6"><WeekProject/></section>
 <section id="sec7"></section>
 <section id="sec8"></section>
@@ -24,11 +25,18 @@ import ParaagraphOne from '../components/ParaagraphOne'
 import HealthTest from '../components/HealthTest'
 import WeekProject from '../components/WeekProject'
 import GreenLatte from '../components/GreenLatte'
+import Market from '../components/Market'
 
 export default {
   name: 'carousel',
   components: {
-    Carousel, BodyDA, ParaagraphOne, HealthTest, WeekProject, GreenLatte
+    Carousel,
+    BodyDA,
+    ParaagraphOne,
+    HealthTest,
+    WeekProject,
+    GreenLatte,
+    Market
   }
 }
 </script>
