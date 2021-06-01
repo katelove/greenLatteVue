@@ -12,8 +12,9 @@
 <div class="site"></div>
 <section id="sec6"><DiyGreen/></section>
 <div class="site"></div>
-<section id="sec7"><WeekProject/></section>
-<section id="sec8"></section>
+<section id="sec7"><DatePlan/></section>
+<div class="site"></div>
+<section id="sec8"><WeekProject/></section>
 <section id="sec9"></section>
 </div>
 
@@ -28,6 +29,7 @@ import WeekProject from '../components/WeekProject'
 import GreenLatte from '../components/GreenLatte'
 import Market from '../components/Market'
 import DiyGreen from '../components/DiyGreen'
+import DatePlan from '../components/DatePlan'
 
 export default {
   name: 'greenLatte',
@@ -39,7 +41,8 @@ export default {
     WeekProject,
     GreenLatte,
     Market,
-    DiyGreen
+    DiyGreen,
+    DatePlan
   }
 }
 </script>
