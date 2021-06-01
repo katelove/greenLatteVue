@@ -10,8 +10,9 @@
 <div class="site"></div>
 <section id="sec5"><Market/></section>
 <div class="site"></div>
-<section id="sec6"><WeekProject/></section>
-<section id="sec7"></section>
+<section id="sec6"><DiyGreen/></section>
+<div class="site"></div>
+<section id="sec7"><WeekProject/></section>
 <section id="sec8"></section>
 <section id="sec9"></section>
 </div>
@@ -26,6 +27,7 @@ import HealthTest from '../components/HealthTest'
 import WeekProject from '../components/WeekProject'
 import GreenLatte from '../components/GreenLatte'
 import Market from '../components/Market'
+import DiyGreen from '../components/DiyGreen'
 
 export default {
   name: 'carousel',
@@ -36,7 +38,8 @@ export default {
     HealthTest,
     WeekProject,
     GreenLatte,
-    Market
+    Market,
+    DiyGreen
   }
 }
 </script>
