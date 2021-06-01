@@ -16,7 +16,7 @@
         <img src="../../public/images/company/Glass.png"/>
       </div>
       <div class="col-md-6 col-lg-6 diy-leaf">
-        <img src="../../public/images/company/leaf.png" />
+        <img src="../../public/images/company/leafCircle.png" />
           <div class="diy-aboard">
             <div class="diy-name" >
               <h3>命名:</h3>
@@ -43,4 +43,4 @@
     </div>
   </div>
 </template>
-<style lang="scss">@import "../scss/diyGreen.scss";
+<style lang="scss">@import "../scss/diyGreen.scss";</style>
