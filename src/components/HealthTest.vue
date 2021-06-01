@@ -34,7 +34,7 @@
           </div>
           <div class="base_two">
             <h4>2. 請輸入性別/年齡/體脂數(%)</h4>
-              <b-form-group label="性別" >
+              <b-form-group>
                 <b-form-radio-group
                   id="radio-group-1"
                   v-model="selectedGender"
@@ -118,7 +118,7 @@
       <h3>{{sitGroup()}}</h3>
       </div>
     </div>
-    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 chk_base">
+    <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 chk_base">
       <div class="front">
       <h2>你是肉食族嗎?</h2>
         <div class="choice_block">
