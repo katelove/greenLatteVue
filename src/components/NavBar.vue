@@ -1,13 +1,14 @@
 <template>
     <nav>
     <b-navbar toggleable="lg" type="dark" class="nature-bg fixed-top">
+    <router-link to="/">
     <b-navbar-brand href="#sec1">
       <img src="../../public/images/company/logo-small.png" alt="健康綠生活" />
           <div class="nature-word">
             <p>NatureLife 綠生活</p>
           </div>
     </b-navbar-brand>
-
+    </router-link>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
@@ -20,7 +21,7 @@
         <b-nav-item href="#sec5">蔬果市場</b-nav-item>
         <b-nav-item href="#sec6">DIY綠拿鐵</b-nav-item>
         <b-nav-item href="#sec7">綠拿鐵三餐規劃</b-nav-item>
-        <b-nav-item class="nature-account"><font-awesome-icon icon="user-circle"></font-awesome-icon><router-link to="/about">會員中心</router-link></b-nav-item>
+        <b-nav-item class="nature-account"><font-awesome-icon icon="user-circle"></font-awesome-icon><router-link to="/accountCenter">會員中心</router-link></b-nav-item>
       </b-navbar-nav>
 
     </b-collapse>

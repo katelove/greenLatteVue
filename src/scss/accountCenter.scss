@@ -1,0 +1,71 @@
+  /* account+password form */
+  .form-group {
+    margin-bottom: 40px;
+    outline: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    h4 {
+        display: inline-block;
+        margin-right: 10px;
+        color: #2f5a28;
+        width: 100px;
+      }
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    background-color: #f6f9f4;
+    border: 2px solid #2f5a28;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    color: white;
+    display: inline-block;
+  }
+  
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 0;
+  }
+  @media (max-width: 576px) {
+    .account-setting {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .form-group h4 {
+      font-size: 20px;
+    }
+  }
+
+// 會員中心
+.account-center{
+    position: relative;
+}
+.account-photo{
+position: absolute;
+top: 0;
+ div{
+  font-size: 100px;
+  color: #2f5a28;
+  display: inline;
+  }
+}
+
+.account-detail{
+    display: inline-block;
+    .word-row{
+        display: flex;
+        justify-self: flex-start;
+        color: #2f5a28;
+        p{
+            color: red;
+            font: solid;
+        }
+    }
+    .ourself-check{
+        text-align: left;
+    }
+}
+
+
