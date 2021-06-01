@@ -30,7 +30,7 @@ import Market from '../components/Market'
 import DiyGreen from '../components/DiyGreen'
 
 export default {
-  name: 'carousel',
+  name: 'greenLatte',
   components: {
     Carousel,
     BodyDA,
