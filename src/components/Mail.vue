@@ -1,26 +1,26 @@
 <template>
-  <div class="mail-content">
+<div class="mail-content">
   <h1>填寫資料:</h1>
   <h6>謝謝您提供寶貴意見，我們將於收信後7個工作天回覆給您。</h6>
   <div class="mail-word">
     <h5>您的名字/稱謂</h5>
     <p>(必填)</p>
-    <input type="text" name="" id="" placeholder="請輸入您的名字">
+    <input type="text" name="" id="" placeholder="請輸入您的名字"/>
   </div>
   <div class="mail-word">
     <h5>電子郵件</h5>
     <p>(必填)</p>
-    <input type="email" name="" id="" placeholder="請輸入您的信箱">
+    <input type="email" name="" id="" placeholder="請輸入您的信箱"/>
   </div>
   <div class="mail-word">
     <h5>主旨</h5>
     <p>(必填)</p>
-    <input type="text" name="" id="" placeholder="請輸入信件主旨">
+    <input type="text" name="" id="" placeholder="請輸入信件主旨"/>
   </div>
   <div class="mail-word">
     <h5>內文</h5>
     <p>(必填)</p>
-    <textarea type="text" name="" id="" placeholder="請輸入信件內文">
+    <textarea type="text" name="" id="" placeholder="請輸入信件內文"/>
   </div>
   <div class="mail-file">
     <h5>附加檔案</h5>
