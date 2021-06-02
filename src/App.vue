@@ -1,24 +1,41 @@
 <template>
-  <div id="app">
+<div id="app">
   <NavBar/>
   <div class="home_content">
     <div class="socialLogo">
-        <img src="../public/images/pic/mail.png" alt="Email" />
+        <img src="../public/images/pic/mail.png" alt="Email" @click="showModal"/>
         <img src="../public/images/pic/youtube.png" alt="Youtube" />
         <img src="../public/images/pic/facebook.png" alt="FB" />
         <img src="../public/images/pic/instagram.png" alt="IG" />
     </div>
+    <!-- 信件說明 -->
+    <b-modal ref="my-modal" size="lg">
+      <div class="d-block text-center">
+         <Mail/>
+      </div>
+    </b-modal>
     <router-view/>
   </div>
-  </div>
+</div>
 </template>
 
 <script>
 import NavBar from './components/NavBar'
+import Mail from './components/Mail'
 export default {
   name: 'navBar',
   components: {
-    NavBar
+    NavBar,
+    Mail
+  },
+  methods: {
+    // for modal
+    showModal () {
+      this.$refs['my-modal'].show()
+    },
+    hideModal () {
+      this.$refs['my-modal'].hide()
+    }
   }
 }
 </script>
