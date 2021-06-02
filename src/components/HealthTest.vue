@@ -26,7 +26,12 @@
           <div class="base_one">
             <h4>1. 請輸入身高/體重</h4>
             <div class="heightW">
-              身高: <input type="text" name="heighV" id="heighV" required v-model.number="heighV"/>公分
+              <!-- <validation-provider name="身高" rules="required|heigh" v-slot="{errors}"> -->
+                <label for="heighV">身高: </label>
+               <input v-validate="'required|heighV'" type="text" name="heighV" id="heighV" v-model.number="heighV" placeholder="請輸入身高"/>公分
+               <span  v-show="errors.has('heighV')" style="color:red"> {{ errors.first('heighV') }} </span>
+               <!-- <span>{{errors[0]}}</span> -->
+              <!-- </validation-provider> -->
             </div>
             <div class="weightW">
               體重: <input type="text" name="weightV" id="weightV" required v-model.number="weightV"/>公斤
@@ -173,6 +178,8 @@ export default {
     return {
       // 基本測量
       heighV: '',
+      heighError: false,
+      heighErrMsg: '',
       weightV: '',
       selectedGender: '',
       options: [

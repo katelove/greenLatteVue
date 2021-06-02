@@ -17,6 +17,7 @@
     "jQuery": "^1.7.4",
     "jquery": "^3.6.0",
     "sortablejs": "^1.13.0",
+    "vee-validate": "^2.0.0-rc.25",
     "vue": "^2.6.12",
     "vue-router": "^3.5.1",
     "vue-slick-carousel": "^1.0.6",
