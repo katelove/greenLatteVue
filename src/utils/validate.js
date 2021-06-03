@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { ValidationProvider, extend, localize, configure } from 'vee-validate' // 1. 匯入localize模組函式
+import { ValidationProvider, ValidationObserver, extend, localize, configure } from 'vee-validate' // 1. 匯入localize模組函式
 import * as rules from 'vee-validate/dist/rules' // 匯入全部的規則
 import zhTW from 'vee-validate/dist/locale/zh_TW.json' // 2.匯入要使用的語言
 
@@ -12,8 +12,10 @@ localize('zhTW') // 4. 使用具體的語言
 Object.keys(rules).forEach(rule => {
   extend(rule, rules[rule])
 })
+// 將 VeeValidate input 驗證工具載入 作為全域註冊
 Vue.component('ValidationProvider', ValidationProvider)
-
+// 將 VeeValidate 完整表單 驗證工具載入 作為全域註冊
+Vue.component('ValidationObserver', ValidationObserver)
 // 根據驗證狀態改變視覺效果
 configure({
   classes: {
@@ -41,9 +43,7 @@ extend('weightV', {
 extend('genderOptions', {
   validate: value => {
     console.log(' genderOptions:' + value)
-    if (value === null) {
-      return ' 1'
-    }
+    return ''
   },
   message: '請勾選 {_field_}'
 })

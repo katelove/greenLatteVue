@@ -22,6 +22,9 @@
       <!-- 基本測量 問題篇 -->
     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 chk_base">
       <div class=" front">
+        <ValidationObserver  ref="baseForm">
+        <!-- 表單送出改為使用 form submit 的方法 -->
+        <form @submit.prevent="baseAnswer()">
         <h2>基本測量</h2>
           <div class="base_one">
             <h4>1. 請輸入身高/體重</h4>
@@ -50,7 +53,6 @@
                   v-model="selectedGender"
                   :options="options"
                   name="genderOptions"
-                  :state="state" required
                 >
                 <span style="color:red">{{errors[0]}}</span>
                  <!-- <b-form-invalid-feedback :state="state">請勾選性別</b-form-invalid-feedback> -->
@@ -63,14 +65,14 @@
             <div class="inlineSty">
               <label for="ageFat">年齡: </label>
                 <ValidationProvider name="年齡" rules="required|ageFat" v-slot="{errors, classes }">
-                  <input type="text" :class="classes" name="ageFat" id="ageFat" v-model.number="ageFat" placeholder="請輸入年齡" required> 歲
+                  <input type="text" :class="classes" name="ageFat" id="ageFat" v-model.number="ageFat" placeholder="請輸入年齡"> 歲
                   <span style="color:red">{{errors[0]}}</span>
                 </ValidationProvider>
             </div>
             <div class="inlineSty">
               <label for="bodyFat">體脂數: </label>
                 <ValidationProvider name="體脂數" rules="required|bodyFat" v-slot="{errors, classes }">
-                  <input type="text" :class="classes" name="bodyFat" id="bodyFat" v-model.number="bodyFat" placeholder="請輸入體脂數" required> %
+                  <input type="text" :class="classes" name="bodyFat" id="bodyFat" v-model.number="bodyFat" placeholder="請輸入體脂數"> %
                   <span style="color:red">{{errors[0]}}</span>
                 </ValidationProvider>
             </div>
@@ -80,14 +82,17 @@
             <div class="inlineSty">
               <label for="choleValue">膽固醇脂數: </label>
                 <ValidationProvider name="膽固醇脂數" rules="required|choleValue" v-slot="{errors, classes }">
-                  <input type="text" :class="classes" name="choleValue" id="choleValue" v-model.number="choleValue" placeholder="請輸入膽固醇脂數" required> mg/dl
+                  <input type="text" :class="classes" name="choleValue" id="choleValue" v-model.number="choleValue" placeholder="請輸入膽固醇脂數"> mg/dl
                   <span style="color:red">{{errors[0]}}</span>
                 </ValidationProvider>
             </div>
           </div>
-          <div class="baseBtn" value="送出" @click="baseAnswer()">
+          <!-- @click="baseAnswer()" -->
+          <button type="submit" class="baseBtn" value="送出">
             <p>送出</p>
-          </div>
+          </button>
+           </form>
+          </ValidationObserver>
         </div>
         <!-- 基本測量回答 -->
         <div v-show="display=='block'?true:false" class="back">
@@ -364,9 +369,21 @@ export default {
         return '恭喜你不是肉食族'
       }
     },
-    baseAnswer: function () {
-      // 基本測量回答
-      // 欄位檢核
+    async baseAnswer () {
+      // 基本測量
+      // 欄位檢核,async: 非同步,await: 等待
+    // success=true  校驗成功    success=false  校驗失敗
+      const success = await this.$refs.baseForm.validate()
+      if (!success) {
+      // 校驗失敗，停止後續程式碼執行
+        console.log('驗證失敗' + success)
+        return false
+      } else {
+      // 顯示回答
+        console.log('驗證成功' + success)
+        this.display = 'block'
+      }
+      console.log('驗證成功+在外面')
       this.display = 'block'
     },
     sitAnswer: function () {
