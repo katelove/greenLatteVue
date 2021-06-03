@@ -41,8 +41,8 @@ extend('weightV', {
 extend('genderOptions', {
   validate: value => {
     console.log(' genderOptions:' + value)
-    if (value === '女生' || value === '男生') {
-      return ' '
+    if (value === null) {
+      return ' 1'
     }
   },
   message: '請勾選 {_field_}'
@@ -50,6 +50,22 @@ extend('genderOptions', {
 
 // 4.年齡
 extend('ageFat', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入正確 {_field_}'
+})
+
+// 5.體脂數
+extend('bodyFat', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入正確 {_field_}'
+})
+
+// 6.膽固醇脂數
+extend('choleValue', {
   validate: value => {
     return /^[1-2]+(.[0-9])?$/.test(value)
   },

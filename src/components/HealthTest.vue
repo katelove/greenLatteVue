@@ -67,15 +67,27 @@
                   <span style="color:red">{{errors[0]}}</span>
                 </ValidationProvider>
             </div>
-            <input type="text" name="bodyFat" id="bodyFat" v-model.number="bodyFat" required> %
+            <div class="inlineSty">
+              <label for="bodyFat">體脂數: </label>
+                <ValidationProvider name="體脂數" rules="required|bodyFat" v-slot="{errors, classes }">
+                  <input type="text" :class="classes" name="bodyFat" id="bodyFat" v-model.number="bodyFat" placeholder="請輸入體脂數" required> %
+                  <span style="color:red">{{errors[0]}}</span>
+                </ValidationProvider>
+            </div>
           </div>
           <div class="base_third">
             <h4>3. 請輸入總膽固醇脂數(TC)</h4>
-            <input type="text" name="choleValue" id="choleValue" v-model.number="choleValue" required> mg/dl
+            <div class="inlineSty">
+              <label for="choleValue">膽固醇脂數: </label>
+                <ValidationProvider name="膽固醇脂數" rules="required|choleValue" v-slot="{errors, classes }">
+                  <input type="text" :class="classes" name="choleValue" id="choleValue" v-model.number="choleValue" placeholder="請輸入膽固醇脂數" required> mg/dl
+                  <span style="color:red">{{errors[0]}}</span>
+                </ValidationProvider>
+            </div>
           </div>
-          <button class="baseBtn" value="送出" @click="baseAnswer()">
+          <div class="baseBtn" value="送出" @click="baseAnswer()">
             <p>送出</p>
-          </button>
+          </div>
         </div>
         <!-- 基本測量回答 -->
         <div v-show="display=='block'?true:false" class="back">
@@ -133,9 +145,9 @@
               ></b-form-radio-group>
             </b-form-group>
           </div>
-          <button class="baseBtn" value="送出" @click="sitAnswer()">
+          <div class="baseBtn" value="送出" @click="sitAnswer()">
             <p>送出</p>
-          </button>
+          </div>
       </div>
       <!-- 久坐族回答 -->
       <div v-show="display=='block'?true:false" class="back">
@@ -178,9 +190,9 @@
           ></b-form-radio-group>
           </b-form-group>
         </div>
-      <button class="baseBtn" value="送出" @click="meatAnswer()">
+      <div class="baseBtn" value="送出" @click="meatAnswer()">
         <p>送出</p>
-      </button>
+      </div>
       </div>
       <!-- 肉食族回答 -->
       <div v-show="display=='block'?true:false" class="back">
