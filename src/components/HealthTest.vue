@@ -27,29 +27,46 @@
             <h4>1. 請輸入身高/體重</h4>
             <div class="heightW">
               <label for="heigh">身高: </label>
-
-               <ValidationProvider name="身高" rules="required|heigh" v-slot="{errors}">
-               <input type="text" name="heigh" id="heigh" v-model.number="heigh" placeholder="請輸入身高"/>公分
-               <!-- <span  v-show="errors.has('heighV')" style="color:red"> {{ errors.first('heighV') }} </span> -->
+               <ValidationProvider name="身高" rules="required|heigh" v-slot="{errors, classes }">
+               <input type="text" :class="classes" name="heigh" id="heigh" v-model.number="heigh" placeholder="請輸入身高"/>公分
                <span style="color:red">{{errors[0]}}</span>
               </ValidationProvider>
-
             </div>
             <div class="weightW">
-              體重: <input type="text" name="weightV" id="weightV" required v-model.number="weightV"/>公斤
+              <label for="weightV">體重: </label>
+              <ValidationProvider name="體重" rules="required|heigh" v-slot="{errors,classes}">
+               <input type="text" :class="classes" name="weightV" id="weightV" v-model.number="weightV" placeholder="請輸入體重"/>公斤
+               <span style="color:red">{{errors[0]}}</span>
+              </ValidationProvider>
             </div>
           </div>
           <div class="base_two">
             <h4>2. 請輸入性別/年齡/體脂數(%)</h4>
-              <b-form-group>
+              <div class="inlineSty">
+                <label for="genderOptions"> 性別:  </label>
+                <ValidationProvider name="性別" rules="required|genderOptions" v-slot="{errors}">
                 <b-form-radio-group
                   id="radio-group-1"
                   v-model="selectedGender"
                   :options="options"
-                  name="radio-options" required
-                ></b-form-radio-group>
-              </b-form-group>
-            <input type="text" name="ageFat" id="ageFat" v-model.number="ageFat" required> 歲
+                  name="genderOptions"
+                  :state="state" required
+                >
+                <span style="color:red">{{errors[0]}}</span>
+                 <!-- <b-form-invalid-feedback :state="state">請勾選性別</b-form-invalid-feedback> -->
+                 <!-- <b-form-valid-feedback :state="state">✔</b-form-valid-feedback> -->
+                </b-form-radio-group>
+                </ValidationProvider>
+              </div>
+
+              <!-- </b-form-group> -->
+            <div class="inlineSty">
+              <label for="ageFat">年齡: </label>
+                <ValidationProvider name="年齡" rules="required|ageFat" v-slot="{errors, classes }">
+                  <input type="text" :class="classes" name="ageFat" id="ageFat" v-model.number="ageFat" placeholder="請輸入年齡" required> 歲
+                  <span style="color:red">{{errors[0]}}</span>
+                </ValidationProvider>
+            </div>
             <input type="text" name="bodyFat" id="bodyFat" v-model.number="bodyFat" required> %
           </div>
           <div class="base_third">
@@ -181,10 +198,8 @@ export default {
     return {
       // 基本測量
       heigh: '',
-      heighError: false,
-      heighErrMsg: '',
       weightV: '',
-      selectedGender: '',
+      selectedGender: null,
       options: [
         { text: '男生', value: '男生' },
         { text: '女生', value: '女生' }
@@ -348,9 +363,16 @@ export default {
     meatAnswer: function () {
       this.display = 'block'
     }
+  },
+  computed: {
+    state () {
+      return Boolean(this.selectedGender)
+    }
   }
 }
 
 </script>
 
-<style lang="scss">@import "../scss/healthTest.scss"; </style>
+<style lang="scss">@import "../scss/healthTest.scss";
+
+</style>
