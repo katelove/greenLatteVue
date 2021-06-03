@@ -26,12 +26,14 @@
           <div class="base_one">
             <h4>1. 請輸入身高/體重</h4>
             <div class="heightW">
-              <!-- <validation-provider name="身高" rules="required|heigh" v-slot="{errors}"> -->
-                <label for="heighV">身高: </label>
-               <input v-validate="'required|heighV'" type="text" name="heighV" id="heighV" v-model.number="heighV" placeholder="請輸入身高"/>公分
-               <span  v-show="errors.has('heighV')" style="color:red"> {{ errors.first('heighV') }} </span>
-               <!-- <span>{{errors[0]}}</span> -->
-              <!-- </validation-provider> -->
+              <label for="heigh">身高: </label>
+
+               <ValidationProvider name="身高" rules="required|heigh" v-slot="{errors}">
+               <input type="text" name="heigh" id="heigh" v-model.number="heigh" placeholder="請輸入身高"/>公分
+               <!-- <span  v-show="errors.has('heighV')" style="color:red"> {{ errors.first('heighV') }} </span> -->
+               <span style="color:red">{{errors[0]}}</span>
+              </ValidationProvider>
+
             </div>
             <div class="weightW">
               體重: <input type="text" name="weightV" id="weightV" required v-model.number="weightV"/>公斤
@@ -62,7 +64,7 @@
         <div v-show="display=='block'?true:false" class="back">
             <div class="base_one">
               <h4>1. 計算身體質量指數 </h4>
-              <h6>BMI計算方式=>你的體重:{{weightV}} / 你的身高:{{heighV/100}}**2</h6>
+              <h6>BMI計算方式=>你的體重:{{weightV}} / 你的身高:{{heigh/100}}**2</h6>
               <h5>你的BMI值: <b>{{bmiValue()}}</b></h5>
               <h5>肥胖指數: <b>{{fatValue()}}</b></h5>
             </div>
@@ -172,12 +174,13 @@
   </div>
 </template>
 
-<script >
+<script>
+import '@/utils/validate.js' // 驗證相關
 export default {
   data () {
     return {
       // 基本測量
-      heighV: '',
+      heigh: '',
       heighError: false,
       heighErrMsg: '',
       weightV: '',
@@ -233,9 +236,9 @@ export default {
     // 計算BMI
     bmiValue: function () {
       // 身高cm 轉成公尺-四捨五入
-      const heightMeter = this.heighV / 100
+      const heightMeter = this.heigh / 100
       const BMI = Math.floor(this.weightV / Math.pow(heightMeter, 2) * 100) / 100
-      if (this.heighV === '' && this.weightV === '') {
+      if (this.heigh === '' && this.weightV === '') {
         return ''
       } else {
         return BMI
