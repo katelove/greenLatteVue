@@ -43,7 +43,7 @@ extend('weightV', {
 extend('genderOptions', {
   validate: value => {
     console.log(' genderOptions:' + value)
-    return ''
+    return true
   },
   message: '請勾選 {_field_}'
 })
