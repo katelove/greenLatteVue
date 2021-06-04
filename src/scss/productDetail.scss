@@ -1,17 +1,15 @@
   /* ================product-content=========================== */
   .product-frame {
-
     border-radius: 20px;
     border: solid 3px #2f5a28;
     background-color: white;
-
     height: 600px;
     position: relative;
     display: flex;
     flex-direction: row;
   }
 
-  
+
   .product-pic h5 {
     color: white;
     background-color: #2f5a28;
@@ -21,18 +19,19 @@
     top: 5px;
     left: 5px;
   }
-  
+
   /* ================product-left================ */
   .product-left {
     margin-top: 20px;
     margin-left: 20px;
   }
+
   .product-left img {
     border: solid 3px #2f5a28;
     border-radius: 10px;
     width: 400px;
   }
-  
+
   .product-word h6 {
     border: 3px dotted #2f5a28;
     color: #2f5a28;
@@ -41,12 +40,12 @@
     margin: 10px;
     border-radius: 5px;
   }
-  
+
   /* ================product-right================ */
   .product-title {
     margin: 20px 10px 10px 10px;
   }
-  
+
   .product-title-one,
   .product-title-two,
   .product-title-third {
@@ -54,6 +53,7 @@
     justify-content: flex-start;
     align-items: center;
   }
+
   .product-title-one h2,
   .product-title-two h2,
   .product-title-third h2 {
@@ -68,7 +68,7 @@
     text-align: center;
     position: absolute;
   }
-  
+
   .product-title-one h5,
   .product-title-two h5,
   .product-title-third h5 {
@@ -82,13 +82,13 @@
     padding-left: 50px;
     padding-top: 10px;
   }
-  
+
   /* ================product-right 挑菜秘訣================ */
   .product-dish {
     display: flex;
     flex-direction: row;
   }
-  
+
   .product-d-left-title h5,
   .product-d-right-title h5 {
     color: white;
@@ -98,7 +98,7 @@
     padding: 5px;
     z-index: 999;
   }
-  
+
   .product-d-left,
   .product-d-r-top {
     margin: 10px;
@@ -106,12 +106,12 @@
     border-radius: 10px;
     position: relative;
   }
-  
+
   .p-left-detail,
   .p-right-detail {
     margin-top: 20px;
   }
-  
+
   .p-left-detail i,
   .p-right-detail i {
     padding-left: 10px;
@@ -119,30 +119,30 @@
     color: #2f5a28;
     display: inline-block;
   }
-  
+
   .p-left-detail h6 {
     color: #2f5a28;
     display: inline-block;
   }
-  
+
   .p-left-detail p {
     color: #2f5a28;
     margin-bottom: 10px;
   }
+
   .p-right-detail p {
     color: #2f5a28;
     margin-bottom: 10px;
     display: inline;
   }
-  
+
   .product-d-r-bottom {
     display: flex;
     justify-content: center;
     align-items: flex-end;
     color: #2f5a28;
   }
-  
+
   .product-d-r-bottom h1 {
     font-size: 80px;
   }
-  
