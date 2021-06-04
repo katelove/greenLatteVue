@@ -23,6 +23,8 @@ configure({
     invalid: 'invalid'
   }
 })
+
+// ================基本測量==================
 // 1.身高
 extend('heigh', {
   validate: value => {
@@ -70,4 +72,32 @@ extend('choleValue', {
     return /^[1-2]+(.[0-9])?$/.test(value)
   },
   message: '請輸入正確 {_field_}'
+})
+
+// ==============久坐族=====================
+// 1.坐在椅子
+extend('sitChairOptions', {
+  validate: value => {
+    console.log('sitChairOptions:' + value)
+    return true
+  },
+  message: '請勾選 {_field_}'
+})
+
+// 2.上廁所次數
+extend('wcGroupOptions', {
+  validate: value => {
+    console.log('wcGroupOptions:' + value)
+    return true
+  },
+  message: '請勾選 {_field_}'
+})
+
+// 3.走動分鐘
+extend('walkGroupOptions', {
+  validate: value => {
+    console.log('walkGroupOptions:' + value)
+    return true
+  },
+  message: '請勾選 {_field_}'
 })

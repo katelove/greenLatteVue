@@ -109,8 +109,13 @@
 
 
 .choice_block {
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   padding-left: 10px;
+
+  p {
+    text-align: left;
+    padding-left: 10px;
+  }
 }
 
 

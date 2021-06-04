@@ -31,8 +31,7 @@
                   id="radio-group-1"
                   v-model="selectedGender"
                   :options="options"
-                  name="genderOptions"
-                >
+                  name="genderOptions">
                 <span style="color:red">{{errors[0]}}</span>
                  <!-- <b-form-invalid-feedback :state="state">請勾選性別</b-form-invalid-feedback> -->
                  <!-- <b-form-valid-feedback :state="state">✔</b-form-valid-feedback> -->
@@ -208,16 +207,6 @@ export default {
 
       console.log('heigh確認值:' + this.heigh + ' weightV確認值:' + this.weightV + ' selectedGender確認值:' + this.selectedGender +
                   ' ageFat確認值:' + this.ageFat + ' bodyFat確認值:' + this.bodyFat + ' choleValue確認值:' + this.choleValue)
-      this.heigh = ''
-      this.weightV = ''
-      this.selectedGender = ''
-      this.ageFat = ''
-      this.bodyFat = ''
-      this.choleValue = ''
-      requestAnimationFrame(() => {
-        this.$refs.baseForm.reset()
-      })
-      this.display = 'block'
     }
   }
 
