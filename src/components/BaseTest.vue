@@ -194,7 +194,7 @@ export default {
     async baseAnswer () {
       // 基本測量
       // 欄位檢核,async: 非同步,await: 等待
-    // success=true  校驗成功    success=false  校驗失敗
+      // success=true  校驗成功    success=false  校驗失敗
       const success = await this.$refs.baseForm.validate()
       if (!success) {
       // 校驗失敗，停止後續程式碼執行
@@ -205,7 +205,18 @@ export default {
         console.log('驗證成功' + success)
         this.display = 'block'
       }
-      console.log('驗證成功+在外面')
+
+      console.log('heigh確認值:' + this.heigh + ' weightV確認值:' + this.weightV + ' selectedGender確認值:' + this.selectedGender +
+                  ' ageFat確認值:' + this.ageFat + ' bodyFat確認值:' + this.bodyFat + ' choleValue確認值:' + this.choleValue)
+      this.heigh = ''
+      this.weightV = ''
+      this.selectedGender = ''
+      this.ageFat = ''
+      this.bodyFat = ''
+      this.choleValue = ''
+      requestAnimationFrame(() => {
+        this.$refs.baseForm.reset()
+      })
       this.display = 'block'
     }
   }
