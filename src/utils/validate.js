@@ -78,7 +78,6 @@ extend('choleValue', {
 // 1.坐在椅子
 extend('sitChairOptions', {
   validate: value => {
-    console.log('sitChairOptions:' + value)
     return true
   },
   message: '請勾選 {_field_}'
@@ -87,7 +86,6 @@ extend('sitChairOptions', {
 // 2.上廁所次數
 extend('wcGroupOptions', {
   validate: value => {
-    console.log('wcGroupOptions:' + value)
     return true
   },
   message: '請勾選 {_field_}'
@@ -96,7 +94,30 @@ extend('wcGroupOptions', {
 // 3.走動分鐘
 extend('walkGroupOptions', {
   validate: value => {
-    console.log('walkGroupOptions:' + value)
+    return true
+  },
+  message: '請勾選 {_field_}'
+})
+// ==============肉食族=====================
+// 1.菜色
+extend('meatGroupOptions', {
+  validate: value => {
+    return true
+  },
+  message: '請勾選 {_field_}'
+})
+
+// 2.蔬菜量
+extend('vgGroupOptions', {
+  validate: value => {
+    return true
+  },
+  message: '請勾選 {_field_}'
+})
+
+// 3.肉量
+extend('maPlatGroup', {
+  validate: value => {
     return true
   },
   message: '請勾選 {_field_}'
