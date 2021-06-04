@@ -22,14 +22,19 @@
     <h5>內文</h5>
     <p>(必填)</p>
   </div>
-  <textarea type="text" name="" id="" placeholder="請輸入信件內文"/>
+  <div class="mail-site">
+   <textarea type="text" name="" id="" placeholder="請輸入信件內文"/>
+    <div class="mail-file">
+     <h5>附加檔案</h5>
+     <input type="file" name="" id="">
+    </div>
   </div>
-  <div class="mail-right">
-  <div class="mail-file">
-    <h5>附加檔案</h5>
-    <input type="file" name="" id="">
   </div>
-  <input type="submit" value="送出">
+
+  <div class="mail-send">
+    <button type="submit">
+      <p>送出</p>
+    </button>
   </div>
 </div>
 </template>
@@ -41,13 +46,36 @@
   border: 3px #2f5a28 solid;
   border-radius: 20px;
   .mail-left{
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-  padding-left: 20px;
+   display: flex;
+   justify-content: flex-start;
+   align-items: flex-start;
+   flex-direction: column;
+   padding-left: 20px;
+   padding-top: 20px;
+   textarea{
+     width: 400px;
+     height: 100px;
+   }
   }
+  .mail-site{
+   display: flex;
+   justify-content: flex-start;
+   padding-bottom: 20px;
 
+  }
+  .mail-send{
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    button{
+      width: auto;
+      height: 30px;
+      background-color: #2f5a28;
+      color: white;
+      border-radius: 15px;
+    }
+
+  }
   .mail-word{
     display: block;
     h5{
@@ -59,10 +87,13 @@
     }
   }
   .mail-file {
+  padding-left: 20px;
+
   h5{
     background-color: #2f5a28;
     color: white;
     border-radius: 15px;
+    width: 200px;
     }
   }
 }

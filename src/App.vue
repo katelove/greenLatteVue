@@ -9,7 +9,7 @@
         <img src="../public/images/pic/instagram.png" alt="IG" />
     </div>
     <!-- 信件說明 -->
-    <b-modal ref="my-modal" size="lg">
+    <b-modal ref="my-modal" size="lg" hide-footer="true">
       <div class="d-block text-center">
          <Mail/>
       </div>
