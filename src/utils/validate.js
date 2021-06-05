@@ -123,6 +123,30 @@ extend('maPlatGroup', {
   message: '請勾選 {_field_}'
 })
 
+// ============ 帳號設定 ============
+// 1.帳號
+extend('account', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入 {_field_}'
+})
+
+// 2.密碼
+extend('password', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入 {_field_}'
+})
+
+// 3.確認密碼
+extend('chkPwd', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入 {_field_}'
+})
 // ============ 會員中心 ============
 // 1.名字
 extend('name', {

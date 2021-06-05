@@ -1,18 +1,38 @@
   /* account+password form */
-  .form-group {
-    margin-bottom: 40px;
-    outline: 0px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  .account-setting {
 
-    h4 {
-      display: inline-block;
-      margin-right: 10px;
-      color: #2f5a28;
-      width: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .accoutSty {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      input {
+        width: 300px;
+        margin: 5px 10px;
+      }
+
+      div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      h4 {
+        display: inline-block;
+        margin-right: 10px;
+        color: #2f5a28;
+        width: 150px;
+      }
+
     }
+
   }
+
 
   input[type="text"],
   input[type="password"] {
@@ -51,9 +71,11 @@
   .account-photo {
     position: absolute;
     top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 
     div {
-      font-size: 100px;
+      font-size: 200px;
       color: #2f5a28;
       display: inline;
     }
@@ -72,8 +94,6 @@
         width: 80px;
         background-color: #d6d8d6;
       }
-
-
 
       select {
         width: 60px;

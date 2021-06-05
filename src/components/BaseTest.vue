@@ -65,7 +65,6 @@
                 </ValidationProvider>
             </div>
           </div>
-          <!-- @click="baseAnswer()" -->
           <button type="submit" class="baseBtn" value="送出">
             <p>送出</p>
           </button>

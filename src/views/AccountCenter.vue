@@ -1,50 +1,71 @@
 <template>
 <div class="container nav-account">
-   <b-tabs content-class="mt-3"
-   active-nav-item-class="font-weight-bold text-uppercase text-success"
-   >
+  <b-tabs content-class="mt-3"
+   active-nav-item-class="font-weight-bold text-uppercase text-success">
     <b-tab title="帳號設定" active>
-      <div class="form-group">
+      <ValidationObserver  ref="accountForm">
+      <form @submit.prevent="accountAnswer()">
+      <div class="acontainer">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 account-setting">
+        <ValidationProvider name="帳號" rules="required|account" v-slot="{errors, classes }">
+        <div class="form-group accoutSty">
         <!-- 帳號 -->
-        <h4>帳號 :</h4>
+          <h4>帳號 :</h4>
           <input
             type="text"
+            :class="classes"
             class="form-control"
-            placeholder="請輸入帳號"
-          />
-      </div>
-      <div class="form-group">
+            placeholder="請輸入帳號"/>
+          <span style="color:red">{{errors[0]}}</span>
+        </div>
+        </ValidationProvider>
+        <ValidationProvider name="密碼" rules="required|password" v-slot="{errors, classes }">
+        <div class="form-group accoutSty">
         <!-- 密碼 -->
-        <h4>密碼 :</h4>
-        <input
+          <h4>密碼 :</h4>
+          <input
           type="password"
+          :class="classes"
           class="form-control"
-          placeholder="請輸入密碼"
-        />
-      </div>
-      <div class="form-group">
+          placeholder="請輸入密碼" />
+          <span style="color:red">{{errors[0]}}</span>
+        </div>
+        </ValidationProvider>
+        <ValidationProvider name="確認密碼" rules="required|chkPwd" v-slot="{errors, classes }">
+        <div class="form-group accoutSty">
         <!-- 確認密碼 -->
-        <h4>確認密碼 :</h4>
-        <input
+          <h4>確認密碼 :</h4>
+          <input
           type="password"
+          :class="classes"
           class="form-control"
-          placeholder="請再確認密碼"
-        />
+          placeholder="請再確認密碼" />
+          <span style="color:red">{{errors[0]}}</span>
+        </div>
+        </ValidationProvider>
       </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <input type="submit" class="baseBtn" value="儲存">
+      </div>
+      </div>
+      </div>
+      </form>
+      </ValidationObserver>
     </b-tab>
     <b-tab title="會員中心" class="account-center">
       <div class="container">
-      <ValidationObserver  ref="accountForm">
-      <form @submit.prevent="accountAnswer()">
+      <ValidationObserver  ref="detailForm">
+      <form @submit.prevent="detailAnswer()">
         <div class="row">
-          <div class="col-xs-6 col-sm-3 col-md-3 col-lg-2">
+          <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
             <div class="account-photo">
              <div><font-awesome-icon icon="user-circle"/></div>
              <h5>大頭貼照片</h5>
-             <input type="button" value="選擇檔案" />
+             <input type="button" value="選擇檔案" class="baseBtn" />
             </div>
           </div>
-          <div class="col-xs-6 col-sm-9 col-md-9 col-lg-10">
+          <div class="col-xs-6 col-sm-9 col-md-9 col-lg-9">
             <div class="account-detail">
               <div class="word-row">
                 <h5>您的名字/稱謂</h5>
@@ -147,6 +168,14 @@ export default {
   methods: {
     async accountAnswer () {
       const success = await this.$refs.accountForm.validate()
+      if (!success) {
+      // 校驗失敗，停止後續程式碼執行
+        console.log('驗證失敗' + success)
+        return false
+      }
+    },
+    async detailAnswer () {
+      const success = await this.$refs.detailForm.validate()
       if (!success) {
       // 校驗失敗，停止後續程式碼執行
         console.log('驗證失敗' + success)
