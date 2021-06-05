@@ -12,7 +12,7 @@
                <ValidationProvider name="身高" rules="required|heigh" v-slot="{errors, classes }">
                <input type="text" :class="classes" name="heigh" id="heigh" v-model.number="heigh" placeholder="請輸入身高"/>公分
                <span style="color:red">{{errors[0]}}</span>
-              </ValidationProvider>
+               </ValidationProvider>
             </div>
             <div class="weightW">
               <label for="weightV">體重: </label>

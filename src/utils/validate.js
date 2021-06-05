@@ -122,3 +122,60 @@ extend('maPlatGroup', {
   },
   message: '請勾選 {_field_}'
 })
+
+// ============ 會員中心 ============
+// 1.名字
+extend('name', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入 {_field_}'
+})
+
+// 2.信箱
+extend('mail', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入正確 {_field_}'
+})
+
+// 3.生日
+extend('birthday', {
+  validate: value => {
+    return true
+  },
+  message: '請選擇 {_field_}'
+})
+
+// 4.縣市
+extend('city', {
+  validate: value => {
+    return true
+  },
+  message: '請選擇 {_field_}'
+})
+
+// 5.address
+extend('address', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入正確 {_field_}'
+})
+
+// 6.phone
+extend('phone', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入正確 {_field_}'
+})
+
+// 7.mobile
+extend('mobile', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入正確 {_field_}'
+})

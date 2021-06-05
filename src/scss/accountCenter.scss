@@ -21,8 +21,10 @@
     border-radius: 15px;
     margin-bottom: 15px;
     padding-left: 10px;
-    color: white;
+    color: #595f58;
     display: inline-block;
+    height: 30px;
+    margin-left: 10px;
   }
 
   input:focus {
@@ -64,10 +66,44 @@
       display: flex;
       justify-self: flex-start;
       color: #2f5a28;
+      margin-bottom: 5px;
+
+      :disabled {
+        width: 80px;
+        background-color: #d6d8d6;
+      }
+
+
+
+      select {
+        width: 60px;
+        height: 30px;
+        border-radius: 15px;
+        margin: 0 10px;
+      }
 
       p {
-        color: red;
-        font: solid;
+        color: rgb(231, 139, 33);
+        font-weight: bold;
+      }
+
+      .dateSty {
+        display: flex;
+        justify-content: flex-start;
+
+        :disabled {
+          background-color: #d6d8d6;
+        }
+      }
+    }
+
+    .address-row {
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 110px;
+
+      input {
+        width: 350px;
       }
     }
 
@@ -85,4 +121,11 @@
       display: block;
 
     }
+  }
+
+  .mail-length {
+    input {
+      width: 300px;
+    }
+
   }
