@@ -1,5 +1,7 @@
 <template>
-<div class="mail-content">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mail-content">
   <div class="mail-left">
   <h1>填寫資料:</h1>
   <h6>謝謝您提供寶貴意見，我們將於收信後7個工作天回覆給您。</h6>
@@ -22,19 +24,24 @@
     <h5>內文</h5>
     <p>(必填)</p>
   </div>
-  <div class="mail-site">
-   <textarea type="text" name="" id="" placeholder="請輸入信件內文"/>
-    <div class="mail-file">
-     <h5>附加檔案</h5>
-     <input type="file" name="" id="">
-    </div>
+  </div>
+  <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mail-site">
+    <textarea type="text" name="" id="" placeholder="請輸入信件內文"/>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mail-file">
+    <h5>附加檔案</h5>
+    <input type="file" name="" id="">
+   </div>
   </div>
   </div>
-
-  <div class="mail-send">
-    <button type="submit">
-      <p>送出</p>
-    </button>
+</div>
+  <div class="row">
+   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+     <div class="mail-send">
+       <input type="submit" value="送出"/>
+     </div>
+   </div>
   </div>
 </div>
 </template>
@@ -50,31 +57,9 @@
    justify-content: flex-start;
    align-items: flex-start;
    flex-direction: column;
-   padding-left: 20px;
+   padding-left: 10px;
    padding-top: 20px;
-   textarea{
-     width: 400px;
-     height: 100px;
    }
-  }
-  .mail-site{
-   display: flex;
-   justify-content: flex-start;
-   padding-bottom: 20px;
-
-  }
-  .mail-send{
-    display: flex;
-    align-items: stretch;
-    flex-direction: column;
-    button{
-      width: auto;
-      height: 30px;
-      background-color: #2f5a28;
-      color: white;
-      border-radius: 15px;
-    }
-
   }
   .mail-word{
     display: block;
@@ -86,8 +71,9 @@
       color: red;
     }
   }
+
+  // 檔案
   .mail-file {
-  padding-left: 20px;
 
   h5{
     background-color: #2f5a28;
@@ -96,5 +82,39 @@
     width: 200px;
     }
   }
-}
+
+  .mail-site{
+   display: flex;
+   justify-content: flex-start;
+   padding-bottom: 20px;
+   padding-left: 20px;
+    textarea{
+     width: 300px;
+     height: 100px;
+   }
+
+  }
+  // 送出按鈕
+  .mail-send{
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    input{
+      // width: 750px;
+      height: 30px;
+      background-color: #2f5a28;
+      color: white;
+      border-radius: 10px;
+    }
+  }
+
+    @media (max-width: 576px) {
+    .mail-send{
+      input{
+        width: auto;
+      }
+    }
+  }
 </style>
