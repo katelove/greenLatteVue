@@ -42,11 +42,10 @@ body {
 
 /* account+password form */
 .login-form {
-    margin-top: 25px;
     text-align: left;
 
-    .form-group {
-        margin-bottom: 40px;
+    .account-group {
+        margin-bottom: 5px;
         outline: 0px;
         display: flex;
         justify-content: flex-start;
@@ -54,10 +53,15 @@ body {
 
         div {
             font-size: 40px;
-            display: inline-block;
+            // display: inline-block;
             margin-right: 20px;
             color: #2f5a28;
         }
+    }
+
+    span {
+        padding-left: 60px;
+        padding-top: 20px;
     }
 }
 

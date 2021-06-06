@@ -211,3 +211,20 @@ extend('mailSubject', {
   },
   message: '請輸入正確 {_field_}'
 })
+
+// ============ 會員登入 ============
+// 1.帳號
+extend('accountLogin', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入正確 {_field_}'
+})
+
+// 2.密碼
+extend('accountPwd', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入正確 {_field_}'
+})
