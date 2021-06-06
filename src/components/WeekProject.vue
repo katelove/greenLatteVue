@@ -94,6 +94,7 @@
           </transition>
 
           <div class="tool-try tool-size">
+            <h5 @click="showModal">綠拿鐵飲食法</h5>
             <h5>漸進式</h5>
             <h5>體驗式</h5>
             <h5>全面式</h5>
@@ -175,13 +176,18 @@
    </div>
    </div>
   </div>
-
+    <!-- 綠拿鐵公告 -->
+    <b-modal ref="my-modal" size="lg" hide-footer="false">
+      <div class="d-block text-center">
+         <GreenPlan/>
+      </div>
+    </b-modal>
  </div>
  </div>
 </template>
 <script>
 import Sortable from 'sortablejs'
-
+import GreenPlan from '../components/greenPlan.vue'
 export default {
   data () {
     return {
@@ -215,6 +221,15 @@ export default {
     })
   },
   methods: {
+    showModal () {
+      this.$refs['my-modal'].show()
+    },
+    hideModal () {
+      this.$refs['my-modal'].hide()
+    }
+  },
+  components: {
+    GreenPlan
   }
 }
 </script>
