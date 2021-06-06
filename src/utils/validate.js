@@ -228,3 +228,20 @@ extend('accountPwd', {
   },
   message: '請輸入正確 {_field_}'
 })
+
+// ============ 忘記密碼 ============
+// 1.新密碼
+extend('newPwd', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入正確 {_field_}'
+})
+
+// 2.確認新密碼
+extend('chkPwd', {
+  validate: value => {
+    return /^[1-2]+(.[0-9])?$/.test(value)
+  },
+  message: '請輸入正確 {_field_}'
+})

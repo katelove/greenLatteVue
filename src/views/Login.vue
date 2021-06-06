@@ -42,10 +42,10 @@
     <div class="col-md-2 col-lg-3 "></div>
     <div class="col-md-8 col-lg-6 account-btn">
       <div class="col-md-4 col-lg-3">
-        <h5>註冊</h5>
+        <router-link to="/accountCenter"><h5>註冊</h5></router-link>
       </div>
       <div class="col-md-4 col-lg-3">
-        <h5>忘記密碼</h5>
+        <router-link to="/forgetPwd"><h5>忘記密碼</h5></router-link>
       </div>
     </div>
     <div class="col-md-2 col-lg-3 "></div>
