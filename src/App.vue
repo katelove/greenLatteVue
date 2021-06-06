@@ -1,6 +1,7 @@
 <template>
 <div id="app">
-  <NavBar/>
+  <NavBarLogin/>
+  <!-- <NavBar/> -->
   <div class="home_content">
     <div class="socialLogo">
         <img src="../public/images/pic/mail.png" alt="Email" @click="showModal"/>
@@ -20,12 +21,15 @@
 </template>
 
 <script>
-import NavBar from './components/NavBar'
-import Mail from './components/Mail'
+import NavBarLogin from './components/NavBarLogin.vue'
+// import NavBar from './components/NavBar.vue'
+import Mail from './components/Mail.vue'
+
 export default {
   name: 'navBar',
   components: {
-    NavBar,
+    NavBarLogin,
+    // NavBar,
     Mail
   },
   methods: {
