@@ -132,43 +132,43 @@
     <tbody>
       <tr>
         <td>早</td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
       </tr>
       <tr>
         <td>中</td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
       </tr>
       <tr>
         <td>晚</td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
       </tr>
       <tr>
         <td>備註</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
       </tr>
     </tbody>
   </table>
