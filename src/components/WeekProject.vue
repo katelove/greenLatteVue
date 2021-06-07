@@ -93,12 +93,17 @@
             </ul>
           </transition>
 
-          <div class="tool-try tool-size">
-            <h5 @click="showModal">綠拿鐵飲食法</h5>
-            <h5>漸進式</h5>
-            <h5>體驗式</h5>
-            <h5>全面式</h5>
-          </div>
+        <div class="tool-try tool-size">
+          <h5 v-on:click="glPlan = ! glPlan" >綠拿鐵飲食法</h5>
+            <transition name="ul">
+              <ul v-if="glPlan" class="ul-box">
+                <li><h5 @click="showModal">說明</h5></li>
+                <li><h5>漸進式</h5></li>
+                <li><h5>體驗式</h5></li>
+                <li><h5>全面式</h5></li>
+              </ul>
+            </transition>
+        </div>
       </div>
       <!-- 月曆大小 -->
 <div id="calendarsite">
@@ -196,7 +201,8 @@ export default {
       picture: false,
       diyGreen: false,
       healthMeal: false,
-      sugGreen: false
+      sugGreen: false,
+      glPlan: false
     }
   },
   mounted () {
