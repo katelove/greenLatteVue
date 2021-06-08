@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import HomeLogin from '../views/HomeLogin.vue'
+import NavBarLogin from '../components/NavBarLogin.vue'
+import NavBar from '../components/NavBar.vue'
 
 Vue.use(VueRouter)
 
@@ -8,7 +11,17 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    components: {
+      home: Home,
+      nav: NavBarLogin
+    }
+  },
+  {
+    path: '/homeLogin',
+    components: {
+      home: HomeLogin,
+      nav: NavBar
+    }
   },
   {
     path: '/accountCenter',

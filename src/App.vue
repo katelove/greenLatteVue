@@ -1,7 +1,6 @@
 <template>
 <div id="app">
-  <NavBarLogin/>
-  <!-- <NavBar/> -->
+  <router-view name="nav"></router-view>
   <div class="home_content">
     <div class="socialLogo">
         <img src="../public/images/pic/mail.png" alt="Email" @click="showModal"/>
@@ -15,21 +14,16 @@
          <Mail/>
       </div>
     </b-modal>
-    <router-view/>
+    <router-view name="home"></router-view>
   </div>
 </div>
 </template>
 
 <script>
-import NavBarLogin from './components/NavBarLogin.vue'
-// import NavBar from './components/NavBar.vue'
 import Mail from './components/Mail.vue'
 
 export default {
-  name: 'navBar',
   components: {
-    NavBarLogin,
-    // NavBar,
     Mail
   },
   methods: {
