@@ -14,7 +14,7 @@
           <div class="account-group">
               <!-- 帳號 -->
             <div><font-awesome-icon icon="user-circle"/></div>
-            <input type="text" :class="classes" class="form-control" placeholder="請輸入帳號">
+            <input type="text" v-model="userAccout" :class="classes" class="account-sty" placeholder="請輸入帳號">
           </div>
             <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
@@ -22,7 +22,7 @@
           <div class="account-group">
               <!-- 密碼 -->
             <div><font-awesome-icon icon="key"/></div>
-            <input type="password" :class="classes" class="form-control" placeholder="請輸入密碼">
+            <input type="password" v-model="userPwd" :class="classes" class="account-sty" placeholder="請輸入密碼">
           </div>
           <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
@@ -32,7 +32,7 @@
             <label for="rememberDetail">記住我</label>
           </div>
           <div class="col-md-12 col-lg-12 login-button">
-            <button type="submit" class="btn btn-login">登入</button>
+            <button @click="login" type="submit" class="btn btn-login">登入</button>
           </div>
         </form>
         </ValidationObserver>
@@ -56,7 +56,36 @@
 <style lang="scss">@import "../scss/login.scss";</style>
 <script>
 export default {
+  data () {
+    return {
+      userAccout: '',
+      userPwd: ''
+    }
+  },
   methods: {
+    login () {
+      if (this.userAccout !== ' ' && this.userPwd !== '') {
+      // 1. 建立 XMLHttpRequest物件
+        var xhr = new XMLHttpRequest()
+        console.log(xhr)
+        // 2.建立連線
+        xhr.open('get',
+          'http://172.20.10.3:8085', true
+        )
+        xhr.send()
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            var result = xhr.responseText
+            var obj = JSON.parse(result)
+            if (obj.code === 1) {
+              window.location.href = 'list.html'
+            } else {
+              alert(obj.msg)
+            }
+          }
+        }
+      }
+    },
     async loginAnswer () {
       const success = await this.$refs.loginForm.validate()
       if (!success) {

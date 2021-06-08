@@ -216,7 +216,7 @@ extend('mailSubject', {
 // 1.帳號
 extend('accountLogin', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    return /^[1-9a-z][0-9a-z]{5,11}$/.test(value)
   },
   message: '請輸入正確 {_field_}'
 })
@@ -224,7 +224,7 @@ extend('accountLogin', {
 // 2.密碼
 extend('accountPwd', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    return /^[0-9a-z]{6,10}$/.test(value)
   },
   message: '請輸入正確 {_field_}'
 })
