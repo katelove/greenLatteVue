@@ -9,12 +9,12 @@
       </div>
       <div class="col-md-12 col-lg-12 login-form">
         <ValidationObserver  ref="loginForm">
-        <form @submit.prevent="loginAnswer()">
+        <form @submit.prevent="loginAnswer()" method="post">
           <ValidationProvider name="帳號" rules="required|accountLogin" v-slot="{errors, classes }">
           <div class="account-group">
               <!-- 帳號 -->
             <div><font-awesome-icon icon="user-circle"/></div>
-            <input type="text" v-model="userAccout" :class="classes" class="account-sty" placeholder="請輸入帳號">
+            <input type="text" v-model="loginData.userName" :class="classes" class="account-sty" placeholder="請輸入帳號">
           </div>
             <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
@@ -22,7 +22,7 @@
           <div class="account-group">
               <!-- 密碼 -->
             <div><font-awesome-icon icon="key"/></div>
-            <input type="password" v-model="userPwd" :class="classes" class="account-sty" placeholder="請輸入密碼">
+            <input type="password" v-model="loginData.userPwd" :class="classes" class="account-sty" placeholder="請輸入密碼">
           </div>
           <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
@@ -55,38 +55,44 @@
 
 <style lang="scss">@import "../scss/login.scss";</style>
 <script>
+// 引入js-cookie
+import Cookies from 'js-cookie'
 export default {
   data () {
     return {
-      userAccout: '',
-      userPwd: ''
+      loginData: {
+        userName: '',
+        userPwd: '',
+        token: ''
+      }
+
     }
   },
   methods: {
     login () {
-      if (this.userAccout !== ' ' && this.userPwd !== '') {
-      // 1. 建立 XMLHttpRequest物件
-        var xhr = new XMLHttpRequest()
-        console.log(xhr)
-        // 2.建立連線
-        xhr.open('get',
-          'http://172.20.10.3:8085', true
-        )
-        xhr.send()
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4 && xhr.status === 200) {
-            var result = xhr.responseText
-            var obj = JSON.parse(result)
-            if (obj.code === 1) {
-              window.location.href = 'list.html'
-            } else {
-              alert(obj.msg)
-            }
-          }
-        }
+      const token = 'asds32adsavrAS3Fadf5567' // token本身就是加密過的字串，隨意
+      const userName = this.loginData.userName
+      const userPwd = this.loginData.userPwd
+      // 1)帳密需驗證，不為空
+      if (userName !== '' && userPwd !== '') {
+        this.loginData.token = token
+      } else {
+        // 告知使用者請重新輸入，1)帳號對，密碼錯 2)沒有此帳密
+      }
+      // 2)將cookie 設置在login
+      Cookies.set('login', JSON.stringify(this.loginData), { expires: 1 })
+      console.log('cookies login data:' + this.loginData)
+
+      // 3)chk cookie當中有 token
+      if (Cookies.get('login') && this.loginData.token) {
+        // 4)改變路由
+        this.$router.push({
+          name: 'Dashboard'
+        })
       }
     },
     async loginAnswer () {
+      // login 表單驗證
       const success = await this.$refs.loginForm.validate()
       if (!success) {
       // 校驗失敗，停止後續程式碼執行
