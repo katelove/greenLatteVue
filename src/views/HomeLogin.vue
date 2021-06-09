@@ -5,17 +5,7 @@
 <section id="sec2"><BodyDA/></section>
 <div class="site"></div>
 <section id="sec3"><HealthTest/></section>
-<div class="site"></div>
-<section id="sec4"><GreenLatte/></section>
-<div class="site"></div>
-<section id="sec5"><Market/></section>
-<div class="site"></div>
-<section id="sec6"><DiyGreen/></section>
-<div class="site"></div>
-<section id="sec7"><DatePlan/></section>
-<div class="site"></div>
-<section id="sec8"><WeekProject/></section>
-<section id="sec9"></section>
+
 </div>
 
 </template>
@@ -25,11 +15,6 @@ import Carousel from '../components/Carousel'
 import BodyDA from '../components/BodyDA'
 import ParaagraphOne from '../components/ParaagraphOne'
 import HealthTest from '../components/HealthTest'
-import WeekProject from '../components/WeekProject'
-import GreenLatte from '../components/GreenLatte'
-import Market from '../components/Market'
-import DiyGreen from '../components/DiyGreen'
-import DatePlan from '../components/DatePlan'
 
 export default {
   name: 'greenLatte',
@@ -37,12 +22,7 @@ export default {
     Carousel,
     BodyDA,
     ParaagraphOne,
-    HealthTest,
-    WeekProject,
-    GreenLatte,
-    Market,
-    DiyGreen,
-    DatePlan
+    HealthTest
   }
 }
 </script>

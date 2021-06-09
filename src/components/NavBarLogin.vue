@@ -45,5 +45,13 @@ nav{
   background-color: #11220f;
   border: #11220f 3px solid;
   border-radius: 15px;
+  a{
+    color: rgb(160, 159, 159);
+  }
+  a:hover{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+
+  }
 }
 </style>
