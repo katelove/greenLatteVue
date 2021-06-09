@@ -56,8 +56,11 @@
 <style lang="scss">@import "../scss/login.scss";</style>
 <script>
 // 引入js-cookie
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
+import axios from 'axios'
+
 export default {
+  name: 'Login',
   data () {
     return {
       loginData: {
@@ -69,28 +72,50 @@ export default {
     }
   },
   methods: {
-    login () {
-      const token = 'asds32adsavrAS3Fadf5567' // token本身就是加密過的字串，隨意
-      const userName = this.loginData.userName
-      const userPwd = this.loginData.userPwd
-      // 1)帳密需驗證，不為空
-      if (userName !== '' && userPwd !== '') {
-        this.loginData.token = token
-      } else {
-        // 告知使用者請重新輸入，1)帳號對，密碼錯 2)沒有此帳密
-      }
-      // 2)將cookie 設置在login
-      Cookies.set('login', JSON.stringify(this.loginData), { expires: 1 })
-      console.log('cookies login data:' + this.loginData)
+    async login () {
+      // 使用axios像後台發起登陸請求
+      const response = await axios.post('login', {
+        accout: this.loginData.userName,
+        password: this.loginData.userPwd
+      })
 
-      // 3)chk cookie當中有 token
-      if (Cookies.get('login') && this.loginData.token) {
-        // 4)改變路由
-        this.$router.push({
-          name: 'Dashboard'
-        })
-      }
+      console.log('login response:' + response)
+      localStorage.setItem('token', response.data.token)
+      // .then(
+      //   res => {
+      //     console.log(res)
+      //     this.$router.push('/')
+      //   }
+      // ).catch(
+      //   err => {
+      //     console.log(err)
+      //   }
+      // )
     },
+    // login () {
+    //   // 帳密要存取放入資料庫
+    //   const token = 'asds32adsavrAS3Fadf5567' // token本身就是加密過的字串，隨意
+    //   const userName = this.loginData.userName
+    //   const userPwd = this.loginData.userPwd
+    //   console.log('userName:' + userName + ' userPwd:' + userPwd + ' token:' + token)
+    //   // 1)帳密需驗證，不為空
+    //   if (userName !== '' && userPwd !== '') {
+    //     this.loginData.token = token
+    //   } else {
+    //     // 告知使用者請重新輸入，1)帳號對，密碼錯 2)沒有此帳密
+    //   }
+    //   // 2)將cookie 設置在login
+    //   Cookies.set('login', JSON.stringify(this.loginData), { expires: 1 })
+    //   console.log('cookies login data:' + this.loginData)
+
+    //   // 3)chk cookie當中有 token
+    //   if (Cookies.get('login') && this.loginData.token) {
+    //     // 4)改變路由
+    //     this.$router.push({
+    //       name: 'Dashboard'
+    //     })
+    //   }
+    // },
     async loginAnswer () {
       // login 表單驗證
       const success = await this.$refs.loginForm.validate()

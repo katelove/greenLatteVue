@@ -14,6 +14,7 @@
           <h4>帳號 :</h4>
           <input
             type="text"
+            v-model="actSetting.actName"
             :class="classes"
             class="form-control"
             placeholder="請輸入帳號"/>
@@ -26,6 +27,7 @@
           <h4>密碼 :</h4>
           <input
           type="password"
+          v-model="actSetting.actPwd"
           :class="classes"
           class="form-control"
           placeholder="請輸入密碼" />
@@ -38,6 +40,7 @@
           <h4>確認密碼 :</h4>
           <input
           type="password"
+          v-model="actSetting.actConfirmPwd"
           :class="classes"
           class="form-control"
           placeholder="請再確認密碼" />
@@ -46,7 +49,7 @@
         </ValidationProvider>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <input type="submit" class="baseBtn" value="儲存">
+        <input type="submit" class="baseBtn" @click="accountSave" value="儲存">
       </div>
       </div>
       </div>
@@ -164,8 +167,19 @@
 </template>
 
 <script>
+
 export default {
+  data () {
+    return {
+      actSetting: {
+        actName: '',
+        actPwd: '',
+        actConfirmPwd: ''
+      }
+    }
+  },
   methods: {
+    // 驗證會員帳密
     async accountAnswer () {
       const success = await this.$refs.accountForm.validate()
       if (!success) {
@@ -173,6 +187,26 @@ export default {
         console.log('驗證失敗' + success)
         return false
       }
+    },
+    accountSave () {
+      // 存取帳密到資料庫
+      const data = {
+        actName: this.actSetting.actName,
+        actPwd: this.actSetting.actPwd,
+        actConfirmPwd: this.actSetting.actConfirmPwd
+      }
+      console.log('帳號設定:' + data)
+      // 使用axios像後台發起登陸請求
+      this.$axios.post('/api/accountData/accountSetting', data)
+        .then(
+          res => {
+            console.log(res)
+          }
+        ).catch(
+          err => {
+            console.log(err)
+          }
+        )
     },
     async detailAnswer () {
       const success = await this.$refs.detailForm.validate()
