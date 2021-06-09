@@ -93,11 +93,17 @@
             </ul>
           </transition>
 
-          <div class="tool-try tool-size">
-            <h5>漸進式</h5>
-            <h5>體驗式</h5>
-            <h5>全面式</h5>
-          </div>
+        <div class="tool-try tool-size">
+          <h5 v-on:click="glPlan = ! glPlan" >綠拿鐵飲食法</h5>
+            <transition name="ul">
+              <ul v-if="glPlan" class="ul-box">
+                <li><h5 @click="showModal">說明</h5></li>
+                <li><h5>漸進式</h5></li>
+                <li><h5>體驗式</h5></li>
+                <li><h5>全面式</h5></li>
+              </ul>
+            </transition>
+        </div>
       </div>
       <!-- 月曆大小 -->
 <div id="calendarsite">
@@ -126,43 +132,43 @@
     <tbody>
       <tr>
         <td>早</td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
       </tr>
       <tr>
         <td>中</td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
       </tr>
       <tr>
         <td>晚</td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
-        <td class="calendersSB"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true"></td>
       </tr>
       <tr>
         <td>備註</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
       </tr>
     </tbody>
   </table>
@@ -175,13 +181,18 @@
    </div>
    </div>
   </div>
-
+    <!-- 綠拿鐵公告 -->
+    <b-modal ref="my-modal" size="lg" hide-footer="false">
+      <div class="d-block text-center">
+         <GreenPlan/>
+      </div>
+    </b-modal>
  </div>
  </div>
 </template>
 <script>
 import Sortable from 'sortablejs'
-
+import GreenPlan from '../components/greenPlan.vue'
 export default {
   data () {
     return {
@@ -190,7 +201,8 @@ export default {
       picture: false,
       diyGreen: false,
       healthMeal: false,
-      sugGreen: false
+      sugGreen: false,
+      glPlan: false
     }
   },
   mounted () {
@@ -215,6 +227,15 @@ export default {
     })
   },
   methods: {
+    showModal () {
+      this.$refs['my-modal'].show()
+    },
+    hideModal () {
+      this.$refs['my-modal'].hide()
+    }
+  },
+  components: {
+    GreenPlan
   }
 }
 </script>

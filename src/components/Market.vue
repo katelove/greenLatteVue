@@ -45,7 +45,7 @@
     </div>
 
     <!-- 產品說明 -->
-    <b-modal ref="my-modal" size="xl" hide-footer="true">
+    <b-modal ref="my-modal" size="xl" hide-footer="false">
       <div class="d-block text-center">
         <ProductDetail/>
       </div>

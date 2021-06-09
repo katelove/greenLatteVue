@@ -1,0 +1,88 @@
+.mail-content {
+    color: #2f5a28;
+    font: solid;
+    border: 3px #2f5a28 solid;
+    border-radius: 20px;
+    justify-content: center;
+
+    .mail-left {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        padding-left: 10px;
+        padding-top: 20px;
+    }
+}
+
+.mail-word {
+    display: block;
+
+    h5 {
+        display: inline-block;
+    }
+
+    p {
+        display: inline-block;
+        color: rgb(231, 139, 33);
+        font-weight: bold;
+    }
+
+    input {
+        border: 2px #2f5a28 solid;
+        border-radius: 15px;
+        padding-left: 10px;
+        margin: 0 10px;
+        background-color: #f6f9f4;
+    }
+}
+
+// 檔案
+.mail-file {
+
+    h5 {
+        background-color: #2f5a28;
+        color: white;
+        border-radius: 15px;
+        width: 200px;
+    }
+}
+
+.mail-site {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+    padding-left: 20px;
+
+    textarea {
+        width: 300px;
+        height: 100px;
+    }
+
+}
+
+// 送出按鈕
+.mail-send {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+
+    button {
+        height: 30px;
+        background-color: #2f5a28;
+        color: white;
+        border-radius: 10px;
+    }
+}
+
+
+
+@media (max-width: 576px) {
+    .mail-send {
+        input {
+            width: auto;
+        }
+    }
+}

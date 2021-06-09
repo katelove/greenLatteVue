@@ -1,0 +1,151 @@
+  /* account+password form */
+  .account-setting {
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .accoutSty {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      input {
+        width: 300px;
+        margin: 5px 10px;
+      }
+
+      div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      h4 {
+        display: inline-block;
+        margin-right: 10px;
+        color: #2f5a28;
+        width: 150px;
+      }
+
+    }
+
+  }
+
+
+  input[type="text"],
+  input[type="password"] {
+    background-color: #f6f9f4;
+    border: 2px solid #2f5a28;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    color: #595f58;
+    display: inline-block;
+    height: 30px;
+    margin-left: 10px;
+  }
+
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 0;
+  }
+
+  @media (max-width: 576px) {
+    .account-setting {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .form-group h4 {
+      font-size: 20px;
+    }
+  }
+
+  // 會員中心
+  .account-center {
+    position: relative;
+  }
+
+  .account-photo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    div {
+      font-size: 200px;
+      color: #2f5a28;
+      display: inline;
+    }
+  }
+
+  .account-detail {
+    display: inline-block;
+
+    .word-row {
+      display: flex;
+      justify-self: flex-start;
+      color: #2f5a28;
+      margin-bottom: 5px;
+
+      :disabled {
+        width: 80px;
+        background-color: #d6d8d6;
+      }
+
+      select {
+        width: 60px;
+        height: 30px;
+        border-radius: 15px;
+        margin: 0 10px;
+      }
+
+      p {
+        color: rgb(231, 139, 33);
+        font-weight: bold;
+      }
+
+      .dateSty {
+        display: flex;
+        justify-content: flex-start;
+
+        :disabled {
+          background-color: #d6d8d6;
+        }
+      }
+    }
+
+    .address-row {
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 110px;
+
+      input {
+        width: 350px;
+      }
+    }
+
+    .ourself-check {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .account-photo {
+      position: relative;
+    }
+
+    .account-detail {
+      display: block;
+
+    }
+  }
+
+  .mail-length {
+    input {
+      width: 300px;
+    }
+
+  }

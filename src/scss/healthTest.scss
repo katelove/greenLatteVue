@@ -1,8 +1,9 @@
 .chk_Title {
   display: flex;
   align-items: center;
+
   img:last-of-type {
-  transform: scaleX(-1);
+    transform: scaleX(-1);
   }
 }
 
@@ -11,22 +12,27 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
-img {
-  display: none;
-}
+
+    img {
+      display: none;
+    }
   }
 }
+
 .chk_all {
   display: inline-block;
+
   .chk_Word h2 {
-  background-color: #2f5a28;
-  color: white;
-  padding: 10px 10px;
-  display: inline-block;
+    background-color: #2f5a28;
+    color: white;
+    padding: 10px 10px;
+    display: inline-block;
   }
-  .chk_article h4,p {
-  color: #2f5a28;
-  display: inline-block;
+
+  .chk_article h4,
+  p {
+    color: #2f5a28;
+    display: inline-block;
   }
 }
 
@@ -37,63 +43,86 @@ img {
   flex-direction: row;
 }
 
-/* 久坐族 */
+// 性別,年齡,體脂數,膽固醇
+.inlineSty {
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
 
+  label {
+    padding-right: 10px;
+  }
+
+  span {
+    display: block;
+  }
+}
+
+/* 久坐族 */
 .chk_base {
   border: solid 3px;
   border-radius: 20px;
   margin: 5px;
-  height: 600px;
+  height: 750px;
   padding: 20px 10px 0 10px;
   display: inline-block;
+  position: relative;
+
   h2 {
-  color: #2f5a28;
-  text-align: center;
-  padding-bottom: 20px;
+    color: #2f5a28;
+    text-align: center;
+    padding-bottom: 20px;
   }
-  .base_one input,
- .base_two input,
- .base_third input {
-  border: solid 1px #2f5a28;
-  border-radius: 10px;
-  width: 100px;
-  height: 30px;
- }
+
+  // 身高，體重
+  .heightW,
+  .weightW {
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+
+    span {
+      padding-left: 10px;
+    }
+  }
 }
 
-.heightW,
-.weightW {
-  padding-left: 20px;
-  padding-top: 5px;
-}
+
 
 .base_one,
 .base_two,
 .base_third {
   padding-bottom: 30px;
-  padding-left: 10px;
+
+  input {
+    border: solid 1px #2f5a28;
+    border-radius: 10px;
+    padding-left: 5px;
+    width: 150px;
+    height: 30px;
+  }
+
+  h4 {
+    text-align: center;
+  }
 }
 
-.base_two input,
-.base_third input {
-  margin-left: 60px;
-}
+
 .choice_block {
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   padding-left: 10px;
+
+  p {
+    text-align: left;
+    padding-left: 10px;
+  }
 }
-// .choice_detail {
-//   padding-top: 10px;
-//   display: flex;
-//   justify-content: space-evenly;
-//   align-items: center;
-// }
+
 
 /* 檢視健康-送出按鈕 */
 
 .baseBtn {
   background-color: #2f5a28;
-  text-align: center;
   border-radius: 20px;
   color: white;
   text-decoration: none;
@@ -101,17 +130,21 @@ img {
   padding: 10px 20px;
   height: 50px;
   font-size: 1em;
-  p{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  p {
     color: white;
   }
 }
 
 // 翻轉方式
-.front{
+.front {
   position: relative;
 }
 
-.back{
+.back {
   background: #2f5a28;
   color: white;
   position: absolute;
@@ -120,6 +153,22 @@ img {
   z-index: 999;
   bottom: 0;
   left: 0;
-border-radius: 15px;
+  border-radius: 15px;
+}
 
+// ==================驗證=====================
+.invalid {
+  color: #EB0600;
+}
+
+.invalid input {
+  border: 1px #EB0600 solid
+}
+
+.valid {
+  color: green;
+}
+
+.valid input {
+  border: 1px solid green
 }
