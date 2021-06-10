@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import HomeLogin from '../views/HomeLogin.vue'
-import NavBarLogin from '../components/NavBarLogin.vue'
-import NavBar from '../components/NavBar.vue'
-import Login from '../views/Login.vue'
-import AccountCenter from '../views/AccountCenter.vue'
-import ForgetPwd from '../views/ForgetPwd.vue'
+import Home from '../components/auth/Home.vue'
+import HomeLogin from '../components/auth/HomeLogin.vue'
+import NavBarLogin from '../components/auth/NavBarLogin.vue'
+import NavBar from '../components/auth/NavBar.vue'
+import Login from '../components/auth/Login.vue'
+import AccountCenter from '../components/auth/AccountCenter.vue'
+import ForgetPwd from '../components/auth/ForgetPwd.vue'
 import Cookies from 'js-cookie'
 
 Vue.use(VueRouter)
@@ -33,7 +33,7 @@ const routes = [
   // { path: '/*', redirect: '/login' },
   {
     // 註冊
-    path: '/accountCenter',
+    path: '/register',
     name: 'AccountCenter',
     components: {
       home: AccountCenter,

@@ -11,27 +11,12 @@
 </template>
 
 <script>
-import Carousel from '../components/Carousel'
-import BodyDA from '../components/BodyDA'
-import ParaagraphOne from '../components/ParaagraphOne'
-import HealthTest from '../components/HealthTest'
-import axios from 'axios'
+import Carousel from '../../components/Carousel'
+import BodyDA from '../../components/BodyDA'
+import ParaagraphOne from '../../components/ParaagraphOne'
+import HealthTest from '../../components/HealthTest'
 export default {
   name: 'greenLatte',
-  data () {
-    return {
-      user: null
-    }
-  },
-  async created () {
-    // 使用axios get user token
-    const response = await axios.get('user', {
-      headers: {
-        Authorization: 'Bearer' + localStorage.getItem('token')
-      }
-    })
-    console.log('登入後 response:' + response)
-  },
   components: {
     Carousel,
     BodyDA,
@@ -52,7 +37,7 @@ html,body {
   height: 100%;
   font-family: sans-serif;
   font-weight: bold;
-    background-image: url('../../public/images/company/backGround.png');
+  background-image: url('../../../public/images/company/backGround.png');
    }
 section {
   min-height: 100%;

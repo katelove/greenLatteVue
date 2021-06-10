@@ -14,7 +14,7 @@
           <h4>帳號 :</h4>
           <input
             type="text"
-            v-model="actSetting.actName"
+            v-model="actName"
             :class="classes"
             class="form-control"
             placeholder="請輸入帳號"/>
@@ -27,7 +27,7 @@
           <h4>密碼 :</h4>
           <input
           type="password"
-          v-model="actSetting.actPwd"
+          v-model="actPwd"
           :class="classes"
           class="form-control"
           placeholder="請輸入密碼" />
@@ -40,7 +40,7 @@
           <h4>確認密碼 :</h4>
           <input
           type="password"
-          v-model="actSetting.actConfirmPwd"
+          v-model="actConfirmPwd"
           :class="classes"
           class="form-control"
           placeholder="請再確認密碼" />
@@ -49,7 +49,7 @@
         </ValidationProvider>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <input type="submit" class="baseBtn" @click="accountSave" value="儲存">
+        <input type="submit" class="baseBtn" value="儲存">
       </div>
       </div>
       </div>
@@ -74,7 +74,7 @@
                 <h5>您的名字/稱謂</h5>
                 <p>(必填)</p>
                 <ValidationProvider name="名字" rules="required|name" v-slot="{errors, classes }">
-                <input type="text" :class="classes" value="請輸入您的名字" />
+                <input type="text" v-model="userName" :class="classes" placeholder="請輸入您的名字" />
                 <span style="color:red">{{errors[0]}}</span>
                 </ValidationProvider>
               </div>
@@ -82,7 +82,7 @@
                 <h5>信箱</h5>
                 <p>(必填)</p>
                 <ValidationProvider name="信箱" rules="required|mail" v-slot="{errors, classes }">
-                <input type="text" :class="classes" value="請輸入您的信箱" />
+                <input type="text" v-model="userMail" :class="classes" placeholder="請輸入您的信箱" />
                 <span style="color:red">{{errors[0]}}</span>
                 </ValidationProvider>
               </div>
@@ -92,11 +92,17 @@
                 <ValidationProvider name="生日" rules="required|birthday" v-slot="{errors, classes }">
                 <div class="dateSty">
                   <h6>民國</h6>
-                  <select :class="classes" name="" id=""></select>
+                  <select v-model="userBirthday" :class="classes" name="" id="">
+                    <option value="1988">1988</option>
+                  </select>
                   <h6>年</h6>
-                  <select :class="classes" name="" id=""></select>
+                  <select :class="classes" name="" id="">
+                    <option value="11">11</option>
+                  </select>
                   <h6>月</h6>
-                  <select :class="classes" name="" id=""></select>
+                  <select :class="classes" name="" id="">
+                    <option value="10">10</option>
+                  </select>
                   <h6>日</h6>
                   <span style="color:red">{{errors[0]}}</span>
                 </div>
@@ -109,7 +115,9 @@
                 <div class="dateSty">
                   <h6>郵遞區號</h6>
                   <input type="text" name="" id="" disabled/>
-                  <select :class="classes" name="" id=""></select>
+                  <select :class="classes" name="" id="">
+                     <option value="211">211</option>
+                  </select>
                   <h6>縣市</h6>
                   <span style="color:red">{{errors[0]}}</span>
                 </div>
@@ -118,7 +126,7 @@
               <ValidationProvider name="地址" rules="required|address" v-slot="{errors, classes }">
               <div class="address-row">
                 <h6>地址</h6>
-                <input type="text" :class="classes" name="" id="" value="請輸入地址" />
+                <input type="text" v-model="userAddress" :class="classes" name="" id="" placeholder="請輸入地址" />
                 <span style="color:red">{{errors[0]}}</span>
               </div>
               </ValidationProvider>
@@ -128,7 +136,7 @@
                 <p>(必填)</p>
                 <input type="text" :class="classes" name="" id="" disabled/>
                 <h6> - </h6>
-                <input type="text" :class="classes" name="" id="" value="請輸入電話" />
+                <input type="text" v-model="userPhone" :class="classes" name="" id="" placeholder="請輸入電話" />
                 <span style="color:red">{{errors[0]}}</span>
               </div>
               </ValidationProvider>
@@ -136,7 +144,7 @@
               <div class="word-row">
                 <h5>手機</h5>
                 <p>(必填)</p>
-                <input type="text" :class="classes" name="" id="" value="請輸入手機"/>
+                <input type="text" v-model="userMobile" :class="classes" name="" id="" placeholder="請輸入手機"/>
                 <span style="color:red">{{errors[0]}}</span>
               </div>
               </ValidationProvider>
@@ -152,7 +160,7 @@
               </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <button type="submit" class="baseBtn" value="送出">
+              <button type="submit" class="baseBtn" value="送出" @click="accoutRegister">
                 <p>儲存</p>
               </button>
             </div>
@@ -167,15 +175,19 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 export default {
   data () {
     return {
-      actSetting: {
-        actName: '',
-        actPwd: '',
-        actConfirmPwd: ''
-      }
+      actName: '',
+      actPwd: '',
+      actConfirmPwd: '',
+      userName: '',
+      userMail: '',
+      userBirthday: '',
+      userAddress: '',
+      userPhone: '',
+      userMobile: ''
     }
   },
   methods: {
@@ -188,40 +200,34 @@ export default {
         return false
       }
     },
-    accountSave () {
-      // 存取帳密到資料庫
-      const data = {
-        actName: this.actSetting.actName,
-        actPwd: this.actSetting.actPwd,
-        actConfirmPwd: this.actSetting.actConfirmPwd
-      }
-      console.log('帳號設定:' + data)
-      // 使用axios像後台發起登陸請求
-      this.$axios.post('/api/accountData/accountSetting', data)
-        .then(
-          res => {
-            console.log(res)
-          }
-        ).catch(
-          err => {
-            console.log(err)
-          }
-        )
-    },
     async detailAnswer () {
+      // 驗證會員資料
       const success = await this.$refs.detailForm.validate()
       if (!success) {
       // 校驗失敗，停止後續程式碼執行
         console.log('驗證失敗' + success)
         return false
       }
+    },
+    async accoutRegister () {
+      // 使用axios像後台發起登陸請求
+      await axios.post('register', {
+        userName: this.userName,
+        userMail: this.userMail,
+        userBirthday: this.userBirthday,
+        userAddress: this.userAddress,
+        userPhone: this.userPhone,
+        userMobile: this.userMobile
+      })
+
+      this.$router.push('/login')
     }
   }
 }
 </script>
 
 <style lang="scss">
-@import "../scss/accountCenter.scss";
+@import "../../scss/accountCenter.scss";
 .nav-account{
   margin-top: 20px;
 }
