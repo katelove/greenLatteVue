@@ -24,9 +24,9 @@
         </div>
         <transition name="ul">
           <ul v-if="active" class="ul-box">
-            <li><div class="t-c-red"></div></li>
-            <li><div class="t-c-blue"></div></li>
-            <li><div class="t-c-green"></div></li>
+            <li><div @click="redColor()" class="t-c-red"></div></li>
+            <li><div @click="blueColor()" class="t-c-blue"></div></li>
+            <li><div @click="greenColor()" class="t-c-green"></div></li>
           </ul>
         </transition>
       <!-- 貼圖 -->
@@ -132,43 +132,43 @@
     <tbody>
       <tr>
         <td>早</td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
       </tr>
       <tr>
         <td>中</td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
       </tr>
       <tr>
         <td>晚</td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
+        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
       </tr>
       <tr>
         <td>備註</td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
+        <td contenteditable="true" :style="fontColor"></td>
+        <td contenteditable="true" :style="fontColor"></td>
+        <td contenteditable="true" :style="fontColor"></td>
+        <td contenteditable="true" :style="fontColor"></td>
+        <td contenteditable="true" :style="fontColor"></td>
+        <td contenteditable="true" :style="fontColor"></td>
+        <td contenteditable="true" :style="fontColor"></td>
       </tr>
     </tbody>
   </table>
@@ -202,7 +202,10 @@ export default {
       diyGreen: false,
       healthMeal: false,
       sugGreen: false,
-      glPlan: false
+      glPlan: false,
+      fontColor: {
+        color: 'black'
+      }
     }
   },
   mounted () {
@@ -232,6 +235,17 @@ export default {
     },
     hideModal () {
       this.$refs['my-modal'].hide()
+    },
+    redColor () {
+      console.log('現在字體顏色:' + this.fontColor.color)
+      this.fontColor.color = 'red'
+      console.log('更換顏色:' + this.fontColor.color)
+    },
+    blueColor () {
+      this.fontColor.color = 'blue'
+    },
+    greenColor () {
+      this.fontColor.color = 'green'
     }
   },
   components: {
@@ -260,4 +274,5 @@ export default {
 .calendersSB li img{
   width: 50px;
 }
+
 </style>
