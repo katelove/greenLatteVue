@@ -21,15 +21,15 @@
 </template>
 
 <script>
-import Carousel from '../components/Carousel'
-import BodyDA from '../components/BodyDA'
-import ParaagraphOne from '../components/ParaagraphOne'
-import HealthTest from '../components/HealthTest'
-import WeekProject from '../components/WeekProject'
-import GreenLatte from '../components/GreenLatte'
-import Market from '../components/Market'
-import DiyGreen from '../components/DiyGreen'
-import DatePlan from '../components/DatePlan'
+import Carousel from '../../components/Carousel'
+import BodyDA from '../../components/BodyDA'
+import ParaagraphOne from '../../components/ParaagraphOne'
+import HealthTest from '../../components/HealthTest'
+import WeekProject from '../../components/WeekProject'
+import GreenLatte from '../../components/GreenLatte'
+import Market from '../../components/Market'
+import DiyGreen from '../../components/DiyGreen'
+import DatePlan from '../../components/DatePlan'
 
 export default {
   name: 'greenLatte',
@@ -58,7 +58,7 @@ html,body {
   height: 100%;
   font-family: sans-serif;
   font-weight: bold;
-    background-image: url('../../public/images/company/backGround.png');
+ background-image: url('../../../public/images/company/backGround.png');
    }
 section {
   min-height: 100%;

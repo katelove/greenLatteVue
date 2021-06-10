@@ -16,7 +16,8 @@
 }
 
 .mail-word {
-    display: block;
+    display: flex;
+    justify-content: flex-start;
 
     h5 {
         display: inline-block;
