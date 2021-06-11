@@ -111,7 +111,7 @@
   <div id="topTitle">
     <h3 class='dateWord'>2021年6月</h3>
       <div class="rightOption">
-        <div id='teamTimeBtn' class='btnStyle'>清除</div>
+        <div id='teamTimeBtn' class='btnStyle' @click="delAll">清除</div>
       </div>
   </div>
   <!-- 月曆 -->
@@ -129,7 +129,10 @@
         <td v-for='(item,tdKey) in weekList.length-1' :key="tdKey"
             class="calendersSB"
             contenteditable="true"
-            :style="styleList"></td>
+            :style="styleList"
+            v-text="tdValue"
+             @input="handleInput"
+            ></td>
       </tr>
     </tbody>
   </table>
@@ -172,7 +175,9 @@ export default {
       styleList: {
         color: '',
         fontSize: '12'
-      }
+      },
+      // 表格裡值
+      tdValue: ' '
     }
   },
   mounted () {
@@ -220,6 +225,26 @@ export default {
     },
     wordH6 () {
       this.styleList.fontSize = '12px'
+    },
+    handleInput ($event) {
+      this.tdValue = $event.target.innerText
+      console.log('this.tdValue:' + this.tdValue)
+    },
+    delAll () {
+      console.log('進入清除動作')
+      // var tdName = document.getElementById('tdName')
+      // tdName.innerHTML = ' '
+      // console.log('td:' + tdName)
+
+      for (var j = 0; j <= this.tdFistList.length; j++) {
+        for (var i = 1; i <= this.weekList.length; i++) {
+          console.log('表格:' + this.tdValue[i])
+          this.tdValue = ' '
+          // this.tdValue.slice(0, this.weekList.length, ' ')
+          // eachValue.slice(0, this.weekList.length - 1)
+          console.log('全部清空')
+        }
+      }
     }
   },
   components: {
