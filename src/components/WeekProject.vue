@@ -119,56 +119,17 @@
    <table>
     <thead>
       <tr class="th-row">
-        <th></th>
-        <th>一</th>
-        <th>二</th>
-        <th>三</th>
-        <th>四</th>
-        <th>五</th>
-        <th>六</th>
-        <th>日</th>
+        <!-- item 為list元素，index為索引值, :key="index"該筆資料唯一值 -->
+        <th v-for='(item,index) in weekList' :key="index">{{item}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>早</td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-      </tr>
-      <tr>
-        <td>中</td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-      </tr>
-      <tr>
-        <td>晚</td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-        <td class="calendersSB" contenteditable="true" :style="fontColor"></td>
-      </tr>
-      <tr>
-        <td>備註</td>
-        <td contenteditable="true" :style="fontColor"></td>
-        <td contenteditable="true" :style="fontColor"></td>
-        <td contenteditable="true" :style="fontColor"></td>
-        <td contenteditable="true" :style="fontColor"></td>
-        <td contenteditable="true" :style="fontColor"></td>
-        <td contenteditable="true" :style="fontColor"></td>
-        <td contenteditable="true" :style="fontColor"></td>
+       <tr v-for='(item,num) in tdFistList' :key="num">
+        <td>{{item}}</td>
+        <td v-for='(item,tdKey) in weekList.length-1' :key="tdKey"
+            class="calendersSB"
+            contenteditable="true"
+            :style="fontColor"></td>
       </tr>
     </tbody>
   </table>
@@ -196,6 +157,7 @@ import GreenPlan from '../components/greenPlan.vue'
 export default {
   data () {
     return {
+      // 工具列
       show: false,
       active: false,
       picture: false,
@@ -203,6 +165,10 @@ export default {
       healthMeal: false,
       sugGreen: false,
       glPlan: false,
+      // 表格
+      weekList: ['', '一', '二', '三', '四', '五', '六', '日'],
+      tdFistList: ['', '早', '中', '晚', '備註'],
+      // 字體顏色
       fontColor: {
         color: 'black'
       }
