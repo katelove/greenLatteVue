@@ -11,11 +11,10 @@
 </template>
 
 <script>
-import Carousel from '../components/Carousel'
-import BodyDA from '../components/BodyDA'
-import ParaagraphOne from '../components/ParaagraphOne'
-import HealthTest from '../components/HealthTest'
-
+import Carousel from '../../components/Carousel'
+import BodyDA from '../../components/BodyDA'
+import ParaagraphOne from '../../components/ParaagraphOne'
+import HealthTest from '../../components/HealthTest'
 export default {
   name: 'greenLatte',
   components: {
@@ -38,7 +37,7 @@ html,body {
   height: 100%;
   font-family: sans-serif;
   font-weight: bold;
-    background-image: url('../../public/images/company/backGround.png');
+  background-image: url('../../../public/images/company/backGround.png');
    }
 section {
   min-height: 100%;

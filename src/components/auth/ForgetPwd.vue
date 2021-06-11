@@ -4,7 +4,7 @@
     <div class="col-md-2 col-lg-3 "></div>
     <div class="col-md-8 col-lg-6  login-box">
       <div class="col-md-12 col-lg-12 login-logo">
-        <img src="../../public/images/company/logo-color-1.png" alt="">
+        <img src="/public/images/company/logo-color-1.png" alt="">
         <div class="login-title">忘記密碼</div>
       </div>
       <div class="col-md-12 col-lg-12 login-form">
@@ -45,7 +45,7 @@
 </div>
 </template>
 
-<style lang="scss">@import "../scss/login.scss";
+<style lang="scss">@import "../../scss/login.scss";
 .pwdSame {
   label{
     color: rgb(231, 139, 33);

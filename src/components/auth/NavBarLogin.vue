@@ -3,7 +3,7 @@
     <b-navbar toggleable="lg" type="dark" class="nature-bg fixed-top">
     <router-link to="/#sec1">
     <b-navbar-brand>
-      <img src="../../public/images/company/logo-small.png" alt="健康綠生活" />
+      <img src="../../../public/images/company/logo-small.png" alt="健康綠生活" />
           <div class="nature-word">
             <p>NatureLife 綠生活</p>
           </div>
