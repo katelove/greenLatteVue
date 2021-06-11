@@ -12,9 +12,9 @@
         </div>
         <transition name="ul">
           <ul v-if="show" class="ul-box">
-            <li><h2>A</h2></li>
-            <li><h4>A</h4></li>
-            <li><h6>A</h6></li>
+            <li><h2 @click="wordH2()">A</h2></li>
+            <li><h4 @click="wordH4()">A</h4></li>
+            <li><h6 @click="wordH6()">A</h6></li>
           </ul>
         </transition>
        <!-- 字的顏色 -->
@@ -129,7 +129,7 @@
         <td v-for='(item,tdKey) in weekList.length-1' :key="tdKey"
             class="calendersSB"
             contenteditable="true"
-            :style="fontColor"></td>
+            :style="styleList"></td>
       </tr>
     </tbody>
   </table>
@@ -167,10 +167,11 @@ export default {
       glPlan: false,
       // 表格
       weekList: ['', '一', '二', '三', '四', '五', '六', '日'],
-      tdFistList: ['', '早', '中', '晚', '備註'],
-      // 字體顏色
-      fontColor: {
-        color: 'black'
+      tdFistList: ['早', '中', '晚', '備註'],
+      // 字體大小、字體顏色
+      styleList: {
+        color: '',
+        fontSize: '12'
       }
     }
   },
@@ -203,15 +204,22 @@ export default {
       this.$refs['my-modal'].hide()
     },
     redColor () {
-      console.log('現在字體顏色:' + this.fontColor.color)
-      this.fontColor.color = 'red'
-      console.log('更換顏色:' + this.fontColor.color)
+      this.styleList.color = 'red'
     },
     blueColor () {
-      this.fontColor.color = 'blue'
+      this.styleList.color = 'blue'
     },
     greenColor () {
-      this.fontColor.color = 'green'
+      this.styleList.color = 'green'
+    },
+    wordH2 () {
+      this.styleList.fontSize = '24px'
+    },
+    wordH4 () {
+      this.styleList.fontSize = '16px'
+    },
+    wordH6 () {
+      this.styleList.fontSize = '12px'
     }
   },
   components: {
