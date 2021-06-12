@@ -91,7 +91,7 @@
                 <p>(必填)</p>
                 <ValidationProvider name="生日" rules="required|birthday" v-slot="{errors, classes }">
                 <div class="dateSty">
-                  <date-dropdown default="1995-01-10"  :class="classes"  v-model="selectedDate" />
+                  <date-dropdown default="1988-11-10" min="1950" max="2007" :class="classes"  v-model="selectedDate" />
                   <span style="color:red">{{errors[0]}}</span>
                 </div>
                 </ValidationProvider>
