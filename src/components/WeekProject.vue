@@ -12,9 +12,9 @@
         </div>
         <transition name="ul">
           <ul v-if="show" class="ul-box">
-            <li><h2>A</h2></li>
-            <li><h4>A</h4></li>
-            <li><h6>A</h6></li>
+            <li><h2 @click="wordH2()">A</h2></li>
+            <li><h4 @click="wordH4()">A</h4></li>
+            <li><h6 @click="wordH6()">A</h6></li>
           </ul>
         </transition>
        <!-- 字的顏色 -->
@@ -24,9 +24,9 @@
         </div>
         <transition name="ul">
           <ul v-if="active" class="ul-box">
-            <li><div class="t-c-red"></div></li>
-            <li><div class="t-c-blue"></div></li>
-            <li><div class="t-c-green"></div></li>
+            <li><div @click="redColor()" class="t-c-red"></div></li>
+            <li><div @click="blueColor()" class="t-c-blue"></div></li>
+            <li><div @click="greenColor()" class="t-c-green"></div></li>
           </ul>
         </transition>
       <!-- 貼圖 -->
@@ -111,7 +111,7 @@
   <div id="topTitle">
     <h3 class='dateWord'>2021年6月</h3>
       <div class="rightOption">
-        <div id='teamTimeBtn' class='btnStyle'>清除</div>
+        <div id='teamTimeBtn' class='btnStyle' @click="delAll">清除</div>
       </div>
   </div>
   <!-- 月曆 -->
@@ -119,56 +119,20 @@
    <table>
     <thead>
       <tr class="th-row">
-        <th></th>
-        <th>一</th>
-        <th>二</th>
-        <th>三</th>
-        <th>四</th>
-        <th>五</th>
-        <th>六</th>
-        <th>日</th>
+        <!-- item 為list元素，index為索引值, :key="index"該筆資料唯一值 -->
+        <th v-for='(item,index) in weekList' :key="index">{{item}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>早</td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-      </tr>
-      <tr>
-        <td>中</td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-      </tr>
-      <tr>
-        <td>晚</td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-        <td class="calendersSB" contenteditable="true"></td>
-      </tr>
-      <tr>
-        <td>備註</td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true"></td>
+       <tr v-for='(item,num) in tdFistList' :key="num">
+        <td>{{item}}</td>
+        <td v-for='(item,tdKey) in weekList.length-1' :key="tdKey"
+            class="calendersSB"
+            contenteditable="true"
+            :style="styleList"
+            v-text="tdValue"
+             @input="handleInput"
+            ></td>
       </tr>
     </tbody>
   </table>
@@ -196,13 +160,24 @@ import GreenPlan from '../components/greenPlan.vue'
 export default {
   data () {
     return {
+      // 工具列
       show: false,
       active: false,
       picture: false,
       diyGreen: false,
       healthMeal: false,
       sugGreen: false,
-      glPlan: false
+      glPlan: false,
+      // 表格
+      weekList: ['', '一', '二', '三', '四', '五', '六', '日'],
+      tdFistList: ['早', '中', '晚', '備註'],
+      // 字體大小、字體顏色
+      styleList: {
+        color: '',
+        fontSize: '12'
+      },
+      // 表格裡值
+      tdValue: ' '
     }
   },
   mounted () {
@@ -232,6 +207,44 @@ export default {
     },
     hideModal () {
       this.$refs['my-modal'].hide()
+    },
+    redColor () {
+      this.styleList.color = 'red'
+    },
+    blueColor () {
+      this.styleList.color = 'blue'
+    },
+    greenColor () {
+      this.styleList.color = 'green'
+    },
+    wordH2 () {
+      this.styleList.fontSize = '24px'
+    },
+    wordH4 () {
+      this.styleList.fontSize = '16px'
+    },
+    wordH6 () {
+      this.styleList.fontSize = '12px'
+    },
+    handleInput ($event) {
+      this.tdValue = $event.target.innerText
+      console.log('this.tdValue:' + this.tdValue)
+    },
+    delAll () {
+      console.log('進入清除動作')
+      // var tdName = document.getElementById('tdName')
+      // tdName.innerHTML = ' '
+      // console.log('td:' + tdName)
+
+      for (var j = 0; j <= this.tdFistList.length; j++) {
+        for (var i = 1; i <= this.weekList.length; i++) {
+          console.log('表格:' + this.tdValue[i])
+          this.tdValue = ' '
+          // this.tdValue.slice(0, this.weekList.length, ' ')
+          // eachValue.slice(0, this.weekList.length - 1)
+          console.log('全部清空')
+        }
+      }
     }
   },
   components: {
@@ -260,4 +273,5 @@ export default {
 .calendersSB li img{
   width: 50px;
 }
+
 </style>
