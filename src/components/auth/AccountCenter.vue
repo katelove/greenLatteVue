@@ -56,12 +56,12 @@
       </form>
       </ValidationObserver>
     </b-tab>
-    <b-tab title="會員中心" class="account-center">
+    <b-tab title="會員中心">
       <div class="container">
       <ValidationObserver  ref="detailForm">
       <form @submit.prevent="detailAnswer()">
         <div class="row">
-          <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+          <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 account-sty">
             <div class="account-photo">
              <div><font-awesome-icon icon="user-circle"/></div>
              <h5>大頭貼照片</h5>
@@ -111,25 +111,28 @@
               <div class="word-row">
                 <h5>地址</h5>
                 <p>(必填)</p>
-                <ValidationProvider name="縣市" rules="required|city" v-slot="{errors, classes }">
-                <div class="dateSty">
+                <div class="twSty">
                   <h6>縣市</h6>
-                  <TwCounty :class="classes"/>
-                  <span style="color:red">{{errors[0]}}</span>
+                  <ValidationProvider name="縣市" rules="required|county" v-slot="{errors, classes }">
+                    <TwCounty :class="classes"/>
+                    <span style="color:red">{{errors[0]}}</span>
+                  </ValidationProvider>
                   <h6>區域</h6>
-                  <TwCity :class="classes" />
-                  <span style="color:red">{{errors[0]}}</span>
+                  <ValidationProvider name="縣市" rules="required|city" v-slot="{errors, classes }">
+                    <TwCity :class="classes" />
+                    <span style="color:red">{{errors[0]}}</span>
+                  </ValidationProvider>
                 </div>
-                </ValidationProvider>
               </div>
-              <ValidationProvider name="地址" rules="required|address" v-slot="{errors, classes }">
               <div class="address-row">
-                <TwzipcodeZipcode :class="classes" text-template=":id :county-:city" disabled/>
+                <Twzipcode text-template=":id"/>
                 <h6>地址</h6>
+                <ValidationProvider name="地址" rules="required|address" v-slot="{errors, classes }">
                 <input type="text" v-model="userAddress" :class="classes" name="" id="" placeholder="請輸入地址" />
                 <span style="color:red">{{errors[0]}}</span>
+                </ValidationProvider>
               </div>
-              </ValidationProvider>
+
               <ValidationProvider name="電話" rules="required|phone" v-slot="{errors, classes }">
               <div class="word-row">
                 <h5>電話</h5>
@@ -232,7 +235,7 @@ export default {
     // 區域
     TwCity: ZipcodeGroupby,
     // 所有郵遞區號
-    TwzipcodeZipcode: Zipcode
+    Twzipcode: Zipcode
 
   }
 }

@@ -64,8 +64,9 @@
   }
 
   // 會員中心
-  .account-center {
+  .account-sty {
     position: relative;
+    height: 300px;
   }
 
   .account-photo {
@@ -115,15 +116,39 @@
           background-color: #d6d8d6;
         }
       }
+
+      //縣市
+      .twSty {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 10px;
+
+        select {
+          width: 80px;
+
+          :disabled {
+            background-color: #d6d8d6;
+          }
+        }
+      }
     }
 
+    // 地址
     .address-row {
       display: flex;
       justify-content: flex-start;
-      padding-left: 110px;
+      margin-bottom: 10px;
+
+      select {
+        width: 150px;
+        border-radius: 15px;
+        height: 30px;
+
+      }
 
       input {
-        width: 350px;
+        width: 200px;
       }
     }
 
@@ -133,8 +158,9 @@
   }
 
   @media (max-width: 768px) {
-    .account-photo {
-      position: relative;
+
+    .account-sty {
+      height: 400px;
     }
 
     .account-detail {
