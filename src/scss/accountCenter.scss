@@ -108,9 +108,14 @@
         font-weight: bold;
       }
 
+      //生日
       .dateSty {
         display: flex;
         justify-content: flex-start;
+
+        select {
+          border: 2px solid #2f5a28;
+        }
 
         :disabled {
           background-color: #d6d8d6;
@@ -126,10 +131,7 @@
 
         select {
           width: 80px;
-
-          :disabled {
-            background-color: #d6d8d6;
-          }
+          border: 2px solid #2f5a28;
         }
       }
     }
@@ -138,13 +140,18 @@
     .address-row {
       display: flex;
       justify-content: flex-start;
+      align-items: center;
       margin-bottom: 10px;
+
+      :disabled {
+        background-color: #d6d8d6;
+      }
 
       select {
         width: 150px;
         border-radius: 15px;
-        height: 30px;
-
+        height: 35px;
+        border: 2px solid #2f5a28;
       }
 
       input {

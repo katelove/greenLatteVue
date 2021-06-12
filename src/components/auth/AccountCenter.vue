@@ -118,14 +118,17 @@
                     <span style="color:red">{{errors[0]}}</span>
                   </ValidationProvider>
                   <h6>區域</h6>
-                  <ValidationProvider name="縣市" rules="required|city" v-slot="{errors, classes }">
-                    <TwCity :class="classes" />
+                  <ValidationProvider name="區域" rules="required|city" v-slot="{errors, classes }">
+                    <TwCity :class="classes"
+                    id="zipCity"
+                    @input="ZipcodeFn()"
+                     ></TwCity>
                     <span style="color:red">{{errors[0]}}</span>
                   </ValidationProvider>
                 </div>
               </div>
               <div class="address-row">
-                <Twzipcode text-template=":id"/>
+                <Twzipcode text-template=":id" v-model="twCountyCity" disabled></Twzipcode>
                 <h6>地址</h6>
                 <ValidationProvider name="地址" rules="required|address" v-slot="{errors, classes }">
                 <input type="text" v-model="userAddress" :class="classes" name="" id="" placeholder="請輸入地址" />
@@ -192,7 +195,9 @@ export default {
       userBirthday: '',
       userAddress: '',
       userPhone: '',
-      userMobile: ''
+      userMobile: '',
+      // 台灣縣市
+      twCountyCity: ''
     }
   },
   methods: {
@@ -226,6 +231,13 @@ export default {
       })
 
       this.$router.push('/login')
+    },
+    ZipcodeFn () {
+      var e = document.getElementById('zipCity')
+      var value = e.options[e.selectedIndex].value
+      console.log('所選縣市、區域:' + value)
+      this.twCountyCity = value
+      return this.twCountyCity
     }
   },
   components: {
