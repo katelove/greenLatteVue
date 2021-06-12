@@ -151,17 +151,17 @@ extend('chkPwd', {
 // 1.名字
 extend('name', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    return /^([\u4E00-\u9FA5]+|[a-zA-Z]+)$/.test(value)
   },
-  message: '請輸入 {_field_}'
+  message: '請輸入真實 {_field_}，中英文不能同時有，不包含任何符號和數字'
 })
 
 // 2.信箱
 extend('mail', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    return /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/.test(value)
   },
-  message: '請輸入正確 {_field_}'
+  message: '請輸入正確 {_field_}，必須含@'
 })
 
 // 3.生日

@@ -128,7 +128,7 @@
               <div class="word-row">
                 <h5>電話</h5>
                 <p>(必填)</p>
-                <input type="text" :class="classes" name="" id="" disabled/>
+                <input type="text" :class="classes"/>
                 <h6> - </h6>
                 <input type="text" v-model="userPhone" :class="classes" name="" id="" placeholder="請輸入電話" />
                 <span style="color:red">{{errors[0]}}</span>
