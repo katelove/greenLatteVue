@@ -87,23 +87,11 @@
                 </ValidationProvider>
               </div>
               <div class="word-row">
-                <h5>出生年月日</h5>
+                <h5>出生日/月/年</h5>
                 <p>(必填)</p>
                 <ValidationProvider name="生日" rules="required|birthday" v-slot="{errors, classes }">
                 <div class="dateSty">
-                  <h6>民國</h6>
-                  <select v-model="userBirthday" :class="classes" name="" id="">
-                    <option value="1988">1988</option>
-                  </select>
-                  <h6>年</h6>
-                  <select :class="classes" name="" id="">
-                    <option value="11">11</option>
-                  </select>
-                  <h6>月</h6>
-                  <select :class="classes" name="" id="">
-                    <option value="10">10</option>
-                  </select>
-                  <h6>日</h6>
+                  <date-dropdown default="1995-01-10"  :class="classes"  v-model="selectedDate" />
                   <span style="color:red">{{errors[0]}}</span>
                 </div>
                 </ValidationProvider>
@@ -183,6 +171,7 @@
 <script>
 import axios from 'axios'
 import { County, Zipcode, ZipcodeGroupby } from 'twzipcode-vue'
+import DateDropdown from 'vue-date-dropdown'
 
 export default {
   data () {
@@ -192,12 +181,14 @@ export default {
       actConfirmPwd: '',
       userName: '',
       userMail: '',
-      userBirthday: '',
+      // userBirthday: '',
       userAddress: '',
       userPhone: '',
       userMobile: '',
       // 台灣縣市
-      twCountyCity: ''
+      twCountyCity: '',
+      // 生日
+      selectedDate: ''
     }
   },
   methods: {
@@ -224,7 +215,7 @@ export default {
       await axios.post('register', {
         userName: this.userName,
         userMail: this.userMail,
-        userBirthday: this.userBirthday,
+        userBirthday: this.selectedDate,
         userAddress: this.userAddress,
         userPhone: this.userPhone,
         userMobile: this.userMobile
@@ -247,7 +238,9 @@ export default {
     // 區域
     TwCity: ZipcodeGroupby,
     // 所有郵遞區號
-    Twzipcode: Zipcode
+    Twzipcode: Zipcode,
+    // 生日
+    DateDropdown
 
   }
 }
