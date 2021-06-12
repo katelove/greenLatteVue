@@ -113,18 +113,18 @@
                 <p>(必填)</p>
                 <ValidationProvider name="縣市" rules="required|city" v-slot="{errors, classes }">
                 <div class="dateSty">
-                  <h6>郵遞區號</h6>
-                  <input type="text" name="" id="" disabled/>
-                  <select :class="classes" name="" id="">
-                     <option value="211">211</option>
-                  </select>
                   <h6>縣市</h6>
+                  <TwCounty :class="classes"/>
+                  <span style="color:red">{{errors[0]}}</span>
+                  <h6>區域</h6>
+                  <TwCity :class="classes" />
                   <span style="color:red">{{errors[0]}}</span>
                 </div>
                 </ValidationProvider>
               </div>
               <ValidationProvider name="地址" rules="required|address" v-slot="{errors, classes }">
               <div class="address-row">
+                <TwzipcodeZipcode :class="classes" text-template=":id :county-:city" disabled/>
                 <h6>地址</h6>
                 <input type="text" v-model="userAddress" :class="classes" name="" id="" placeholder="請輸入地址" />
                 <span style="color:red">{{errors[0]}}</span>
@@ -176,6 +176,8 @@
 
 <script>
 import axios from 'axios'
+import { County, Zipcode, ZipcodeGroupby } from 'twzipcode-vue'
+
 export default {
   data () {
     return {
@@ -222,6 +224,16 @@ export default {
 
       this.$router.push('/login')
     }
+  },
+  components: {
+
+    // 縣市
+    TwCounty: County,
+    // 區域
+    TwCity: ZipcodeGroupby,
+    // 所有郵遞區號
+    TwzipcodeZipcode: Zipcode
+
   }
 }
 </script>
