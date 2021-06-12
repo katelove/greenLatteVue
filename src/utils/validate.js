@@ -173,13 +173,19 @@ extend('birthday', {
 })
 
 // 4.縣市
+extend('county', {
+  validate: value => {
+    return true
+  },
+  message: '請選擇 {_field_}'
+})
+// 4.縣市-區域
 extend('city', {
   validate: value => {
     return true
   },
   message: '請選擇 {_field_}'
 })
-
 // 5.address
 extend('address', {
   validate: value => {

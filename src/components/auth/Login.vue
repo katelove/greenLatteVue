@@ -79,7 +79,7 @@ export default {
     },
     async login () {
       // 使用axios像後台發起登陸請求
-      const response = await axios.post('login', {
+      const response = await axios.post('http://localhost:3000/accountData', {
         userName: this.userName,
         userPwd: this.userPwd
         // headers: {
