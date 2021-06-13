@@ -127,26 +127,19 @@ extend('maPlatGroup', {
 // 1.帳號
 extend('account', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    return true
   },
-  message: '請輸入 {_field_}'
+  message: '請輸入正確的{_field_}格式，例:E-mail'
 })
 
 // 2.密碼
-extend('password', {
+extend('pwd', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    return /^[a-zA-Z\d]{5,8}$/.test(value)
   },
-  message: '請輸入 {_field_}'
+  message: '{_field_}必須含一個大小字母，英文外加數字5-8位'
 })
 
-// 3.確認密碼
-extend('chkPwd', {
-  validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
-  },
-  message: '請輸入 {_field_}'
-})
 // ============ 會員中心 ============
 // 1.名字
 extend('name', {
@@ -156,42 +149,7 @@ extend('name', {
   message: '請輸入真實 {_field_}，中英文不能同時有，不包含任何符號和數字'
 })
 
-// 2.信箱
-// extend('mail', {
-//   validate: value => {
-//     return /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/.test(value)
-//   },
-//   message: '請輸入正確 {_field_}，必須含@'
-// })
-
-// 3.生日
-// extend('birthday', {
-//   validate: value => {
-//     return true
-//   },
-//   message: '請選擇 {_field_}'
-// })
-
-// 4.縣市
-// extend('county', {
-//   validate: value => {
-//     if (Object.keys(value).length > 0) {
-//       return true
-//     }
-//   },
-//   message: '請選擇 {_field_}'
-// })
-// 4.縣市-區域
-// extend('city', {
-//   validate: value => {
-//     if (Object.keys(value).length > 0) {
-//       console.log('city:' + Object.keys(value).length)
-//       return true
-//     }
-//   },
-//   message: '請選擇 {_field_}'
-// })
-// 5.address
+// 2.address
 extend('address', {
   validate: value => {
     return /^.+(路|街|段|號).+(號|樓)*$/.test(value)
@@ -199,7 +157,7 @@ extend('address', {
   message: '請輸入正確 {_field_}，須含路名、街號'
 })
 
-// 6.phone
+// 3.phone
 extend('phoneNum', {
   validate: value => {
     console.log('電話區碼:' + value)
@@ -208,10 +166,10 @@ extend('phoneNum', {
   message: '請輸入正確 {_field_}，數字為0開頭、2~3位'
 })
 
-// 7.mobile
+// 4.mobile
 extend('mobile', {
   validate: value => {
-    return /^[0]\d{9}$/.test(value)
+    return /^09\d{8}$/.test(value)
   },
   message: '請輸入為09開頭數字為10位數的 {_field_}'
 })

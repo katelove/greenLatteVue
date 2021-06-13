@@ -8,7 +8,7 @@
       <div class="acontainer">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 account-setting">
-        <ValidationProvider name="帳號" rules="required|account" v-slot="{errors, classes }">
+        <ValidationProvider name="帳號" rules="required|email|account" v-slot="{errors, classes }">
         <div class="form-group accoutSty">
         <!-- 帳號 -->
           <h4>帳號 :</h4>
@@ -21,7 +21,7 @@
           <span style="color:red">{{errors[0]}}</span>
         </div>
         </ValidationProvider>
-        <ValidationProvider name="密碼" rules="required|password" v-slot="{errors, classes }">
+        <ValidationProvider name="密碼" rules="required|pwd" v-slot="{errors, classes }">
         <div class="form-group accoutSty">
         <!-- 密碼 -->
           <h4>密碼 :</h4>
@@ -34,19 +34,18 @@
           <span style="color:red">{{errors[0]}}</span>
         </div>
         </ValidationProvider>
-        <ValidationProvider name="確認密碼" rules="required|chkPwd" v-slot="{errors, classes }">
         <div class="form-group accoutSty">
         <!-- 確認密碼 -->
           <h4>確認密碼 :</h4>
           <input
           type="password"
           v-model="actConfirmPwd"
-          :class="classes"
+          @input="chkPwd()"
           class="form-control"
           placeholder="請再確認密碼" />
-          <span style="color:red">{{errors[0]}}</span>
+          <span v-if="isShow"></span>
+          <span v-else style="color:red" >{{pwdError.word}}</span>
         </div>
-        </ValidationProvider>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <input type="submit" class="baseBtn" value="儲存">
@@ -183,7 +182,11 @@ export default {
       myCounty: '臺北市',
       cityValue: '',
       // 生日
-      selectedDate: ''
+      selectedDate: '',
+      isShow: 'false',
+      pwdError: {
+        word: '兩個密碼須一致，請重新輸入'
+      }
     }
   },
   methods: {
@@ -217,6 +220,13 @@ export default {
       })
 
       this.$router.push('/login')
+    },
+    chkPwd () {
+      if (this.actPwd !== this.actConfirmPwd) {
+        console.log('密碼:' + this.actPwd + '再次確認密碼:' + this.actConfirmPwd)
+        this.isShow = !this.isShow
+        return this.pwdError
+      }
     }
   },
   components: {

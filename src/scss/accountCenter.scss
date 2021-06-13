@@ -11,6 +11,10 @@
       justify-content: flex-start;
       align-items: center;
 
+      span {
+        display: block;
+      }
+
       input {
         width: 300px;
         margin: 5px 10px;
