@@ -11,23 +11,23 @@
           <h5>您的名字/稱謂</h5>
           <p>(必填)</p>
           <ValidationProvider name="名字" rules="required|name" v-slot="{errors, classes }">
-          <input type="text" :class="classes" name="" id="" placeholder="請輸入您的名字"/>
+          <input type="text" :class="classes"  placeholder="請輸入您的名字"/>
           <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
         </div>
         <div class="mail-word">
           <h5>電子郵件</h5>
           <p>(必填)</p>
-          <ValidationProvider name="信箱" rules="required|mail" v-slot="{errors, classes }">
-          <input type="email" :class="classes" name="" id="" placeholder="請輸入您的信箱"/>
+          <ValidationProvider name="信箱" rules="required|email" v-slot="{errors, classes }">
+          <input type="email" :class="classes" placeholder="請輸入您的信箱"/>
           <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
         </div>
         <div class="mail-word">
           <h5>主旨</h5>
           <p>(必填)</p>
-          <ValidationProvider name="信件主旨" rules="required|mailSubject" v-slot="{errors, classes }">
-          <input type="text" :class="classes" name="" id="" placeholder="請輸入信件主旨"/>
+          <ValidationProvider name="信件主旨" rules="required|min:2" v-slot="{errors, classes }">
+          <input type="text" :class="classes" v-model="mailSubject" placeholder="請輸入信件主旨"/>
           <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
         </div>
@@ -64,6 +64,11 @@
 <script>
 import '@/utils/validate.js' // 驗證相關
 export default {
+  data () {
+    return {
+      mailSubject: ''
+    }
+  },
   methods: {
     async mailAnswer () {
       const success = await this.$refs.mailForm.validate()

@@ -173,14 +173,6 @@ extend('mobile', {
   },
   message: '請輸入為09開頭數字為10位數的 {_field_}'
 })
-// ============ Email信件 ============
-// 1.信件主旨
-extend('mailSubject', {
-  validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
-  },
-  message: '請輸入正確 {_field_}'
-})
 
 // ============ 會員登入 ============
 // 1.帳號
