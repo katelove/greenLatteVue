@@ -16,13 +16,17 @@
   </div>
   <div class="row">
     <div class="col-sm-12 -col-md-12 col-lg-12 dateTime">
+
       <div class="dateTitle">
         <h4>起始日</h4>
       </div>
       <div class="dateStyle">
-        <select name="" id=""></select><h5>年</h5>
+        <datepicker :value="nowDate"
+        v-model="startDate"
+        @input="sevenDays()"></datepicker>
+        <!-- <select name="" id=""></select><h5>年</h5>
         <select name="" id=""></select><h5>月</h5>
-        <select name="" id=""></select><h5>日</h5>
+        <select name="" id=""></select><h5>日</h5> -->
       </div>
     </div>
   </div>
@@ -32,9 +36,11 @@
         <h4>終止日</h4>
       </div>
       <div class="dateStyle">
-        <select name="" id=""></select><h5>年</h5>
+         <datepicker :value="nowDate"
+         v-model="endDate"></datepicker>
+        <!-- <select name="" id=""></select><h5>年</h5>
         <select name="" id=""></select><h5>月</h5>
-        <select name="" id=""></select><h5>日</h5>
+        <select name="" id=""></select><h5>日</h5> -->
       </div>
     </div>
   </div>
@@ -47,7 +53,26 @@
   </div>
 </div>
 </template>
+<script>
+import Datepicker from 'vuejs-datepicker'
+export default {
+  data () {
+    return {
+      nowDate: new Date(2021, 6, 13),
+      startDate: '',
+      endDate: ''
+    }
+  },
+  methods: {
+    sevenDays () {
 
+    }
+  },
+  components: {
+    Datepicker
+  }
+}
+</script>
 <style lang="scss">
  .chk_Word h2 {
   background-color: #2f5a28;
