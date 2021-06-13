@@ -81,64 +81,57 @@
               <div class="word-row mail-length">
                 <h5>信箱</h5>
                 <p>(必填)</p>
-                <ValidationProvider name="信箱" rules="required|mail" v-slot="{errors, classes }">
-                <input type="text" v-model="userMail" :class="classes" placeholder="請輸入您的信箱" />
+                <ValidationProvider name="信箱" rules="required|email" v-slot="{errors}">
+                <input type="text" v-model="userMail"  placeholder="請輸入您的信箱" />
                 <span style="color:red">{{errors[0]}}</span>
                 </ValidationProvider>
               </div>
               <div class="word-row">
                 <h5>出生日/月/年</h5>
                 <p>(必填)</p>
-                <ValidationProvider name="生日" rules="required|birthday" v-slot="{errors, classes }">
                 <div class="dateSty">
-                  <date-dropdown default="1988-11-10" min="1950" max="2007" :class="classes"  v-model="selectedDate" />
-                  <span style="color:red">{{errors[0]}}</span>
+                  <date-dropdown default="1988-11-10" min="1950" max="2007" v-model="selectedDate" />
                 </div>
-                </ValidationProvider>
               </div>
               <div class="word-row">
                 <h5>地址</h5>
                 <p>(必填)</p>
                 <div class="twSty">
                   <h6>縣市</h6>
-                  <ValidationProvider name="縣市" rules="required|county" v-slot="{errors, classes }">
-                    <TwCounty :class="classes"/>
-                    <span style="color:red">{{errors[0]}}</span>
-                  </ValidationProvider>
+                  <TwCounty v-model="myCounty"/>
                   <h6>區域</h6>
-                  <ValidationProvider name="區域" rules="required|city" v-slot="{errors, classes }">
-                    <TwCity :class="classes"
-                    id="zipCity"
-                    @input="ZipcodeFn()"
-                     ></TwCity>
-                    <span style="color:red">{{errors[0]}}</span>
-                  </ValidationProvider>
+                  <Twzipcode text-template=":id"
+                  :filter-by-county="myCounty"
+                  class="areaSty"
+                  v-model="cityValue"
+                  ></Twzipcode>
                 </div>
               </div>
               <div class="address-row">
-                <Twzipcode text-template=":id" v-model="twCountyCity" disabled></Twzipcode>
-                <h6>地址</h6>
+               <h6>地址</h6>
                 <ValidationProvider name="地址" rules="required|address" v-slot="{errors, classes }">
                 <input type="text" v-model="userAddress" :class="classes" name="" id="" placeholder="請輸入地址" />
                 <span style="color:red">{{errors[0]}}</span>
                 </ValidationProvider>
               </div>
-
-              <ValidationProvider name="電話" rules="required|phone" v-slot="{errors, classes }">
               <div class="word-row">
-                <h5>電話</h5>
+                <h5>家裡電話</h5>
                 <p>(必填)</p>
-                <input type="text" :class="classes"/>
-                <h6> - </h6>
-                <input type="text" v-model="userPhone" :class="classes" name="" id="" placeholder="請輸入電話" />
+                <ValidationProvider name="電話區碼" rules="required|numeric|phoneNum" v-slot="{errors, classes }">
+                <input type="text" v-model="userPhoneNum" :class="classes" class="phoneNum" placeholder="請輸入區碼"/>
                 <span style="color:red">{{errors[0]}}</span>
+                </ValidationProvider>
+                <h6> - </h6>
+                <ValidationProvider name="電話" rules="required|digits:8|numeric" v-slot="{errors, classes }">
+                <input type="text" v-model="userPhone" :class="classes" placeholder="請輸入電話" />
+                <span style="color:red">{{errors[0]}}</span>
+                </ValidationProvider>
               </div>
-              </ValidationProvider>
-              <ValidationProvider name="手機" rules="required|mobile" v-slot="{errors, classes }">
+              <ValidationProvider name="手機" rules="required|mobile|numeric" v-slot="{errors, classes }">
               <div class="word-row">
                 <h5>手機</h5>
                 <p>(必填)</p>
-                <input type="text" v-model="userMobile" :class="classes" name="" id="" placeholder="請輸入手機"/>
+                <input type="text" v-model="userMobile" class="mobilePhone" :class="classes" placeholder="請輸入手機"/>
                 <span style="color:red">{{errors[0]}}</span>
               </div>
               </ValidationProvider>
@@ -170,7 +163,7 @@
 
 <script>
 import axios from 'axios'
-import { County, Zipcode, ZipcodeGroupby } from 'twzipcode-vue'
+import { County, Zipcode } from 'twzipcode-vue'
 import DateDropdown from 'vue-date-dropdown'
 
 export default {
@@ -183,10 +176,12 @@ export default {
       userMail: '',
       // userBirthday: '',
       userAddress: '',
+      userPhoneNum: '',
       userPhone: '',
       userMobile: '',
       // 台灣縣市
-      twCountyCity: '',
+      myCounty: '臺北市',
+      cityValue: '',
       // 生日
       selectedDate: ''
     }
@@ -222,21 +217,12 @@ export default {
       })
 
       this.$router.push('/login')
-    },
-    ZipcodeFn () {
-      var e = document.getElementById('zipCity')
-      var value = e.options[e.selectedIndex].value
-      console.log('所選縣市、區域:' + value)
-      this.twCountyCity = value
-      return this.twCountyCity
     }
   },
   components: {
 
     // 縣市
     TwCounty: County,
-    // 區域
-    TwCity: ZipcodeGroupby,
     // 所有郵遞區號
     Twzipcode: Zipcode,
     // 生日

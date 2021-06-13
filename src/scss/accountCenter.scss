@@ -91,15 +91,21 @@
       color: #2f5a28;
       margin-bottom: 5px;
 
-      :disabled {
-        width: 80px;
-        background-color: #d6d8d6;
+      .phoneNum {
+        width: 100px;
+      }
+
+      .mobilePhone {
+        width: 150px;
+      }
+
+      span {
+        display: block;
       }
 
       select {
-        width: 120px;
+        width: 80px;
         height: 35px;
-        padding-top: 5px;
         border-radius: 15px;
         margin: 0 10px;
       }
@@ -116,6 +122,7 @@
 
         select {
           border: 2px solid #2f5a28;
+          padding: 0;
         }
 
         :disabled {
@@ -133,6 +140,11 @@
         select {
           width: 80px;
           border: 2px solid #2f5a28;
+
+        }
+
+        .areaSty {
+          width: 160px;
         }
       }
     }
@@ -143,20 +155,14 @@
       justify-content: flex-start;
       align-items: center;
       margin-bottom: 10px;
-
-      :disabled {
-        background-color: #d6d8d6;
-      }
-
-      select {
-        width: 150px;
-        border-radius: 15px;
-        height: 35px;
-        border: 2px solid #2f5a28;
-      }
+      padding-left: 90px;
 
       input {
-        width: 200px;
+        width: 250px;
+      }
+
+      span {
+        display: block;
       }
     }
 

@@ -157,57 +157,63 @@ extend('name', {
 })
 
 // 2.信箱
-extend('mail', {
-  validate: value => {
-    return /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/.test(value)
-  },
-  message: '請輸入正確 {_field_}，必須含@'
-})
+// extend('mail', {
+//   validate: value => {
+//     return /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/.test(value)
+//   },
+//   message: '請輸入正確 {_field_}，必須含@'
+// })
 
 // 3.生日
-extend('birthday', {
-  validate: value => {
-    return true
-  },
-  message: '請選擇 {_field_}'
-})
+// extend('birthday', {
+//   validate: value => {
+//     return true
+//   },
+//   message: '請選擇 {_field_}'
+// })
 
 // 4.縣市
-extend('county', {
-  validate: value => {
-    return true
-  },
-  message: '請選擇 {_field_}'
-})
+// extend('county', {
+//   validate: value => {
+//     if (Object.keys(value).length > 0) {
+//       return true
+//     }
+//   },
+//   message: '請選擇 {_field_}'
+// })
 // 4.縣市-區域
-extend('city', {
-  validate: value => {
-    return true
-  },
-  message: '請選擇 {_field_}'
-})
+// extend('city', {
+//   validate: value => {
+//     if (Object.keys(value).length > 0) {
+//       console.log('city:' + Object.keys(value).length)
+//       return true
+//     }
+//   },
+//   message: '請選擇 {_field_}'
+// })
 // 5.address
 extend('address', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    return /^.+(路|街|段|號).+(號|樓)*$/.test(value)
   },
-  message: '請輸入正確 {_field_}'
+  message: '請輸入正確 {_field_}，須含路名、街號'
 })
 
 // 6.phone
-extend('phone', {
+extend('phoneNum', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    console.log('電話區碼:' + value)
+    return /^[0-9]{2,3}$/.test(value)
   },
-  message: '請輸入正確 {_field_}'
+  message: '請輸入正確 {_field_}，數字為0開頭、2~3位'
 })
 
 // 7.mobile
 extend('mobile', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    return /^[0]\d{9}$/.test(value)
   },
-  message: '請輸入正確 {_field_}'
+  message: '請輸入為09開頭數字為10位數的 {_field_}'
 })
 // ============ Email信件 ============
 // 1.信件主旨
