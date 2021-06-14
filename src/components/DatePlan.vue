@@ -16,14 +16,15 @@
   </div>
   <div class="row">
     <div class="col-sm-12 -col-md-12 col-lg-12 dateTime">
-
       <div class="dateTitle">
         <h4>起始日</h4>
       </div>
       <div class="dateStyle">
-        <datepicker :value="nowDate"
-        v-model="startDate"
-        @input="sevenDays()"></datepicker>
+        <datepicker
+        @input="sevenDays()"
+        :bootstrap-styling="true"
+        v-model="startDay"
+        ></datepicker>
         <!-- <select name="" id=""></select><h5>年</h5>
         <select name="" id=""></select><h5>月</h5>
         <select name="" id=""></select><h5>日</h5> -->
@@ -36,8 +37,10 @@
         <h4>終止日</h4>
       </div>
       <div class="dateStyle">
-         <datepicker :value="nowDate"
-         v-model="endDate"></datepicker>
+         <datepicker
+         v-model="endDay"
+         :bootstrap-styling="true"
+         ></datepicker>
         <!-- <select name="" id=""></select><h5>年</h5>
         <select name="" id=""></select><h5>月</h5>
         <select name="" id=""></select><h5>日</h5> -->
@@ -58,14 +61,24 @@ import Datepicker from 'vuejs-datepicker'
 export default {
   data () {
     return {
-      nowDate: new Date(2021, 6, 13),
-      startDate: '',
-      endDate: ''
+      startDay: '',
+      endDay: ''
     }
   },
   methods: {
     sevenDays () {
-
+      var d = new Date(this.startDay)
+      console.log('現在日期:' + d)
+      var sevenDate = d.setDate(d.getDate() + 7)
+      var dateObj = new Date(sevenDate)
+      console.log('終止日:' + dateObj)
+      var year = dateObj.getFullYear()
+      var month = ('0' + (dateObj.getMonth() + 1)).slice(-2)
+      var day = ('0' + dateObj.getDate()).slice(-2)
+      console.log('日期為: ' + year + '年' + month + '月' + day + '日')
+      this.endDay = new Date(year, month - 1, day)
+      console.log('終止日日期為:' + this.endDay)
+      return this.endDay
     }
   },
   components: {
