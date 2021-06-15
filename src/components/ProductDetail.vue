@@ -67,10 +67,10 @@ export default {
     }
   },
   mounted () {
-    axios.get('http://localhost:3000/vegetablesPro')
+    axios.get('http://localhost:3000/vgImg')
       .then(response => {
         console.log('讀取資料庫資料:' + response.data[0])
-        this.products = response.data[0]
+        this.products = response.data[0].vegetablesPro
       })
   }
 }
