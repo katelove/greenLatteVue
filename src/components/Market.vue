@@ -13,8 +13,8 @@
       </div>
         <div class="items">
           <VueSlickCarousel v-bind="settings">
-            <div v-for="(item,index) in productImg" :key="index">
-              <img :src="item.proImg" @click="showModal">
+            <div v-for="(item,index) in proDetail" :key="index">
+              <img :src="item.proImg" @click="showModal(index)">
             </div>
           </VueSlickCarousel>
         </div>
@@ -46,7 +46,8 @@
     <!-- 產品說明 -->
     <b-modal ref="my-modal" size="xl" hide-footer="false">
       <div class="d-block text-center">
-        <ProductDetail/>
+        <!-- <ProductDetail/> -->
+        <productCard v-bind="exInfo[0]"></productCard>
       </div>
     </b-modal>
 
@@ -57,13 +58,25 @@
 </template>
 
 <script>
-import ProductDetail from '../components/ProductDetail'
+// import ProductDetail from '../components/ProductDetail'
 import VueSlickCarousel from 'vue-slick-carousel'
+// import ProductCard from './ProductCard'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
-import img from '../data/db.json'
+import proInfo from '../data/db.json'
 import axios from 'axios'
+import Vue from 'vue'
+// import ProductDetail from './ProductDetail.vue'
+// 產品說明卡
+Vue.component('productCard', {
+  props: ['id', 'a'],
+  template: `
+  <div>
+  <h4>{{a[0].category}}</h4>
+  <h6>{{a[0].productName}}</h6>
+  </div>`
 
+})
 export default {
   data: () => ({
     settings: {
@@ -104,13 +117,15 @@ export default {
         }
       ]
     },
-    productImg: img.vgImg
+    proDetail: proInfo.vgImg,
+    exInfo: proInfo.ex
   }),
 
   methods: {
     // for modal
-    showModal () {
-      this.$refs['my-modal'].show()
+    showModal (index) {
+      console.log('目前showModal index:' + index)
+      this.$refs['my-modal'].show(index)
     },
     hideModal () {
       this.$refs['my-modal'].hide()
@@ -125,16 +140,21 @@ export default {
   mounted () {
     axios.get('http://localhost:3000/vgImg')
       .then(response => {
-        console.log('讀取資料庫產品資料:' + response.data)
-        this.productImg = response.data
+        this.proDetail = response.data
+      })
+    axios.get('http://localhost:3000/ex')
+      .then(response => {
+        console.log('ex:' + response.data[0].a[0].category)
+        this.exInfo = response.data
       })
   },
   name: 'MyComponent',
-  components: { VueSlickCarousel, ProductDetail }
+  components: { VueSlickCarousel }
 
 }
+
 </script>
 
 <style lang="scss">@import "../scss/market.scss";
-
+@import "../scss/productDetail.scss";
 </style>

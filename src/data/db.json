@@ -334,5 +334,16 @@
       "id": 4,
       "proImg": "/images/carousel/v_04.png"
     }
+  ],
+  "ex": [
+    {
+      "id": 1,
+      "a": [
+        {
+          "category": "蔬菜類",
+          "productName": "青江菜"
+        }
+      ]
+    }
   ]
 }
