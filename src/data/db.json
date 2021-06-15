@@ -56,6 +56,24 @@
       "id": 5
     }
   ],
+  "vgImg": [
+    {
+      "id": 1,
+      "proImg": "../../public/images/carousel/v_01.png"
+    },
+    {
+      "id": 2,
+      "proImg": "../../public/images/carousel/v_02.png"
+    },
+    {
+      "id": 3,
+      "proImg": "../../public/images/carousel/v_03.png"
+    },
+    {
+      "id": 4,
+      "proImg": "../../public/images/carousel/v_04.png"
+    }
+  ],
   "vegetablesPro": [
     {
       "id": 1,
