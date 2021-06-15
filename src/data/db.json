@@ -1,19 +1,349 @@
 {
-  "posts": [
+  "accountData": [
     {
+      "caseId": 20210610001,
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "account": "kate1988",
+      "password": "kate2021",
+      "name": "Kate",
+      "gender": "Female",
+      "birthday": "1988-11-10",
+      "phone": "0922897456",
+      "Email": "kate19881110@gmail.com",
+      "address": "新北市汐止區中正路260號3樓",
+      "healthChk": true,
+      "DIYChk": true,
+      "mealsChk": true
+    },
+    {
+      "caseId": 20210610002,
+      "id": 2,
+      "account": "sunny19781215",
+      "password": "sunny20210611",
+      "name": "Sunny",
+      "gender": "Female",
+      "birthday": "1978-12-15",
+      "phone": "0933678567",
+      "Email": "sunny197812150@gmail.com",
+      "address": "台北市南港區重陽路234號3樓",
+      "healthChk": true,
+      "DIYChk": false,
+      "mealsChk": false
+    },
+    {
+      "caseId": 20210610003,
+      "id": 3,
+      "account": "kevin19930303",
+      "password": "kevin20090311",
+      "name": "Kevin",
+      "gender": "Male",
+      "birthday": "1993-03-03",
+      "phone": "0955976783",
+      "Email": "kevin19930303@gmail.com",
+      "address": "新竹市新陽街235號3樓",
+      "healthChk": true,
+      "DIYChk": true,
+      "mealsChk": false
+    },
+    {
+      "account": "sammi123",
+      "password": "sammi123",
+      "id": 4
+    },
+    {
+      "account": "kevin19930303",
+      "password": "kevin20090311",
+      "id": 5
     }
   ],
-  "comments": [
+  "vgImg": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "proImg": "/images/carousel/v_01.png",
+      "vegetablesPro": {
+        "id": 1,
+        "category": "蔬菜類",
+        "productName": "青江菜",
+        "img": "/images/carousel/v_01.png",
+        "nutrition": [
+          {
+            "id": 1,
+            "element": "維生素C"
+          },
+          {
+            "id": 2,
+            "element": "鈣質"
+          },
+          {
+            "id": 3,
+            "element": "葉酸"
+          },
+          {
+            "id": 4,
+            "element": "鐵"
+          },
+          {
+            "id": 5,
+            "element": "維生素A"
+          },
+          {
+            "id": 6,
+            "element": "維生素B"
+          },
+          {
+            "id": 7,
+            "element": "膳食纖維"
+          },
+          {
+            "id": 8,
+            "element": "胡蘿蔔素"
+          }
+        ],
+        "goodEffect": [
+          {
+            "id": 1,
+            "info": "對高血壓、動脈硬化有預防效果。"
+          },
+          {
+            "id": 2,
+            "info": "促進血液循環、散血消腫的作用。"
+          },
+          {
+            "id": 3,
+            "info": "降低中風引起的腎衰竭等發病率。"
+          }
+        ],
+        "buySecret": [
+          {
+            "id": 1,
+            "title": "飽滿硬實",
+            "detail": "新鮮飽滿，莖部緊實。"
+          },
+          {
+            "id": 2,
+            "title": "顏色青綠",
+            "detail": "葉子必須是漂亮的青綠色。"
+          },
+          {
+            "id": 3,
+            "title": "莖部寬大",
+            "detail": "莖部要寬且大，代表含水量充足。"
+          }
+        ],
+        "saveSkill": [
+          {
+            "id": "1",
+            "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
+          },
+          {
+            "id": "2",
+            "option": "採直立方式置於蔬果冷藏室中。"
+          },
+          {
+            "id": "3",
+            "option": "約可保存3～4天。"
+          }
+        ],
+        "price": "25",
+        "unit": "把"
+      }
+    },
+    {
+      "id": 2,
+      "proImg": "/images/carousel/v_02.png",
+      "vegetablesPro": {
+        "id": 2,
+        "category": "蔬菜類",
+        "productName": "青江菜",
+        "img": "/images/carousel/v_02.png",
+        "nutrition": [
+          {
+            "id": 1,
+            "element": "維生素C"
+          },
+          {
+            "id": 2,
+            "element": "鈣質"
+          },
+          {
+            "id": 3,
+            "element": "葉酸"
+          },
+          {
+            "id": 4,
+            "element": "鐵"
+          },
+          {
+            "id": 5,
+            "element": "維生素A"
+          },
+          {
+            "id": 6,
+            "element": "維生素B"
+          },
+          {
+            "id": 7,
+            "element": "膳食纖維"
+          },
+          {
+            "id": 8,
+            "element": "胡蘿蔔素"
+          }
+        ],
+        "goodEffect": [
+          {
+            "id": 1,
+            "info": "對高血壓、動脈硬化有預防效果。"
+          },
+          {
+            "id": 2,
+            "info": "促進血液循環、散血消腫的作用。"
+          },
+          {
+            "id": 3,
+            "info": "降低中風引起的腎衰竭等發病率。"
+          }
+        ],
+        "buySecret": [
+          {
+            "id": 1,
+            "title": "飽滿硬實",
+            "detail": "新鮮飽滿，莖部緊實。"
+          },
+          {
+            "id": 2,
+            "title": "顏色青綠",
+            "detail": "葉子必須是漂亮的青綠色。"
+          },
+          {
+            "id": 3,
+            "title": "莖部寬大",
+            "detail": "莖部要寬且大，代表含水量充足。"
+          }
+        ],
+        "saveSkill": [
+          {
+            "id": "1",
+            "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
+          },
+          {
+            "id": "2",
+            "option": "採直立方式置於蔬果冷藏室中。"
+          },
+          {
+            "id": "3",
+            "option": "約可保存3～4天。"
+          }
+        ],
+        "price": "25",
+        "unit": "把"
+      }
+    },
+    {
+      "id": 3,
+      "proImg": "/images/carousel/v_03.png",
+      "vegetablesPro": {
+        "id": 3,
+        "category": "蔬菜類",
+        "productName": "青江菜",
+        "img": "/images/carousel/v_03.png",
+        "nutrition": [
+          {
+            "id": 1,
+            "element": "維生素C"
+          },
+          {
+            "id": 2,
+            "element": "鈣質"
+          },
+          {
+            "id": 3,
+            "element": "葉酸"
+          },
+          {
+            "id": 4,
+            "element": "鐵"
+          },
+          {
+            "id": 5,
+            "element": "維生素A"
+          },
+          {
+            "id": 6,
+            "element": "維生素B"
+          },
+          {
+            "id": 7,
+            "element": "膳食纖維"
+          },
+          {
+            "id": 8,
+            "element": "胡蘿蔔素"
+          }
+        ],
+        "goodEffect": [
+          {
+            "id": 1,
+            "info": "對高血壓、動脈硬化有預防效果。"
+          },
+          {
+            "id": 2,
+            "info": "促進血液循環、散血消腫的作用。"
+          },
+          {
+            "id": 3,
+            "info": "降低中風引起的腎衰竭等發病率。"
+          }
+        ],
+        "buySecret": [
+          {
+            "id": 1,
+            "title": "飽滿硬實",
+            "detail": "新鮮飽滿，莖部緊實。"
+          },
+          {
+            "id": 2,
+            "title": "顏色青綠",
+            "detail": "葉子必須是漂亮的青綠色。"
+          },
+          {
+            "id": 3,
+            "title": "莖部寬大",
+            "detail": "莖部要寬且大，代表含水量充足。"
+          }
+        ],
+        "saveSkill": [
+          {
+            "id": "1",
+            "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
+          },
+          {
+            "id": "2",
+            "option": "採直立方式置於蔬果冷藏室中。"
+          },
+          {
+            "id": "3",
+            "option": "約可保存3～4天。"
+          }
+        ],
+        "price": "25",
+        "unit": "把"
+      }
+    },
+    {
+      "id": 4,
+      "proImg": "/images/carousel/v_04.png"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "ex": [
+    {
+      "id": 1,
+      "a": [
+        {
+          "category": "蔬菜類",
+          "productName": "青江菜"
+        }
+      ]
+    }
+  ]
 }
