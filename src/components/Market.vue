@@ -13,10 +13,9 @@
       </div>
         <div class="items">
           <VueSlickCarousel v-bind="settings">
-            <div><img src="../../public/images/carousel/v_01.png" ></div>
-            <div><img src="../../public/images/carousel/v_02.png" ></div>
-            <div><img src="../../public/images/carousel/v_03.png" @click="showModal"/></div>
-            <div><img src="../../public/images/carousel/v_04.png" /></div>
+            <div v-for="(item,index) in productImg" :key="index">
+              <img :src="item.proImg" @click="showModal">
+            </div>
           </VueSlickCarousel>
         </div>
     </div>
@@ -62,6 +61,8 @@ import ProductDetail from '../components/ProductDetail'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import img from '../data/db.json'
+import axios from 'axios'
 
 export default {
   data: () => ({
@@ -102,8 +103,10 @@ export default {
           }
         }
       ]
-    }
+    },
+    productImg: img.vgImg
   }),
+
   methods: {
     // for modal
     showModal () {
@@ -117,6 +120,14 @@ export default {
       // when the modal has hidden
       this.$refs['my-modal'].toggle('#toggle-btn')
     }
+
+  },
+  mounted () {
+    axios.get('http://localhost:3000/vgImg')
+      .then(response => {
+        console.log('讀取資料庫產品資料:' + response.data)
+        this.productImg = response.data
+      })
   },
   name: 'MyComponent',
   components: { VueSlickCarousel, ProductDetail }
