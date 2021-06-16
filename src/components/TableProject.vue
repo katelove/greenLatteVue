@@ -127,9 +127,9 @@
        <tr v-for='(item,num) in tdFistList' :key="num">
         <td>{{item}}</td>
         <TdCell
-        v-for="i in tableTag"
-        v-bind:cellname="i"
-           :key="i"
+        v-for="(item,index) in tableTag"
+        v-bind:cellname="index"
+           :key="index"
             class="calendersSB"
             contenteditable="true"
            @click="item.checked = !item.checked"
