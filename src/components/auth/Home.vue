@@ -14,7 +14,7 @@
 <div class="site"></div>
 <section id="sec7"><DatePlan/></section>
 <div class="site"></div>
-<section id="sec8"><WeekProject/></section>
+<section id="sec8"><TableProject/></section>
 <section id="sec9"></section>
 </div>
 
@@ -25,7 +25,8 @@ import Carousel from '../../components/Carousel'
 import BodyDA from '../../components/BodyDA'
 import ParaagraphOne from '../../components/ParaagraphOne'
 import HealthTest from '../../components/HealthTest'
-import WeekProject from '../../components/WeekProject'
+// import WeekProject from '../../components/WeekProject'
+import TableProject from '../../components/TableProject.vue'
 import GreenLatte from '../../components/GreenLatte'
 import Market from '../../components/Market'
 import DiyGreen from '../../components/DiyGreen'
@@ -38,7 +39,8 @@ export default {
     BodyDA,
     ParaagraphOne,
     HealthTest,
-    WeekProject,
+    // WeekProject,
+    TableProject,
     GreenLatte,
     Market,
     DiyGreen,
