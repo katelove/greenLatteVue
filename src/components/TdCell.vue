@@ -1,5 +1,5 @@
 <template>
-  <td v-bind:id="cellname+'drag'"
+  <td v-bind:id="text+'drag'"
        :style="styleList"
        :class="{ checked: checked }"
       ></td>
@@ -9,10 +9,10 @@
 import Sortable from 'sortablejs'
 export default {
   name: 'TdCell',
-  props: ['cellname', 'styleList', 'checked'],
+  props: ['text', 'styleList', 'checked'],
   mounted () {
     // eslint-disable-next-line camelcase
-    var cell_drag = document.getElementById(this.cellname + 'drag')
+    var cell_drag = document.getElementById(this.text + 'drag')
     // eslint-disable-next-line no-new
     new Sortable(cell_drag, {
       group: {

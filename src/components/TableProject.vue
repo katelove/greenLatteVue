@@ -128,11 +128,11 @@
         <th>{{item.th}}</th>
         <TdCell
         v-for="(tdKey,index) in item.td"
-        v-bind:cellname="tdKey.text"
+        v-bind="tdKey"
         :key="index"
         class="calendersSB"
         contenteditable="true"
-        @click="item.checked = !item.checked"
+        @click="tdKey.checked = !tdKey.checked"
         ></TdCell>
       </tr>
     </tbody>
@@ -196,12 +196,12 @@ export default {
           checked: false,
           styleList: {
             color: 'pink',
-            fontSize: '50px'
+            fontSize: '50px',
+            backgroundColor: 'yellow'
           }
         }
         tr.td.push(td)
       }
-      // this.tableTag.push(tr)
     }
     var sitckers = document.getElementById('sitckers')
 
@@ -230,8 +230,20 @@ export default {
     hideModal () {
       this.$refs['my-modal'].hide()
     },
-    redColor () {
+    redColor ($event) {
       this.styleList.color = 'red'
+      console.log('this.styleList.color:' + this.styleList.color)
+      var tr = this.tableTag
+      for (var y = 0; y < tr.length; y++) {
+        console.log('tr 長度:' + tr.length)
+        var td = this.tableTag[y].td
+        for (var x = 0; x < td.length; x++) {
+          console.log('確認td checked:' + td[x].checked)
+          if (td[x].checked === true) {
+            td[x].styleList.color = 'red'
+          }
+        }
+      }
     },
     blueColor () {
       this.styleList.color = 'blue'
