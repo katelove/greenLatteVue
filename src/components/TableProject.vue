@@ -124,17 +124,17 @@
       </tr>
     </thead>
     <tbody>
-       <tr v-for='(item,num) in tdFistList' :key="num">
-        <td>{{item}}</td>
+      <tr v-for="(item,index) in tableTag" :key="index" class="th-row">
+        <th>{{item.th}}</th>
         <TdCell
-        v-for="(item,index) in tableTag"
-        v-bind:cellname="index"
-           :key="index"
-            class="calendersSB"
-            contenteditable="true"
-           @click="item.checked = !item.checked"
+        v-for="(item,index) in item.td"
+        v-bind:cellname="item.text"
+        :key="index"
+        class="calendersSB"
+        contenteditable="true"
+        @click="item.checked = !item.checked"
         ></TdCell>
-       </tr>
+      </tr>
     </tbody>
   </table>
   </div>
@@ -174,7 +174,10 @@ export default {
       weekList: ['', '一', '二', '三', '四', '五', '六', '日'],
       tdFistList: ['早', '中', '晚', '備註'],
       // 做畫的td
-      tableTag: [],
+      tableTag: [{ th: '早', td: [] },
+        { th: '中', td: [] },
+        { th: '晚', td: [] },
+        { th: '備註', td: [] }],
       // 字體大小、字體顏色
       styleList: {
         color: '',
@@ -185,13 +188,13 @@ export default {
     }
   },
   mounted () {
-    for (var i = 0; i < 7; i++) {
-      var tr = []
+    for (var i = 0; i < 4; i++) {
+      var tr = this.tableTag[i]
       for (var j = 0; j < 7; j++) {
-        var td = { text: j, checked: false }
-        tr.push(td)
+        var td = { text: (i * 7 + j), checked: false }
+        tr.td.push(td)
       }
-      this.tableTag.push(tr)
+      // this.tableTag.push(tr)
     }
     var sitckers = document.getElementById('sitckers')
 

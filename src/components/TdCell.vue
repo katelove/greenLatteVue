@@ -29,7 +29,7 @@ export default {
       onAdd: function (/** Event */evt) { // 多組拖曳新增元素事件
         var count = cell_drag.getElementsByClassName('sticker').length
 
-        console.log(count)
+        console.log('幾個貼圖:' + count)
 
         if (count > 1) {
           this.grids = 2
