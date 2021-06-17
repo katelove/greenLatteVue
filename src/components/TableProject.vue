@@ -127,8 +127,8 @@
       <tr v-for="(item,index) in tableTag" :key="index" class="th-row">
         <th>{{item.th}}</th>
         <TdCell
-        v-for="(item,index) in item.td"
-        v-bind:cellname="item.text"
+        v-for="(tdKey,index) in item.td"
+        v-bind:cellname="tdKey.text"
         :key="index"
         class="calendersSB"
         contenteditable="true"
@@ -191,7 +191,14 @@ export default {
     for (var i = 0; i < 4; i++) {
       var tr = this.tableTag[i]
       for (var j = 0; j < 7; j++) {
-        var td = { text: (i * 7 + j), checked: false }
+        var td = {
+          text: (i * 7 + j),
+          checked: false,
+          styleList: {
+            color: 'pink',
+            fontSize: '50px'
+          }
+        }
         tr.td.push(td)
       }
       // this.tableTag.push(tr)
@@ -241,10 +248,10 @@ export default {
     wordH6 () {
       this.styleList.fontSize = '12px'
     },
-    handleInput ($event) {
-      this.tdValue = $event.target.innerText
-      console.log('this.tdValue:' + this.tdValue)
-    },
+    // handleInput ($event) {
+    //   this.tdValue = $event.target.innerText
+    //   console.log('this.tdValue:' + this.tdValue)
+    // },
     delAll () {
       console.log('進入清除動作')
       // var tdName = document.getElementById('tdName')
