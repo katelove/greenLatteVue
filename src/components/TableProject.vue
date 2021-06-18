@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 <template>
  <div class="container">
    <div class="row">
@@ -12,9 +11,9 @@
         </div>
         <transition name="ul">
           <ul v-if="show" class="ul-box">
-            <li><h2 @click="wordH2()" class="sticker">A</h2></li>
-            <li><h4 @click="wordH4()" class="sticker">A</h4></li>
-            <li><h6 @click="wordH6()" class="sticker">A</h6></li>
+            <li><h2 @click="wordH2()">A</h2></li>
+            <li><h4 @click="wordH4()">A</h4></li>
+            <li><h6 @click="wordH6()">A</h6></li>
           </ul>
         </transition>
        <!-- 字的顏色 -->
@@ -24,9 +23,9 @@
         </div>
         <transition name="ul">
           <ul v-if="active" class="ul-box">
-            <li><div @click="redColor()" class="t-c-red sticker"></div></li>
-            <li><div @click="blueColor()" class="t-c-blue sticker"></div></li>
-            <li><div @click="greenColor()" class="t-c-green sticker"></div></li>
+            <li><div @click="redColor()" class="t-c-red"></div></li>
+            <li><div @click="blueColor()" class="t-c-blue"></div></li>
+            <li><div @click="greenColor()" class="t-c-green"></div></li>
           </ul>
         </transition>
       <!-- 貼圖 -->
@@ -58,26 +57,19 @@
           </div>
           <transition name="ul">
             <ul :style="diyGreen ? '' : 'display:none;'" class="ul-box" id="sitckers">
-              <li><img src="../../public/images/pic/dragon-fruit.png" class="sticker" /></li>
-            </ul>
-          </transition>
-          <!-- 健康餐 -->
-          <div class="tool-size" v-on:click="healthMeal = ! healthMeal">
-            <h4>健康餐</h4>
-            <div><font-awesome-icon icon="utensils" class="sticker"/></div>
-          </div>
-          <transition name="ul">
-            <ul v-if="healthMeal" class="ul-box">
-              <li><img src="../../public/images/pic/fried-rice.png" class="sticker" /></li>
+              <li>
+                <img src="../../public/images/pic/dragon-fruit.png" class="sticker" />
+              </li>
             </ul>
           </transition>
 
           <!-- 推薦綠拿鐵 -->
           <div class="tool-size" v-on:click="sugGreen = ! sugGreen">
             <h5>推薦<br />綠拿鐵</h5>
+            <div><font-awesome-icon icon="utensils"/></div>
           </div>
           <transition name="ul">
-            <ul v-if="sugGreen" class="ul-box">
+            <ul :style="sugGreen ? '' : 'display:none;'" class="ul-box" id="sitckers">
               <li>
                 <h6>火紅綠拿鐵</h6>
                 <img src="../../public/images/pic/drink.png" class="sticker"/>
@@ -92,15 +84,14 @@
               </li>
             </ul>
           </transition>
-
+        <br>
         <div class="tool-try tool-size">
           <h5 v-on:click="glPlan = ! glPlan" >綠拿鐵飲食法</h5>
             <transition name="ul">
-              <ul v-if="glPlan" class="ul-box">
+              <ul :style="glPlan ? '' : 'display:none;'" class="ul-box" id="sitckers">
                 <li><h5 @click="showModal">說明</h5></li>
-                <li><h5 class="sticker">漸進式</h5></li>
-                <li><h5 class="sticker">體驗式</h5></li>
-                <li><h5 class="sticker">全面式</h5></li>
+                <li><img src="../../public/images/pic/dragon-fruit.png" class="sticker" /></li>
+                <li><img src="../../public/images/pic/fried-rice.png" class="sticker" /></li>
               </ul>
             </transition>
         </div>
@@ -131,7 +122,6 @@
         v-bind="tdKey"
         :key="index"
         class="calendersSB"
-        contenteditable="true"
         @click="tdKey.checked = !tdKey.checked"
         ></TdCell>
       </tr>
@@ -167,7 +157,6 @@ export default {
       active: false,
       picture: false,
       diyGreen: false,
-      healthMeal: false,
       sugGreen: false,
       glPlan: false,
       // 表格
@@ -307,6 +296,9 @@ export default {
 /* 移動圖片到td格裡 */
 .calendersSB li img{
   width: 50px;
+}
+.calendersSB img{
+   width: 50px;
 }
 
 </style>

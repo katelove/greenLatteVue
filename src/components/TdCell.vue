@@ -2,6 +2,7 @@
   <td v-bind:id="text+'drag'"
        :style="styleList"
        :class="{ checked: checked }"
+       contenteditable="true"
       ></td>
 </template>
 
