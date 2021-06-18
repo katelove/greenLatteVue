@@ -26,11 +26,11 @@
       </div>
       <div class="items">
         <VueSlickCarousel v-bind="settings">
-          <div><img src="../../public/images/carousel/fruit1.png"/></div>
-          <div><img src="../../public/images/carousel/fruit2.png"/></div>
-          <div><img src="../../public/images/carousel/fruit3.png"/></div>
-          <div><img src="../../public/images/carousel/fruit4.png"/></div>
+            <div v-for="(item,index) in fruitPhoto" :key="index">
+              <img :src="item.proImg" @click="showFModal(index)">
+            </div>
         </VueSlickCarousel>
+
       </div>
     </div>
     <!-- DIY -->
@@ -43,12 +43,21 @@
         </div>
     </div>
 
-    <!-- 產品說明 -->
-    <b-modal ref="my-modal" size="xl" hide-footer="false">
+    <!-- 蔬菜產品說明 -->
+    <b-modal ref="vg-modal" size="xl" hide-footer="false">
       <div class="d-block text-center">
         <ProductDetail
-        v-bind="vgDetail[vgNum]"
+        v-bind="vgDetail[proNum]"
         ></ProductDetail>
+      </div>
+    </b-modal>
+
+    <!-- 水果產品說明 -->
+    <b-modal ref="fruit-modal" size="xl" hide-footer="false">
+      <div class="d-block text-center">
+        <FruitDetail
+        v-bind="fruitDetail[proNum]"
+        ></FruitDetail>
       </div>
     </b-modal>
 
@@ -66,6 +75,7 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 import proInfo from '../data/db.json'
 import axios from 'axios'
 import ProductDetail from './ProductDetail.vue'
+import FruitDetail from './FruitDetail.vue'
 
 export default {
   data: () => ({
@@ -107,28 +117,31 @@ export default {
         }
       ]
     },
+    // 蔬菜產品圖片&說明卡
     proDetail: proInfo.vgImg,
-    // 產品說明卡
-    vgDetail: proInfo.vgImg.vegetablesPro,
+    vgDetail: proInfo.vegetablesPro,
+    // 水果產品圖片&說明卡
+    fruitPhoto: proInfo.fruitImg,
+    fruitDetail: proInfo.fruitPro,
     // 產品參數
-    vgNum: '0'
+    proNum: '0'
   }),
 
   methods: {
     // for modal
     showModal (index) {
-      console.log('目前showModal index:' + index)
-      this.vgNum = index
-      console.log('目前產品 index:' + this.vgNum)
-      this.$refs['my-modal'].show(index)
+      this.proNum = index
+      this.$refs['vg-modal'].show(index)
     },
     hideModal () {
-      this.$refs['my-modal'].hide()
+      this.$refs['vg-modal'].hide()
     },
-    toggleModal () {
-      // We pass the ID of the button that we want to return focus to
-      // when the modal has hidden
-      this.$refs['my-modal'].toggle('#toggle-btn')
+    showFModal (index) {
+      this.proNum = index
+      this.$refs['fruit-modal'].show(index)
+    },
+    hideFModal () {
+      this.$refs['fruit-modal'].hide()
     }
 
   },
@@ -141,9 +154,17 @@ export default {
       .then(response => {
         this.vgDetail = response.data
       })
+    axios.get('http://localhost:3000/fruitImg')
+      .then(response => {
+        this.fruitPhoto = response.data
+      })
+    axios.get('http://localhost:3000/fruitPro')
+      .then(response => {
+        this.fruitDetail = response.data
+      })
   },
   name: 'MyComponent',
-  components: { VueSlickCarousel, ProductDetail }
+  components: { VueSlickCarousel, ProductDetail, FruitDetail }
 
 }
 
