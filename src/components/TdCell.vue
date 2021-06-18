@@ -1,16 +1,16 @@
 <template>
-  <td v-bind:id="text+'drag'"
-       :style="styleList"
-       :class="{ checked: checked }"
-       contenteditable="true"
-      ></td>
+  <td v-bind:id="tdKey.text+'drag'"
+    :style="tdKey.styleList"
+    @click="tdKey.checked = !tdKey.checked"
+    ></td>
+      <!-- :class="{ 'checked': tdKey.checked }" -->
 </template>
 
 <script>
 import Sortable from 'sortablejs'
 export default {
   name: 'TdCell',
-  props: ['text', 'styleList', 'checked'],
+  props: ['tdKey'],
   mounted () {
     // eslint-disable-next-line camelcase
     var cell_drag = document.getElementById(this.text + 'drag')
@@ -29,8 +29,8 @@ export default {
 
 <style lang="scss">
 
-.checked {
-  background-color: rgb(138, 46, 46);
-}
+// .checked {
+//   background-color: rgb(90, 25, 25);
+// }
 
 </style>

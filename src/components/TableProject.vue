@@ -119,10 +119,10 @@
         <th>{{item.th}}</th>
         <TdCell
         v-for="(tdKey,index) in item.td"
-        v-bind="tdKey"
+        :tdKey="tdKey"
         :key="index"
         class="calendersSB"
-        @click="tdKey.checked = !tdKey.checked"
+        contenteditable="true"
         ></TdCell>
       </tr>
     </tbody>
@@ -184,9 +184,8 @@ export default {
           text: (i * 7 + j),
           checked: false,
           styleList: {
-            color: 'pink',
-            fontSize: '50px',
-            backgroundColor: 'yellow'
+            color: '#2f5a28',
+            fontSize: '20px'
           }
         }
         tr.td.push(td)
