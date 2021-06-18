@@ -46,8 +46,12 @@
     <!-- 產品說明 -->
     <b-modal ref="my-modal" size="xl" hide-footer="false">
       <div class="d-block text-center">
+        <h6>{{vgDetail[vgNum]}}</h6>
+        <ProductDetail
+        v-bind="vgDetail[vgNum]"
+        ></ProductDetail>
         <!-- <ProductDetail/> -->
-        <productCard v-bind="exInfo[0]"></productCard>
+        <!-- <productCard v-bind="exInfo[0]"></productCard> -->
       </div>
     </b-modal>
 
@@ -65,18 +69,18 @@ import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 import proInfo from '../data/db.json'
 import axios from 'axios'
-import Vue from 'vue'
-// import ProductDetail from './ProductDetail.vue'
+// import Vue from 'vue'
+import ProductDetail from './ProductDetail.vue'
 // 產品說明卡
-Vue.component('productCard', {
-  props: ['id', 'a'],
-  template: `
-  <div>
-  <h4>{{a[0].category}}</h4>
-  <h6>{{a[0].productName}}</h6>
-  </div>`
+// Vue.component('productCard', {
+//   props: ['id', 'a'],
+//   template: `
+//   <div>
+//   <h4>{{a[0].category}}</h4>
+//   <h6>{{a[0].productName}}</h6>
+//   </div>`
 
-})
+// })
 export default {
   data: () => ({
     settings: {
@@ -118,13 +122,19 @@ export default {
       ]
     },
     proDetail: proInfo.vgImg,
-    exInfo: proInfo.ex
+    // 產品說明卡
+    vgDetail: proInfo.vgImg.vegetablesPro,
+    // 產品參數
+    vgNum: ''
+    // exInfo: proInfo.ex
   }),
 
   methods: {
     // for modal
     showModal (index) {
       console.log('目前showModal index:' + index)
+      this.vgNum = index
+      console.log('目前產品 index:' + this.vgNum)
       this.$refs['my-modal'].show(index)
     },
     hideModal () {
@@ -142,14 +152,18 @@ export default {
       .then(response => {
         this.proDetail = response.data
       })
-    axios.get('http://localhost:3000/ex')
+    axios.get('http://localhost:3000/vegetablesPro')
       .then(response => {
-        console.log('ex:' + response.data[0].a[0].category)
-        this.exInfo = response.data
+        this.vgDetail = response.data
       })
+    // axios.get('http://localhost:3000/ex')
+    //   .then(response => {
+    //     console.log('ex:' + response.data[0].a[0].category)
+    //     this.exInfo = response.data
+    //   })
   },
   name: 'MyComponent',
-  components: { VueSlickCarousel }
+  components: { VueSlickCarousel, ProductDetail }
 
 }
 

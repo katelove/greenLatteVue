@@ -1,22 +1,27 @@
 <template>
+<div>
+       <p>{{id}}</p>
+      <h6>{{category}}</h6>
+</div>
 
-<div class="product-frame">
+<!-- <div class="product-frame">
   <div class="product-left">
     <div class="product-pic">
-      <h5>{{products.category}} :{{products.productName}}</h5>
+
+      <h5>{{vgInfo.category}} :{{vgInfo.productName}}</h5>
     </div>
     <img v-bind:src="products.img" />
-    <div class="product-word">
+    <div class="product-word"> -->
       <!-- 營養 -->
-      <div v-for="(item,index) in products.nutrition" :key="index">
+      <!-- <div v-for="(item,index) in products.nutrition" :key="index">
           <h6>{{products.nutrition[index].element}}</h6>
     </div>
     </div>
   </div>
   <div class="product-right">
-    <div class="product-title">
+    <div class="product-title"> -->
       <!-- 食物好處 -->
-      <div class="product-title-one" v-for="(item,index) in products.goodEffect" :key="index">
+      <!-- <div class="product-title-one" v-for="(item,index) in products.goodEffect" :key="index">
         <h2>{{products.goodEffect[index].id}}</h2>
         <h5>{{products.goodEffect[index].info}}</h5>
       </div>
@@ -53,25 +58,27 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 </template>
 <style lang="scss">@import "../scss/productDetail.scss"; </style>
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 export default {
-  name: 'Products',
-  data () {
-    return {
-      products: []
-    }
-  },
-  mounted () {
-    axios.get('http://localhost:3000/vgImg')
-      .then(response => {
-        console.log('讀取資料庫資料:' + response.data[0])
-        this.products = response.data[0].vegetablesPro
-      })
-  }
+  name: 'products',
+  props: ['id', 'category']
 }
+// data () {
+//   return {
+//     products: []
+//   }
+// },
+// mounted () {
+//   axios.get('http://localhost:3000/vgImg')
+//     .then(response => {
+//       console.log('讀取資料庫資料:' + response.data[0])
+//       this.products = response.data[0].vegetablesPro
+//     })
+// }
+
 </script>
