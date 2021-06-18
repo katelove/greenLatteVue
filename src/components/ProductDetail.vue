@@ -1,29 +1,26 @@
 <template>
-<div>
-       <p>{{id}}</p>
-      <h6>{{category}}</h6>
-</div>
-
-<!-- <div class="product-frame">
-  <div class="product-left">
+<div class="container">
+  <div class="product-frame">
+  <div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="product-left">
     <div class="product-pic">
-
-      <h5>{{vgInfo.category}} :{{vgInfo.productName}}</h5>
+      <h5>{{category}} :{{productName}}</h5>
     </div>
-    <img v-bind:src="products.img" />
-    <div class="product-word"> -->
+    <img v-bind:src="img" />
       <!-- 營養 -->
-      <!-- <div v-for="(item,index) in products.nutrition" :key="index">
-          <h6>{{products.nutrition[index].element}}</h6>
-    </div>
+    <div v-for="(item,index) in nutrition" :key="index" class="product-word">
+      <h6>{{nutrition[index].element}}</h6>
     </div>
   </div>
-  <div class="product-right">
-    <div class="product-title"> -->
+  </div>
+    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="product-right">
+    <div class="product-title">
       <!-- 食物好處 -->
-      <!-- <div class="product-title-one" v-for="(item,index) in products.goodEffect" :key="index">
-        <h2>{{products.goodEffect[index].id}}</h2>
-        <h5>{{products.goodEffect[index].info}}</h5>
+      <div class="product-title-one" v-for="(item,index) in goodEffect" :key="index">
+        <h2>{{goodEffect[index].id}}</h2>
+        <h5>{{goodEffect[index].info}}</h5>
       </div>
     </div>
     <div class="product-dish">
@@ -32,10 +29,10 @@
       </div>
       <div class="product-d-left">
         <div class="p-left-detail">
-          <div v-for="(item,index) in products.buySecret" :key="index">
+          <div v-for="(item,index) in buySecret" :key="index">
             <i class="fa fa-caret-right"></i>
-            <h6>{{products.buySecret[index].title}}</h6>
-            <p>{{products.buySecret[index].detail}}</p>
+            <h6>{{buySecret[index].title}}</h6>
+            <p>{{buySecret[index].detail}}</p>
           </div>
         </div>
       </div>
@@ -45,40 +42,32 @@
         </div>
         <div class="product-d-r-top">
           <div class="p-right-detail">
-            <div v-for="(item,index) in products.saveSkill" :key="index">
+            <div v-for="(item,index) in saveSkill" :key="index">
               <i class="fa fa-caret-right"></i>
-              <p>{{products.saveSkill[index].option}}</p>
+              <p>{{saveSkill[index].option}}</p>
             </div>
           </div>
         </div>
         <div class="product-d-r-bottom">
-          <h1>{{products.price}}</h1>
-          <h5>元/{{products.unit}}</h5>
+          <h1>{{price}}</h1>
+          <h5>元/{{unit}}</h5>
         </div>
       </div>
     </div>
+    </div>
+    </div>
   </div>
-</div> -->
+</div>
+</div>
 
 </template>
 <style lang="scss">@import "../scss/productDetail.scss"; </style>
 <script>
-// import axios from 'axios'
 export default {
   name: 'products',
-  props: ['id', 'category']
+  props: ['category', 'productName', 'img',
+    'nutrition', 'goodEffect', 'buySecret',
+    'saveSkill', 'price', 'unit']
 }
-// data () {
-//   return {
-//     products: []
-//   }
-// },
-// mounted () {
-//   axios.get('http://localhost:3000/vgImg')
-//     .then(response => {
-//       console.log('讀取資料庫資料:' + response.data[0])
-//       this.products = response.data[0].vegetablesPro
-//     })
-// }
 
 </script>

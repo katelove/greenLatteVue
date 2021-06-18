@@ -46,12 +46,9 @@
     <!-- 產品說明 -->
     <b-modal ref="my-modal" size="xl" hide-footer="false">
       <div class="d-block text-center">
-        <h6>{{vgDetail[vgNum]}}</h6>
         <ProductDetail
         v-bind="vgDetail[vgNum]"
         ></ProductDetail>
-        <!-- <ProductDetail/> -->
-        <!-- <productCard v-bind="exInfo[0]"></productCard> -->
       </div>
     </b-modal>
 
@@ -62,25 +59,14 @@
 </template>
 
 <script>
-// import ProductDetail from '../components/ProductDetail'
+
 import VueSlickCarousel from 'vue-slick-carousel'
-// import ProductCard from './ProductCard'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 import proInfo from '../data/db.json'
 import axios from 'axios'
-// import Vue from 'vue'
 import ProductDetail from './ProductDetail.vue'
-// 產品說明卡
-// Vue.component('productCard', {
-//   props: ['id', 'a'],
-//   template: `
-//   <div>
-//   <h4>{{a[0].category}}</h4>
-//   <h6>{{a[0].productName}}</h6>
-//   </div>`
 
-// })
 export default {
   data: () => ({
     settings: {
@@ -125,8 +111,7 @@ export default {
     // 產品說明卡
     vgDetail: proInfo.vgImg.vegetablesPro,
     // 產品參數
-    vgNum: ''
-    // exInfo: proInfo.ex
+    vgNum: '0'
   }),
 
   methods: {
@@ -156,11 +141,6 @@ export default {
       .then(response => {
         this.vgDetail = response.data
       })
-    // axios.get('http://localhost:3000/ex')
-    //   .then(response => {
-    //     console.log('ex:' + response.data[0].a[0].category)
-    //     this.exInfo = response.data
-    //   })
   },
   name: 'MyComponent',
   components: { VueSlickCarousel, ProductDetail }

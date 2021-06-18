@@ -78,7 +78,7 @@
     {
       "id": 1,
       "category": "蔬菜類",
-      "productName": "青江菜",
+      "productName": "小黃光",
       "img": "/images/carousel/v_01.png",
       "nutrition": [
         {
@@ -165,7 +165,7 @@
     {
       "id": 2,
       "category": "蔬菜類",
-      "productName": "青江菜",
+      "productName": "青菜",
       "img": "/images/carousel/v_02.png",
       "nutrition": [
         {
@@ -339,7 +339,7 @@
     {
       "id": 4,
       "category": "蔬菜類",
-      "productName": "青江菜",
+      "productName": "大白菜",
       "img": "/images/carousel/v_04.png",
       "nutrition": [
         {
