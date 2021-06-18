@@ -25,7 +25,7 @@
           <ul v-if="active" class="ul-box">
             <li><div @click="redColor()" class="t-c-red"></div></li>
             <li><div @click="blueColor()" class="t-c-blue"></div></li>
-            <li><div @click="greenColor()" class="t-c-green"></div></li>
+            <li><div @click="yellowColor()" class="t-c-yellow"></div></li>
           </ul>
         </transition>
       <!-- 貼圖 -->
@@ -123,6 +123,7 @@
         :key="index"
         class="calendersSB"
         contenteditable="true"
+        v-text="tdValue"
         ></TdCell>
       </tr>
     </tbody>
@@ -218,15 +219,12 @@ export default {
     hideModal () {
       this.$refs['my-modal'].hide()
     },
-    redColor ($event) {
-      this.styleList.color = 'red'
-      console.log('this.styleList.color:' + this.styleList.color)
+    redColor () {
+      // 搜尋哪個td
       var tr = this.tableTag
       for (var y = 0; y < tr.length; y++) {
-        console.log('tr 長度:' + tr.length)
         var td = this.tableTag[y].td
         for (var x = 0; x < td.length; x++) {
-          console.log('確認td checked:' + td[x].checked)
           if (td[x].checked === true) {
             td[x].styleList.color = 'red'
           }
@@ -234,36 +232,67 @@ export default {
       }
     },
     blueColor () {
-      this.styleList.color = 'blue'
+      var tr = this.tableTag
+      for (var y = 0; y < tr.length; y++) {
+        var td = this.tableTag[y].td
+        for (var x = 0; x < td.length; x++) {
+          if (td[x].checked === true) {
+            td[x].styleList.color = 'blue'
+          }
+        }
+      }
     },
-    greenColor () {
-      this.styleList.color = 'green'
+    yellowColor () {
+      var tr = this.tableTag
+      for (var y = 0; y < tr.length; y++) {
+        var td = this.tableTag[y].td
+        for (var x = 0; x < td.length; x++) {
+          if (td[x].checked === true) {
+            td[x].styleList.color = '#e6c820'
+          }
+        }
+      }
     },
     wordH2 () {
-      this.styleList.fontSize = '24px'
+      var tr = this.tableTag
+      for (var y = 0; y < tr.length; y++) {
+        var td = this.tableTag[y].td
+        for (var x = 0; x < td.length; x++) {
+          if (td[x].checked === true) {
+            td[x].styleList.fontSize = '24px'
+          }
+        }
+      }
     },
     wordH4 () {
-      this.styleList.fontSize = '16px'
+      var tr = this.tableTag
+      for (var y = 0; y < tr.length; y++) {
+        var td = this.tableTag[y].td
+        for (var x = 0; x < td.length; x++) {
+          if (td[x].checked === true) {
+            td[x].styleList.fontSize = '16px'
+          }
+        }
+      }
     },
     wordH6 () {
-      this.styleList.fontSize = '12px'
+      var tr = this.tableTag
+      for (var y = 0; y < tr.length; y++) {
+        var td = this.tableTag[y].td
+        for (var x = 0; x < td.length; x++) {
+          if (td[x].checked === true) {
+            td[x].styleList.fontSize = '12px'
+          }
+        }
+      }
     },
-    // handleInput ($event) {
-    //   this.tdValue = $event.target.innerText
-    //   console.log('this.tdValue:' + this.tdValue)
-    // },
     delAll () {
       console.log('進入清除動作')
-      // var tdName = document.getElementById('tdName')
-      // tdName.innerHTML = ' '
-      // console.log('td:' + tdName)
-
-      for (var j = 0; j <= this.tdFistList.length; j++) {
-        for (var i = 1; i <= this.weekList.length; i++) {
-          console.log('表格:' + this.tdValue[i])
-          this.tdValue = ' '
-          // this.tdValue.slice(0, this.weekList.length, ' ')
-          // eachValue.slice(0, this.weekList.length - 1)
+      var tr = this.tableTag
+      for (var y = 0; y < tr.length; y++) {
+        var td = this.tableTag[y].td
+        for (var x = 0; x < td.length; x++) {
+          this.tdValue = ''
           console.log('全部清空')
         }
       }

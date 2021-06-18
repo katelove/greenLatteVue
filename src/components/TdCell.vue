@@ -13,7 +13,7 @@ export default {
   props: ['tdKey'],
   mounted () {
     // eslint-disable-next-line camelcase
-    var cell_drag = document.getElementById(this.text + 'drag')
+    var cell_drag = document.getElementById(this.tdKey.text + 'drag')
     // eslint-disable-next-line no-new
     new Sortable(cell_drag, {
       group: {
