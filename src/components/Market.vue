@@ -13,7 +13,7 @@
       </div>
         <div class="items">
           <VueSlickCarousel v-bind="settings">
-            <div v-for="(item,index) in proDetail" :key="index">
+            <div v-for="(item,index) in proDetail" :key="index" v-bind:id="sitckers">
               <img :src="item.proImg" @click="showModal(index)">
             </div>
           </VueSlickCarousel>
@@ -24,20 +24,19 @@
       <div class="green-title">
         <h4>水果類</h4>
       </div>
-      <div class="items">
+      <div class="items" >
         <VueSlickCarousel v-bind="settings">
-            <div v-for="(item,index) in fruitPhoto" :key="index">
-              <img :src="item.proImg" @click="showFModal(index)">
-            </div>
+          <div v-for="(item,index) in fruitPhoto" :key="index" v-bind:id="sitckers">
+            <img :src="item.proImg" @click="showFModal(index)">
+          </div>
         </VueSlickCarousel>
-
       </div>
     </div>
     <!-- DIY -->
     <div class="row">
       <h6>*把已選取蔬果移到收藏框即可。</h6>
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <div class="choice-diy">
+          <div class="choice-diy calendersSB">
             <a href="">DIY</a>
           </div>
         </div>
@@ -76,6 +75,7 @@ import proInfo from '../data/db.json'
 import axios from 'axios'
 import ProductDetail from './ProductDetail.vue'
 import FruitDetail from './FruitDetail.vue'
+import Sortable from 'sortablejs'
 
 export default {
   data: () => ({
@@ -146,6 +146,7 @@ export default {
 
   },
   mounted () {
+    // 傳 db資料
     axios.get('http://localhost:3000/vgImg')
       .then(response => {
         this.proDetail = response.data
@@ -162,6 +163,26 @@ export default {
       .then(response => {
         this.fruitDetail = response.data
       })
+    // 拖曳圖
+    var sitckers = document.getElementById('sitckers')
+
+    /* eslint-disable no-new */
+    new Sortable(sitckers, {
+      group: {
+        name: 'shared',
+        pull: 'clone'
+      },
+      animation: 150
+    })
+
+    var canvas = document.getElementsByClassName('calendersSB')
+    canvas.forEach((el) => {
+      new Sortable(el, {
+        group: 'shared',
+        animation: 150
+
+      })
+    })
   },
   name: 'MyComponent',
   components: { VueSlickCarousel, ProductDetail, FruitDetail }
@@ -170,6 +191,11 @@ export default {
 
 </script>
 
-<style lang="scss">@import "../scss/market.scss";
+<style lang="scss">
+@import "../scss/market.scss";
 @import "../scss/productDetail.scss";
+/* 移動圖片到畫布裡 */
+.calendersSB img{
+  width: 50px;
+}
 </style>
