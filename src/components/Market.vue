@@ -4,6 +4,7 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 market-title">
         <h1>歡迎《綠生活》菜市場</h1>
+        <h6>*請點擊產品圖片，詳看產品說明卡。</h6>
       </div>
     </div>
     <!-- 蔬果類 -->
@@ -34,12 +35,11 @@
     </div>
     <!-- DIY -->
     <div class="row">
-      <h6>*把已選取蔬果移到收藏框即可。</h6>
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <div class="choice-diy calendersSB">
-            <a href="">DIY</a>
-          </div>
-        </div>
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+       <div class="workerBtn">
+         <a href="">挑選蔬果Go</a>
+         </div>
+      </div>
     </div>
 
     <!-- 蔬菜產品說明 -->
@@ -163,7 +163,7 @@ export default {
         this.fruitDetail = response.data
       })
   },
-  name: 'MyComponent',
+  name: 'Market',
   components: { VueSlickCarousel, ProductDetail, FruitDetail }
 
 }
