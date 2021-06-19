@@ -62,9 +62,11 @@
         <div class="row">
           <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 account-sty">
             <div class="account-photo">
-             <div><font-awesome-icon icon="user-circle"/></div>
+             <div>
+               <img v-if="image" :src="image"/>
+             </div>
              <h5>大頭貼照片</h5>
-             <input type="button" value="選擇檔案" class="baseBtn" />
+             <input type="file" value="選擇檔案"  @change="fileSelected"/>
             </div>
           </div>
           <div class="col-xs-6 col-sm-9 col-md-9 col-lg-9">
@@ -186,7 +188,9 @@ export default {
       isShow: 'false',
       pwdError: {
         word: '兩個密碼須一致，請重新輸入'
-      }
+      },
+      // 上傳圖片
+      image: require('../../../public/images/company/user-ion.png')
     }
   },
   methods: {
@@ -216,7 +220,8 @@ export default {
         userBirthday: this.selectedDate,
         userAddress: this.userAddress,
         userPhone: this.userPhone,
-        userMobile: this.userMobile
+        userMobile: this.userMobile,
+        image: this.image// 用base64字串的方式上傳
       })
 
       this.$router.push('/login')
@@ -227,6 +232,15 @@ export default {
         this.isShow = !this.isShow
         return this.pwdError
       }
+    },
+    fileSelected (e) {
+      const file = e.target.files.item(0)
+      const reader = new FileReader()
+      reader.addEventListener('load', this.imageLoaded)
+      reader.readAsDataURL(file)
+    },
+    imageLoaded (e) {
+      this.image = e.target.result
     }
   },
   components: {

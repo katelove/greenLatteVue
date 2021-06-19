@@ -79,10 +79,14 @@
     left: 50%;
     transform: translateX(-50%);
 
-    div {
-      font-size: 200px;
+    img {
+      height: 200px;
       color: #2f5a28;
       display: inline;
+    }
+
+    input {
+      padding-left: 200px;
     }
   }
 
@@ -176,20 +180,29 @@
   }
 
   @media (max-width: 768px) {
-
     .account-sty {
       height: 400px;
+
+      .account-photo {
+        position: relative;
+
+        input {
+          padding-left: 150px;
+          margin: 15px 0;
+        }
+
+      }
+
+      .account-detail {
+        display: block;
+
+      }
     }
 
-    .account-detail {
-      display: block;
+    .mail-length {
+      input {
+        width: 300px;
+      }
 
     }
-  }
-
-  .mail-length {
-    input {
-      width: 300px;
-    }
-
   }
