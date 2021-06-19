@@ -13,7 +13,7 @@
       </div>
         <div class="items">
           <VueSlickCarousel v-bind="settings">
-            <div v-for="(item,index) in proDetail" :key="index" v-bind:id="sitckers">
+            <div v-for="(item,index) in proDetail" :key="index">
               <img :src="item.proImg" @click="showModal(index)">
             </div>
           </VueSlickCarousel>
@@ -26,7 +26,7 @@
       </div>
       <div class="items" >
         <VueSlickCarousel v-bind="settings">
-          <div v-for="(item,index) in fruitPhoto" :key="index" v-bind:id="sitckers">
+          <div v-for="(item,index) in fruitPhoto" :key="index">
             <img :src="item.proImg" @click="showFModal(index)">
           </div>
         </VueSlickCarousel>
@@ -75,7 +75,6 @@ import proInfo from '../data/db.json'
 import axios from 'axios'
 import ProductDetail from './ProductDetail.vue'
 import FruitDetail from './FruitDetail.vue'
-import Sortable from 'sortablejs'
 
 export default {
   data: () => ({
@@ -163,26 +162,6 @@ export default {
       .then(response => {
         this.fruitDetail = response.data
       })
-    // 拖曳圖
-    var sitckers = document.getElementById('sitckers')
-
-    /* eslint-disable no-new */
-    new Sortable(sitckers, {
-      group: {
-        name: 'shared',
-        pull: 'clone'
-      },
-      animation: 150
-    })
-
-    var canvas = document.getElementsByClassName('calendersSB')
-    canvas.forEach((el) => {
-      new Sortable(el, {
-        group: 'shared',
-        animation: 150
-
-      })
-    })
   },
   name: 'MyComponent',
   components: { VueSlickCarousel, ProductDetail, FruitDetail }
@@ -194,8 +173,4 @@ export default {
 <style lang="scss">
 @import "../scss/market.scss";
 @import "../scss/productDetail.scss";
-/* 移動圖片到畫布裡 */
-.calendersSB img{
-  width: 50px;
-}
 </style>
