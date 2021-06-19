@@ -4,6 +4,7 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 market-title">
         <h1>歡迎《綠生活》菜市場</h1>
+        <h6>*請點擊產品圖片，詳看產品說明卡。</h6>
       </div>
     </div>
     <!-- 蔬果類 -->
@@ -24,30 +25,38 @@
       <div class="green-title">
         <h4>水果類</h4>
       </div>
-      <div class="items">
+      <div class="items" >
         <VueSlickCarousel v-bind="settings">
-          <div><img src="../../public/images/carousel/fruit1.png"/></div>
-          <div><img src="../../public/images/carousel/fruit2.png"/></div>
-          <div><img src="../../public/images/carousel/fruit3.png"/></div>
-          <div><img src="../../public/images/carousel/fruit4.png"/></div>
+          <div v-for="(item,index) in fruitPhoto" :key="index">
+            <img :src="item.proImg" @click="showFModal(index)">
+          </div>
         </VueSlickCarousel>
       </div>
     </div>
     <!-- DIY -->
     <div class="row">
-      <h6>*把已選取蔬果移到收藏框即可。</h6>
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <div class="choice-diy">
-            <a href="">DIY</a>
-          </div>
-        </div>
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+       <div class="workerBtn">
+         <a href="">挑選蔬果Go</a>
+         </div>
+      </div>
     </div>
 
-    <!-- 產品說明 -->
-    <b-modal ref="my-modal" size="xl" hide-footer="false">
+    <!-- 蔬菜產品說明 -->
+    <b-modal ref="vg-modal" size="xl" hide-footer="false">
       <div class="d-block text-center">
-        <!-- <ProductDetail/> -->
-        <productCard v-bind="exInfo[0]"></productCard>
+        <ProductDetail
+        v-bind="vgDetail[proNum]"
+        ></ProductDetail>
+      </div>
+    </b-modal>
+
+    <!-- 水果產品說明 -->
+    <b-modal ref="fruit-modal" size="xl" hide-footer="false">
+      <div class="d-block text-center">
+        <FruitDetail
+        v-bind="fruitDetail[proNum]"
+        ></FruitDetail>
       </div>
     </b-modal>
 
@@ -58,25 +67,15 @@
 </template>
 
 <script>
-// import ProductDetail from '../components/ProductDetail'
+
 import VueSlickCarousel from 'vue-slick-carousel'
-// import ProductCard from './ProductCard'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 import proInfo from '../data/db.json'
 import axios from 'axios'
-import Vue from 'vue'
-// import ProductDetail from './ProductDetail.vue'
-// 產品說明卡
-Vue.component('productCard', {
-  props: ['id', 'a'],
-  template: `
-  <div>
-  <h4>{{a[0].category}}</h4>
-  <h6>{{a[0].productName}}</h6>
-  </div>`
+import ProductDetail from './ProductDetail.vue'
+import FruitDetail from './FruitDetail.vue'
 
-})
 export default {
   data: () => ({
     settings: {
@@ -117,44 +116,61 @@ export default {
         }
       ]
     },
+    // 蔬菜產品圖片&說明卡
     proDetail: proInfo.vgImg,
-    exInfo: proInfo.ex
+    vgDetail: proInfo.vegetablesPro,
+    // 水果產品圖片&說明卡
+    fruitPhoto: proInfo.fruitImg,
+    fruitDetail: proInfo.fruitPro,
+    // 產品參數
+    proNum: '0'
   }),
 
   methods: {
     // for modal
     showModal (index) {
-      console.log('目前showModal index:' + index)
-      this.$refs['my-modal'].show(index)
+      this.proNum = index
+      this.$refs['vg-modal'].show(index)
     },
     hideModal () {
-      this.$refs['my-modal'].hide()
+      this.$refs['vg-modal'].hide()
     },
-    toggleModal () {
-      // We pass the ID of the button that we want to return focus to
-      // when the modal has hidden
-      this.$refs['my-modal'].toggle('#toggle-btn')
+    showFModal (index) {
+      this.proNum = index
+      this.$refs['fruit-modal'].show(index)
+    },
+    hideFModal () {
+      this.$refs['fruit-modal'].hide()
     }
 
   },
   mounted () {
+    // 傳 db資料
     axios.get('http://localhost:3000/vgImg')
       .then(response => {
         this.proDetail = response.data
       })
-    axios.get('http://localhost:3000/ex')
+    axios.get('http://localhost:3000/vegetablesPro')
       .then(response => {
-        console.log('ex:' + response.data[0].a[0].category)
-        this.exInfo = response.data
+        this.vgDetail = response.data
+      })
+    axios.get('http://localhost:3000/fruitImg')
+      .then(response => {
+        this.fruitPhoto = response.data
+      })
+    axios.get('http://localhost:3000/fruitPro')
+      .then(response => {
+        this.fruitDetail = response.data
       })
   },
-  name: 'MyComponent',
-  components: { VueSlickCarousel }
+  name: 'Market',
+  components: { VueSlickCarousel, ProductDetail, FruitDetail }
 
 }
 
 </script>
 
-<style lang="scss">@import "../scss/market.scss";
+<style lang="scss">
+@import "../scss/market.scss";
 @import "../scss/productDetail.scss";
 </style>

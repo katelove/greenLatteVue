@@ -59,291 +59,737 @@
   "vgImg": [
     {
       "id": 1,
-      "proImg": "/images/carousel/v_01.png",
-      "vegetablesPro": {
-        "id": 1,
-        "category": "蔬菜類",
-        "productName": "青江菜",
-        "img": "/images/carousel/v_01.png",
-        "nutrition": [
-          {
-            "id": 1,
-            "element": "維生素C"
-          },
-          {
-            "id": 2,
-            "element": "鈣質"
-          },
-          {
-            "id": 3,
-            "element": "葉酸"
-          },
-          {
-            "id": 4,
-            "element": "鐵"
-          },
-          {
-            "id": 5,
-            "element": "維生素A"
-          },
-          {
-            "id": 6,
-            "element": "維生素B"
-          },
-          {
-            "id": 7,
-            "element": "膳食纖維"
-          },
-          {
-            "id": 8,
-            "element": "胡蘿蔔素"
-          }
-        ],
-        "goodEffect": [
-          {
-            "id": 1,
-            "info": "對高血壓、動脈硬化有預防效果。"
-          },
-          {
-            "id": 2,
-            "info": "促進血液循環、散血消腫的作用。"
-          },
-          {
-            "id": 3,
-            "info": "降低中風引起的腎衰竭等發病率。"
-          }
-        ],
-        "buySecret": [
-          {
-            "id": 1,
-            "title": "飽滿硬實",
-            "detail": "新鮮飽滿，莖部緊實。"
-          },
-          {
-            "id": 2,
-            "title": "顏色青綠",
-            "detail": "葉子必須是漂亮的青綠色。"
-          },
-          {
-            "id": 3,
-            "title": "莖部寬大",
-            "detail": "莖部要寬且大，代表含水量充足。"
-          }
-        ],
-        "saveSkill": [
-          {
-            "id": "1",
-            "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
-          },
-          {
-            "id": "2",
-            "option": "採直立方式置於蔬果冷藏室中。"
-          },
-          {
-            "id": "3",
-            "option": "約可保存3～4天。"
-          }
-        ],
-        "price": "25",
-        "unit": "把"
-      }
+      "proImg": "/images/carousel/v_01.png"
     },
     {
       "id": 2,
-      "proImg": "/images/carousel/v_02.png",
-      "vegetablesPro": {
-        "id": 2,
-        "category": "蔬菜類",
-        "productName": "青江菜",
-        "img": "/images/carousel/v_02.png",
-        "nutrition": [
-          {
-            "id": 1,
-            "element": "維生素C"
-          },
-          {
-            "id": 2,
-            "element": "鈣質"
-          },
-          {
-            "id": 3,
-            "element": "葉酸"
-          },
-          {
-            "id": 4,
-            "element": "鐵"
-          },
-          {
-            "id": 5,
-            "element": "維生素A"
-          },
-          {
-            "id": 6,
-            "element": "維生素B"
-          },
-          {
-            "id": 7,
-            "element": "膳食纖維"
-          },
-          {
-            "id": 8,
-            "element": "胡蘿蔔素"
-          }
-        ],
-        "goodEffect": [
-          {
-            "id": 1,
-            "info": "對高血壓、動脈硬化有預防效果。"
-          },
-          {
-            "id": 2,
-            "info": "促進血液循環、散血消腫的作用。"
-          },
-          {
-            "id": 3,
-            "info": "降低中風引起的腎衰竭等發病率。"
-          }
-        ],
-        "buySecret": [
-          {
-            "id": 1,
-            "title": "飽滿硬實",
-            "detail": "新鮮飽滿，莖部緊實。"
-          },
-          {
-            "id": 2,
-            "title": "顏色青綠",
-            "detail": "葉子必須是漂亮的青綠色。"
-          },
-          {
-            "id": 3,
-            "title": "莖部寬大",
-            "detail": "莖部要寬且大，代表含水量充足。"
-          }
-        ],
-        "saveSkill": [
-          {
-            "id": "1",
-            "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
-          },
-          {
-            "id": "2",
-            "option": "採直立方式置於蔬果冷藏室中。"
-          },
-          {
-            "id": "3",
-            "option": "約可保存3～4天。"
-          }
-        ],
-        "price": "25",
-        "unit": "把"
-      }
+      "proImg": "/images/carousel/v_02.png"
     },
     {
       "id": 3,
-      "proImg": "/images/carousel/v_03.png",
-      "vegetablesPro": {
-        "id": 3,
-        "category": "蔬菜類",
-        "productName": "青江菜",
-        "img": "/images/carousel/v_03.png",
-        "nutrition": [
-          {
-            "id": 1,
-            "element": "維生素C"
-          },
-          {
-            "id": 2,
-            "element": "鈣質"
-          },
-          {
-            "id": 3,
-            "element": "葉酸"
-          },
-          {
-            "id": 4,
-            "element": "鐵"
-          },
-          {
-            "id": 5,
-            "element": "維生素A"
-          },
-          {
-            "id": 6,
-            "element": "維生素B"
-          },
-          {
-            "id": 7,
-            "element": "膳食纖維"
-          },
-          {
-            "id": 8,
-            "element": "胡蘿蔔素"
-          }
-        ],
-        "goodEffect": [
-          {
-            "id": 1,
-            "info": "對高血壓、動脈硬化有預防效果。"
-          },
-          {
-            "id": 2,
-            "info": "促進血液循環、散血消腫的作用。"
-          },
-          {
-            "id": 3,
-            "info": "降低中風引起的腎衰竭等發病率。"
-          }
-        ],
-        "buySecret": [
-          {
-            "id": 1,
-            "title": "飽滿硬實",
-            "detail": "新鮮飽滿，莖部緊實。"
-          },
-          {
-            "id": 2,
-            "title": "顏色青綠",
-            "detail": "葉子必須是漂亮的青綠色。"
-          },
-          {
-            "id": 3,
-            "title": "莖部寬大",
-            "detail": "莖部要寬且大，代表含水量充足。"
-          }
-        ],
-        "saveSkill": [
-          {
-            "id": "1",
-            "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
-          },
-          {
-            "id": "2",
-            "option": "採直立方式置於蔬果冷藏室中。"
-          },
-          {
-            "id": "3",
-            "option": "約可保存3～4天。"
-          }
-        ],
-        "price": "25",
-        "unit": "把"
-      }
+      "proImg": "/images/carousel/v_03.png"
     },
     {
       "id": 4,
       "proImg": "/images/carousel/v_04.png"
     }
   ],
-  "ex": [
+  "vegetablesPro": [
     {
       "id": 1,
-      "a": [
+      "category": "蔬菜類",
+      "productName": "小黃瓜",
+      "img": "/images/carousel/v_01.png",
+      "nutrition": [
         {
-          "category": "蔬菜類",
-          "productName": "青江菜"
+          "id": 1,
+          "element": "維生素C"
+        },
+        {
+          "id": 2,
+          "element": "鈣質"
+        },
+        {
+          "id": 3,
+          "element": "葉酸"
+        },
+        {
+          "id": 4,
+          "element": "鐵"
+        },
+        {
+          "id": 5,
+          "element": "維生素A"
+        },
+        {
+          "id": 6,
+          "element": "維生素B"
+        },
+        {
+          "id": 7,
+          "element": "膳食纖維"
+        },
+        {
+          "id": 8,
+          "element": "胡蘿蔔素"
         }
-      ]
+      ],
+      "goodEffect": [
+        {
+          "id": 1,
+          "info": "對高血壓、動脈硬化有預防效果。"
+        },
+        {
+          "id": 2,
+          "info": "促進血液循環、散血消腫的作用。"
+        },
+        {
+          "id": 3,
+          "info": "降低中風引起的腎衰竭等發病率。"
+        }
+      ],
+      "buySecret": [
+        {
+          "id": 1,
+          "title": "飽滿硬實",
+          "detail": "新鮮飽滿，莖部緊實。"
+        },
+        {
+          "id": 2,
+          "title": "顏色青綠",
+          "detail": "葉子必須是漂亮的青綠色。"
+        },
+        {
+          "id": 3,
+          "title": "莖部寬大",
+          "detail": "莖部要寬且大，代表含水量充足。"
+        }
+      ],
+      "saveSkill": [
+        {
+          "id": "1",
+          "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
+        },
+        {
+          "id": "2",
+          "option": "採直立方式置於蔬果冷藏室中。"
+        },
+        {
+          "id": "3",
+          "option": "約可保存3～4天。"
+        }
+      ],
+      "price": "10",
+      "unit": "隻"
+    },
+    {
+      "id": 2,
+      "category": "蔬菜類",
+      "productName": "青菜",
+      "img": "/images/carousel/v_02.png",
+      "nutrition": [
+        {
+          "id": 1,
+          "element": "維生素C"
+        },
+        {
+          "id": 2,
+          "element": "鈣質"
+        },
+        {
+          "id": 3,
+          "element": "葉酸"
+        },
+        {
+          "id": 4,
+          "element": "鐵"
+        },
+        {
+          "id": 5,
+          "element": "維生素A"
+        },
+        {
+          "id": 6,
+          "element": "維生素B"
+        },
+        {
+          "id": 7,
+          "element": "膳食纖維"
+        },
+        {
+          "id": 8,
+          "element": "胡蘿蔔素"
+        }
+      ],
+      "goodEffect": [
+        {
+          "id": 1,
+          "info": "對高血壓、動脈硬化有預防效果。"
+        },
+        {
+          "id": 2,
+          "info": "促進血液循環、散血消腫的作用。"
+        },
+        {
+          "id": 3,
+          "info": "降低中風引起的腎衰竭等發病率。"
+        }
+      ],
+      "buySecret": [
+        {
+          "id": 1,
+          "title": "飽滿硬實",
+          "detail": "新鮮飽滿，莖部緊實。"
+        },
+        {
+          "id": 2,
+          "title": "顏色青綠",
+          "detail": "葉子必須是漂亮的青綠色。"
+        },
+        {
+          "id": 3,
+          "title": "莖部寬大",
+          "detail": "莖部要寬且大，代表含水量充足。"
+        }
+      ],
+      "saveSkill": [
+        {
+          "id": "1",
+          "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
+        },
+        {
+          "id": "2",
+          "option": "採直立方式置於蔬果冷藏室中。"
+        },
+        {
+          "id": "3",
+          "option": "約可保存3～4天。"
+        }
+      ],
+      "price": "20",
+      "unit": "把"
+    },
+    {
+      "id": 3,
+      "category": "蔬菜類",
+      "productName": "青江菜",
+      "img": "/images/carousel/v_03.png",
+      "nutrition": [
+        {
+          "id": 1,
+          "element": "維生素C"
+        },
+        {
+          "id": 2,
+          "element": "鈣質"
+        },
+        {
+          "id": 3,
+          "element": "葉酸"
+        },
+        {
+          "id": 4,
+          "element": "鐵"
+        },
+        {
+          "id": 5,
+          "element": "維生素A"
+        },
+        {
+          "id": 6,
+          "element": "維生素B"
+        },
+        {
+          "id": 7,
+          "element": "膳食纖維"
+        },
+        {
+          "id": 8,
+          "element": "胡蘿蔔素"
+        }
+      ],
+      "goodEffect": [
+        {
+          "id": 1,
+          "info": "對高血壓、動脈硬化有預防效果。"
+        },
+        {
+          "id": 2,
+          "info": "促進血液循環、散血消腫的作用。"
+        },
+        {
+          "id": 3,
+          "info": "降低中風引起的腎衰竭等發病率。"
+        }
+      ],
+      "buySecret": [
+        {
+          "id": 1,
+          "title": "飽滿硬實",
+          "detail": "新鮮飽滿，莖部緊實。"
+        },
+        {
+          "id": 2,
+          "title": "顏色青綠",
+          "detail": "葉子必須是漂亮的青綠色。"
+        },
+        {
+          "id": 3,
+          "title": "莖部寬大",
+          "detail": "莖部要寬且大，代表含水量充足。"
+        }
+      ],
+      "saveSkill": [
+        {
+          "id": "1",
+          "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
+        },
+        {
+          "id": "2",
+          "option": "採直立方式置於蔬果冷藏室中。"
+        },
+        {
+          "id": "3",
+          "option": "約可保存3～4天。"
+        }
+      ],
+      "price": "25",
+      "unit": "把"
+    },
+    {
+      "id": 4,
+      "category": "蔬菜類",
+      "productName": "大白菜",
+      "img": "/images/carousel/v_04.png",
+      "nutrition": [
+        {
+          "id": 1,
+          "element": "維生素C"
+        },
+        {
+          "id": 2,
+          "element": "鈣質"
+        },
+        {
+          "id": 3,
+          "element": "葉酸"
+        },
+        {
+          "id": 4,
+          "element": "鐵"
+        },
+        {
+          "id": 5,
+          "element": "維生素A"
+        },
+        {
+          "id": 6,
+          "element": "維生素B"
+        },
+        {
+          "id": 7,
+          "element": "膳食纖維"
+        },
+        {
+          "id": 8,
+          "element": "胡蘿蔔素"
+        }
+      ],
+      "goodEffect": [
+        {
+          "id": 1,
+          "info": "對高血壓、動脈硬化有預防效果。"
+        },
+        {
+          "id": 2,
+          "info": "促進血液循環、散血消腫的作用。"
+        },
+        {
+          "id": 3,
+          "info": "降低中風引起的腎衰竭等發病率。"
+        }
+      ],
+      "buySecret": [
+        {
+          "id": 1,
+          "title": "飽滿硬實",
+          "detail": "新鮮飽滿，莖部緊實。"
+        },
+        {
+          "id": 2,
+          "title": "顏色青綠",
+          "detail": "葉子必須是漂亮的青綠色。"
+        },
+        {
+          "id": 3,
+          "title": "莖部寬大",
+          "detail": "莖部要寬且大，代表含水量充足。"
+        }
+      ],
+      "saveSkill": [
+        {
+          "id": "1",
+          "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
+        },
+        {
+          "id": "2",
+          "option": "採直立方式置於蔬果冷藏室中。"
+        },
+        {
+          "id": "3",
+          "option": "約可保存3～4天。"
+        }
+      ],
+      "price": "30",
+      "unit": "把"
+    }
+  ],
+  "fruitImg": [
+    {
+      "id": 1,
+      "proImg": "/images/carousel/fruit1.png"
+    },
+    {
+      "id": 2,
+      "proImg": "/images/carousel/fruit2.png"
+    },
+    {
+      "id": 3,
+      "proImg": "/images/carousel/fruit3.png"
+    },
+    {
+      "id": 4,
+      "proImg": "/images/carousel/fruit4.png"
+    }
+  ],
+  "fruitPro": [
+    {
+      "id": 1,
+      "category": "水果類",
+      "productName": "檸檬",
+      "img": "/images/carousel/fruit1.png",
+      "nutrition": [
+        {
+          "id": 1,
+          "element": "維生素C"
+        },
+        {
+          "id": 2,
+          "element": "鈣質"
+        },
+        {
+          "id": 3,
+          "element": "葉酸"
+        },
+        {
+          "id": 4,
+          "element": "鐵"
+        },
+        {
+          "id": 5,
+          "element": "維生素A"
+        },
+        {
+          "id": 6,
+          "element": "維生素B"
+        },
+        {
+          "id": 7,
+          "element": "膳食纖維"
+        },
+        {
+          "id": 8,
+          "element": "胡蘿蔔素"
+        }
+      ],
+      "goodEffect": [
+        {
+          "id": 1,
+          "info": "對高血壓、動脈硬化有預防效果。"
+        },
+        {
+          "id": 2,
+          "info": "促進血液循環、散血消腫的作用。"
+        },
+        {
+          "id": 3,
+          "info": "降低中風引起的腎衰竭等發病率。"
+        }
+      ],
+      "buySecret": [
+        {
+          "id": 1,
+          "title": "飽滿硬實",
+          "detail": "新鮮飽滿，莖部緊實。"
+        },
+        {
+          "id": 2,
+          "title": "顏色青綠",
+          "detail": "葉子必須是漂亮的青綠色。"
+        },
+        {
+          "id": 3,
+          "title": "莖部寬大",
+          "detail": "莖部要寬且大，代表含水量充足。"
+        }
+      ],
+      "saveSkill": [
+        {
+          "id": "1",
+          "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
+        },
+        {
+          "id": "2",
+          "option": "採直立方式置於蔬果冷藏室中。"
+        },
+        {
+          "id": "3",
+          "option": "約可保存3～4天。"
+        }
+      ],
+      "price": "15",
+      "unit": "粒"
+    },
+    {
+      "id": 2,
+      "category": "水果類",
+      "productName": "奇異果",
+      "img": "/images/carousel/fruit2.png",
+      "nutrition": [
+        {
+          "id": 1,
+          "element": "維生素C"
+        },
+        {
+          "id": 2,
+          "element": "鈣質"
+        },
+        {
+          "id": 3,
+          "element": "葉酸"
+        },
+        {
+          "id": 4,
+          "element": "鐵"
+        },
+        {
+          "id": 5,
+          "element": "維生素A"
+        },
+        {
+          "id": 6,
+          "element": "維生素B"
+        },
+        {
+          "id": 7,
+          "element": "膳食纖維"
+        },
+        {
+          "id": 8,
+          "element": "胡蘿蔔素"
+        }
+      ],
+      "goodEffect": [
+        {
+          "id": 1,
+          "info": "對高血壓、動脈硬化有預防效果。"
+        },
+        {
+          "id": 2,
+          "info": "促進血液循環、散血消腫的作用。"
+        },
+        {
+          "id": 3,
+          "info": "降低中風引起的腎衰竭等發病率。"
+        }
+      ],
+      "buySecret": [
+        {
+          "id": 1,
+          "title": "飽滿硬實",
+          "detail": "新鮮飽滿，莖部緊實。"
+        },
+        {
+          "id": 2,
+          "title": "顏色青綠",
+          "detail": "葉子必須是漂亮的青綠色。"
+        },
+        {
+          "id": 3,
+          "title": "莖部寬大",
+          "detail": "莖部要寬且大，代表含水量充足。"
+        }
+      ],
+      "saveSkill": [
+        {
+          "id": "1",
+          "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
+        },
+        {
+          "id": "2",
+          "option": "採直立方式置於蔬果冷藏室中。"
+        },
+        {
+          "id": "3",
+          "option": "約可保存3～4天。"
+        }
+      ],
+      "price": "25",
+      "unit": "個"
+    },
+    {
+      "id": 3,
+      "category": "水果類",
+      "productName": "蘋果",
+      "img": "/images/carousel/fruit3.png",
+      "nutrition": [
+        {
+          "id": 1,
+          "element": "維生素C"
+        },
+        {
+          "id": 2,
+          "element": "鈣質"
+        },
+        {
+          "id": 3,
+          "element": "葉酸"
+        },
+        {
+          "id": 4,
+          "element": "鐵"
+        },
+        {
+          "id": 5,
+          "element": "維生素A"
+        },
+        {
+          "id": 6,
+          "element": "維生素B"
+        },
+        {
+          "id": 7,
+          "element": "膳食纖維"
+        },
+        {
+          "id": 8,
+          "element": "胡蘿蔔素"
+        }
+      ],
+      "goodEffect": [
+        {
+          "id": 1,
+          "info": "對高血壓、動脈硬化有預防效果。"
+        },
+        {
+          "id": 2,
+          "info": "促進血液循環、散血消腫的作用。"
+        },
+        {
+          "id": 3,
+          "info": "降低中風引起的腎衰竭等發病率。"
+        }
+      ],
+      "buySecret": [
+        {
+          "id": 1,
+          "title": "飽滿硬實",
+          "detail": "新鮮飽滿，莖部緊實。"
+        },
+        {
+          "id": 2,
+          "title": "顏色青綠",
+          "detail": "葉子必須是漂亮的青綠色。"
+        },
+        {
+          "id": 3,
+          "title": "莖部寬大",
+          "detail": "莖部要寬且大，代表含水量充足。"
+        }
+      ],
+      "saveSkill": [
+        {
+          "id": "1",
+          "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
+        },
+        {
+          "id": "2",
+          "option": "採直立方式置於蔬果冷藏室中。"
+        },
+        {
+          "id": "3",
+          "option": "約可保存3～4天。"
+        }
+      ],
+      "price": "10",
+      "unit": "個"
+    },
+    {
+      "id": 4,
+      "category": "水果類",
+      "productName": "香蕉",
+      "img": "/images/carousel/fruit4.png",
+      "nutrition": [
+        {
+          "id": 1,
+          "element": "維生素C"
+        },
+        {
+          "id": 2,
+          "element": "鈣質"
+        },
+        {
+          "id": 3,
+          "element": "葉酸"
+        },
+        {
+          "id": 4,
+          "element": "鐵"
+        },
+        {
+          "id": 5,
+          "element": "維生素A"
+        },
+        {
+          "id": 6,
+          "element": "維生素B"
+        },
+        {
+          "id": 7,
+          "element": "膳食纖維"
+        },
+        {
+          "id": 8,
+          "element": "胡蘿蔔素"
+        }
+      ],
+      "goodEffect": [
+        {
+          "id": 1,
+          "info": "對高血壓、動脈硬化有預防效果。"
+        },
+        {
+          "id": 2,
+          "info": "促進血液循環、散血消腫的作用。"
+        },
+        {
+          "id": 3,
+          "info": "降低中風引起的腎衰竭等發病率。"
+        }
+      ],
+      "buySecret": [
+        {
+          "id": 1,
+          "title": "飽滿硬實",
+          "detail": "新鮮飽滿，莖部緊實。"
+        },
+        {
+          "id": 2,
+          "title": "顏色青綠",
+          "detail": "葉子必須是漂亮的青綠色。"
+        },
+        {
+          "id": 3,
+          "title": "莖部寬大",
+          "detail": "莖部要寬且大，代表含水量充足。"
+        }
+      ],
+      "saveSkill": [
+        {
+          "id": "1",
+          "option": "以沾濕的廚房紙巾先捲起，再用報紙包覆、裝進塑膠袋中。"
+        },
+        {
+          "id": "2",
+          "option": "採直立方式置於蔬果冷藏室中。"
+        },
+        {
+          "id": "3",
+          "option": "約可保存3～4天。"
+        }
+      ],
+      "price": "40",
+      "unit": "串"
     }
   ]
 }
