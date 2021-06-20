@@ -4,7 +4,6 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 market-title">
         <h1>歡迎《綠生活》菜市場</h1>
-        <h6>*請點擊產品圖片，詳看產品說明卡。</h6>
       </div>
     </div>
 
@@ -100,17 +99,6 @@ export default {
     proNum: '0'
   }),
 
-  methods: {
-    // for modal
-    showModal (index) {
-      this.proNum = index
-      this.$refs['vg-modal'].show(index)
-    },
-    hideModal () {
-      this.$refs['vg-modal'].hide()
-    }
-
-  },
   mounted () {
     // 傳 db資料
     axios.get('http://localhost:3000/proImg')
