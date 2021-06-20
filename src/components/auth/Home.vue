@@ -10,11 +10,13 @@
 <div class="site"></div>
 <section id="sec5"><Market/></section>
 <div class="site"></div>
-<section id="sec6"><DiyGreen/></section>
+<section id="sec6"><ProductShop/></section>
 <div class="site"></div>
-<section id="sec7"><DatePlan/></section>
+<section id="sec7"><DiyGreen/></section>
 <div class="site"></div>
-<section id="sec8"><WeekProject/></section>
+<section id="sec8"><DatePlan/></section>
+<div class="site"></div>
+<section id="sec9"><WeekProject/></section>
 <section id="sec9"></section>
 </div>
 
@@ -28,6 +30,7 @@ import HealthTest from '../../components/HealthTest'
 import WeekProject from '../../components/WeekProject'
 import GreenLatte from '../../components/GreenLatte'
 import Market from '../../components/Market'
+import ProductShop from '../../components/ProductShop.vue'
 import DiyGreen from '../../components/DiyGreen'
 import DatePlan from '../../components/DatePlan'
 
@@ -41,6 +44,7 @@ export default {
     WeekProject,
     GreenLatte,
     Market,
+    ProductShop,
     DiyGreen,
     DatePlan
   }
