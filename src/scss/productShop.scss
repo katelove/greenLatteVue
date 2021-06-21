@@ -1,7 +1,36 @@
-.left-bucket {
-    background-color: rgb(131, 129, 129);
-    border-radius: 20px;
+.titleWord {
+    background-color: #2f5a28;
+    color: white;
+
+    h1 {
+        padding: 10px;
+    }
 }
+
+.proTitle {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+    .productList {
+        width: 1000px;
+        height: 50px;
+        display: flex;
+        justify-content: flex-start;
+
+        select {
+            background-color: #2f5a28;
+            color: white;
+        }
+
+        input[type=text] {
+            padding: 0;
+            margin: 0;
+            height: 50px;
+        }
+    }
+}
+
 
 .items {
     width: 100%;
@@ -62,6 +91,6 @@
     background-color: rgb(104, 100, 100);
     width: 1000px;
     height: 300px;
+    display: flex;
+    justify-content: flex-start;
 }
-
-//圖片加入DIY
