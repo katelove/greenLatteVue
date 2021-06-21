@@ -24,7 +24,7 @@
   :focusOnSelect="true"
   v-bind="settings">
    <div v-for="(item,index) in proImg" :key="index">
-    <img :src="item.vImg" @click="showModal(index)">
+    <img :src="item.vImg" @click="showDetail(index)">
    </div>
    </VueSlickCarousel>
   </div>
@@ -109,6 +109,12 @@ export default {
       .then(response => {
         this.proDetail = response.data
       })
+  },
+  methods: {
+    showDetail (index) {
+      this.proNum = index
+    }
+
   },
   name: 'Market',
   components: { VueSlickCarousel, ProductDetail }
