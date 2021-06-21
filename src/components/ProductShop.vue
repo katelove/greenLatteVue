@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 titleWord">
       <h1>請選購 DIY 綠拿鐵蔬果產品</h1>
     </div>
   </div>
@@ -12,10 +12,19 @@
         <div class="imgShopping">
           <img :src="item.vImg">
           <div class="shoppingItems">
-            <h4>Add to Cart</h4>
+            <h4 @click="buyPro(index)">Add to DIY</h4>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <!-- DIY 購物籃 -->
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <transition name="diyChoice">
+        <div class="diyBgc">
+        </div>
+      </transition>
     </div>
   </div>
 </div>
@@ -28,7 +37,9 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      proImg: proInfo.proImg
+      proImg: proInfo.proImg,
+      proNum: ''
+
     }
   },
   mounted () {
@@ -36,6 +47,14 @@ export default {
       .then(response => {
         this.proImg = response.data
       })
+  },
+  methods: {
+    buyPro (index) {
+      this.proNum = index
+      console.log('目前選擇產品是:' + this.proNum)
+      var img = this.proImg[index].vImg
+      console.log('目前圖片:' + img)
+    }
   }
 }
 </script>

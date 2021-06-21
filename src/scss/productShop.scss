@@ -27,9 +27,6 @@
 
 .imgShopping:hover {
     position: relative;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
 
     .shoppingItems {
         position: absolute;
@@ -47,6 +44,24 @@
 
         h4 {
             display: block;
+            border-radius: 10px;
+            border: white 3px solid;
+            padding: 5px;
+        }
+
+        :hover {
+            background-color: white;
+            color: rgb(49, 49, 49);
+            font-weight: bold;
         }
     }
 }
+
+.diyBgc {
+
+    background-color: rgb(104, 100, 100);
+    width: 1000px;
+    height: 300px;
+}
+
+//圖片加入DIY
