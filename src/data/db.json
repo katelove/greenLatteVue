@@ -56,25 +56,57 @@
       "id": 5
     }
   ],
-  "vgImg": [
+  "proImg": [
     {
       "id": 1,
-      "proImg": "/images/carousel/v_01.png"
+      "category": "蔬菜類",
+      "productName": "小黃瓜",
+      "vImg": "/images/carousel/v_01.png"
     },
     {
       "id": 2,
-      "proImg": "/images/carousel/v_02.png"
+      "category": "蔬菜類",
+      "productName": "青菜",
+      "vImg": "/images/carousel/v_02.png"
     },
     {
       "id": 3,
-      "proImg": "/images/carousel/v_03.png"
+      "category": "蔬菜類",
+      "productName": "青江菜",
+      "vImg": "/images/carousel/v_03.png"
     },
     {
       "id": 4,
-      "proImg": "/images/carousel/v_04.png"
+      "category": "蔬菜類",
+      "productName": "大白菜",
+      "vImg": "/images/carousel/v_04.png"
+    },
+    {
+      "id": 5,
+      "category": "水果類",
+      "productName": "檸檬",
+      "vImg": "/images/carousel/fruit1.png"
+    },
+    {
+      "id": 6,
+      "category": "水果類",
+      "productName": "奇異果",
+      "vImg": "/images/carousel/fruit2.png"
+    },
+    {
+      "id": 7,
+      "category": "水果類",
+      "productName": "蘋果",
+      "vImg": "/images/carousel/fruit3.png"
+    },
+    {
+      "id": 8,
+      "category": "水果類",
+      "productName": "香蕉",
+      "vImg": "/images/carousel/fruit4.png"
     }
   ],
-  "vegetablesPro": [
+  "proDetail": [
     {
       "id": 1,
       "category": "蔬菜類",
@@ -422,29 +454,9 @@
       ],
       "price": "30",
       "unit": "把"
-    }
-  ],
-  "fruitImg": [
-    {
-      "id": 1,
-      "proImg": "/images/carousel/fruit1.png"
     },
     {
-      "id": 2,
-      "proImg": "/images/carousel/fruit2.png"
-    },
-    {
-      "id": 3,
-      "proImg": "/images/carousel/fruit3.png"
-    },
-    {
-      "id": 4,
-      "proImg": "/images/carousel/fruit4.png"
-    }
-  ],
-  "fruitPro": [
-    {
-      "id": 1,
+      "id": 5,
       "category": "水果類",
       "productName": "檸檬",
       "img": "/images/carousel/fruit1.png",
@@ -531,7 +543,7 @@
       "unit": "粒"
     },
     {
-      "id": 2,
+      "id": 6,
       "category": "水果類",
       "productName": "奇異果",
       "img": "/images/carousel/fruit2.png",
@@ -618,7 +630,7 @@
       "unit": "個"
     },
     {
-      "id": 3,
+      "id": 7,
       "category": "水果類",
       "productName": "蘋果",
       "img": "/images/carousel/fruit3.png",
@@ -705,7 +717,7 @@
       "unit": "個"
     },
     {
-      "id": 4,
+      "id": 8,
       "category": "水果類",
       "productName": "香蕉",
       "img": "/images/carousel/fruit4.png",

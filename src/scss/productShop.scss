@@ -1,0 +1,155 @@
+.titleWord {
+    background-color: #2f5a28;
+    color: white;
+
+    h1 {
+        padding: 10px;
+    }
+}
+
+.proTitle {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+    .productList {
+        width: 1000px;
+        height: 50px;
+        display: flex;
+        justify-content: flex-start;
+
+        select {
+            background-color: #2f5a28;
+            color: white;
+            border-radius: 10px 0px 0px 10px;
+            width: 200px;
+            font-size: 25px;
+        }
+
+        input[type=text] {
+            padding: 0;
+            margin: 0;
+            height: 50px;
+            border-radius: 0px 10px 10px 0px;
+        }
+    }
+}
+
+
+.items {
+    width: 100%;
+    height: auto;
+    margin: 0px auto;
+    position: relative;
+    margin-top: 30px;
+
+    img {
+        width: 300px;
+        display: inline-block;
+        background-color: white;
+        border: 3px solid #2f5a28;
+        border-radius: 10px;
+    }
+}
+
+//產品小標
+.itemInfo {
+    margin-top: 10px;
+    width: 300px;
+    border-radius: 10px;
+    border: 3px solid #2f5a28;
+    display: flex;
+    align-items: center;
+
+
+    h4 {
+        display: inline-block;
+        background-color: #2f5a28;
+        margin: 0px;
+        padding: 0px;
+        padding-right: 5px;
+        color: white;
+    }
+
+    h5 {
+        display: inline-block;
+        margin: 0px;
+        padding: 0px;
+        color: #2f5a28;
+        padding-left: 10px;
+    }
+}
+
+// 產品購物
+.shoppingItems h4 {
+    display: none;
+}
+
+
+.imgShopping:hover {
+    position: relative;
+
+    .shoppingItems {
+        position: absolute;
+        top: 0;
+        width: 300px;
+        height: 202.39px;
+        border-radius: 10px;
+        margin: 0 auto;
+        background-color: rgb(49, 49, 49);
+        opacity: 0.7;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h4 {
+            display: block;
+            border-radius: 10px;
+            border: white 3px solid;
+            padding: 5px;
+        }
+
+        :hover {
+            background-color: white;
+            color: rgb(49, 49, 49);
+            font-weight: bold;
+        }
+    }
+}
+
+//Diy 購物籃
+.diyBgc {
+    background-color: rgb(131, 128, 128);
+    border-radius: 15px;
+    width: 1140px;
+    height: 250px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+
+    .diyImg {
+        margin: 15px 0 15px 15px;
+
+        img {
+            width: 250px;
+        }
+    }
+
+    input {
+        border-radius: 15px;
+        background-color: #2f5a28;
+        color: white;
+        font-size: 20px;
+        width: 150px;
+        height: 30px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+
+}

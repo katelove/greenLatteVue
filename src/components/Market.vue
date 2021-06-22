@@ -4,36 +4,39 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 market-title">
         <h1>歡迎《綠生活》菜市場</h1>
-        <h6>*請點擊產品圖片，詳看產品說明卡。</h6>
       </div>
     </div>
-    <!-- 蔬果類 -->
     <div class="row">
-      <div class="green-title">
-        <h4>蔬菜類</h4>
+      <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 basketImg">
+       <img src="../../public/images/company/fruitBasket.png" >
       </div>
-        <div class="items">
-          <VueSlickCarousel v-bind="settings">
-            <div v-for="(item,index) in proDetail" :key="index">
-              <img :src="item.proImg" @click="showModal(index)">
-            </div>
-          </VueSlickCarousel>
+
+      <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+      <!-- 蔬果上下輪播圖 上面式說明卡 -->
+       <VueSlickCarousel
+         ref="c1"
+         :asNavFor="$refs.c2"
+         :focusOnSelect="true">
+        <ProductDetail
+        v-bind="proDetail[proNum]">
+        </ProductDetail>
+      </VueSlickCarousel>
+
+      <!-- 下面是蔬果 -->
+      <div class="items">
+      <VueSlickCarousel
+         ref="c2"
+         :asNavFor="$refs.c1"
+         v-bind="settings">
+        <div v-for="(item,index) in proImg" :key="index">
+          <img :src="item.vImg" @click="showDetail(index)">
         </div>
-    </div>
-     <!-- 水果類 -->
-    <div class="row">
-      <div class="green-title">
-        <h4>水果類</h4>
+      </VueSlickCarousel>
       </div>
-      <div class="items" >
-        <VueSlickCarousel v-bind="settings">
-          <div v-for="(item,index) in fruitPhoto" :key="index">
-            <img :src="item.proImg" @click="showFModal(index)">
-          </div>
-        </VueSlickCarousel>
-      </div>
-    </div>
-    <!-- DIY -->
+     </div>
+   </div>
+
+    <!-- Btn -->
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
        <div class="workerBtn">
@@ -41,25 +44,6 @@
          </div>
       </div>
     </div>
-
-    <!-- 蔬菜產品說明 -->
-    <b-modal ref="vg-modal" size="xl" hide-footer="false">
-      <div class="d-block text-center">
-        <ProductDetail
-        v-bind="vgDetail[proNum]"
-        ></ProductDetail>
-      </div>
-    </b-modal>
-
-    <!-- 水果產品說明 -->
-    <b-modal ref="fruit-modal" size="xl" hide-footer="false">
-      <div class="d-block text-center">
-        <FruitDetail
-        v-bind="fruitDetail[proNum]"
-        ></FruitDetail>
-      </div>
-    </b-modal>
-
     <div>
     </div>
 </div>
@@ -74,7 +58,6 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 import proInfo from '../data/db.json'
 import axios from 'axios'
 import ProductDetail from './ProductDetail.vue'
-import FruitDetail from './FruitDetail.vue'
 
 export default {
   data: () => ({
@@ -82,10 +65,10 @@ export default {
       arrows: false,
       dots: true, // 顯示下方小圓點
       infinite: true, // 滑到最後一張，是否要同向循環
-      slidesToShow: 3, // 一次主要顯現幾個slides
-      slidesToScroll: 3,
+      slidesToShow: 2, // 一次主要顯現幾個slides
+      slidesToScroll: 2,
       autoplay: true,
-      speed: 2000, // 播放速度
+      speed: 3000, // 播放速度
       autoplaySpeed: 2000,
       cssEase: 'linear',
 
@@ -93,8 +76,8 @@ export default {
         {
           breakpoint: 1024, // 螢幕尺寸
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 2,
+            slidesToScroll: 2,
             infinite: true,
             dots: true
           }
@@ -117,54 +100,31 @@ export default {
       ]
     },
     // 蔬菜產品圖片&說明卡
-    proDetail: proInfo.vgImg,
-    vgDetail: proInfo.vegetablesPro,
-    // 水果產品圖片&說明卡
-    fruitPhoto: proInfo.fruitImg,
-    fruitDetail: proInfo.fruitPro,
+    proImg: proInfo.proImg,
+    proDetail: proInfo.proDetail,
     // 產品參數
     proNum: '0'
   }),
 
-  methods: {
-    // for modal
-    showModal (index) {
-      this.proNum = index
-      this.$refs['vg-modal'].show(index)
-    },
-    hideModal () {
-      this.$refs['vg-modal'].hide()
-    },
-    showFModal (index) {
-      this.proNum = index
-      this.$refs['fruit-modal'].show(index)
-    },
-    hideFModal () {
-      this.$refs['fruit-modal'].hide()
-    }
-
-  },
   mounted () {
     // 傳 db資料
-    axios.get('http://localhost:3000/vgImg')
+    axios.get('http://localhost:3000/proImg')
+      .then(response => {
+        this.proImg = response.data
+      })
+    axios.get('http://localhost:3000/proDetail')
       .then(response => {
         this.proDetail = response.data
       })
-    axios.get('http://localhost:3000/vegetablesPro')
-      .then(response => {
-        this.vgDetail = response.data
-      })
-    axios.get('http://localhost:3000/fruitImg')
-      .then(response => {
-        this.fruitPhoto = response.data
-      })
-    axios.get('http://localhost:3000/fruitPro')
-      .then(response => {
-        this.fruitDetail = response.data
-      })
+  },
+  methods: {
+    showDetail (index) {
+      this.proNum = index
+    }
+
   },
   name: 'Market',
-  components: { VueSlickCarousel, ProductDetail, FruitDetail }
+  components: { VueSlickCarousel, ProductDetail }
 
 }
 

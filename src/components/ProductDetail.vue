@@ -20,7 +20,7 @@
       <!-- 食物好處 -->
       <div class="product-title-one" v-for="(item,index) in goodEffect" :key="index">
         <h2>{{goodEffect[index].id}}</h2>
-        <h5>{{goodEffect[index].info}}</h5>
+        <h6>{{goodEffect[index].info}}</h6>
       </div>
     </div>
     <div class="product-dish">
@@ -30,7 +30,7 @@
       <div class="product-d-left">
         <div class="p-left-detail">
           <div v-for="(item,index) in buySecret" :key="index">
-            <i class="fa fa-caret-right"></i>
+            <div> <font-awesome-icon icon="caret-right"/></div>
             <h6>{{buySecret[index].title}}</h6>
             <p>{{buySecret[index].detail}}</p>
           </div>
@@ -43,7 +43,7 @@
         <div class="product-d-r-top">
           <div class="p-right-detail">
             <div v-for="(item,index) in saveSkill" :key="index">
-              <i class="fa fa-caret-right"></i>
+               <div> <font-awesome-icon icon="caret-right"/></div>
               <p>{{saveSkill[index].option}}</p>
             </div>
           </div>
