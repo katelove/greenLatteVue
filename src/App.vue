@@ -11,11 +11,11 @@
       <div><img src="../public/images/pic/facebook.png" alt="facebook"/></div>
       <div><img src="../public/images/pic/instagram.png" alt="IG"/></div>
       <div><img src="../public/images/pic/youtube.png" alt="youtube"/></div>
-      <div>
+      <!-- <div>
         <div class="socialFont">
           <font-awesome-icon icon="shopping-cart"/>
         </div>
-      </div>
+      </div> -->
 
     </div>
     <!-- 信件說明 -->
