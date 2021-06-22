@@ -14,20 +14,22 @@
   <div class="row">
     <h4>*請選擇需實行計劃，時間最多為一個星期。</h4>
   </div>
+  <ValidationObserver  ref="dateForm">
+  <form @submit.prevent="dateAnswer()">
   <div class="row">
     <div class="col-sm-12 -col-md-12 col-lg-12 dateTime">
       <div class="dateTitle">
         <h4>起始日</h4>
       </div>
       <div class="dateStyle">
+      <ValidationProvider name="起始日" rules="required|dateTime" v-slot="{errors}">
         <datepicker
         @input="sevenDays()"
         :bootstrap-styling="true"
         v-model="startDay"
         ></datepicker>
-        <!-- <select name="" id=""></select><h5>年</h5>
-        <select name="" id=""></select><h5>月</h5>
-        <select name="" id=""></select><h5>日</h5> -->
+        <p style="color:red">{{errors[0]}}</p>
+      </ValidationProvider>
       </div>
     </div>
   </div>
@@ -37,27 +39,31 @@
         <h4>終止日</h4>
       </div>
       <div class="dateStyle">
+        <ValidationProvider name="終止日" rules="required|dateTime" v-slot="{errors}">
          <datepicker
          v-model="endDay"
          :bootstrap-styling="true"
          ></datepicker>
-        <!-- <select name="" id=""></select><h5>年</h5>
-        <select name="" id=""></select><h5>月</h5>
-        <select name="" id=""></select><h5>日</h5> -->
+          <p style="color:red">{{errors[0]}}</p>
+        </ValidationProvider>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12 -col-md-12 col-lg-12">
-      <div class="workerBtn">
+      <div class="workerBtn" @click="dateAnswer()">
         <a>下一步</a>
       </div>
     </div>
   </div>
+  </form>
+  </ValidationObserver>
 </div>
 </template>
 <script>
-import Datepicker from 'vuejs-datepicker'
+import Datepicker from 'vue2-datepicker'
+import 'vue2-datepicker/index.css'
+import 'vue2-datepicker/locale/zh-cn'
 export default {
   data () {
     return {
@@ -79,6 +85,18 @@ export default {
       this.endDay = new Date(year, month - 1, day)
       console.log('終止日日期為:' + this.endDay)
       return this.endDay
+    },
+    async dateAnswer () {
+      const success = await this.$refs.dateForm.validate()
+      if (!success) {
+      // 校驗失敗，停止後續程式碼執行
+        console.log('驗證失敗' + success)
+        return false
+      } else {
+      // 顯示回答
+        // console.log('驗證成功' + success)
+        return true
+      }
     }
   },
   components: {
