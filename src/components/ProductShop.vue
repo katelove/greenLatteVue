@@ -27,7 +27,7 @@
   </div>
   <!-- 產品卡 -->
   <div class="row">
-    <div v-for="(item,index) in proImg" :key="index">
+    <div v-for="(item,index) in titleMenu" :key="index">
       <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 items">
         <div class="imgShopping">
           <img :src="item.vImg">
@@ -89,13 +89,34 @@ export default {
     }
   },
   computed: {
-    // typeMenu () {
-    //   if (this.input.type != '全部') {
-
-    //   } else {
-
-    //   }
-    // }
+    // 種類
+    typeMenu () {
+      console.log('1.this.input.type:' + this.input.type)
+      if (this.input.type !== '全部') {
+        console.log('2.進入判斷式')
+        return this.proImg.filter(item => {
+          console.log('3.item.category:' + item.category)
+          return item.category === this.input.type
+        })
+      } else {
+        return this.proImg
+      }
+    },
+    // eslint-disable-next-line vue/return-in-computed-property
+    titleMenu () {
+      // 如果有打字input.title不是全部，幫你做篩選，
+      // 轉小寫 toLowerCase()
+      // indexOf() 方法返回的都是指定的子串在另一個字串中的位置，如果沒有找不到子串，則返回 -1。
+      if (this.input.title) {
+        return this.typeMenu.filter(item => {
+          const itemTitle = item.productName.toLowerCase()
+          const inputTitle = this.input.title.toLowerCase()
+          return itemTitle.indexOf(inputTitle) !== -1
+        })
+      } else {
+        return this.typeMenu
+      }
+    }
   }
 }
 </script>
