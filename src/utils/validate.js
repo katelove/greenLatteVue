@@ -44,7 +44,6 @@ extend('weightV', {
 // 3.性別
 extend('genderOptions', {
   validate: value => {
-    console.log(' genderOptions:' + value)
     return true
   },
   message: '請勾選 {_field_}'
@@ -206,4 +205,12 @@ extend('chkPwd', {
     return /^[1-2]+(.[0-9])?$/.test(value)
   },
   message: '請輸入正確 {_field_}'
+})
+
+//= ==============DatePlan===================
+extend('dateTime', {
+  validate: value => {
+    return true
+  },
+  message: '請勾選 {_field_}'
 })
