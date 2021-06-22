@@ -42,10 +42,10 @@
   <!-- DIY 購物籃 -->
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 items">
-        <h6>*請把蔬果選入DIY 購物籃，記得蔬果比例=> 蔬菜 2:水果 1 </h6>
+        <h6>*請把蔬果選入DIY 購物籃，記得<b>蔬果比例=> 蔬菜 2:水果 1 </b></h6>
         <div class="diyBgc">
           <div v-for="(item,index) in cart" :key="index" class="diyImg">
-            <img :src="item" @click="deletePic(index)">
+            <img :src="item" @click="deletePic(index)" :value="checkCart">
           </div>
           <input type="submit" value="DIY">
       </div>
@@ -114,6 +114,18 @@ export default {
         })
       } else {
         return this.typeMenu
+      }
+    },
+    // eslint-disable-next-line vue/return-in-computed-property
+    checkCart () {
+      console.log('this.cart.length:' + this.cart.length)
+      if (this.cart.length >= '4') {
+        // 刪除第4個蔬果
+        // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+        this.cart.splice(3, 1)
+        alert('購物籃只能挑選3種蔬果，可點擊一下蔬果卡就能刪除~')
+      } else if (this.cart.length <= '2') {
+        alert('購物籃需挑選3種蔬果，歡迎選購 :)')
       }
     }
   }
