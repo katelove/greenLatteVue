@@ -61,7 +61,9 @@
 </div>
 </template>
 <script>
-import Datepicker from 'vuejs-datepicker'
+import Datepicker from 'vue2-datepicker'
+import 'vue2-datepicker/index.css'
+import 'vue2-datepicker/locale/zh-cn'
 export default {
   data () {
     return {
