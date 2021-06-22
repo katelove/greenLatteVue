@@ -4,6 +4,13 @@
   background-color: #2f5a28;
   color: white;
   padding: 10px;
+  margin-bottom: 20px;
+}
+
+//basket
+.basketImg {
+  display: flex;
+  align-items: flex-end;
 }
 
 .items {
@@ -14,7 +21,7 @@
   margin-bottom: 60px;
 
   img {
-    width: 300px;
+    width: 250px;
     display: inline-block;
     background-color: white;
     border: 3px solid #2f5a28;

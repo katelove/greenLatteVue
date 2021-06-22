@@ -20,7 +20,7 @@
       <!-- 食物好處 -->
       <div class="product-title-one" v-for="(item,index) in goodEffect" :key="index">
         <h2>{{goodEffect[index].id}}</h2>
-        <h5>{{goodEffect[index].info}}</h5>
+        <h6>{{goodEffect[index].info}}</h6>
       </div>
     </div>
     <div class="product-dish">

@@ -6,28 +6,35 @@
         <h1>歡迎《綠生活》菜市場</h1>
       </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 basketImg">
+       <img src="../../public/images/company/fruitBasket.png" >
+      </div>
 
-   <!-- 蔬果上下輪播圖 -->
-   <VueSlickCarousel
-   ref="c1"
-  :asNavFor="$refs.c2"
-  :focusOnSelect="true">
-    <ProductDetail
-      v-bind="proDetail[proNum]">
-    </ProductDetail>
-   </VueSlickCarousel>
+      <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+      <!-- 蔬果上下輪播圖 上面式說明卡 -->
+       <VueSlickCarousel
+         ref="c1"
+         :asNavFor="$refs.c2"
+         :focusOnSelect="true">
+        <ProductDetail
+        v-bind="proDetail[proNum]">
+        </ProductDetail>
+      </VueSlickCarousel>
 
-  <div class="items">
-   <VueSlickCarousel
-   ref="c2"
-  :asNavFor="$refs.c1"
-  :focusOnSelect="true"
-  v-bind="settings">
-   <div v-for="(item,index) in proImg" :key="index">
-    <img :src="item.vImg" @click="showDetail(index)">
+      <!-- 下面是蔬果 -->
+      <div class="items">
+      <VueSlickCarousel
+         ref="c2"
+         :asNavFor="$refs.c1"
+         v-bind="settings">
+        <div v-for="(item,index) in proImg" :key="index">
+          <img :src="item.vImg" @click="showDetail(index)">
+        </div>
+      </VueSlickCarousel>
+      </div>
+     </div>
    </div>
-   </VueSlickCarousel>
-  </div>
 
     <!-- Btn -->
     <div class="row">
@@ -58,10 +65,10 @@ export default {
       arrows: false,
       dots: true, // 顯示下方小圓點
       infinite: true, // 滑到最後一張，是否要同向循環
-      slidesToShow: 3, // 一次主要顯現幾個slides
-      slidesToScroll: 3,
+      slidesToShow: 2, // 一次主要顯現幾個slides
+      slidesToScroll: 2,
       autoplay: true,
-      speed: 2000, // 播放速度
+      speed: 3000, // 播放速度
       autoplaySpeed: 2000,
       cssEase: 'linear',
 
@@ -69,8 +76,8 @@ export default {
         {
           breakpoint: 1024, // 螢幕尺寸
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 2,
+            slidesToScroll: 2,
             infinite: true,
             dots: true
           }
