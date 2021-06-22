@@ -31,7 +31,7 @@
       <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 items">
         <div class="imgShopping">
           <img :src="item.vImg">
-          <div><h4>{{item.category}}:</h4><h5>{{item.productName}}</h5></div>
+          <div class="itemInfo"><h4>{{item.category}}:</h4><h5>{{item.productName}}</h5></div>
           <div class="shoppingItems">
             <h4 @click='addDIY(index)'>Add to DIY</h4>
           </div>
@@ -42,10 +42,12 @@
   <!-- DIY 購物籃 -->
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 items">
-        <div class="diyBgc" id="diyBox">
-          <div v-for="(item,index) in cart" :key="index">
+        <h6>*請把蔬果選入DIY 購物籃，記得蔬果比例=> 蔬菜 2:水果 1 </h6>
+        <div class="diyBgc">
+          <div v-for="(item,index) in cart" :key="index" class="diyImg">
             <img :src="item" @click="deletePic(index)">
           </div>
+          <input type="submit" value="DIY">
       </div>
     </div>
   </div>
@@ -91,11 +93,8 @@ export default {
   computed: {
     // 種類
     typeMenu () {
-      console.log('1.this.input.type:' + this.input.type)
       if (this.input.type !== '全部') {
-        console.log('2.進入判斷式')
         return this.proImg.filter(item => {
-          console.log('3.item.category:' + item.category)
           return item.category === this.input.type
         })
       } else {
