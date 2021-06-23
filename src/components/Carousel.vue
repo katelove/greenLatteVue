@@ -4,7 +4,7 @@
       id="carousel-1"
       v-model="slide"
       :interval="3000"
-      class="carousel-style"
+      class="carousel-style carousel-img"
       controls
       indicators
       background="#ababab"
@@ -12,13 +12,14 @@
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
+
+     <!-- :style="{ backgroundImage: 'url(' + item.image + ')' }" -->
       <b-carousel-slide
         v-for="item in carouselItems"
         :key="item.id"
-        :img-src=item.image
+       :img-src=item.image
         :caption="item.caption"
         :text="item.text"
-        class="carousel-img"
       ></b-carousel-slide>
     </b-carousel>
   </div>
@@ -43,7 +44,7 @@ export default {
         {
           id: 3,
           caption: '創造您的口感',
-          image: require('../../public/images/carousel/3.jpg'),
+          image: require('../../public/images/carousel/3.png'),
           text: 'DIY天然蔬果汁'
         }
       ],
@@ -65,6 +66,7 @@ export default {
 <style lang="scss">
 .carousel-style{
   width: 100%;
+  min-height: 100%;
 }
 .carousel-img{
   width:"1024px";
