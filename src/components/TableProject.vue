@@ -143,6 +143,12 @@
          <GreenPlan/>
       </div>
     </b-modal>
+    <!-- 預覽 -->
+    <b-modal ref="preview-modal" size="lg" hide-footer="false">
+      <div class="d-block text-center">
+         <img v-bind:src="calendarImg" class="planSize" />
+      </div>
+    </b-modal>
  </div>
  </div>
 </template>
@@ -313,6 +319,7 @@ export default {
         .catch(function (error) {
           console.error('oops, something went wrong!', error)
         })
+      this.$refs['preview-modal'].show()
     }
   },
   components: {
