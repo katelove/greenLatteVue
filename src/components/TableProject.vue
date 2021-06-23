@@ -132,7 +132,7 @@
       <!-- 下方按鈕 -->
    <div id="bottomBtn">
     <div id='saveBtn' class='btnStyle'>儲存</div>
-    <div id='previewBtn' class='btnStyle'>預覽</div>
+    <div class='btnStyle' @click="previewBtn()" >預覽</div>
     <div id='downloadBtn' class='btnStyle'>下載PDF</div>
    </div>
    </div>
@@ -148,8 +148,10 @@
 </template>
 <script>
 import Sortable from 'sortablejs'
+import domtoimage from 'dom-to-image'
 import GreenPlan from './greenPlan.vue'
 import TdCell from './TdCell.vue'
+
 export default {
   data () {
     return {
@@ -174,7 +176,9 @@ export default {
         fontSize: '12'
       },
       // 表格裡值
-      tdValue: ' '
+      tdValue: ' ',
+      // 日曆完成截圖
+      calendarImg: ''
     }
   },
   mounted () {
@@ -296,11 +300,26 @@ export default {
           console.log('全部清空')
         }
       }
+    },
+    previewBtn () {
+      // 預覽功能
+      // 1.截圖
+      const planImg = document.getElementById('calendarTag')
+      domtoimage.toPng(planImg)
+        .then((dataUrl) => {
+          this.calendarImg = dataUrl
+          console.log('planImg:' + this.calendarImg)
+        })
+        .catch(function (error) {
+          console.error('oops, something went wrong!', error)
+        })
     }
   },
   components: {
     GreenPlan,
-    TdCell
+    TdCell,
+    // eslint-disable-next-line vue/no-unused-components
+    domtoimage
   }
 }
 </script>
