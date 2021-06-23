@@ -133,7 +133,7 @@
    <div id="bottomBtn">
     <div id='saveBtn' class='btnStyle'>儲存</div>
     <div class='btnStyle' @click="previewBtn()" >預覽</div>
-    <div id='downloadBtn' class='btnStyle'>下載PDF</div>
+    <div class='btnStyle' @click="pdfBtn()">下載PDF</div>
    </div>
    </div>
   </div>
@@ -155,6 +155,7 @@
 <script>
 import Sortable from 'sortablejs'
 import domtoimage from 'dom-to-image'
+import { jsPDF } from 'jspdf'
 import GreenPlan from './greenPlan.vue'
 import TdCell from './TdCell.vue'
 
@@ -320,6 +321,25 @@ export default {
           console.error('oops, something went wrong!', error)
         })
       this.$refs['preview-modal'].show()
+    },
+    pdfBtn () {
+      // 1.截圖
+      const planImg = document.getElementById('calendarTag')
+      domtoimage.toPng(planImg)
+        .then((dataUrl) => {
+          this.calendarImg = dataUrl
+          console.log('pdfImg:' + this.calendarImg)
+          // eslint-disable-next-line new-cap
+          var doc = new jsPDF('p', 'mm', 'a4')
+
+          var width = doc.internal.pageSize.getWidth()
+          var height = doc.internal.pageSize.getHeight()
+          doc.addImage(this.calendarImg, 'PNG', 0, 0, width, height)
+          doc.save('diyGreenLatte.pdf')
+        })
+        .catch(function (error) {
+          console.error('oops, something went wrong!', error)
+        })
     }
   },
   components: {
