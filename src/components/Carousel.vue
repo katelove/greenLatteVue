@@ -7,18 +7,18 @@
       class="carousel-style"
       controls
       indicators
-      background="#ababab"
-      style="text-shadow: 1px 1px 2px #333;"
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
+
+     <!-- :style="{ backgroundImage: 'url(' + item.image + ')' }" -->
       <b-carousel-slide
         v-for="item in carouselItems"
         :key="item.id"
         :img-src=item.image
         :caption="item.caption"
         :text="item.text"
-        class="carousel-img"
+        class="wordTitle"
       ></b-carousel-slide>
     </b-carousel>
   </div>
@@ -38,13 +38,13 @@ export default {
           id: 2,
           caption: '崇尚自然飲食',
           image: require('../../public/images/carousel/2.png'),
-          text: '品嚐食物原汁原味'
+          text: '▶品嚐食物原汁原味'
         },
         {
           id: 3,
           caption: '創造您的口感',
-          image: require('../../public/images/carousel/3.jpg'),
-          text: 'DIY天然蔬果汁'
+          image: require('../../public/images/carousel/3.png'),
+          text: '▶DIY天然蔬果汁'
         }
       ],
       slide: 0,
@@ -65,10 +65,24 @@ export default {
 <style lang="scss">
 .carousel-style{
   width: 100%;
-}
-.carousel-img{
+  min-height: 100%;
   width:"1024px";
   height:"480px";
   color: white;
+}
+.wordTitle{
+  text-shadow: 2px 2px 10px #2f5a28;
+  h3{
+  font-size: 50px;
+  background: rgb(250, 249, 249,0.5);
+  font-weight: bold;
+  font-family: '微軟正黑體';
+  text-align: left;
+  padding: 10px;
+   }
+  p{
+    font-size: 25px;
+     text-align: left;
+  }
 }
 </style>
