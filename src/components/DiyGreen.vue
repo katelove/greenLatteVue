@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-md-12 col-lg-12">
+      <div class="col-sm-12 col-md-12 col-lg-12">
         <h6>*下方為已勾選蔬果</h6>
-          <div class="diy-productCard">
+        <div class="actDiyVg">
+          <div v-for="(item,index) in userDiyImg[0].diyVgFruit" :key="index" class="diy-productCard">
             <!-- 資料庫傳回產品卡片 -->
-            <img src="../../public/images/carousel/v_03.png" alt="">
-            <img src="../../public/images/carousel/v_01.png" alt="">
-            <img src="../../public/images/carousel/fruit1.png" alt="">
+            <img :src="item.vImg">
           </div>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -51,4 +51,21 @@
     </div>
   </div>
 </template>
+<script>
+import proInfo from '../data/db.json'
+import axios from 'axios'
+export default {
+  data () {
+    return {
+      userDiyImg: proInfo.accoutDiyImg
+    }
+  },
+  mounted () {
+    axios.get('http://localhost:3000/accoutDiyImg')
+      .then(response => {
+        this.proImg = response.data
+      })
+  }
+}
+</script>
 <style lang="scss">@import "../scss/diyGreen.scss";</style>

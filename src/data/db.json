@@ -803,5 +803,29 @@
       "price": "40",
       "unit": "串"
     }
+  ],
+  "accoutDiyImg": [
+    {
+      "diyVgFruit": [
+        {
+          "id": 6,
+          "category": "水果類",
+          "productName": "奇異果",
+          "vImg": "/images/carousel/fruit2.png"
+        },
+        {
+          "id": 3,
+          "category": "蔬菜類",
+          "productName": "青江菜",
+          "vImg": "/images/carousel/v_03.png"
+        },
+        {
+          "id": 1,
+          "category": "蔬菜類",
+          "productName": "小黃瓜",
+          "vImg": "/images/carousel/v_01.png"
+        }
+      ]
+    }
   ]
 }

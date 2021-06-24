@@ -1,17 +1,22 @@
-.diy-productCard {
-  background: linear-gradient(86deg, #2f5a28, white);
-  height: 150px;
+.actDiyVg {
   display: flex;
   justify-content: flex-start;
+  background: linear-gradient(86deg, #2f5a28, white);
 
-  img {
-    height: 130px;
-    width: 150px;
-    background-color: #f6f9f4;
-    border: 3px solid #2f5a28;
-    border-radius: 15px;
-    margin: 5px;
+  .diy-productCard {
+    height: 150px;
+    margin: 15px 0 15px 15px;
+
+    img {
+      width: 200px;
+      background-color: #f6f9f4;
+      border: 3px solid #2f5a28;
+      border-radius: 15px;
+      margin: 10px;
+      display: inline-block;
+    }
   }
+
 }
 
 
