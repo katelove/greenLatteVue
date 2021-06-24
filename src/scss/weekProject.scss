@@ -137,6 +137,7 @@
   #calendarTag {
     display: inline-block;
     width: 800px;
+    background-color: #f6f9f4;
   }
 
   /* 下方按鈕 */
@@ -185,5 +186,11 @@
   #calendarTag table {
     border: 2px #2f5a28 solid;
     border-radius: 0 0 10px 10px;
+    width: 100%;
+  }
+
+  //===========================預覽==============================
+  // 在pop裡要圖片不要變形
+  .planSize {
     width: 100%;
   }
