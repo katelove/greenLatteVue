@@ -47,7 +47,7 @@
           <div v-for="(item,index) in cart" :key="index" class="diyImg">
             <img :src="item" @click="deletePic(index)" :value="checkCart">
           </div>
-          <input type="submit" value="DIY" @click="diyGreen">
+          <input type="submit" method="post" value="DIY" @click="diyGreen">
       </div>
     </div>
   </div>
@@ -66,8 +66,8 @@ export default {
       input: {
         type: '全部',
         title: ''
-      }
-
+      },
+      accoutDiyImg: { diyVgFruit: [] }
     }
   },
   mounted () {
@@ -79,9 +79,9 @@ export default {
   methods: {
     addDIY (index) {
       var choiceImg = this.proImg[index].vImg
-      console.log('目前圖片:' + choiceImg)
+      // console.log('目前圖片:' + choiceImg)
       this.cart.push(choiceImg)
-      console.log('this.cart:' + this.cart)
+      // console.log('this.cart:' + this.cart)
     },
     deletePic (index) {
       console.log('刪除車子第幾張圖片:' + index)
@@ -92,6 +92,24 @@ export default {
     diyGreen () {
       if (this.cart.length < '3') {
         alert('購物籃需挑選3種蔬果，歡迎選購 :)')
+      } else {
+        // this cart 變成物件
+        for (var i = 0; i < this.cart.length; i++) {
+          var diyVgFruit = {
+            id: (i + 1),
+            vImg: (this.cart[i])
+          }
+          this.accoutDiyImg.diyVgFruit.push(diyVgFruit)
+        }
+
+        axios({
+          method: 'post',
+          url: 'http://localhost:3000/accoutDiyImg',
+          data: this.accoutDiyImg,
+          headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+          console.log('post data' + response)
+        })
       }
     }
   },
@@ -123,7 +141,7 @@ export default {
     },
     // eslint-disable-next-line vue/return-in-computed-property
     checkCart () {
-      console.log('this.cart.length:' + this.cart.length)
+      // console.log('this.cart.length:' + this.cart.length)
       if (this.cart.length >= '4') {
         // 刪除第4個蔬果
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
