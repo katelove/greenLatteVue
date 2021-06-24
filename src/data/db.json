@@ -803,5 +803,75 @@
       "price": "40",
       "unit": "串"
     }
+  ],
+  "accoutDiyImg": [
+    {
+      "id": 1,
+      "diyVgFruit": [
+        {
+          "id": 1,
+          "vImg": "/images/carousel/fruit2.png"
+        },
+        {
+          "id": 2,
+          "vImg": "/images/carousel/v_03.png"
+        },
+        {
+          "id": 3,
+          "vImg": "/images/carousel/v_01.png"
+        }
+      ]
+    },
+    {
+      "diyVgFruit": [
+        {
+          "id": 1,
+          "vImg": "/images/carousel/fruit3.png"
+        },
+        {
+          "id": 2,
+          "vImg": "/images/carousel/fruit4.png"
+        },
+        {
+          "id": 3,
+          "vImg": "/images/carousel/fruit1.png"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "diyVgFruit": [
+        {
+          "id": 1,
+          "vImg": "/images/carousel/fruit3.png"
+        },
+        {
+          "id": 2,
+          "vImg": "/images/carousel/fruit4.png"
+        },
+        {
+          "id": 3,
+          "vImg": "/images/carousel/fruit1.png"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "diyVgFruit": [
+        {
+          "id": 1,
+          "vImg": "/images/carousel/fruit3.png"
+        },
+        {
+          "id": 2,
+          "vImg": "/images/carousel/fruit4.png"
+        },
+        {
+          "id": 3,
+          "vImg": "/images/carousel/fruit3.png"
+        }
+      ],
+      "id": 4
+    }
   ]
 }

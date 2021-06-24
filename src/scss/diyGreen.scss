@@ -1,69 +1,81 @@
-.diy-productCard {
-  background: linear-gradient(86deg, #2f5a28, white);
-  height: 150px;
+.actDiyVg {
   display: flex;
   justify-content: flex-start;
-  img {
-    height: 130px;
-    width: 150px;
-    background-color: #f6f9f4;
-    border: 3px solid #2f5a28;
-    border-radius: 15px;
-    margin: 5px;
-  }
-}
-  
- 
-  .diy-glass {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: linear-gradient(86deg, #2f5a28, white);
+
+  .diy-productCard {
+    height: 150px;
+    margin: 15px 0 15px 15px;
+
     img {
       width: 200px;
-      margin-top: 30px;
-      margin-left: 30px;
+      background-color: #f6f9f4;
+      border: 3px solid #2f5a28;
+      border-radius: 15px;
+      margin: 10px;
+      display: inline-block;
     }
   }
 
-// 樹葉
-.diy-leaf {
-  width: 400px;
-  position: relative;
-  z-index: -30;
+}
+
+
+.diy-glass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -50;
+
   img {
-  position: absolute;
-  width: 100%;
-  left: -90px;
-  }
-  img:nth-of-type(2) {
-  z-index: 999;
-  width: 50%;
-  right: 0;
-  bottom: 100px;
-  transform: rotate(253deg);
+    width: 200px;
+    margin-top: 30px;
+    margin-left: 30px;
   }
 }
- 
-  .diy-aboard {
-    background: #2f5a28;
-    border-radius: 30px 0 0 30px;
-    width: 600px;
-    height: 300px;
-    z-index: 20;
+
+
+
+.diy-aboard {
+  background: #2f5a28;
+  border-radius: 30px 0 0 30px;
+  width: 600px;
+  height: 400px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  margin-top: 80px;
+
+  .diy-name {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: absolute;
-    margin-top: 80px;
-    .diy-name {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      margin: 50px 0 0 50px;
-      z-index: 300;
-      color: white;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 50px 0 0 50px;
+    z-index: 300;
+    color: white;
+
+    .diy-subject {
+      h3 {
+        padding-left: 10px;
+      }
+    }
+
+    img {
+      width: 20%;
+      left: 0;
     }
   }
-    
- 
-  
+}
+
+.diyBtn {
+  padding: 0;
+
+  a:hover {
+    color: #2f5a28;
+    background-color: #dce7dd;
+    border: 3px solid #2f5a28;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
