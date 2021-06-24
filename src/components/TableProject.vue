@@ -330,11 +330,11 @@ export default {
           this.calendarImg = dataUrl
           console.log('pdfImg:' + this.calendarImg)
           // eslint-disable-next-line new-cap
-          var doc = new jsPDF('p', 'mm', 'a4')
+          var doc = new jsPDF('p', 'px', 'a3')
 
           var width = doc.internal.pageSize.getWidth()
           var height = doc.internal.pageSize.getHeight()
-          doc.addImage(this.calendarImg, 'PNG', 0, 0, width, height)
+          doc.addImage(this.calendarImg, 'PNG', 0, 0, width, height - 400)
           doc.save('diyGreenLatte.pdf')
         })
         .catch(function (error) {
