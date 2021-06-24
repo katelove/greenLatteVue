@@ -155,6 +155,9 @@ export default {
    h5{
      color: #2f5a28;
    }
+   input[type=text]{
+     height: 50px;
+   }
   }
    //小標
   .dateTitle{
