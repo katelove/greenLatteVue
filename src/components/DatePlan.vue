@@ -107,9 +107,14 @@ export default {
         var eDay = ('0' + this.endDay.getDate()).slice(-2)
         this.endDay = eYear + eMonth + eDay
         console.log('startDay:' + this.startDay + ',endDay:' + this.endDay)
-        var weekDate = [{ id: 0, datePlan: (this.startDay) },
-          { id: 1, datePlan: (this.endDay) }]
-        this.accountDate.weekDate.push(weekDate)
+        var dateDay = [this.startDay, this.endDay]
+        for (var i = 0; i < dateDay.length; i++) {
+          var weekDate = {
+            id: (i + 1),
+            datePlan: dateDay[i]
+          }
+          this.accountDate.weekDate.push(weekDate)
+        }
 
         axios({
           method: 'post',
