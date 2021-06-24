@@ -63,7 +63,7 @@ export default {
   mounted () {
     axios.get('http://localhost:3000/accoutDiyImg')
       .then(response => {
-        this.proImg = response.data
+        this.userDiyImg = response.data
       })
   }
 }
