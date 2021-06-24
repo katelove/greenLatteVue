@@ -47,7 +47,7 @@
           <div v-for="(item,index) in cart" :key="index" class="diyImg">
             <img :src="item" @click="deletePic(index)" :value="checkCart">
           </div>
-          <input type="submit" value="DIY">
+          <input type="submit" value="DIY" @click="diyGreen">
       </div>
     </div>
   </div>
@@ -88,6 +88,11 @@ export default {
       // splice，索引位置index開始，刪除1個元素
       this.cart.splice(index, 1)
       console.log('刪除過後 Cart:' + this.cart[index])
+    },
+    diyGreen () {
+      if (this.cart.length < '3') {
+        alert('購物籃需挑選3種蔬果，歡迎選購 :)')
+      }
     }
   },
   computed: {
@@ -124,8 +129,6 @@ export default {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.cart.splice(3, 1)
         alert('購物籃只能挑選3種蔬果，可點擊一下蔬果卡就能刪除~')
-      } else if (this.cart.length <= '2') {
-        alert('購物籃需挑選3種蔬果，歡迎選購 :)')
       }
     }
   }
