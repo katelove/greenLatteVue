@@ -3,20 +3,10 @@
   <router-view name="nav"></router-view>
   <div class="home_content">
     <div class="socialLogo">
-      <div>
-        <div class="socialFont">
-          <font-awesome-icon icon="envelope"  @click="showModal"/>
-        </div>
-      </div>
-      <div><img src="../public/images/pic/facebook.png" alt="facebook"/></div>
-      <div><img src="../public/images/pic/instagram.png" alt="IG"/></div>
-      <div><img src="../public/images/pic/youtube.png" alt="youtube"/></div>
-      <!-- <div>
-        <div class="socialFont">
-          <font-awesome-icon icon="shopping-cart"/>
-        </div>
-      </div> -->
-
+      <img src="../public/images/pic/mail.png" alt="Email" @click="showModal"/>
+      <img src="../public/images/pic/youtube.png" alt="Youtube" />
+      <img src="../public/images/pic/facebook.png" alt="FB" />
+      <img src="../public/images/pic/instagram.png" alt="IG" />
     </div>
     <!-- 信件說明 -->
     <b-modal ref="my-modal" size="lg" hide-footer="false">
@@ -49,12 +39,16 @@ export default {
 </script>
 
 <style lang="scss">
-
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 /* social-media=================== */
 .home_content {
   height: 100%;
-  display: flex;
-  align-items: center;
 }
 @media (max-width: 768px) {
   .home_content {
@@ -66,39 +60,23 @@ export default {
   /* 縱向排列 */
   flex-direction: column;
   display: flex;
-  justify-content: center;
   align-items: center;
   right: 0;
   bottom: 50%;
   z-index: 9999;
-
   img {
   width: 50px;
   padding-top: 1em;
   padding-right: 5px;
- }
- .socialFont{
-  font-size: 40px;
-  color:#2f5a28;
-  padding: 5px;
- }
- div{
+  background-color: rgb(221, 243, 203);
   border-radius: 100%;
-  background-color: #d1e4c1;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  padding: 10px;
+  margin: 5px;
  }
 }
 
 @media (max-width: 576px) {
   .socialLogo {
-    background-color: #f6f9f4;
-    border-radius: 10px 0 0 10px;
-    border: solid 2px #2f5a28;
     border-right: #f6f9f4;
     padding: 0 10px 0 10px;
     margin-left: 5px;
