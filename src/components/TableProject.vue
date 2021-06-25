@@ -100,7 +100,7 @@
 <div id="calendarsite">
   <!-- 顯示年/月   -->
   <div id="topTitle">
-    <h3 class='dateWord'>2021年6月</h3>
+    <h3 class='dateWord'>健康綠生活-綠拿鐵周計劃</h3>
       <div class="rightOption">
         <div id='teamTimeBtn' class='btnStyle' @click="delAll">清除</div>
       </div>
@@ -109,7 +109,13 @@
   <div id="calendarTag">
    <table>
     <thead>
-      <tr class="th-row">
+      <tr class="title-row">
+        <th colspan="8"><h2>{{weekTilte}}</h2></th>
+      </tr>
+      <tr class="title-row">
+        <th v-for='(item,index) in everyWeek' :key="index">{{item}}</th>
+      </tr>
+      <tr class="week-row">
         <!-- item 為list元素，index為索引值, :key="index"該筆資料唯一值 -->
         <th v-for='(item,index) in weekList' :key="index">{{item}}</th>
       </tr>
@@ -158,6 +164,8 @@ import domtoimage from 'dom-to-image'
 import { jsPDF } from 'jspdf'
 import GreenPlan from './greenPlan.vue'
 import TdCell from './TdCell.vue'
+import db from '../data/db.json'
+import axios from 'axios'
 
 export default {
   data () {
@@ -185,10 +193,17 @@ export default {
       // 表格裡值
       tdValue: ' ',
       // 日曆完成截圖
-      calendarImg: ''
+      calendarImg: '',
+      // db 拿取日期
+      datePlan: db.accountDate,
+      // 擺放在日曆上的日期，先給第一個[0] 為空值
+      everyWeek: [''],
+      // 表格開頭
+      weekTilte: ''
     }
   },
   mounted () {
+    // =================建表格===============
     for (var i = 0; i < 4; i++) {
       var tr = this.tableTag[i]
       for (var j = 0; j < 7; j++) {
@@ -203,8 +218,41 @@ export default {
         tr.td.push(td)
       }
     }
-    var sitckers = document.getElementById('sitckers')
 
+    // ==============get 日期====================
+    axios.get('http://localhost:3000/accountDate')
+      .then(response => {
+        this.datePlan = response.data
+      })
+
+    // eslint-disable-next-line no-redeclare
+    // 之後改寫，要用caseId取資料
+    var startDay = this.datePlan[0].weekDate[0].datePlan.toString()
+    console.log('startDay:' + startDay)
+    var stYear = startDay.substr(0, 4)
+    var stMonth = startDay.substr(4, 2)
+    var stDay = startDay.substr(6, 2)
+    this.weekTilte = stYear + '年' + stMonth + '月'
+    console.log('起始日stYear:' + stYear + ' ,stMonth:' + stMonth + ' ,stDay:' + stDay)
+
+    var endDay = this.datePlan[0].weekDate[1].datePlan.toString()
+    console.log('endDay:' + endDay)
+    var edMonth = endDay.substr(4, 2)
+    var edDay = endDay.substr(6, 2)
+    console.log('終止日 endMonth:' + edMonth + ' ,endDay:' + edDay)
+
+    for (stDay; stDay <= edDay; stDay++) {
+      // 判斷月份 30,31
+      // eslint-disable-next-line no-redeclare
+      for (var i = 1; i <= 7; i++) {
+        this.everyWeek.push(stMonth + '/' + stDay)
+        break
+      }
+    }
+    console.log('this.everyWeek:' + this.everyWeek)
+
+    // =============拖曳功能============
+    var sitckers = document.getElementById('sitckers')
     /* eslint-disable no-new */
     new Sortable(sitckers, {
       group: {
