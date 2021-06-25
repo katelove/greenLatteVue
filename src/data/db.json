@@ -873,5 +873,33 @@
       ],
       "id": 4
     }
+  ],
+  "accountDate": [
+    {
+      "id": 1,
+      "weekDate": [
+        {
+          "id": 1,
+          "datePlan": 20210624
+        },
+        {
+          "id": 2,
+          "datePlan": 20210630
+        }
+      ]
+    },
+    {
+      "weekDate": [
+        {
+          "id": 1,
+          "datePlan": "20210625"
+        },
+        {
+          "id": 2,
+          "datePlan": "20210702"
+        }
+      ],
+      "id": 2
+    }
   ]
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 <template>
 <div class="container">
   <div class="row">
@@ -64,11 +65,13 @@
 import Datepicker from 'vue2-datepicker'
 import 'vue2-datepicker/index.css'
 import 'vue2-datepicker/locale/zh-cn'
+import axios from 'axios'
 export default {
   data () {
     return {
       startDay: '',
-      endDay: ''
+      endDay: '',
+      accountDate: { weekDate: [] }
     }
   },
   methods: {
@@ -93,8 +96,35 @@ export default {
         console.log('驗證失敗' + success)
         return false
       } else {
-      // 顯示回答
-        // console.log('驗證成功' + success)
+        // post date ,startDay起始日
+        var year = this.startDay.getFullYear()
+        var month = ('0' + (this.startDay.getMonth() + 1)).slice(-2)
+        var day = ('0' + this.startDay.getDate()).slice(-2)
+        this.startDay = year + month + day
+        // 終止日
+        var eYear = this.endDay.getFullYear()
+        var eMonth = ('0' + (this.endDay.getMonth() + 1)).slice(-2)
+        var eDay = ('0' + this.endDay.getDate()).slice(-2)
+        this.endDay = eYear + eMonth + eDay
+        console.log('startDay:' + this.startDay + ',endDay:' + this.endDay)
+        var dateDay = [this.startDay, this.endDay]
+        for (var i = 0; i < dateDay.length; i++) {
+          var weekDate = {
+            id: (i + 1),
+            datePlan: dateDay[i]
+          }
+          this.accountDate.weekDate.push(weekDate)
+        }
+
+        axios({
+          method: 'post',
+          url: 'http://localhost:3000/accountDate',
+          data: this.accountDate,
+          headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+          console.log('post data' + response)
+        })
+        // 顯示回答
         return true
       }
     }
@@ -129,6 +159,9 @@ export default {
    }
    h5{
      color: #2f5a28;
+   }
+   input[type=text]{
+     height: 50px;
    }
   }
    //小標

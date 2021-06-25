@@ -153,6 +153,17 @@
     }
   }
 
+  //table 標題
+  .title-row th,
+  .week-row th {
+    height: 50px;
+    background-color: #2f5a28;
+    color: white;
+    text-align: center;
+    border-left: 2px white solid;
+    border-bottom: 2px white solid;
+  }
+
   //每個td大小
   .th-row th,
   table tbody tr td {
