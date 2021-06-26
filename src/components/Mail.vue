@@ -10,24 +10,26 @@
         <div class="mail-word">
           <h5>您的名字/稱謂</h5>
           <p>(必填)</p>
-          <ValidationProvider name="名字" rules="required|name" v-slot="{errors, classes }">
-          <input type="text" :class="classes"  placeholder="請輸入您的名字"/>
-          <span style="color:red">{{errors[0]}}</span>
-          </ValidationProvider>
+          <!-- <ValidationProvider name="名字" rules="required|name" v-slot="{errors, classes }"> -->
+         <!-- :class="classes" -->
+          <input type="text"  placeholder="請輸入您的名字" v-model="userName" />
+          <!-- <span style="color:red">{{errors[0]}}</span>
+          </ValidationProvider> -->
         </div>
         <div class="mail-word">
           <h5>電子郵件</h5>
           <p>(必填)</p>
-          <ValidationProvider name="信箱" rules="required|email" v-slot="{errors, classes }">
-          <input type="email" :class="classes" placeholder="請輸入您的信箱"/>
-          <span style="color:red">{{errors[0]}}</span>
-          </ValidationProvider>
+          <!-- <ValidationProvider name="信箱" rules="required|email" v-slot="{errors, classes }"> -->
+          <!-- :class="classes" -->
+          <input type="email" placeholder="請輸入您的信箱" v-model="userMail"/>
+          <!-- <span style="color:red">{{errors[0]}}</span>
+          </ValidationProvider> -->
         </div>
         <div class="mail-word">
           <h5>主旨</h5>
           <p>(必填)</p>
           <ValidationProvider name="信件主旨" rules="required|min:2" v-slot="{errors, classes }">
-          <input type="text" :class="classes" v-model="mailSubject" placeholder="請輸入信件主旨"/>
+          <input type="text" :class="classes" v-model="mailSubject" placeholder="請輸入信件主旨" />
           <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
         </div>
@@ -37,7 +39,7 @@
     </div>
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mail-site">
-          <textarea type="text" name="" id="" placeholder="請輸入信件內文"/>
+          <textarea type="text" placeholder="請輸入信件內文" v-model="mailMessage"/>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mail-file">
           <h5>附加檔案</h5>
@@ -63,10 +65,14 @@
 
 <script>
 import '@/utils/validate.js' // 驗證相關
+import emailjs from 'emailjs-com'// 寄送 mail
 export default {
   data () {
     return {
-      mailSubject: ''
+      userName: '',
+      userMail: '',
+      mailSubject: '',
+      mailMessage: ''
     }
   },
   methods: {
@@ -76,6 +82,25 @@ export default {
       // 校驗失敗，停止後續程式碼執行
         console.log('驗證失敗' + success)
         return false
+      } else {
+        const templateParams = {
+          userName: this.userName,
+          userMail: this.userMail,
+          mailSubject: this.mailSubject,
+          mailMessage: this.mailMessage
+        }
+        console.log('userName:' + this.userName + ' ,userMail:' + this.userMail +
+                       ' ,mailSubject:' + this.mailSubject + ' ,mailMessage: ' + this.mailMessage)
+        console.log('名字:' + templateParams.userName)
+        // 寄信
+        emailjs.send('kate19881110', 'natureLifeLatte_2021', templateParams, 'user_5cqoS4St5OyBFPyzDlCJb')
+          .then((result) => {
+            console.log('寄件成功!', result.status, result.text)
+          }, (error) => {
+            console.log('寄件失敗!', error)
+          })
+
+        return true
       }
     }
   }
