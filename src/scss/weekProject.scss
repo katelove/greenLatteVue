@@ -140,6 +140,7 @@
     background-color: #f6f9f4;
   }
 
+
   /* 下方按鈕 */
   #bottomBtn {
     display: flex;
@@ -193,4 +194,32 @@
   // 在pop裡要圖片不要變形
   .planSize {
     width: 100%;
+  }
+
+  //===========================畫板 RWD===============================
+  @media (max-width: 992px) {
+    #calendarTag {
+      width: 600px;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #calendarTag {
+      width: 500px;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 576px) {
+    #calendarTag {
+      width: 400px;
+    }
+
+    //每個td大小
+    .th-row th,
+    table tbody tr td {
+      height: 80px;
+    }
+
   }
