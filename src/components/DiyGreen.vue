@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12">
-        <h6>*下方為已勾選蔬果</h6>
+        <h6 class="wordFruit">*下方為已勾選蔬果</h6>
         <div class="actDiyVg">
           <div v-for="(item,index) in userDiyImg[0].diyVgFruit" :key="index" class="diy-productCard">
             <!-- 資料庫傳回產品卡片 -->

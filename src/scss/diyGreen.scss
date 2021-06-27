@@ -1,3 +1,8 @@
+.wordFruit {
+  display: flex;
+  justify-content: flex-start
+}
+
 .actDiyVg {
   display: flex;
   justify-content: flex-start;
@@ -93,8 +98,9 @@
 }
 
 //===========================畫板 RWD===============================
-@media (max-width: 992px) {}
 
-@media (max-width: 768px) {}
-
-@media (max-width: 576px) {}
+@media (max-width: 576px) {
+  .actDiyVg {
+    flex-direction: column;
+  }
+}
