@@ -1,3 +1,8 @@
+.wordFruit {
+  display: flex;
+  justify-content: flex-start
+}
+
 .actDiyVg {
   display: flex;
   justify-content: flex-start;
@@ -44,8 +49,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  position: absolute;
-  margin-top: 80px;
 
   .diy-name {
     display: flex;
@@ -55,7 +58,15 @@
     z-index: 300;
     color: white;
 
+    h3 {
+      padding-right: 10px;
+    }
+
     .diy-subject {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
       h3 {
         padding-left: 10px;
       }
@@ -68,6 +79,12 @@
   }
 }
 
+.diy-leaf {
+  display: flex;
+  align-items: center;
+}
+
+
 .diyBtn {
   padding: 0;
 
@@ -77,5 +94,13 @@
     border: 3px solid #2f5a28;
     text-decoration: none;
     font-weight: bold;
+  }
+}
+
+//===========================畫板 RWD===============================
+
+@media (max-width: 576px) {
+  .actDiyVg {
+    flex-direction: column;
   }
 }

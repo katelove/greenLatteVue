@@ -41,8 +41,8 @@
   </div>
   <!-- DIY 購物籃 -->
   <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 items">
-        <h6>*請把蔬果選入DIY 購物籃，記得<b>蔬果比例=> 蔬菜 2:水果 1 </b></h6>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 shopItems">
+        <marquee><h6>*請把蔬果選入DIY 購物籃，記得<b>蔬果比例=> 蔬菜 2:水果 1 </b></h6></marquee>
         <div class="diyBgc">
           <div v-for="(item,index) in cart" :key="index" class="diyImg">
             <img :src="item" @click="deletePic(index)" :value="checkCart">
