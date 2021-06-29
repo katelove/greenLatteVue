@@ -31,7 +31,7 @@ const router = new VueRouter({
       }
     },
     // chk每位是否有登入
-    { path: '/*', redirect: '/login' },
+    // { path: '/*', redirect: '/login' },
     {
       path: '/',
       name: 'index',

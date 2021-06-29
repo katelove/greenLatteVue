@@ -137,7 +137,7 @@
               </div>
               </ValidationProvider>
               <hr/>
-              <div class="ourself-check">
+              <!-- <div class="ourself-check">
                 <input type="radio" name="" id="" />自我檢視健康
               </div>
               <div class="ourself-check">
@@ -145,7 +145,7 @@
               </div>
               <div class="ourself-check">
                 <input type="radio" name="" id="" />綠拿鐵三餐規劃
-              </div>
+              </div> -->
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <button type="submit" class="baseBtn" value="送出" @click="accoutRegister">
@@ -214,7 +214,7 @@ export default {
     },
     async accoutRegister () {
       // 使用axios像後台發起登陸請求
-      await axios.post('register', {
+      await axios.post('http://localhost:3000/register', {
         userName: this.userName,
         userMail: this.userMail,
         userBirthday: this.selectedDate,
@@ -222,9 +222,8 @@ export default {
         userPhone: this.userPhone,
         userMobile: this.userMobile,
         image: this.image// 用base64字串的方式上傳
-      })
-
-      this.$router.push('/login')
+      }).then((res) => { console.table(res.data) })
+        .catch((error) => { console.error(error) })
     },
     chkPwd () {
       if (this.actPwd !== this.actConfirmPwd) {
