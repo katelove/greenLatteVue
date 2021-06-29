@@ -23,9 +23,7 @@
 import Mail from './components/Mail.vue'
 
 export default {
-  components: {
-    Mail
-  },
+
   methods: {
     // for modal
     showModal () {
@@ -34,6 +32,9 @@ export default {
     hideModal () {
       this.$refs['my-modal'].hide()
     }
+  },
+  components: {
+    Mail
   }
 }
 </script>

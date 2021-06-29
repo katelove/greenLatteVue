@@ -9,7 +9,7 @@
       </div>
       <div class="col-md-12 col-lg-12 login-form">
         <ValidationObserver  ref="loginForm">
-        <form @submit.prevent="loginAnswer()" method="post">
+        <form @submit.prevent="loginAnswer">
           <ValidationProvider name="帳號" rules="required|accountLogin" v-slot="{errors, classes }">
           <div class="account-group">
               <!-- 帳號 -->
@@ -57,7 +57,7 @@
 <script>
 // 引入js-cookie
 // import Cookies from 'js-cookie'
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   name: 'Login',
@@ -75,19 +75,21 @@ export default {
       // 校驗失敗，停止後續程式碼執行
         console.log('驗證失敗' + success)
         return false
+      } else {
+        this.$store.dispatch('login', {
+          userName: this.userName,
+          userPwd: this.userPwd
+        })
+          .then(() => {
+            this.$router.push('/home')
+          }, (err) => {
+            this.$store.dispatch('pushError', err.response.data.error)
+          })
+          .catch(err => {
+            this.$store.dispatch('pushError', err.response.data.error)
+          })
+        return true
       }
-    },
-    async login () {
-      // 使用axios像後台發起登陸請求
-      const response = await axios.post('http://localhost:3000/accountData', {
-        userName: this.userName,
-        userPwd: this.userPwd
-        // headers: {
-        //   Authorization: 'Bearer' + localStorage.getItem('token')
-        // }
-      })
-      console.log('login response:' + response)
-      localStorage.setItem('token', response.data.token)
     }
   }
 }

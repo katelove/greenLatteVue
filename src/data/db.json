@@ -1,5 +1,5 @@
 {
-  "accountData": [
+  "register": [
     {
       "caseId": 20210610001,
       "id": 1,
@@ -44,16 +44,18 @@
       "healthChk": true,
       "DIYChk": true,
       "mealsChk": false
+    }
+  ],
+  "login": [
+    {
+      "id": 1,
+      "account": "kate1988",
+      "password": "kate2021"
     },
     {
-      "account": "sammi123",
-      "password": "sammi123",
-      "id": 4
-    },
-    {
-      "account": "kevin19930303",
-      "password": "kevin20090311",
-      "id": 5
+      "userName": "kate1988",
+      "userPwd": "kate2021",
+      "id": 2
     }
   ],
   "proImg": [
