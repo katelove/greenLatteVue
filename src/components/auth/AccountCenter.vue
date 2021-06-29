@@ -8,7 +8,7 @@
       <div class="acontainer">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 account-setting">
-        <ValidationProvider name="帳號" rules="required|email|account" v-slot="{errors, classes }">
+        <ValidationProvider name="帳號" rules="required|account" v-slot="{errors, classes }">
         <div class="form-group accoutSty">
         <!-- 帳號 -->
           <h4>帳號 :</h4>
@@ -201,6 +201,14 @@ export default {
       // 校驗失敗，停止後續程式碼執行
         console.log('驗證失敗' + success)
         return false
+      } else {
+        await axios.post('http://localhost:3000/login', {
+          actName: this.actName,
+          actPwd: this.actPwd,
+          actConfirmPwd: this.actConfirmPwd
+        }).then((res) => { console.table(res.data) })
+          .catch((error) => { console.error(error) })
+        return true
       }
     },
     async detailAnswer () {
@@ -227,10 +235,10 @@ export default {
     },
     chkPwd () {
       if (this.actPwd !== this.actConfirmPwd) {
-        console.log('密碼:' + this.actPwd + '再次確認密碼:' + this.actConfirmPwd)
         this.isShow = !this.isShow
         return this.pwdError
       }
+      console.log('密碼:' + this.actPwd + '再次確認密碼:' + this.actConfirmPwd)
     },
     fileSelected (e) {
       const file = e.target.files.item(0)
