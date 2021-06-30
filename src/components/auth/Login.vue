@@ -57,7 +57,7 @@
 <script>
 // 引入js-cookie
 // import Cookies from 'js-cookie'
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
   name: 'Login',
@@ -76,18 +76,53 @@ export default {
         console.log('驗證失敗' + success)
         return false
       } else {
-        this.$store.dispatch('login', {
-          userName: this.userName,
-          userPwd: this.userPwd
+        axios.get('http://localhost:3000/register', {
+          // URL参數放在params屬性裏面
+          params: {
+            userName: this.userName
+          }
         })
-          .then(() => {
-            this.$router.push('/home')
+          .then((response) => {
+            console.log(response.data[0])
+            if (response.data[0] === undefined) {
+              // eslint-disable-next-line quotes
+              alert("你還不是會員，請前往註冊!!")
+              this.$router.push('/register')
+            } else {
+              // chk get會員資料與json資料相符合
+              console.log('account:' + response.data[0].userName +
+              ' ,this.account:' + this.userName +
+              ' ,password:' + response.data[0].userPwd +
+              ' ,this.password:' + this.userPwd)
+              if (response.data[0].userName === this.userName &&
+               response.data[0].userPwd === this.userPwd) {
+                this.$router.push('/home')
+              } else if (response.data[0].userName === this.userName &&
+               response.data[0].userPwd !== this.userPwd) {
+                alert('你的密碼填寫錯誤，請重新填寫')
+              }
+            }
           }, (err) => {
             this.$store.dispatch('pushError', err.response.data.error)
           })
           .catch(err => {
             this.$store.dispatch('pushError', err.response.data.error)
           })
+          .then((response) => console.log('data:' + response.data))
+          .catch((error) => console.log(error))
+
+        // this.$store.dispatch('register', {
+        //   userName: this.userName,
+        //   userPwd: this.userPwd
+        // })
+        //   .then(() => {
+        //     this.$router.push('/home')
+        //   }, (err) => {
+        //     this.$store.dispatch('pushError', err.response.data.error)
+        //   })
+        //   .catch(err => {
+        //     this.$store.dispatch('pushError', err.response.data.error)
+        //   })
         return true
       }
     }

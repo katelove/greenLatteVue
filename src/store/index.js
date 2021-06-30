@@ -49,7 +49,7 @@ export default new Vuex.Store({
     },
     // 登入=>帳號和密碼登入，回傳用then 串起來
     login ({ commit }, credentials) {
-      return axios.post('http://localhost:3000/login', credentials)
+      return axios.post('http://localhost:3000/register', credentials)
         .then(
           // 回來資料 commit到 mutations修改state
           ({ data }) => {
