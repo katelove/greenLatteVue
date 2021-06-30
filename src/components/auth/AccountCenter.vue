@@ -91,7 +91,7 @@
                 <h5>出生日/月/年</h5>
                 <p>(必填)</p>
                 <div class="dateSty">
-                  <date-dropdown default="1988-11-10" min="1950" max="2007" v-model="selectedDate" />
+                  <date-dropdown :value="selectedDate" min="1959" max="2007" v-model="selectedDate"/>
                 </div>
               </div>
               <div class="word-row">
@@ -176,7 +176,6 @@ export default {
       actConfirmPwd: '',
       userName: '',
       userMail: '',
-      // userBirthday: '',
       userAddress: '',
       userPhoneNum: '',
       userPhone: '',
@@ -210,16 +209,43 @@ export default {
       }
     }).then((response) => {
       console.log('register get login data:' + response.length)
-      if (response.data.length === 0) {
-        alert('您的帳號設定未填寫，請先設定')
-        // this.$router.push('/register')
-      } else {
+      if (response.data.length !== 0) {
         // 帳號設定顯示資料
         this.actName = response.data[0].actName
         this.actPwd = response.data[0].actPwd
         this.actConfirmPwd = response.data[0].actConfirmPwd
         // 取login ID
-        response.data[0].id = this.loginID
+        this.loginID = response.data[0].id
+        console.log('mount loginID:' + this.loginID)
+      }
+    }).catch((error) => console.log(error))
+    // 2)從db get資料
+    axios.get('http://localhost:3000/register', {
+      // URL参數放在params屬性裏面
+      params: {
+        // eslint-disable-next-line no-undef
+        actName: this.$store.state.user[0].actName
+      }
+    }).then((response) => {
+      console.log('register get register data:' + response.length)
+      if (response.data.length !== 0) {
+        // 會員資料顯示資料
+        console.table(response.data[0])
+        this.userName = response.data[0].userName
+        this.userMail = response.data[0].userMail
+        // 生日
+        this.selectedDate = response.data[0].selectedDate
+        console.log('register data birthday:' + this.selectedDate)
+        var arr = this.selectedDate.split('.')
+        // eslint-disable-next-line no-unused-vars
+        document.getElementsByClassName('date-dropdown-select day')[0].value = arr[0].replace(/^0+/, '')
+        document.getElementsByClassName('date-dropdown-select month')[0].value = arr[1].replace(/^0+/, '') - 1
+        document.getElementsByClassName('date-dropdown-select year')[0].value = arr[2]
+        this.userAddress = response.data[0].userAddress
+        this.userPhoneNum = response.data[0].userPhoneNum
+        this.userPhone = response.data[0].userPhone
+        this.userMobile = response.data[0].userMobile
+        this.image = response.data[0].image
       }
     }).catch((error) => console.log(error))
   },
@@ -254,13 +280,17 @@ export default {
         var year = today.getFullYear()
         var month = ('0' + (today.getMonth() + 1)).slice(-2)
         var day = ('0' + today.getDate()).slice(-2)
+        console.log('login this.loginID:' + this.loginID)
         this.caseID = year + month + day + '000' + this.loginID
+        console.log('this.caseID:' + this.caseID)
         axios.post('http://localhost:3000/register', {
           caseId: this.caseID,
+          actName: this.actName,
           userName: this.userName,
           userMail: this.userMail,
-          userBirthday: this.selectedDate,
+          selectedDate: this.selectedDate,
           userAddress: this.userAddress,
+          userPhoneNum: this.userPhoneNum,
           userPhone: this.userPhone,
           userMobile: this.userMobile,
           image: this.image// 用base64字串的方式上傳

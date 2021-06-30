@@ -96,17 +96,14 @@ export default {
               .then((response) => {
                 console.log(response.data[0])
                 if (response.data[0] === undefined) {
-                  // eslint-disable-next-line quotes
-                  // console.log("login this.userName:" + this.userName)
                   alert('你的會員資料尚未填寫完成!!')
                   this.$store.dispatch('login', {
+                    // 1)login 資料 帶入 register帳號設定
                     userName: this.userName,
                     userPwd: this.userPwd
                   }).then(() => {
                     this.$router.push('/register')
                   })
-                  // eslint-disable-next-line no-template-curly-in-string
-                  // this.$router.push({ path: `/register?userName=${this.userName}` })
                 } else {
                   // chk get會員資料與json資料相符合
                   console.log('account:' + response.data[0].userName +
