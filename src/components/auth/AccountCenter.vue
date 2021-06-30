@@ -148,7 +148,7 @@
               </div> -->
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <button type="submit" class="baseBtn" value="送出" @click="accoutRegister">
+              <button type="submit" class="baseBtn" value="送出">
                 <p>儲存</p>
               </button>
             </div>
@@ -168,6 +168,7 @@ import { County, Zipcode } from 'twzipcode-vue'
 import DateDropdown from 'vue-date-dropdown'
 
 export default {
+  name: 'Register',
   data () {
     return {
       actName: '',
@@ -190,8 +191,37 @@ export default {
         word: '兩個密碼須一致，請重新輸入'
       },
       // 上傳圖片
-      image: require('../../../public/images/company/user-ion.png')
+      image: require('../../../public/images/company/user-ion.png'),
+      // 產caseId
+      loginID: '',
+      caseID: ''
     }
+  },
+  mounted () {
+    console.log('accounter store actName:' + this.$store.state.user[0].actName)
+    // const url = window.location.href
+    // const urlUserName = window.location.search.substring(1)
+    // console.log('store register urlUserName:' + urlUserName)
+    axios.get('http://localhost:3000/login', {
+      // URL参數放在params屬性裏面
+      params: {
+        // eslint-disable-next-line no-undef
+        actName: this.$store.state.user[0].actName
+      }
+    }).then((response) => {
+      console.log('register get login data:' + response.length)
+      if (response.data.length === 0) {
+        alert('您的帳號設定未填寫，請先設定')
+        // this.$router.push('/register')
+      } else {
+        // 帳號設定顯示資料
+        this.actName = response.data[0].actName
+        this.actPwd = response.data[0].actPwd
+        this.actConfirmPwd = response.data[0].actConfirmPwd
+        // 取login ID
+        response.data[0].id = this.loginID
+      }
+    }).catch((error) => console.log(error))
   },
   methods: {
     // 驗證會員帳密
@@ -218,20 +248,27 @@ export default {
       // 校驗失敗，停止後續程式碼執行
         console.log('驗證失敗' + success)
         return false
+      } else {
+        // 產會員caseID
+        var today = new Date()
+        var year = today.getFullYear()
+        var month = ('0' + (today.getMonth() + 1)).slice(-2)
+        var day = ('0' + today.getDate()).slice(-2)
+        this.caseID = year + month + day + '000' + this.loginID
+        axios.post('http://localhost:3000/register', {
+          caseId: this.caseID,
+          userName: this.userName,
+          userMail: this.userMail,
+          userBirthday: this.selectedDate,
+          userAddress: this.userAddress,
+          userPhone: this.userPhone,
+          userMobile: this.userMobile,
+          image: this.image// 用base64字串的方式上傳
+        }).then((res) => { console.table(res.data) })
+          .catch((error) => { console.error(error) })
       }
-    },
-    async accoutRegister () {
-      // 使用axios像後台發起登陸請求
-      await axios.post('http://localhost:3000/register', {
-        userName: this.userName,
-        userMail: this.userMail,
-        userBirthday: this.selectedDate,
-        userAddress: this.userAddress,
-        userPhone: this.userPhone,
-        userMobile: this.userMobile,
-        image: this.image// 用base64字串的方式上傳
-      }).then((res) => { console.table(res.data) })
-        .catch((error) => { console.error(error) })
+
+      return true
     },
     chkPwd () {
       if (this.actPwd !== this.actConfirmPwd) {

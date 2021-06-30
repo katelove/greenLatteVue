@@ -15,9 +15,9 @@ export default new Vuex.Store({
     // 每個Mutation都有一個字串型態的事件類型(type)和一個回調函數(handler)
     // 收到User data
     SET_USER_DATA (state, userData) {
+      console.log('SET_USER_DATA userData:' + userData)
       // 登入==>設置state
       state.user = userData
-      console.log('userData:' + userData.name)
       // 設置localstorage連到自動登入
       localStorage.setItem('user', JSON.stringify(userData))
       // 設置每一次axios的header Authorization 為Barrer Token
@@ -49,13 +49,17 @@ export default new Vuex.Store({
     },
     // 登入=>帳號和密碼登入，回傳用then 串起來
     login ({ commit }, credentials) {
-      return axios.post('http://localhost:3000/register', credentials)
-        .then(
-          // 回來資料 commit到 mutations修改state
-          ({ data }) => {
-            commit('SET_USER_DATA', data)
-          }
-        )
+      console.log('store login data:' + credentials.userName)
+      axios.get('http://localhost:3000/login', {
+        params: {
+          actName: credentials.userName
+        }
+      }).then(
+        // 回來資料 commit到 mutations修改state
+        ({ data }) => {
+          commit('SET_USER_DATA', data)
+        }
+      )
     },
     pushError ({ commit }, credentials) {
       commit('SET_ERROR_DATA', credentials)
@@ -79,8 +83,8 @@ export default new Vuex.Store({
       return !!state.user
     },
     userInfo: state => {
-      console.log('state.user:' + state.user)
-      return state.user
+      console.log('state.user:' + state.user[0].actName)
+      return state.user[0]
     }
   }
 })

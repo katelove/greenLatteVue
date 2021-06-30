@@ -32,7 +32,7 @@
             <label for="rememberDetail">記住我</label>
           </div>
           <div class="col-md-12 col-lg-12 login-button">
-            <button @click="login" type="submit" class="btn btn-login">登入</button>
+            <button type="submit" class="btn btn-login">登入</button>
           </div>
         </form>
         </ValidationObserver>
@@ -76,40 +76,54 @@ export default {
         console.log('驗證失敗' + success)
         return false
       } else {
-        axios.get('http://localhost:3000/register', {
+        axios.get('http://localhost:3000/login', {
           // URL参數放在params屬性裏面
           params: {
-            userName: this.userName
+            actName: this.userName
           }
-        })
-          .then((response) => {
-            console.log(response.data[0])
-            if (response.data[0] === undefined) {
-              // eslint-disable-next-line quotes
-              alert("你還不是會員，請前往註冊!!")
-              this.$router.push('/register')
-            } else {
-              // chk get會員資料與json資料相符合
-              console.log('account:' + response.data[0].userName +
+        }).then((response) => {
+          if (response.data[0] === undefined) {
+            // eslint-disable-next-line quotes
+            alert("你還不是會員，請前往註冊!!")
+            this.$router.push('/register')
+          } else {
+            axios.get('http://localhost:3000/register', {
+              // URL参數放在params屬性裏面
+              params: {
+                userName: this.userName
+              }
+            })
+              .then((response) => {
+                console.log(response.data[0])
+                if (response.data[0] === undefined) {
+                  // eslint-disable-next-line quotes
+                  // console.log("login this.userName:" + this.userName)
+                  alert('你的會員資料尚未填寫完成!!')
+                  this.$store.dispatch('login', {
+                    userName: this.userName,
+                    userPwd: this.userPwd
+                  }).then(() => {
+                    this.$router.push('/register')
+                  })
+                  // eslint-disable-next-line no-template-curly-in-string
+                  // this.$router.push({ path: `/register?userName=${this.userName}` })
+                } else {
+                  // chk get會員資料與json資料相符合
+                  console.log('account:' + response.data[0].userName +
               ' ,this.account:' + this.userName +
               ' ,password:' + response.data[0].userPwd +
               ' ,this.password:' + this.userPwd)
-              if (response.data[0].userName === this.userName &&
+                  if (response.data[0].userName === this.userName &&
                response.data[0].userPwd === this.userPwd) {
-                this.$router.push('/home')
-              } else if (response.data[0].userName === this.userName &&
+                    this.$router.push('/home')
+                  } else if (response.data[0].userName === this.userName &&
                response.data[0].userPwd !== this.userPwd) {
-                alert('你的密碼填寫錯誤，請重新填寫')
-              }
-            }
-          }, (err) => {
-            this.$store.dispatch('pushError', err.response.data.error)
-          })
-          .catch(err => {
-            this.$store.dispatch('pushError', err.response.data.error)
-          })
-          .then((response) => console.log('data:' + response.data))
-          .catch((error) => console.log(error))
+                    alert('你的密碼填寫錯誤，請重新填寫')
+                  }
+                }
+              }).catch((error) => console.log('regiaster error:' + error))
+          }
+        }).catch((error) => console.log('login error:' + error))
 
         // this.$store.dispatch('register', {
         //   userName: this.userName,
