@@ -11,88 +11,90 @@ import ForgetPwd from '../components/auth/ForgetPwd.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/accountHome',
-    name: 'Home',
-    components: {
-      home: Home,
-      nav: NavBar
-    },
-    meta: { requiresAuth: true }// 需驗證
-  },
-  {
-    path: '/',
-    name: 'index',
-    components: {
-      home: HomeLogin,
-      nav: NavBarLogin
-    },
-    meta: { requiresAuth: false }// 不需驗證
-  },
-  // { path: '/*', redirect: '/login' },
-  {
-    // 註冊
-    path: '/register',
-    name: 'AccountCenter',
-    components: {
-      home: AccountCenter,
-      nav: NavBar
-    }
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    components: {
-      home: Login,
-      nav: NavBarLogin
-    }
-  },
-  {
-    path: '/forgetPwd',
-    name: 'ForgetPwd',
-    components: {
-      home: ForgetPwd,
-      nav: NavBarLogin
-    }
-  }
-]
-
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+  routes: [
+    {
+      path: '/',
+      name: 'index',
+      components: {
+        home: HomeLogin,
+        nav: NavBarLogin
+      },
+      meta: { requiresAuth: false }// 不需驗證
+    },
+    // chk每位是否有登入
+    { path: '*', redirect: '/login' },
+    {
+      path: '/login',
+      name: 'Login',
+      components: {
+        home: Login,
+        nav: NavBarLogin
+      }
+    },
+    // {
+    //   // 未登入註冊
+    //   path: '/loginRegister',
+    //   name: 'loginCenter',
+    //   components: {
+    //     home: RegisterLogin,
+    //     nav: NavBarLogin
+    //   },
+    //   meta: { requiresAuth: false }// 需驗證
+    // },
+    {
+      path: '/home',
+      name: 'Home',
+      components: {
+        home: Home,
+        nav: NavBar
+      },
+      meta: { requiresAuth: true }// 需驗證
+    },
+
+    {
+    // 註冊
+      path: '/register',
+      name: 'AccountCenter',
+      components: {
+        home: AccountCenter,
+        nav: NavBar
+      },
+      meta: { requiresAuth: true }// 需驗證
+    },
+    {
+      path: '/forgetPwd',
+      name: 'ForgetPwd',
+      components: {
+        home: ForgetPwd,
+        nav: NavBarLogin
+      }
+    }
+  ]
 })
 
 export default router
 
-// router login導頁，使用全域beforeEach
 // router.beforeEach((to, from, next) => {
-//   console.log('to: ' + to.fullPath)
-//   console.log('from: ' + from.fullPath)
-//   // 1) chk 目的地路由在 meta上是否有設置requiresAuth: true，如果沒有，導回login
-//   console.log('是否有驗證: ' + to.meta.requiresAuth)
-//   if (to.meta.requiresAuth) {
-//     // 2) 獲取cookies當中 login資訊並取得 token
-//     const coLogin = Cookies.get('login')
-//     const cotoken = JSON.stringify(coLogin).token
-//     console.log('login token:' + cotoken)
-//     if (coLogin) {
-//       // 3) chk token不為空,否則導回login
-//       if (cotoken.length > 0) {
-//         next()
-//       } else {
-//         // 導回login
-//         next({
-//           path: '/login'
-//         })
-//       }
-//     } else {
-//       next({
-//         path: '/login'
-//       })
-//     }
-//   } else {
+//   // redirect to login page if not logged in and trying to access a restricted page
+//   const isLogin = localStorage.getItem('user') === 'ImLogin'
+//   if (isLogin) {
 //     next()
+//   } else {
+//     if (to.path !== '/login') {
+//       next('/login')
+//     } else {
+//       next()
+//     }
 //   }
+
+// const publicPages = ['/']
+// const authRequired = !publicPages.includes(to.path)
+// const loggedIn = localStorage.getItem('user')
+
+// if (authRequired && !loggedIn) {
+//   return next('/login')
+// }
+
+// next()
 // })

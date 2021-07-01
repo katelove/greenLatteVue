@@ -22,6 +22,7 @@
         <b-nav-item href="#sec6">DIY綠拿鐵</b-nav-item>
         <b-nav-item href="#sec7">綠拿鐵三餐規劃</b-nav-item>
         <b-nav-item class="nature-account"><font-awesome-icon icon="user-circle"></font-awesome-icon><router-link to="/register">會員中心</router-link></b-nav-item>
+        <b-nav-item class="navWord"><router-link to="/logout">Logout</router-link></b-nav-item>
       </b-navbar-nav>
 
     </b-collapse>
@@ -49,5 +50,15 @@ nav{
   background-color: #11220f;
   border: #11220f 3px solid;
   border-radius: 15px;
+}
+
+.navWord{
+  a{
+    color: rgb(160, 159, 159);
+  }
+  a:hover{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
 }
 </style>

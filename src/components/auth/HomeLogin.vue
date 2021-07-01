@@ -4,7 +4,6 @@
 <ParaagraphOne/>
 <section id="sec2"><BodyDA/></section>
 <div class="site"></div>
-<section id="sec3"><HealthTest/></section>
 
 </div>
 
@@ -14,14 +13,13 @@
 import Carousel from '../../components/Carousel'
 import BodyDA from '../../components/BodyDA'
 import ParaagraphOne from '../../components/ParaagraphOne'
-import HealthTest from '../../components/HealthTest'
+
 export default {
   name: 'greenLatte',
   components: {
     Carousel,
     BodyDA,
-    ParaagraphOne,
-    HealthTest
+    ParaagraphOne
   }
 }
 </script>

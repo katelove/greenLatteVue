@@ -15,8 +15,7 @@
 
       <!-- Right nav items -->
       <b-navbar-nav class="ml-auto">
-        <b-nav-item href="#sec2">身體分析</b-nav-item>
-        <b-nav-item href="#sec3">檢視健康</b-nav-item>
+        <b-nav-item class="navWord" href="#sec2">身體分析</b-nav-item>
         <b-nav-item class="nature-account"><font-awesome-icon icon="user-circle"></font-awesome-icon><router-link to="/login">會員登入</router-link></b-nav-item>
       </b-navbar-nav>
 
@@ -51,7 +50,16 @@ nav{
   a:hover{
     color: rgb(255, 255, 255);
     text-decoration: none;
+  }
+}
 
+.navWord{
+  a{
+    color: rgb(160, 159, 159);
+  }
+  a:hover{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
   }
 }
 </style>
