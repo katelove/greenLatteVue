@@ -120,18 +120,6 @@ export default {
           }
         }).catch((error) => console.log('login error:' + error))
 
-        // this.$store.dispatch('register', {
-        //   userName: this.userName,
-        //   userPwd: this.userPwd
-        // })
-        //   .then(() => {
-        //     this.$router.push('/home')
-        //   }, (err) => {
-        //     this.$store.dispatch('pushError', err.response.data.error)
-        //   })
-        //   .catch(err => {
-        //     this.$store.dispatch('pushError', err.response.data.error)
-        //   })
         return true
       }
     }
