@@ -14,7 +14,7 @@
           <div class="account-group">
               <!-- 帳號 -->
             <div><font-awesome-icon icon="user-circle"/></div>
-            <input type="text" v-model="userName" :class="classes" class="account-sty" placeholder="請輸入帳號">
+            <input type="text" v-model="actName" :class="classes" class="account-sty" placeholder="請輸入帳號">
           </div>
             <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
@@ -22,7 +22,7 @@
           <div class="account-group">
               <!-- 密碼 -->
             <div><font-awesome-icon icon="key"/></div>
-            <input type="password" v-model="userPwd" :class="classes" class="account-sty" placeholder="請輸入密碼">
+            <input type="password" v-model="actPwd" :class="classes" class="account-sty" placeholder="請輸入密碼">
           </div>
           <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
@@ -63,8 +63,8 @@ export default {
   name: 'Login',
   data () {
     return {
-      userName: '',
-      userPwd: ''
+      actName: '',
+      actPwd: ''
     }
   },
   methods: {
@@ -79,7 +79,7 @@ export default {
         axios.get('http://localhost:3000/login', {
           // URL参數放在params屬性裏面
           params: {
-            actName: this.userName
+            actName: this.actName
           }
         }).then((response) => {
           if (response.data[0] === undefined) {
@@ -87,38 +87,36 @@ export default {
             alert("你還不是會員，請前往註冊!!")
             this.$router.push('/register')
           } else {
-            axios.get('http://localhost:3000/register', {
+            // chk get會員資料與json資料相符合
+            console.log('account:' + response.data[0].actName +
+              ' ,this.account:' + this.actName +
+              ' ,password:' + response.data[0].actPwd +
+              ' ,this.password:' + this.actPwd)
+            if (response.data[0].actName === this.actName &&
+               response.data[0].actPwd === this.actPwd) {
+              axios.get('http://localhost:3000/register', {
               // URL参數放在params屬性裏面
-              params: {
-                userName: this.userName
-              }
-            })
-              .then((response) => {
-                console.log(response.data[0])
+                params: {
+                  actName: this.actName
+                }
+              }).then((response) => {
+                console.log('register actName data:' + response.data[0])
                 if (response.data[0] === undefined) {
                   alert('你的會員資料尚未填寫完成!!')
                   this.$store.dispatch('login', {
-                    // 1)login 資料 帶入 register帳號設定
-                    userName: this.userName,
-                    userPwd: this.userPwd
+                  // 1)login 資料 帶入 register帳號設定
+                    actName: this.actName,
+                    actPwd: this.actPwd
                   }).then(() => {
                     this.$router.push('/register')
                   })
-                } else {
-                  // chk get會員資料與json資料相符合
-                  console.log('account:' + response.data[0].userName +
-              ' ,this.account:' + this.userName +
-              ' ,password:' + response.data[0].userPwd +
-              ' ,this.password:' + this.userPwd)
-                  if (response.data[0].userName === this.userName &&
-               response.data[0].userPwd === this.userPwd) {
-                    this.$router.push('/home')
-                  } else if (response.data[0].userName === this.userName &&
-               response.data[0].userPwd !== this.userPwd) {
-                    alert('你的密碼填寫錯誤，請重新填寫')
-                  }
                 }
               }).catch((error) => console.log('regiaster error:' + error))
+              this.$router.push('/home')
+            } else if (response.data[0].actName === this.actName &&
+               response.data[0].actPwd !== this.actPwd) {
+              alert('你的密碼填寫錯誤，請重新填寫')
+            }
           }
         }).catch((error) => console.log('login error:' + error))
 

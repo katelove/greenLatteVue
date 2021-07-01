@@ -198,9 +198,6 @@ export default {
   },
   mounted () {
     console.log('accounter store actName:' + this.$store.state.user[0].actName)
-    // const url = window.location.href
-    // const urlUserName = window.location.search.substring(1)
-    // console.log('store register urlUserName:' + urlUserName)
     axios.get('http://localhost:3000/login', {
       // URL参數放在params屬性裏面
       params: {
