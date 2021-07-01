@@ -1,7 +1,7 @@
 <template>
     <nav>
     <b-navbar toggleable="lg" type="dark" class="nature-bg fixed-top">
-    <router-link to="/#sec1">
+    <router-link to="/home">
     <b-navbar-brand>
       <img src="../../../public/images/company/logo-small.png" alt="健康綠生活" />
           <div class="nature-word">
