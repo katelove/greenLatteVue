@@ -181,7 +181,7 @@ export default {
       userPhone: '',
       userMobile: '',
       // 台灣縣市
-      myCounty: '臺北市',
+      myCounty: '',
       cityValue: '',
       // 生日
       selectedDate: '',
@@ -241,6 +241,8 @@ export default {
         document.getElementsByClassName('date-dropdown-select day')[0].value = arr[0].replace(/^0+/, '')
         document.getElementsByClassName('date-dropdown-select month')[0].value = arr[1].replace(/^0+/, '') - 1
         document.getElementsByClassName('date-dropdown-select year')[0].value = arr[2]
+        this.myCounty = response.data[0].myCounty
+        this.cityValue = response.data[0].cityValue
         this.userAddress = response.data[0].userAddress
         this.userPhoneNum = response.data[0].userPhoneNum
         this.userPhone = response.data[0].userPhone
@@ -289,6 +291,8 @@ export default {
           userName: this.userName,
           userMail: this.userMail,
           selectedDate: this.selectedDate,
+          myCounty: this.myCounty,
+          cityValue: this.cityValue,
           userAddress: this.userAddress,
           userPhoneNum: this.userPhoneNum,
           userPhone: this.userPhone,
