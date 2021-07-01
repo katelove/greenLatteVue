@@ -103,15 +103,14 @@ export default {
                 console.log('register actName data:' + response.data[0])
                 if (response.data[0] === undefined) {
                   alert('你的會員資料尚未填寫完成!!')
-                } else {
-                  this.$store.dispatch('login', {
-                  // 1)login 資料 帶入 register帳號設定
-                    actName: this.actName,
-                    actPwd: this.actPwd
-                  }).then(() => {
-                    this.$router.push('/register')
-                  })
                 }
+                this.$store.dispatch('login', {
+                  // 1)login 資料 帶入 register帳號設定
+                  actName: this.actName,
+                  actPwd: this.actPwd
+                }).then(() => {
+                  this.$router.push('/register')
+                })
               }).catch((error) => console.log('regiaster error:' + error))
               this.$router.push('/home')
             } else if (response.data[0].actName === this.actName &&

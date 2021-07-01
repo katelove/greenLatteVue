@@ -19,14 +19,14 @@
   "login": [
     {
       "actName": "kate1234",
-      "actPwd": "Lady1234",
-      "actConfirmPwd": "Lady1234",
+      "actPwd": "lady1234",
+      "actConfirmPwd": "lady1234",
       "id": 1
     },
     {
-      "actName": "Mean1234",
-      "actPwd": "Kate6789",
-      "actConfirmPwd": "Kate6789",
+      "actName": "mean1234",
+      "actPwd": "kate6789",
+      "actConfirmPwd": "kate6789",
       "id": 2
     },
     {

@@ -179,7 +179,7 @@ extend('accountLogin', {
   validate: value => {
     return /^[1-9a-z][0-9a-z]{5,11}$/.test(value)
   },
-  message: '請輸入正確 {_field_}'
+  message: '請輸入正確 {_field_}，英文字母都需小寫'
 })
 
 // 2.密碼
@@ -187,7 +187,7 @@ extend('accountPwd', {
   validate: value => {
     return /^[0-9a-z]{6,10}$/.test(value)
   },
-  message: '請輸入正確 {_field_}'
+  message: '請輸入正確 {_field_}，英文字母都需小寫'
 })
 
 // ============ 忘記密碼 ============
