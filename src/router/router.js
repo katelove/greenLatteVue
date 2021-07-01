@@ -14,14 +14,16 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
     {
-      path: '/home',
-      name: 'Home',
+      path: '/',
+      name: 'index',
       components: {
-        home: Home,
-        nav: NavBar
-      }
-    // meta: { requiresAuth: true }// 需驗證
+        home: HomeLogin,
+        nav: NavBarLogin
+      },
+      meta: { requiresAuth: false }// 不需驗證
     },
+    // chk每位是否有登入
+    { path: '*', redirect: '/login' },
     {
       path: '/login',
       name: 'Login',
@@ -30,17 +32,26 @@ const router = new VueRouter({
         nav: NavBarLogin
       }
     },
-    // chk每位是否有登入
-    { path: '/sec3', redirect: '/login' },
+    // {
+    //   // 未登入註冊
+    //   path: '/loginRegister',
+    //   name: 'loginCenter',
+    //   components: {
+    //     home: RegisterLogin,
+    //     nav: NavBarLogin
+    //   },
+    //   meta: { requiresAuth: false }// 需驗證
+    // },
     {
-      path: '/',
-      name: 'index',
+      path: '/home',
+      name: 'Home',
       components: {
-        home: HomeLogin,
-        nav: NavBarLogin
-      }
-    // meta: { requiresAuth: false }// 不需驗證
+        home: Home,
+        nav: NavBar
+      },
+      meta: { requiresAuth: true }// 需驗證
     },
+
     {
     // 註冊
       path: '/register',
@@ -48,7 +59,8 @@ const router = new VueRouter({
       components: {
         home: AccountCenter,
         nav: NavBar
-      }
+      },
+      meta: { requiresAuth: true }// 需驗證
     },
     {
       path: '/forgetPwd',
@@ -63,15 +75,26 @@ const router = new VueRouter({
 
 export default router
 
-router.beforeEach((to, from, next) => {
-  // redirect to login page if not logged in and trying to access a restricted page
-  const publicPages = ['/login']
-  const authRequired = !publicPages.includes(to.path)
-  const loggedIn = localStorage.getItem('user')
+// router.beforeEach((to, from, next) => {
+//   // redirect to login page if not logged in and trying to access a restricted page
+//   const isLogin = localStorage.getItem('user') === 'ImLogin'
+//   if (isLogin) {
+//     next()
+//   } else {
+//     if (to.path !== '/login') {
+//       next('/login')
+//     } else {
+//       next()
+//     }
+//   }
 
-  if (authRequired && !loggedIn) {
-    return next('/login')
-  }
+// const publicPages = ['/']
+// const authRequired = !publicPages.includes(to.path)
+// const loggedIn = localStorage.getItem('user')
 
-  next()
-})
+// if (authRequired && !loggedIn) {
+//   return next('/login')
+// }
+
+// next()
+// })

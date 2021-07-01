@@ -22,7 +22,7 @@
         <b-nav-item href="#sec6">DIY綠拿鐵</b-nav-item>
         <b-nav-item href="#sec7">綠拿鐵三餐規劃</b-nav-item>
         <b-nav-item class="nature-account"><font-awesome-icon icon="user-circle"></font-awesome-icon><router-link to="/register">會員中心</router-link></b-nav-item>
-        <b-nav-item class="navWord"><router-link to="/">Logout</router-link></b-nav-item>
+        <b-nav-item class="navWord"><router-link to="/logout">Logout</router-link></b-nav-item>
       </b-navbar-nav>
 
     </b-collapse>

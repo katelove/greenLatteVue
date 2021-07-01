@@ -26,6 +26,7 @@ export default new Vuex.Store({
     CLEAR_USER_DATA (state) {
       // 登出用==>清除本地端user資料防止loggedIn再讀取到
       localStorage.removeItem('user')
+      console.log('清除localStorage')
       // reload這個頁面 重置所有vue檔案
       location.reload()
     },
@@ -49,7 +50,6 @@ export default new Vuex.Store({
     },
     // 登入=>帳號和密碼登入，回傳用then 串起來
     login ({ commit }, credentials) {
-      console.log('store login data:' + credentials.actName)
       axios.get('http://localhost:3000/login', {
         params: {
           actName: credentials.actName
@@ -73,6 +73,7 @@ export default new Vuex.Store({
     },
     // 登出方法
     logout ({ commit }) {
+      console.log('store logout')
       commit('CLEAR_USER_DATA')
     }
   },
