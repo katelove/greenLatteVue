@@ -36,9 +36,9 @@ extend('heigh', {
 // 2.體重
 extend('weightV', {
   validate: value => {
-    return /^[1-9]+(.[0-9])?$/.test(value)
+    return /^[1-9]{2}$/.test(value)
   },
-  message: '請輸入正確 {_field_}'
+  message: '請輸入正確 {_field_},至少輸入兩位數'
 })
 
 // 3.性別
@@ -52,25 +52,25 @@ extend('genderOptions', {
 // 4.年齡
 extend('ageFat', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    return /^[1-9]{2}$/.test(value)
   },
-  message: '請輸入正確 {_field_}'
+  message: '請輸入正確 {_field_},至少輸入兩位數'
 })
 
 // 5.體脂數
 extend('bodyFat', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    return /^[1-9]{2}$/.test(value)
   },
-  message: '請輸入正確 {_field_}'
+  message: '請輸入正確 {_field_},至少輸入兩位數'
 })
 
 // 6.膽固醇脂數
 extend('choleValue', {
   validate: value => {
-    return /^[1-2]+(.[0-9])?$/.test(value)
+    return /^[1-9]{3}$/.test(value)
   },
-  message: '請輸入正確 {_field_}'
+  message: '請輸入正確 {_field_},至少輸入三位數'
 })
 
 // ==============久坐族=====================

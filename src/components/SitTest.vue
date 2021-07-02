@@ -54,12 +54,16 @@
       </div>
       <!-- 久坐族回答 -->
       <div v-show="display=='block'?true:false" class="back">
-      <h3>{{sitGroup()}}</h3>
+        <div class="bodyAswer">
+           <div><font-awesome-icon icon="chair"/></div>
+          <h3>{{sitGroup()}}</h3>
+        </div>
       </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -87,9 +91,9 @@ export default {
   },
   methods: {
     sitGroup: function () {
-      if (this.sitOptions === '8小時' || this.sitOptions === '8~12小時') {
-        if (this.wcOptions === '2~3次') {
-          if (this.walkOptions === '5~10分鐘') {
+      if (this.longSitChair === '8小時' || this.longSitChair === '8~12小時') {
+        if (this.longSitWC === '2~3次') {
+          if (this.longSitWalk === '5~10分鐘') {
             return '你是標準久坐族'
           }
         }
@@ -106,6 +110,23 @@ export default {
       } else {
       // 顯示回答
         console.log('驗證成功' + success)
+
+        // 1)先取caseId
+        axios.get('http://localhost:3000/register', {
+          params: {
+          // eslint-disable-next-line no-undef
+            actName: this.$store.state.user[0].actName
+          }
+        }).then((response) => {
+          axios.post('http://localhost:3000/sitTest/', {
+            caseId: response.data[0].caseId,
+            longSitChair: this.longSitChair,
+            longSitWC: this.longSitWC,
+            longSitWalk: this.longSitWalk
+          }).then((res) => {
+            console.table(res.data)
+          }).catch((error) => { console.error(error) })
+        }).catch((error) => { console.error(error) })
         this.display = 'block'
       }
     }

@@ -16,7 +16,7 @@
             </div>
             <div class="weightW">
               <label for="weightV">體重: </label>
-              <ValidationProvider name="體重" rules="required|heigh" v-slot="{errors,classes}">
+              <ValidationProvider name="體重" rules="required|weightV" v-slot="{errors,classes}">
                <input type="text" :class="classes" name="weightV" id="weightV" v-model.number="weightV" placeholder="請輸入體重"/>公斤
                <span style="color:red">{{errors[0]}}</span>
               </ValidationProvider>
@@ -73,6 +73,8 @@
         </div>
         <!-- 基本測量回答 -->
         <div v-show="display=='block'?true:false" class="back">
+          <div class="bodyAswer">
+            <div><font-awesome-icon icon="child"/></div>
             <div class="base_one">
               <h4>1. 計算身體質量指數 </h4>
               <h6>BMI計算方式=>你的體重:{{weightV}} / 你的身高:{{heigh/100}}**2</h6>
@@ -80,7 +82,7 @@
               <h5>肥胖指數: <b>{{fatValue()}}</b></h5>
             </div>
             <div class="base_two">
-              <h4>2. 男女體脂肪表準表</h4>
+              <h4>2. 體脂肪表準表</h4>
               <h6>你是: <b>{{selectedGender}}</b></h6>
               <h6>你的年齡:<b>{{ageFat}}</b>歲</h6>
               <h5>你的體脂為<b>{{bodyfatNum()}}</b></h5>
@@ -89,10 +91,12 @@
               <h4>3. 膽固醇健康指數</h4>
               <h5>你的總膽固醇 <b>{{choleNum()}}</b></h5>
             </div>
+          </div>
         </div>
       </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -159,7 +163,7 @@ export default {
           }
         }
       } else {
-        // 女生
+        // 體脂數女生
         if (this.ageFat <= 30 && this.ageFat > 18) {
           // 18~30
           if (this.bodyFat >= 17 && this.bodyFat <= 24) {
@@ -201,6 +205,25 @@ export default {
       } else {
       // 顯示回答
         console.log('驗證成功' + success)
+        // 1)先取caseId
+        axios.get('http://localhost:3000/register', {
+          params: {
+            // eslint-disable-next-line no-undef
+            actName: this.$store.state.user[0].actName
+          }
+        }).then((response) => {
+          axios.post('http://localhost:3000/baseTest', {
+            caseId: response.data[0].caseId,
+            heigh: this.heigh,
+            weight: this.weightV,
+            selectedGender: this.selectedGender,
+            ageFat: this.ageFat,
+            bodyFat: this.bodyFat,
+            choleValue: this.choleValue
+          }).then((res) => { console.table(res.data) })
+            .catch((error) => { console.error(error) })
+        }).then((res) => { console.table(res.data) })
+          .catch((error) => { console.error(error) })
         this.display = 'block'
       }
 
