@@ -1,10 +1,10 @@
 <template>
    <div class="container">
         <div class="row paragraph_design">
-          <div class="col-sm-4 .col-md-4 .col-lg-2 .col-xl-2">
+          <div class="col-sm-4 .col-md-6 .col-lg-4 .col-xl-4">
             <img src="../../public/images/company/picture01.png" alt="" />
           </div>
-          <div class="col-sm-8 .col-md-8 .col-lg-10 .col-xl-10">
+          <div class="col-sm-8 .col-md-6 .col-lg-8 .col-xl-8">
             <div class="paragraph_01_word">
               <h1>看見不一樣的自己，DIY 動手做</h1>
             </div>
@@ -23,6 +23,7 @@
   height: 180px;
   img {
   position: absolute;
+  left: 25%;
   }
   .paragraph_01_word {
   padding-top: 20px;
@@ -36,4 +37,12 @@
   }
 }
 
+@media (max-width: 768px) {
+.paragraph_01_word{
+    padding-left: 30px;
+  h1{
+    font-size: 30px;
+  }
+}
+}
 </style>

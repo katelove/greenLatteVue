@@ -85,4 +85,16 @@ export default {
      text-align: left;
   }
 }
+
+@media (max-width: 576px) {
+.wordTitle{
+  h3{
+  font-size: 30px;
+  padding: 5px;
+   }
+  p{
+    font-size: 10px;
+  }
+ }
+}
 </style>

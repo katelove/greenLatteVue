@@ -27,10 +27,10 @@
           <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
             <!-- remember account and password -->
-          <div class="remAccount">
+          <!-- <div class="remAccount">
             <input type="checkbox" name="rememberDetail" id="rememberDetail">
             <label for="rememberDetail">記住我</label>
-          </div>
+          </div> -->
           <div class="col-md-12 col-lg-12 login-button">
             <button type="submit" class="btn btn-login">登入</button>
           </div>
@@ -120,18 +120,6 @@ export default {
           }
         }).catch((error) => console.log('login error:' + error))
 
-        // this.$store.dispatch('register', {
-        //   userName: this.userName,
-        //   userPwd: this.userPwd
-        // })
-        //   .then(() => {
-        //     this.$router.push('/home')
-        //   }, (err) => {
-        //     this.$store.dispatch('pushError', err.response.data.error)
-        //   })
-        //   .catch(err => {
-        //     this.$store.dispatch('pushError', err.response.data.error)
-        //   })
         return true
       }
     }

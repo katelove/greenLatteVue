@@ -15,7 +15,6 @@ export default new Vuex.Store({
     // 每個Mutation都有一個字串型態的事件類型(type)和一個回調函數(handler)
     // 收到User data
     SET_USER_DATA (state, userData) {
-      console.log('SET_USER_DATA userData:' + userData)
       // 登入==>設置state
       state.user = userData
       // 設置localstorage連到自動登入
@@ -29,18 +28,6 @@ export default new Vuex.Store({
       console.log('清除localStorage')
       // reload這個頁面 重置所有vue檔案
       location.reload()
-    },
-    SET_ERROR_DATA (state, error) {
-      // 設置state
-      state.errors.push({
-        id: state.errors.length,
-        content: error
-      })
-      setTimeout(() => {
-        state.errors.reverse()
-        state.errors.pop()
-        state.errors.reverse()
-      }, 2000)
     }
   },
   actions: {
@@ -61,9 +48,6 @@ export default new Vuex.Store({
         }
       )
     },
-    pushError ({ commit }, credentials) {
-      commit('SET_ERROR_DATA', credentials)
-    },
     updateUserInfo ({ commit, state }) {
       return axios.post('http://localhost:3000/register', state.user).then(
         ({ data }) => {
@@ -73,7 +57,7 @@ export default new Vuex.Store({
     },
     // 登出方法
     logout ({ commit }) {
-      console.log('store logout')
+      console.log('index.js store logout')
       commit('CLEAR_USER_DATA')
     }
   },
