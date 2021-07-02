@@ -4,7 +4,7 @@
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h6 class="wordFruit">*下方為已勾選蔬果</h6>
         <div class="actDiyVg">
-          <div v-for="(item,index) in userDiyImg[0].diyVgFruit" :key="index" class="diy-productCard">
+          <div v-for="(item,index) in userDiyImg.diyVgFruit" :key="index" class="diy-productCard">
             <!-- 資料庫傳回產品卡片 -->
             <img :src="item.vImg">
           </div>
@@ -62,10 +62,25 @@ export default {
     }
   },
   mounted () {
-    axios.get('http://localhost:3000/accoutDiyImg')
-      .then(response => {
-        this.userDiyImg = response.data
-      })
+    // 1)先取caseId
+    axios.get('http://localhost:3000/register', {
+      params: {
+        // eslint-disable-next-line no-undef
+        actName: this.$store.state.user[0].actName
+      }
+    }).then((response) => {
+    // 2)取ID
+      axios.get('http://localhost:3000/accoutDiyImg', {
+        params: { caseId: response.data[0].caseId }
+      }).then((res) => {
+        console.log('diy id:' + res.data[0].data)
+        var id = response.data[0].id
+        axios.get(`http://localhost:3000/accoutDiyImg/${id}`,
+          this.userDiyImg = res.data[0].data
+        ).then((diyres) => { console.table(diyres.data) })
+          .catch((error) => { console.error(error) })
+      }).catch((res) => { console.error(res) })
+    }).catch((error) => { console.error(error) })
   }
 }
 </script>
