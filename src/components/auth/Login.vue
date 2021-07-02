@@ -100,16 +100,15 @@ export default {
                   actName: this.actName
                 }
               }).then((response) => {
-                console.log('register actName data:' + response.data[0])
+                console.log('1) register actName data:' + response.data[0])
                 if (response.data[0] === undefined) {
                   alert('你的會員資料尚未填寫完成!!')
                 }
                 this.$store.dispatch('login', {
-                  // 1)login 資料 帶入 register帳號設定
                   actName: this.actName,
                   actPwd: this.actPwd
                 }).then(() => {
-                  this.$router.push('/register')
+                  console.log('1)login 資料 帶入 register帳號設定 login json')
                 })
               }).catch((error) => console.log('regiaster error:' + error))
               this.$router.push('/home')
