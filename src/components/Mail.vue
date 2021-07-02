@@ -10,20 +10,18 @@
         <div class="mail-word">
           <h5>您的名字/稱謂</h5>
           <p>(必填)</p>
-          <!-- <ValidationProvider name="名字" rules="required|name" v-slot="{errors, classes }"> -->
-         <!-- :class="classes" -->
-          <input type="text"  placeholder="請輸入您的名字" v-model="userName" />
-          <!-- <span style="color:red">{{errors[0]}}</span>
-          </ValidationProvider> -->
+          <ValidationProvider name="名字" rules="required|name" v-slot="{errors, classes}">
+          <input type="text" v-model="userName" :class="classes" placeholder="請輸入您的名字" />
+          <span style="color:red">{{errors[0]}}</span>
+          </ValidationProvider>
         </div>
         <div class="mail-word">
           <h5>電子郵件</h5>
           <p>(必填)</p>
-          <!-- <ValidationProvider name="信箱" rules="required|email" v-slot="{errors, classes }"> -->
-          <!-- :class="classes" -->
-          <input type="email" placeholder="請輸入您的信箱" v-model="userMail"/>
-          <!-- <span style="color:red">{{errors[0]}}</span>
-          </ValidationProvider> -->
+          <ValidationProvider name="信箱" rules="required|email" v-slot="{errors}">
+          <input type="email" v-model="userMail" placeholder="請輸入您的信箱" />
+          <span style="color:red">{{errors[0]}}</span>
+          </ValidationProvider>
         </div>
         <div class="mail-word">
           <h5>主旨</h5>
@@ -38,12 +36,8 @@
         </div>
     </div>
       <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mail-site">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mail-site">
           <textarea type="text" placeholder="請輸入信件內文" v-model="mailMessage"/>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mail-file">
-          <h5>附加檔案</h5>
-          <input type="file" name="" id="">
         </div>
       </div>
       <div class="row">
@@ -56,7 +50,7 @@
       </div>
     </div>
   </div>
-  </form>
+    </form>
  </ValidationObserver>
 </div>
 
