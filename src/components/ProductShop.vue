@@ -102,14 +102,21 @@ export default {
           this.accoutDiyImg.diyVgFruit.push(diyVgFruit)
         }
 
-        axios({
-          method: 'post',
-          url: 'http://localhost:3000/accoutDiyImg',
-          data: this.accoutDiyImg,
-          headers: { 'Content-Type': 'application/json' }
-        }).then(function (response) {
-          console.log('post data' + response)
-        })
+        axios.get('http://localhost:3000/register', {
+          params: {
+            // eslint-disable-next-line no-undef
+            actName: this.$store.state.user[0].actName
+          }
+        }).then((response) => {
+          axios.post('http://localhost:3000/accoutDiyImg', {
+            caseId: response.data[0].caseId,
+            data: this.accoutDiyImg
+          }).then(function (response) {
+            console.log('post data' + response)
+          })
+            .catch((error) => { console.error(error) })
+        }).then((res) => { console.table(res.data) })
+          .catch((error) => { console.error(error) })
       }
     }
   },
