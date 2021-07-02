@@ -57,9 +57,25 @@
   "sitTest": [
     {
       "caseId": "202107020004",
-      "longSitChair": "8小時",
-      "longSitWC": "3~5次",
+      "longSitChair": "8~12小時",
+      "longSitWC": "2~3次",
       "longSitWalk": "5~10分鐘",
+      "id": 1
+    },
+    {
+      "caseId": "202107020004",
+      "longSitChair": "8~12小時",
+      "longSitWC": "2~3次",
+      "longSitWalk": "5~10分鐘",
+      "id": 2
+    }
+  ],
+  "meatTest": [
+    {
+      "caseId": "202107020004",
+      "meatThreeMeals": "蔬菜少，多肉",
+      "vgPlate": "幾片葉子",
+      "meatPlate": "一大盤",
       "id": 1
     }
   ],

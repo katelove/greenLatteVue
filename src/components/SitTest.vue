@@ -91,9 +91,9 @@ export default {
   },
   methods: {
     sitGroup: function () {
-      if (this.sitOptions === '8小時' || this.sitOptions === '8~12小時') {
-        if (this.wcOptions === '2~3次') {
-          if (this.walkOptions === '5~10分鐘') {
+      if (this.longSitChair === '8小時' || this.longSitChair === '8~12小時') {
+        if (this.longSitWC === '2~3次') {
+          if (this.longSitWalk === '5~10分鐘') {
             return '你是標準久坐族'
           }
         }

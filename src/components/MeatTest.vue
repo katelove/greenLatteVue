@@ -54,11 +54,15 @@
       </div>
       <!-- 肉食族回答 -->
       <div v-show="display=='block'?true:false" class="back">
-        <h3>{{meatGroup()}}</h3>
+        <div class="bodyAswer">
+          <div><font-awesome-icon icon="drumstick-bite"/></div>
+          <h3>{{meatGroup()}}</h3>
+        </div>
       </div>
     </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -84,16 +88,14 @@ export default {
   },
   methods: {
     meatGroup: function () {
-      if (this.mealsOptions === '蔬菜少，多肉') {
-        if (this.vgPlateOptions === '幾片葉子' || this.vgPlateOptions === '少量') {
-          if (this.PlateOptions === '一大盤') {
+      console.log('this.meatThreeMeals:' + this.meatThreeMeals + 'this.vgPlate:' + this.vgPlate +
+                  'this.PlateOptions:' + this.meatPlate)
+      if (this.meatThreeMeals === '蔬菜少，多肉') {
+        if (this.vgPlate === '幾片葉子' || this.vgPlate === '少量') {
+          if (this.meatPlate === '一大盤') {
             return '你是標準肉食族'
           }
         }
-      // } else if (this.mealsOptions === '' &&
-      //         this.vgPlateOptions === '' &&
-      //         this.PlateOptions === ' ') {
-      //   return '尚未填寫'
       } else {
         return '恭喜你不是肉食族'
       }
@@ -107,6 +109,22 @@ export default {
       } else {
       // 顯示回答
         console.log('驗證成功' + success)
+        // 1)先取caseId
+        axios.get('http://localhost:3000/register', {
+          params: {
+          // eslint-disable-next-line no-undef
+            actName: this.$store.state.user[0].actName
+          }
+        }).then((response) => {
+          axios.post('http://localhost:3000/meatTest/', {
+            caseId: response.data[0].caseId,
+            meatThreeMeals: this.meatThreeMeals,
+            vgPlate: this.vgPlate,
+            meatPlate: this.meatPlate
+          }).then((res) => {
+            console.table(res.data)
+          }).catch((error) => { console.error(error) })
+        }).catch((error) => { console.error(error) })
         this.display = 'block'
       }
     }
