@@ -1,6 +1,7 @@
 <template>
 <div class="container">
   <div class="row mail-content">
+  <div class="front">
    <ValidationObserver  ref="mailForm">
     <form @submit.prevent="mailAnswer()">
      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -49,11 +50,18 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
     </form>
- </ValidationObserver>
+   </ValidationObserver>
+  </div>
+  <!--信件寄信成功 -->
+  <div v-show="display =='block'? true:false" class="back">
+    <div class="mail-success">
+      <img src="../../public/images/company/logo-small.png">
+      <h3>謝謝您的寶貴意見，我們會盡快回信!!</h3>
+    </div>
+  </div>
 </div>
-
 </div>
 </template>
 
@@ -61,8 +69,10 @@
 import '@/utils/validate.js' // 驗證相關
 import emailjs from 'emailjs-com'// 寄送 mail
 export default {
+  name: 'Mail',
   data () {
     return {
+      display: 'none',
       userName: '',
       userMail: '',
       mailSubject: '',
@@ -93,8 +103,7 @@ export default {
           }, (error) => {
             console.log('寄件失敗!', error)
           })
-
-        return true
+        this.display = 'block'
       }
     }
   }
