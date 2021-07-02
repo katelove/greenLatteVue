@@ -38,7 +38,6 @@
           <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
           <div class="col-md-12 col-lg-12 login-button">
-            <button type="submit" class="btn btn-login">註冊</button>
             <button type="submit" class="btn btn-login">登入</button>
           </div>
         </form>
