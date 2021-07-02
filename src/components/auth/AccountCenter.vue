@@ -197,7 +197,7 @@ export default {
     }
   },
   mounted () {
-    console.log('accounter store actName:' + this.$store.state.user[0].actName)
+    console.log('accounter mounted store actName:' + this.$store.state.user[0].actName)
     axios.get('http://localhost:3000/login', {
       // URL参數放在params屬性裏面
       params: {
@@ -294,7 +294,6 @@ export default {
             console.log('register id:' + id)
             // put
             axios.put(`http://localhost:3000/register/${id}`, {
-              caseId: this.caseID,
               actName: this.actName,
               userName: this.userName,
               userMail: this.userMail,

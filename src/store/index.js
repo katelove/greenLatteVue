@@ -15,6 +15,7 @@ export default new Vuex.Store({
     // 每個Mutation都有一個字串型態的事件類型(type)和一個回調函數(handler)
     // 收到User data
     SET_USER_DATA (state, userData) {
+      console.log('3)store.js:' + userData)
       // 登入==>設置state
       state.user = userData
       // 設置localstorage連到自動登入
@@ -37,6 +38,7 @@ export default new Vuex.Store({
     },
     // 登入=>帳號和密碼登入，回傳用then 串起來
     login ({ commit }, credentials) {
+      console.log('store login:' + credentials.actName)
       axios.get('http://localhost:3000/login', {
         params: {
           actName: credentials.actName
@@ -68,7 +70,7 @@ export default new Vuex.Store({
       return !!state.user
     },
     userInfo: state => {
-      console.log('state.user:' + state.user[0].actName)
+      console.log('userInfo state.user:' + state.user[0].actName)
       return state.user[0]
     }
   }
