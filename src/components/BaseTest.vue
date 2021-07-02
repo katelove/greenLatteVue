@@ -212,7 +212,7 @@ export default {
             actName: this.$store.state.user[0].actName
           }
         }).then((response) => {
-          axios.post('http://localhost:3000/bodyHealth', {
+          axios.post('http://localhost:3000/baseTest', {
             caseId: response.data[0].caseId,
             heigh: this.heigh,
             weight: this.weightV,

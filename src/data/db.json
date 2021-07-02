@@ -42,15 +42,24 @@
       "id": 4
     }
   ],
-  "bodyHealth": [
+  "baseTest": [
     {
       "caseId": "202107020004",
       "heigh": 155,
-      "weight": 55,
+      "weight": 45,
       "selectedGender": "女生",
-      "ageFat": 35,
-      "bodyFat": 23,
+      "ageFat": 34,
+      "bodyFat": 45,
       "choleValue": 345,
+      "id": 1
+    }
+  ],
+  "sitTest": [
+    {
+      "caseId": "202107020004",
+      "longSitChair": "8小時",
+      "longSitWC": "3~5次",
+      "longSitWalk": "5~10分鐘",
       "id": 1
     }
   ],
