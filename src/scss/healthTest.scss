@@ -63,7 +63,7 @@
   border: solid 3px;
   border-radius: 20px;
   margin: 5px;
-  height: 750px;
+  height: 800px;
   padding: 20px 10px 0 10px;
   display: inline-block;
   position: relative;
@@ -104,6 +104,10 @@
 
   h4 {
     text-align: center;
+  }
+
+  b {
+    color: yellowgreen;
   }
 }
 
@@ -154,6 +158,15 @@
   bottom: 0;
   left: 0;
   border-radius: 15px;
+
+  .bodyAswer {
+    height: 900px;
+
+    div {
+      font-size: 100px;
+      color: white;
+    }
+  }
 }
 
 // ==================驗證=====================

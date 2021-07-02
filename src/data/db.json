@@ -42,6 +42,18 @@
       "id": 4
     }
   ],
+  "bodyHealth": [
+    {
+      "caseId": "202107020004",
+      "heigh": 155,
+      "weight": 55,
+      "selectedGender": "女生",
+      "ageFat": 35,
+      "bodyFat": 23,
+      "choleValue": 345,
+      "id": 1
+    }
+  ],
   "proImg": [
     {
       "id": 1,
