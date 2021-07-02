@@ -274,7 +274,7 @@ export default {
         console.log('驗證失敗' + success)
         return false
       } else {
-        // 產會員caseID
+        // 新會員post data，產會員caseID
         var today = new Date()
         var year = today.getFullYear()
         var month = ('0' + (today.getMonth() + 1)).slice(-2)
@@ -282,23 +282,54 @@ export default {
         console.log('login this.loginID:' + this.loginID)
         this.caseID = year + month + day + '000' + this.loginID
         console.log('this.caseID:' + this.caseID)
-        axios.post('http://localhost:3000/register', {
-          caseId: this.caseID,
-          actName: this.actName,
-          userName: this.userName,
-          userMail: this.userMail,
-          selectedDate: this.selectedDate,
-          myCounty: this.myCounty,
-          cityValue: this.cityValue,
-          userAddress: this.userAddress,
-          userPhoneNum: this.userPhoneNum,
-          userPhone: this.userPhone,
-          userMobile: this.userMobile,
-          image: this.image// 用base64字串的方式上傳
-        }).then((res) => { console.table(res.data) })
-          .catch((error) => { console.error(error) })
+        axios.get('http://localhost:3000/register', {
+          // URL参數放在params屬性裏面
+          params: {
+            // eslint-disable-next-line no-undef
+            actName: this.$store.state.user[0].actName
+          }
+        }).then((response) => {
+          if (response.data.length !== 0) {
+            var id = response.data[0].id
+            console.log('register id:' + id)
+            // put
+            axios.put(`http://localhost:3000/register/${id}`, {
+              caseId: this.caseID,
+              actName: this.actName,
+              userName: this.userName,
+              userMail: this.userMail,
+              selectedDate: this.selectedDate,
+              myCounty: this.myCounty,
+              cityValue: this.cityValue,
+              userAddress: this.userAddress,
+              userPhoneNum: this.userPhoneNum,
+              userPhone: this.userPhone,
+              userMobile: this.userMobile,
+              image: this.image// 用base64字串的方式上傳
+            }).then((res) => {
+              console.table(res.data)
+            }).catch((error) => { console.error(error) })
+          } else {
+            // post
+            axios.post('http://localhost:3000/register', {
+              caseId: this.caseID,
+              actName: this.actName,
+              userName: this.userName,
+              userMail: this.userMail,
+              selectedDate: this.selectedDate,
+              myCounty: this.myCounty,
+              cityValue: this.cityValue,
+              userAddress: this.userAddress,
+              userPhoneNum: this.userPhoneNum,
+              userPhone: this.userPhone,
+              userMobile: this.userMobile,
+              image: this.image// 用base64字串的方式上傳
+            }).then((res) => {
+              console.table(res.data)
+            }).catch((error) => { console.error(error) })
+          }
+        }).catch((error) => console.log(error))
       }
-
       return true
     },
     chkPwd () {
