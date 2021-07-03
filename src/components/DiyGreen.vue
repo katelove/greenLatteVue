@@ -30,12 +30,14 @@
             <div class="diy-name">
               <h3>材料:</h3>
               <!-- 資料庫顯示資料 -->
-              <h4>青江菜、小黃光、蘋果</h4>
+              <div v-for="(item,index) in userDiyImg.diyVgFruit" :key="index" class="diy-productCard">
+                <h4>{{item.productName}}、</h4>
+              </div>
             </div>
-            <div class="diy-name">
-              <h3>蔬菜 VS. 水果: </h3>
-              <!-- 後端計算比例 -->
-              <h4> 2:1</h4>
+            <div class="diySave">
+              <div class="diyNameBtn"><button type="submit">儲存</button></div>
+              <div class="diyNameBtn"><button type="submit">重新命名</button>
+              </div>
             </div>
         </div>
 

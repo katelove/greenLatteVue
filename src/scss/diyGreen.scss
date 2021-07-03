@@ -84,6 +84,25 @@
   align-items: center;
 }
 
+.diySave {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+
+  .diyNameBtn {
+    button {
+      padding: 10px;
+      background-color: #dce7dd;
+      color: #2f5a28;
+      border: 3px solid #2f5a28;
+      font-weight: bold;
+      border-radius: 20px;
+      font-size: 20px;
+      margin: 20px;
+    }
+
+  }
+}
 
 .diyBtn {
   padding: 0;
