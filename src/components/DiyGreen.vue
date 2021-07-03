@@ -36,7 +36,7 @@
             </div>
             <div class="diySave">
               <div class="diyNameBtn"><button type="submit" @click="saveName()">儲存</button></div>
-              <div class="diyNameBtn"><button type="submit">重新命名</button>
+              <div class="diyNameBtn"><button type="submit" @click="deleteName()">重新命名</button>
               </div>
             </div>
         </div>
@@ -106,6 +106,28 @@ export default {
           diyProduct: this.diyProduct
         }).then((res) => {
           console.table(res.data)
+        }).catch((error) => { console.error(error) })
+      }).catch((error) => { console.error(error) })
+    },
+    deleteName () {
+      // 1)先取caseId
+      axios.get('http://localhost:3000/register', {
+        params: {
+          // eslint-disable-next-line no-undef
+          actName: this.$store.state.user[0].actName
+        }
+      }).then((response) => {
+        axios.get('http://localhost:3000/diyGreen', {
+          params: {
+          // eslint-disable-next-line no-undef
+            caseId: response.data[0].caseId
+          }
+        }).then((response) => {
+          var id = response.data[0].id
+          console.log('diy id:' + id)
+          axios.delete(`http://localhost:3000/diyGreen/${id}`).then((res) => {
+            console.table(res.data)
+          }).catch((error) => { console.error(error) })
         }).catch((error) => { console.error(error) })
       }).catch((error) => { console.error(error) })
     }
