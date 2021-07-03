@@ -63,6 +63,7 @@ export default {
     return {
       proImg: proInfo.proImg,
       cart: [],
+      productCart: [],
       input: {
         type: '全部',
         title: ''
@@ -79,9 +80,12 @@ export default {
   methods: {
     addDIY (index) {
       var choiceImg = this.proImg[index].vImg
-      // console.log('目前圖片:' + choiceImg)
+      var choiceProName = this.proImg[index].productName
+      console.log('目前圖片:' + choiceImg + ',目前產品名稱:' + choiceProName)
       this.cart.push(choiceImg)
-      // console.log('this.cart:' + this.cart)
+      console.log('this.cart:' + this.cart)
+      this.productCart.push(choiceProName)
+      console.log('this.productCart:' + this.productCart)
     },
     deletePic (index) {
       console.log('刪除車子第幾張圖片:' + index)
@@ -97,7 +101,8 @@ export default {
         for (var i = 0; i < this.cart.length; i++) {
           var diyVgFruit = {
             id: (i + 1),
-            vImg: (this.cart[i])
+            vImg: (this.cart[i]),
+            productName: (this.productCart[i])
           }
           this.accoutDiyImg.diyVgFruit.push(diyVgFruit)
         }

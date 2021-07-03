@@ -834,15 +834,18 @@
         "diyVgFruit": [
           {
             "id": 1,
-            "vImg": "/images/carousel/fruit4.png"
+            "vImg": "/images/carousel/fruit3.png",
+            "productName": "蘋果"
           },
           {
             "id": 2,
-            "vImg": "/images/carousel/fruit3.png"
+            "vImg": "/images/carousel/fruit4.png",
+            "productName": "香蕉"
           },
           {
             "id": 3,
-            "vImg": "/images/carousel/v_04.png"
+            "vImg": "/images/carousel/v_04.png",
+            "productName": "大白菜"
           }
         ]
       },
