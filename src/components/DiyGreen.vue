@@ -4,7 +4,7 @@
       <div class="col-sm-12 col-md-12 col-lg-12">
         <h6 class="wordFruit">*下方為已勾選蔬果</h6>
         <div class="actDiyVg">
-          <div v-for="(item,index) in userDiyImg[0].diyVgFruit" :key="index" class="diy-productCard">
+          <div v-for="(item,index) in userDiyImg.diyVgFruit" :key="index" class="diy-productCard">
             <!-- 資料庫傳回產品卡片 -->
             <img :src="item.vImg">
           </div>
@@ -24,18 +24,20 @@
               <img src="../../public/images/pic/dragon-white.png">
               <div class="diy-subject">
                  <h3>命名:</h3>
-                 <input type="text">
+                 <input type="text" v-model="diyGreenName">
               </div>
             </div>
             <div class="diy-name">
               <h3>材料:</h3>
               <!-- 資料庫顯示資料 -->
-              <h4>青江菜、小黃光、蘋果</h4>
+              <div v-for="(item,index) in userDiyImg.diyVgFruit" :key="index" class="diy-productCard">
+                <h4>{{item.productName}}、</h4>
+              </div>
             </div>
-            <div class="diy-name">
-              <h3>蔬菜 VS. 水果: </h3>
-              <!-- 後端計算比例 -->
-              <h4> 2:1</h4>
+            <div class="diySave">
+              <div class="diyNameBtn"><button type="submit" @click="saveName()">儲存</button></div>
+              <div class="diyNameBtn"><button type="submit" @click="deleteName()">重新命名</button>
+              </div>
             </div>
         </div>
 
@@ -58,14 +60,77 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      userDiyImg: proInfo.accoutDiyImg
+      userDiyImg: proInfo.accoutDiyImg,
+      diyGreenName: ' ',
+      diyProduct: []
     }
   },
   mounted () {
-    axios.get('http://localhost:3000/accoutDiyImg')
-      .then(response => {
-        this.userDiyImg = response.data
-      })
+    // 1)先取caseId
+    axios.get('http://localhost:3000/register', {
+      params: {
+        // eslint-disable-next-line no-undef
+        actName: this.$store.state.user[0].actName
+      }
+    }).then((response) => {
+    // 2)取ID
+      axios.get('http://localhost:3000/accoutDiyImg', {
+        params: { caseId: response.data[0].caseId }
+      }).then((res) => {
+        console.log('diy id:' + res.data[0].data)
+        var id = response.data[0].id
+        axios.get(`http://localhost:3000/accoutDiyImg/${id}`,
+          this.userDiyImg = res.data[0].data
+        ).then((diyres) => { console.table(diyres.data) })
+          .catch((error) => { console.error(error) })
+      }).catch((res) => { console.error(res) })
+    }).catch((error) => { console.error(error) })
+  },
+  methods: {
+    saveName () {
+      for (var i = 0; i < this.userDiyImg.diyVgFruit.length; i++) {
+        this.diyProduct.push(this.userDiyImg.diyVgFruit[i].productName)
+      }
+      console.log('目前diy產品名稱:' + this.diyProduct)
+
+      // 1)先取caseId
+      axios.get('http://localhost:3000/register', {
+        params: {
+          // eslint-disable-next-line no-undef
+          actName: this.$store.state.user[0].actName
+        }
+      }).then((response) => {
+        axios.post('http://localhost:3000/diyGreen/', {
+          caseId: response.data[0].caseId,
+          diyGreenName: this.diyGreenName,
+          diyProduct: this.diyProduct
+        }).then((res) => {
+          console.table(res.data)
+        }).catch((error) => { console.error(error) })
+      }).catch((error) => { console.error(error) })
+    },
+    deleteName () {
+      // 1)先取caseId
+      axios.get('http://localhost:3000/register', {
+        params: {
+          // eslint-disable-next-line no-undef
+          actName: this.$store.state.user[0].actName
+        }
+      }).then((response) => {
+        axios.get('http://localhost:3000/diyGreen', {
+          params: {
+          // eslint-disable-next-line no-undef
+            caseId: response.data[0].caseId
+          }
+        }).then((response) => {
+          var id = response.data[0].id
+          console.log('diy id:' + id)
+          axios.delete(`http://localhost:3000/diyGreen/${id}`).then((res) => {
+            console.table(res.data)
+          }).catch((error) => { console.error(error) })
+        }).catch((error) => { console.error(error) })
+      }).catch((error) => { console.error(error) })
+    }
   }
 }
 </script>

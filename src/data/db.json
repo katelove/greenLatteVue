@@ -829,100 +829,55 @@
   ],
   "accoutDiyImg": [
     {
-      "id": 1,
-      "diyVgFruit": [
-        {
-          "id": 1,
-          "vImg": "/images/carousel/fruit2.png"
-        },
-        {
-          "id": 2,
-          "vImg": "/images/carousel/v_03.png"
-        },
-        {
-          "id": 3,
-          "vImg": "/images/carousel/v_01.png"
-        }
-      ]
-    },
+      "caseId": "202107020004",
+      "data": {
+        "diyVgFruit": [
+          {
+            "id": 1,
+            "vImg": "/images/carousel/fruit3.png",
+            "productName": "蘋果"
+          },
+          {
+            "id": 2,
+            "vImg": "/images/carousel/fruit4.png",
+            "productName": "香蕉"
+          },
+          {
+            "id": 3,
+            "vImg": "/images/carousel/v_04.png",
+            "productName": "大白菜"
+          }
+        ]
+      },
+      "id": 1
+    }
+  ],
+  "diyGreen": [
     {
-      "diyVgFruit": [
-        {
-          "id": 1,
-          "vImg": "/images/carousel/fruit3.png"
-        },
-        {
-          "id": 2,
-          "vImg": "/images/carousel/fruit4.png"
-        },
-        {
-          "id": 3,
-          "vImg": "/images/carousel/fruit1.png"
-        }
+      "caseId": "202107020004",
+      "diyGreenName": " 綠精靈",
+      "diyProduct": [
+        "蘋果",
+        "香蕉",
+        "大白菜"
       ],
-      "id": 2
-    },
-    {
-      "diyVgFruit": [
-        {
-          "id": 1,
-          "vImg": "/images/carousel/fruit3.png"
-        },
-        {
-          "id": 2,
-          "vImg": "/images/carousel/fruit4.png"
-        },
-        {
-          "id": 3,
-          "vImg": "/images/carousel/fruit1.png"
-        }
-      ],
-      "id": 3
-    },
-    {
-      "diyVgFruit": [
-        {
-          "id": 1,
-          "vImg": "/images/carousel/fruit3.png"
-        },
-        {
-          "id": 2,
-          "vImg": "/images/carousel/fruit4.png"
-        },
-        {
-          "id": 3,
-          "vImg": "/images/carousel/fruit3.png"
-        }
-      ],
-      "id": 4
+      "id": 1
     }
   ],
   "accountDate": [
     {
-      "id": 1,
+      "caseId": "202107020004",
       "weekDate": [
         {
           "id": 1,
-          "datePlan": 20210624
+          "datePlan": "20210716"
         },
         {
           "id": 2,
-          "datePlan": 20210630
-        }
-      ]
-    },
-    {
-      "weekDate": [
-        {
-          "id": 1,
-          "datePlan": "20210625"
-        },
-        {
-          "id": 2,
-          "datePlan": "20210702"
+          "datePlan": "20210722"
         }
       ],
-      "id": 2
+      "id": 1
     }
   ]
 }

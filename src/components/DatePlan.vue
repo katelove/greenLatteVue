@@ -71,14 +71,14 @@ export default {
     return {
       startDay: '',
       endDay: '',
-      accountDate: { weekDate: [] }
+      weekDate: []
     }
   },
   methods: {
     sevenDays () {
       var d = new Date(this.startDay)
       console.log('現在日期:' + d)
-      var sevenDate = d.setDate(d.getDate() + 7)
+      var sevenDate = d.setDate(d.getDate() + 6)
       var dateObj = new Date(sevenDate)
       console.log('終止日:' + dateObj)
       var year = dateObj.getFullYear()
@@ -109,22 +109,28 @@ export default {
         console.log('startDay:' + this.startDay + ',endDay:' + this.endDay)
         var dateDay = [this.startDay, this.endDay]
         for (var i = 0; i < dateDay.length; i++) {
-          var weekDate = {
+          var datePlan = {
             id: (i + 1),
             datePlan: dateDay[i]
           }
-          this.accountDate.weekDate.push(weekDate)
+          this.weekDate.push(datePlan)
         }
 
-        axios({
-          method: 'post',
-          url: 'http://localhost:3000/accountDate',
-          data: this.accountDate,
-          headers: { 'Content-Type': 'application/json' }
-        }).then(function (response) {
-          console.log('post data' + response)
-        })
-        // 顯示回答
+        // 1)先取caseId
+        axios.get('http://localhost:3000/register', {
+          params: {
+          // eslint-disable-next-line no-undef
+            actName: this.$store.state.user[0].actName
+          }
+        }).then((response) => {
+          axios.post('http://localhost:3000/accountDate/', {
+            caseId: response.data[0].caseId,
+            weekDate: this.weekDate
+          }).then((res) => {
+            console.table(res.data)
+          }).catch((error) => { console.error(error) })
+        }).catch((error) => { console.error(error) })
+
         return true
       }
     }

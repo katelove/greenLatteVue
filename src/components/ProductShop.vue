@@ -63,6 +63,7 @@ export default {
     return {
       proImg: proInfo.proImg,
       cart: [],
+      productCart: [],
       input: {
         type: '全部',
         title: ''
@@ -79,9 +80,12 @@ export default {
   methods: {
     addDIY (index) {
       var choiceImg = this.proImg[index].vImg
-      // console.log('目前圖片:' + choiceImg)
+      var choiceProName = this.proImg[index].productName
+      console.log('目前圖片:' + choiceImg + ',目前產品名稱:' + choiceProName)
       this.cart.push(choiceImg)
-      // console.log('this.cart:' + this.cart)
+      console.log('this.cart:' + this.cart)
+      this.productCart.push(choiceProName)
+      console.log('this.productCart:' + this.productCart)
     },
     deletePic (index) {
       console.log('刪除車子第幾張圖片:' + index)
@@ -97,19 +101,27 @@ export default {
         for (var i = 0; i < this.cart.length; i++) {
           var diyVgFruit = {
             id: (i + 1),
-            vImg: (this.cart[i])
+            vImg: (this.cart[i]),
+            productName: (this.productCart[i])
           }
           this.accoutDiyImg.diyVgFruit.push(diyVgFruit)
         }
 
-        axios({
-          method: 'post',
-          url: 'http://localhost:3000/accoutDiyImg',
-          data: this.accoutDiyImg,
-          headers: { 'Content-Type': 'application/json' }
-        }).then(function (response) {
-          console.log('post data' + response)
-        })
+        axios.get('http://localhost:3000/register', {
+          params: {
+            // eslint-disable-next-line no-undef
+            actName: this.$store.state.user[0].actName
+          }
+        }).then((response) => {
+          axios.post('http://localhost:3000/accoutDiyImg', {
+            caseId: response.data[0].caseId,
+            data: this.accoutDiyImg
+          }).then(function (response) {
+            console.log('post data' + response)
+          })
+            .catch((error) => { console.error(error) })
+        }).then((res) => { console.table(res.data) })
+          .catch((error) => { console.error(error) })
       }
     }
   },
