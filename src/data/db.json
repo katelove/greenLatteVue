@@ -852,33 +852,32 @@
       "id": 1
     }
   ],
-  "diyGreen": [],
+  "diyGreen": [
+    {
+      "caseId": "202107020004",
+      "diyGreenName": " 綠精靈",
+      "diyProduct": [
+        "蘋果",
+        "香蕉",
+        "大白菜"
+      ],
+      "id": 1
+    }
+  ],
   "accountDate": [
     {
-      "id": 1,
+      "caseId": "202107020004",
       "weekDate": [
         {
           "id": 1,
-          "datePlan": 20210624
+          "datePlan": "20210716"
         },
         {
           "id": 2,
-          "datePlan": 20210630
-        }
-      ]
-    },
-    {
-      "weekDate": [
-        {
-          "id": 1,
-          "datePlan": "20210625"
-        },
-        {
-          "id": 2,
-          "datePlan": "20210702"
+          "datePlan": "20210722"
         }
       ],
-      "id": 2
+      "id": 1
     }
   ]
 }
