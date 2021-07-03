@@ -24,7 +24,7 @@
               <img src="../../public/images/pic/dragon-white.png">
               <div class="diy-subject">
                  <h3>命名:</h3>
-                 <input type="text">
+                 <input type="text" v-model="diyGreenName">
               </div>
             </div>
             <div class="diy-name">
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="diySave">
-              <div class="diyNameBtn"><button type="submit">儲存</button></div>
+              <div class="diyNameBtn"><button type="submit" @click="saveName()">儲存</button></div>
               <div class="diyNameBtn"><button type="submit">重新命名</button>
               </div>
             </div>
@@ -60,7 +60,9 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      userDiyImg: proInfo.accoutDiyImg
+      userDiyImg: proInfo.accoutDiyImg,
+      diyGreenName: ' ',
+      diyProduct: []
     }
   },
   mounted () {
@@ -83,6 +85,30 @@ export default {
           .catch((error) => { console.error(error) })
       }).catch((res) => { console.error(res) })
     }).catch((error) => { console.error(error) })
+  },
+  methods: {
+    saveName () {
+      for (var i = 0; i < this.userDiyImg.diyVgFruit.length; i++) {
+        this.diyProduct.push(this.userDiyImg.diyVgFruit[i].productName)
+      }
+      console.log('目前diy產品名稱:' + this.diyProduct)
+
+      // 1)先取caseId
+      axios.get('http://localhost:3000/register', {
+        params: {
+          // eslint-disable-next-line no-undef
+          actName: this.$store.state.user[0].actName
+        }
+      }).then((response) => {
+        axios.post('http://localhost:3000/diyGreen/', {
+          caseId: response.data[0].caseId,
+          diyGreenName: this.diyGreenName,
+          diyProduct: this.diyProduct
+        }).then((res) => {
+          console.table(res.data)
+        }).catch((error) => { console.error(error) })
+      }).catch((error) => { console.error(error) })
+    }
   }
 }
 </script>

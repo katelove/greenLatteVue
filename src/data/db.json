@@ -852,6 +852,18 @@
       "id": 1
     }
   ],
+  "diyGreen": [
+    {
+      "caseId": "202107020004",
+      "diyGreenName": " 綠精靈",
+      "diyProduct": [
+        "蘋果",
+        "香蕉",
+        "大白菜"
+      ],
+      "id": 1
+    }
+  ],
   "accountDate": [
     {
       "id": 1,
