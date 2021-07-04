@@ -46,11 +46,11 @@
     {
       "caseId": "202107020004",
       "heigh": 155,
-      "weight": 45,
+      "weight": 55,
       "selectedGender": "女生",
-      "ageFat": 34,
+      "ageFat": 43,
       "bodyFat": 45,
-      "choleValue": 345,
+      "choleValue": 234,
       "id": 1
     }
   ],
@@ -70,15 +70,7 @@
       "id": 2
     }
   ],
-  "meatTest": [
-    {
-      "caseId": "202107020004",
-      "meatThreeMeals": "蔬菜少，多肉",
-      "vgPlate": "幾片葉子",
-      "meatPlate": "一大盤",
-      "id": 1
-    }
-  ],
+  "meatTest": [],
   "proImg": [
     {
       "id": 1,
@@ -870,11 +862,11 @@
       "weekDate": [
         {
           "id": 1,
-          "datePlan": "20210716"
+          "datePlan": "20210730"
         },
         {
           "id": 2,
-          "datePlan": "20210722"
+          "datePlan": "20210805"
         }
       ],
       "id": 1

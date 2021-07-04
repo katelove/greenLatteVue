@@ -197,12 +197,11 @@ export default {
     }
   },
   mounted () {
-    console.log('accounter mounted store actName:' + this.$store.state.user[0].actName)
     axios.get('http://localhost:3000/login', {
       // URL参數放在params屬性裏面
       params: {
         // eslint-disable-next-line no-undef
-        actName: this.$store.state.user[0].actName
+        actName: this.$store.getters.getUser.actName
       }
     }).then((response) => {
       console.log('register get login data:' + response.length)
@@ -218,10 +217,9 @@ export default {
     }).catch((error) => console.log(error))
     // 2)從db get資料
     axios.get('http://localhost:3000/register', {
-      // URL参數放在params屬性裏面
       params: {
         // eslint-disable-next-line no-undef
-        actName: this.$store.state.user[0].actName
+        actName: this.$store.getters.getUser.actName
       }
     }).then((response) => {
       console.log('register get register data:' + response.length)

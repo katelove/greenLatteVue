@@ -66,11 +66,12 @@ export default {
     }
   },
   mounted () {
+    console.log('this.$store.getters.getUser:' + this.$store.getters.getUser.actName)
     // 1)先取caseId
     axios.get('http://localhost:3000/register', {
       params: {
         // eslint-disable-next-line no-undef
-        actName: this.$store.state.user[0].actName
+        actName: this.$store.state.user.actName
       }
     }).then((response) => {
     // 2)取ID
@@ -79,9 +80,8 @@ export default {
       }).then((res) => {
         console.log('diy id:' + res.data[0].data)
         var id = response.data[0].id
-        axios.get(`http://localhost:3000/accoutDiyImg/${id}`,
-          this.userDiyImg = res.data[0].data
-        ).then((diyres) => { console.table(diyres.data) })
+        axios.get(`http://localhost:3000/accoutDiyImg/${id}`)
+          .then((diyres) => { this.userDiyImg = res.data[0].data })
           .catch((error) => { console.error(error) })
       }).catch((res) => { console.error(res) })
     }).catch((error) => { console.error(error) })
