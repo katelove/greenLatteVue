@@ -79,9 +79,8 @@ export default {
       }).then((res) => {
         console.log('diy id:' + res.data[0].data)
         var id = response.data[0].id
-        axios.get(`http://localhost:3000/accoutDiyImg/${id}`,
-          this.userDiyImg = res.data[0].data
-        ).then((diyres) => { console.table(diyres.data) })
+        axios.get(`http://localhost:3000/accoutDiyImg/${id}`)
+          .then((diyres) => { this.userDiyImg = res.data[0].data })
           .catch((error) => { console.error(error) })
       }).catch((res) => { console.error(res) })
     }).catch((error) => { console.error(error) })
