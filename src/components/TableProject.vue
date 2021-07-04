@@ -220,12 +220,12 @@ export default {
     }
 
     // ==============get 日期====================
-
+    console.log('this.$store.getters.getUser:' + this.$store.getters.getUser.actName)
     // 1)先取caseId
     axios.get('http://localhost:3000/register', {
       params: {
         // eslint-disable-next-line no-undef
-        actName: this.$store.state.user[0].actName
+        actName: this.$store.getters.getUser.actName
       }
     }).then((response) => {
     // 2)取ID

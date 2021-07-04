@@ -55,8 +55,6 @@
 
 <style lang="scss">@import "../../scss/login.scss";</style>
 <script>
-// 引入js-cookie
-// import Cookies from 'js-cookie'
 import axios from 'axios'
 
 export default {
@@ -64,7 +62,8 @@ export default {
   data () {
     return {
       actName: '',
-      actPwd: ''
+      actPwd: '',
+      isLogin: false
     }
   },
   methods: {
@@ -76,7 +75,7 @@ export default {
         console.log('驗證失敗' + success)
         return false
       } else {
-        axios.get('http://localhost:3000/login', {
+        await axios.get('http://localhost:3000/login', {
           // URL参數放在params屬性裏面
           params: {
             actName: this.actName
@@ -104,14 +103,14 @@ export default {
                 if (response.data[0] === undefined) {
                   alert('你的會員資料尚未填寫完成!!')
                 }
-                this.$store.dispatch('login', {
+                var userData = {
                   actName: this.actName,
                   actPwd: this.actPwd
-                }).then(() => {
-                  console.log('1)login 資料 帶入 register帳號設定 login json')
-                })
+                }
+                localStorage.setItem('user', JSON.stringify(userData))
+                this.$store.commit('SET_USER_DATA', userData)
+                this.$router.push('/home')
               }).catch((error) => console.log('regiaster error:' + error))
-              this.$router.push('/home')
             } else if (response.data[0].actName === this.actName &&
                response.data[0].actPwd !== this.actPwd) {
               alert('你的密碼填寫錯誤，請重新填寫')

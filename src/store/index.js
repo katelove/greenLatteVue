@@ -18,6 +18,7 @@ export default new Vuex.Store({
       console.log('3)store.js:' + userData)
       // 登入==>設置state
       state.user = userData
+      console.log('4)state.user:' + state.user)
       // 設置localstorage連到自動登入
       localStorage.setItem('user', JSON.stringify(userData))
       // 設置每一次axios的header Authorization 為Barrer Token
@@ -38,13 +39,7 @@ export default new Vuex.Store({
     },
     // 登入=>帳號和密碼登入，回傳用then 串起來
     login ({ commit }, credentials) {
-      console.log('store login:' + credentials.actName)
-      axios.get('http://localhost:3000/login', {
-        params: {
-          actName: credentials.actName
-        }
-      }).then(
-        // 回來資料 commit到 mutations修改state
+      axios.get('http://localhost:3000/login').then(
         ({ data }) => {
           commit('SET_USER_DATA', data)
         }
@@ -69,9 +64,8 @@ export default new Vuex.Store({
     // 判斷是否有user 確定是否為登入狀態
       return !!state.user
     },
-    userInfo: state => {
-      console.log('userInfo state.user:' + state.user[0].actName)
-      return state.user[0]
+    getUser: state => {
+      return state.user
     }
   }
 })
