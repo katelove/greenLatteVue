@@ -38,7 +38,7 @@
             </div>
 
           </div>
-          <div class="workerBtn">
+          <div class="workerBtn" @click="loginSty()">
             <a href="#sec3">檢視自己健康</a>
             <a href="#sec5">改善飲食大作戰</a>
           </div>
@@ -74,6 +74,21 @@ export default {
 }
 </script>
 
+<script>
+export default {
+
+  methods:{
+    loginSty(){
+      var loginUser = localStorage.getItem('user')
+      console.log('bodyDA user:' + loginUser)
+      if(loginUser===null){
+        alert("尚未登入，請登入")
+        this.$router.push('/login')
+      }
+    }
+  }
+}
+</script>
 <style lang="scss">
 .office-worker {
   margin-bottom: 30px;
@@ -130,7 +145,7 @@ export default {
     flex-direction: column-reverse;
     justify-content: flex-start;
     align-items: center;
-img {width: 200px;}
+    img {width: 200px;}
   }
 
   .worker_word{
