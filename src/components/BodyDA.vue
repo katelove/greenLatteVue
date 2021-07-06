@@ -181,7 +181,7 @@ img{width: 300px;}
 
 /* Btn */
 .workerBtn {
-  padding-top: 50px;
+  padding-top: 30px;
   display: flex;
   justify-content: center;
   align-items: flex-end;

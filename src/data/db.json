@@ -48,29 +48,22 @@
       "heigh": 155,
       "weight": 55,
       "selectedGender": "女生",
-      "ageFat": 43,
-      "bodyFat": 45,
-      "choleValue": 234,
+      "ageFat": 32,
+      "bodyFat": 23,
+      "choleValue": 345,
       "id": 1
     }
   ],
-  "sitTest": [
+  "sitTest": [],
+  "meatTest": [
     {
       "caseId": "202107020004",
-      "longSitChair": "8~12小時",
-      "longSitWC": "2~3次",
-      "longSitWalk": "5~10分鐘",
+      "meatThreeMeals": "蔬菜多，少肉",
+      "vgPlate": "一大盤",
+      "meatPlate": "少量",
       "id": 1
-    },
-    {
-      "caseId": "202107020004",
-      "longSitChair": "8~12小時",
-      "longSitWC": "2~3次",
-      "longSitWalk": "5~10分鐘",
-      "id": 2
     }
   ],
-  "meatTest": [],
   "proImg": [
     {
       "id": 1,

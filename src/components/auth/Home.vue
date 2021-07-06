@@ -56,6 +56,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 * {
   margin: 0;
   padding: 0;
@@ -63,15 +64,11 @@ export default {
    font-family: "微軟正黑體";
   }
 html,body {
-  min-height: 100%;
+height: 100%;
   font-family: sans-serif;
   font-weight: bold;
  background-image: url('../../../public/images/company/backGround.png');
-        -o-background-size: 85% auto;
-        -moz-background-size: 85% auto;
-        -webkit-background-size: 85% auto;
-        background-size: 85% auto;
-        background-position: center top;
+
    }
 section {
   min-height: 100%;
@@ -85,10 +82,23 @@ section {
 
 #sec2,#sec3,#sec4,#sec5,#sec6,#sec7,#sec8{
   padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-style{
   background-color: #2f5a28;
   color:white;
 }
+
+@media (min-width: 1140px) {
+  #sec2,#sec3,#sec5,#sec6,#sec8{
+    padding: 0px;
+    height: 1000px;
+  }
+  #sec4,#sec7{
+    height: 800px;
+    }
+  }
 </style>

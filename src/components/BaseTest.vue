@@ -33,8 +33,6 @@
                   :options="options"
                   name="genderOptions">
                 <span style="color:red">{{errors[0]}}</span>
-                 <!-- <b-form-invalid-feedback :state="state">請勾選性別</b-form-invalid-feedback> -->
-                 <!-- <b-form-valid-feedback :state="state">✔</b-form-valid-feedback> -->
                 </b-form-radio-group>
                 </ValidationProvider>
               </div>
@@ -50,7 +48,7 @@
             <div class="inlineSty">
               <label for="bodyFat">體脂數: </label>
                 <ValidationProvider name="體脂數" rules="required|bodyFat" v-slot="{errors, classes }">
-                  <input type="text" :class="classes" name="bodyFat" id="bodyFat" v-model.number="bodyFat" placeholder="請輸入體脂數"> %
+                  <input type="text" :class="classes" name="bodyFat" id="bodyFat" v-model.number="bodyFat" placeholder="請輸入脂數"> %
                   <span style="color:red">{{errors[0]}}</span>
                 </ValidationProvider>
             </div>
@@ -60,7 +58,7 @@
             <div class="inlineSty">
               <label for="choleValue">膽固醇脂數: </label>
                 <ValidationProvider name="膽固醇脂數" rules="required|choleValue" v-slot="{errors, classes }">
-                  <input type="text" :class="classes" name="choleValue" id="choleValue" v-model.number="choleValue" placeholder="請輸入膽固醇脂數"> mg/dl
+                  <input type="text" :class="classes" name="choleValue" id="choleValue" v-model.number="choleValue" placeholder="請輸入脂數"> mg/dl
                   <span style="color:red">{{errors[0]}}</span>
                 </ValidationProvider>
             </div>
@@ -209,7 +207,7 @@ export default {
         axios.get('http://localhost:3000/register', {
           params: {
             // eslint-disable-next-line no-undef
-            actName: this.$store.state.user[0].actName
+            actName: this.$store.getters.getUser.actName
           }
         }).then((response) => {
           axios.post('http://localhost:3000/baseTest', {
