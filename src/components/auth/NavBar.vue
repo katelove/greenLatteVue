@@ -36,6 +36,7 @@ export default {
     logout () {
       this.$router.push('/')
       this.$store.dispatch('logout')
+      alert('已登出')
       console.log('清除localStorage')
     }
   }
