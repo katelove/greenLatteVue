@@ -1,71 +1,78 @@
 .greenTitle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.greenTitle h3 {
+  color: #2f5a28;
+}
+
+.greenTitle h1 {
+  color: white;
+  background-color: #2f5a28;
+  padding: 10px;
+  margin-left: 5px;
+}
+
+/* 綠拿鐵圖片 */
+.greenPic {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.greenPic img:nth-of-type(1),
+.greenPic img:nth-of-type(2) {
+  padding: 0 20px 0 20px;
+}
+
+.vg_pic img,
+.fruit_pic img {
+  display: flex;
+  align-items: center;
+}
+
+.fruit_pic img {
+  padding-top: 37px;
+  padding-bottom: 37px;
+}
+
+.vg_pic h3,
+.fruit_pic h3 {
+  display: flex;
+  justify-content: center;
+}
+
+.greenWord h3:nth-of-type(1) {
+  background-color: #2f5a28;
+  padding: 10px;
+  color: white;
+  width: 600px;
+  align-items: flex-start;
+}
+
+.greenWord h3:nth-of-type(2) {
+  color: #2f5a28;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .greenWord {
+    display: none;
   }
-  .greenTitle h4 {
-    color: #2f5a28;
-  }
-  
-  .greenTitle h2 {
-    color: white;
-    background-color: #2f5a28;
-    padding: 10px;
-    margin-left: 5px;
-  }
-  
-  /* 綠拿鐵圖片 */
+
   .greenPic {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    text-align: center;
   }
-  .greenPic img:nth-of-type(1),
-  .greenPic img:nth-of-type(2) {
-    padding: 0 20px 0 20px;
-  }
-  .vg_pic img,
-  .fruit_pic img {
+
+  .vg_pic,
+  .fruit_pic {
     display: flex;
     align-items: center;
-  }
-  .fruit_pic img {
-    padding-top: 37px;
-    padding-bottom: 37px;
-  }
-  .vg_pic h3,
-  .fruit_pic h3 {
-    display: flex;
     justify-content: center;
+    padding: 20px;
   }
-  
-  .greenWord h3:nth-of-type(1) {
-    background-color: #2f5a28;
-    padding: 10px;
-    color: white;
-    width: 600px;
-    align-items: flex-start;
-  }
-  
-  .greenWord h3:nth-of-type(2) {
-    color: #2f5a28;
-    align-items: flex-start;
-  }
-  
-  @media (max-width: 768px) {
-    .greenWord {
-      display: none;
-    }
-    .greenPic {
-      flex-direction: column;
-      text-align: center;
-    }
-    .vg_pic,
-    .fruit_pic {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-  }
+}
