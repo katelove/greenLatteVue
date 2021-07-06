@@ -199,9 +199,7 @@ export default {
   mounted () {
     var loginUser = localStorage.getItem('user')
     console.log('navLogin user:' + loginUser)
-    if (loginUser === null) {
-      this.$router.push('/register')
-    } else {
+    if (loginUser !== null) {
       this.$router.push('/loginRegister')
     }
 
