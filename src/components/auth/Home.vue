@@ -16,6 +16,12 @@
 <div class="site"></div>
 <section id="sec8"><DatePlan/></section>
 <section id="sec9"><TableProject/></section>
+<section id="sec10">
+  <footer class="footer-style">
+    Copyright © 2021 TopStyle Watch Web | 建議使用 Chrome 瀏覽器 | Maintain by Kate <br />
+    (網站設計模擬練習用,相關影像資訊來自連結介紹的各網站,如有侵權請告知即刻處理)
+  </footer>
+</section>
 </div>
 
 </template>
@@ -25,7 +31,6 @@ import Carousel from '../../components/Carousel'
 import BodyDA from '../../components/BodyDA'
 import ParaagraphOne from '../../components/ParaagraphOne'
 import HealthTest from '../../components/HealthTest'
-// import WeekProject from '../../components/WeekProject'
 import TableProject from '../../components/TableProject.vue'
 import GreenLatte from '../../components/GreenLatte'
 import Market from '../../components/Market'
@@ -40,7 +45,6 @@ export default {
     BodyDA,
     ParaagraphOne,
     HealthTest,
-    // WeekProject,
     TableProject,
     GreenLatte,
     Market,
@@ -72,5 +76,10 @@ section {
    }
 .site{
   height: 80px;
+}
+
+.footer-style{
+  background-color: #2f5a28;
+  color:white;
 }
 </style>
