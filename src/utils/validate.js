@@ -125,17 +125,17 @@ extend('maPlatGroup', {
 // 1.帳號
 extend('account', {
   validate: value => {
-    return /^[0-9a-z]{6}$/.test(value)
+    return /^[0-9a-z]{6,10}$/.test(value)
   },
-  message: '{_field_}需為6位數字外加英文，英文字母必須為小寫'
+  message: '{_field_}需為數字外加英文，英文字母必須為小寫，至少6位'
 })
 
 // 2.密碼
 extend('pwd', {
   validate: value => {
-    return /^[0-9a-z]{6}$/.test(value)
+    return /^[0-9a-z]{6,10}$/.test(value)
   },
-  message: '{_field_}需為6位數字外加英文，英文字母必須為小寫'
+  message: '{_field_}需為數字外加英文，英文字母必須為小寫，至少6位'
 })
 // ============ 會員中心 ============
 // 1.名字
@@ -175,17 +175,17 @@ extend('mobile', {
 // 1.帳號
 extend('accountLogin', {
   validate: value => {
-    return /^[0-9a-z]{6}$/.test(value)
+    return /^[0-9a-z]{6,10}$/.test(value)
   },
-  message: '請輸入正確 {_field_}共6位，英文字母都需小寫'
+  message: '請輸入正確 {_field_}，英文字母都需小寫'
 })
 
 // 2.密碼
 extend('accountPwd', {
   validate: value => {
-    return /^[0-9a-z]{6}$/.test(value)
+    return /^[0-9a-z]{6,10}$/.test(value)
   },
-  message: '請輸入正確 {_field_}共6位，英文字母都需小寫'
+  message: '請輸入正確 {_field_}，英文字母都需小寫'
 })
 
 // ============ 忘記密碼 ============
