@@ -74,6 +74,9 @@ export default {
   padding: 10px;
   margin: 5px;
  }
+ :hover{
+   cursor: pointer;
+ }
 }
 
 @media (max-width: 576px) {
