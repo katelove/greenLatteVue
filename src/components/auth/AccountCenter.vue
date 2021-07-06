@@ -8,7 +8,7 @@
       <div class="acontainer">
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 account-setting">
-        <ValidationProvider name="帳號" rules="required|account" v-slot="{errors, classes }">
+        <ValidationProvider name="帳號" rules="required|accountLogin" v-slot="{errors, classes }">
         <div class="form-group accoutSty">
         <!-- 帳號 -->
           <h4>帳號 :</h4>
@@ -21,7 +21,7 @@
           <span style="color:red">{{errors[0]}}</span>
         </div>
         </ValidationProvider>
-        <ValidationProvider name="密碼" rules="required|pwd" v-slot="{errors, classes }">
+        <ValidationProvider name="密碼" rules="required|accountPwd" v-slot="{errors, classes }">
         <div class="form-group accoutSty">
         <!-- 密碼 -->
           <h4>密碼 :</h4>

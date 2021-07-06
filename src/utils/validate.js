@@ -122,23 +122,6 @@ extend('maPlatGroup', {
   message: '請勾選 {_field_}'
 })
 
-// ============ 帳號設定 ============
-// 1.帳號
-extend('account', {
-  validate: value => {
-    return true
-  },
-  message: '請輸入正確的{_field_}格式，例:E-mail'
-})
-
-// 2.密碼
-extend('pwd', {
-  validate: value => {
-    return /^[a-zA-Z\d]{5,8}$/.test(value)
-  },
-  message: '{_field_}必須含一個大小字母，英文外加數字5-8位'
-})
-
 // ============ 會員中心 ============
 // 1.名字
 extend('name', {
@@ -187,7 +170,7 @@ extend('accountPwd', {
   validate: value => {
     return /^[0-9a-z]{6,10}$/.test(value)
   },
-  message: '請輸入正確 {_field_}，英文字母都需小寫'
+  message: '請輸入正確 {_field_}，英文字母都需小寫，英文外加數字6-10位'
 })
 
 // ============ 忘記密碼 ============
