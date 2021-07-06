@@ -1,19 +1,19 @@
 <template>
 <div class="carousel">
 <section id="sec1"><Carousel/></section>
-<ParaagraphOne/>
+<!-- <ParaagraphOne/> -->
 <section id="sec2"><BodyDA/></section>
-<div class="site"></div>
+<!-- <div class="site"></div> -->
 <section id="sec3"><HealthTest/></section>
-<div class="site"></div>
+<!-- <div class="site"></div> -->
 <section id="sec4"><GreenLatte/></section>
-<div class="site"></div>
+<!-- <div class="site"></div> -->
 <section id="sec5"><Market/></section>
-<div class="site"></div>
+<!-- <div class="site"></div> -->
 <section id="sec6"><ProductShop/></section>
-<div class="site"></div>
+<!-- <div class="site"></div> -->
 <section id="sec7"><DiyGreen/></section>
-<div class="site"></div>
+<!-- <div class="site"></div> -->
 <section id="sec8"><DatePlan/></section>
 <section id="sec9"><TableProject/></section>
 <section id="sec10">
@@ -29,7 +29,7 @@
 <script>
 import Carousel from '../../components/Carousel'
 import BodyDA from '../../components/BodyDA'
-import ParaagraphOne from '../../components/ParaagraphOne'
+// import ParaagraphOne from '../../components/ParaagraphOne'
 import HealthTest from '../../components/HealthTest'
 import TableProject from '../../components/TableProject.vue'
 import GreenLatte from '../../components/GreenLatte'
@@ -43,7 +43,7 @@ export default {
   components: {
     Carousel,
     BodyDA,
-    ParaagraphOne,
+    // ParaagraphOne,
     HealthTest,
     TableProject,
     GreenLatte,
@@ -63,10 +63,15 @@ export default {
    font-family: "微軟正黑體";
   }
 html,body {
-  height: 100%;
+  min-height: 100%;
   font-family: sans-serif;
   font-weight: bold;
  background-image: url('../../../public/images/company/backGround.png');
+        -o-background-size: 85% auto;
+        -moz-background-size: 85% auto;
+        -webkit-background-size: 85% auto;
+        background-size: 85% auto;
+        background-position: center top;
    }
 section {
   min-height: 100%;
@@ -74,8 +79,12 @@ section {
   justify-content: center;
   align-items: center;
    }
-.site{
-  height: 80px;
+// .site{
+//   height: 80px;
+// }
+
+#sec2,#sec3,#sec4,#sec5,#sec6,#sec7,#sec8{
+  padding: 20px;
 }
 
 .footer-style{

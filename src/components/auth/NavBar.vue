@@ -15,12 +15,15 @@
 
       <!-- Right nav items -->
       <b-navbar-nav class="ml-auto">
+        <b-nav-item href="#sec1">天然蔬菜力</b-nav-item>
         <b-nav-item href="#sec2">身體分析</b-nav-item>
         <b-nav-item href="#sec3">檢視健康</b-nav-item>
         <b-nav-item href="#sec4">綠拿鐵</b-nav-item>
-        <b-nav-item href="#sec5">蔬果市場</b-nav-item>
-        <b-nav-item href="#sec6">DIY綠拿鐵</b-nav-item>
-        <b-nav-item href="#sec7">綠拿鐵三餐規劃</b-nav-item>
+        <b-nav-item href="#sec5">蔬果卡</b-nav-item>
+        <b-nav-item href="#sec6">綠市場</b-nav-item>
+        <b-nav-item href="#sec7">DIY</b-nav-item>
+        <b-nav-item href="#sec8">周計劃</b-nav-item>
+        <b-nav-item href="#sec9">三餐日誌</b-nav-item>
         <b-nav-item class="nature-account"><font-awesome-icon icon="user-circle"></font-awesome-icon><router-link to="/register">會員中心</router-link></b-nav-item>
         <b-nav-item class="navWord"><a href="" @click.prevent="logout">Logout</a></b-nav-item>
       </b-navbar-nav>
