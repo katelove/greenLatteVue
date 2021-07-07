@@ -81,10 +81,9 @@ export default {
             actName: this.actName
           }
         }).then((response) => {
-          if (response.data[0] === undefined) {
-            // eslint-disable-next-line quotes
-            alert("你還不是會員，請前往註冊!!")
-            this.$router.push('/register')
+          if (response.data[0].actName !== this.actName ||
+               response.data[0].actPwd !== this.actPwd) {
+            alert('你的帳號或密碼填寫錯誤，請重新填寫')
           } else {
             // chk get會員資料與json資料相符合
             console.log('account:' + response.data[0].actName +
@@ -111,9 +110,6 @@ export default {
                 this.$store.commit('SET_USER_DATA', userData)
                 this.$router.push('/home')
               }).catch((error) => console.log('regiaster error:' + error))
-            } else if (response.data[0].actName === this.actName &&
-               response.data[0].actPwd !== this.actPwd) {
-              alert('你的密碼填寫錯誤，請重新填寫')
             }
           }
         }).catch((error) => console.log('login error:' + error))

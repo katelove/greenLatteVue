@@ -261,15 +261,28 @@ export default {
         console.log('驗證失敗' + success)
         return false
       } else {
-        await axios.post('http://localhost:3000/login', {
-          actName: this.actName,
-          actPwd: this.actPwd,
-          actConfirmPwd: this.actConfirmPwd
-        }).then((res) => {
-          alert('請登入')
-          this.$router.push('/login')
-        })
-          .catch((error) => { console.error(error) })
+        // 1)chk是否有此帳號，
+        await axios.get('http://localhost:3000/login', {
+          params: {
+            // eslint-disable-next-line no-undef
+            actName: this.actName
+          }
+        }).then((response) => {
+          console.log('確認帳號是否有人使用' + response.data.length)
+          if (response.data.length !== 0) {
+            alert('這帳號已有人使用，請重新填寫，謝謝')
+          } else {
+            axios.post('http://localhost:3000/login', {
+              actName: this.actName,
+              actPwd: this.actPwd,
+              actConfirmPwd: this.actConfirmPwd
+            }).then((res) => {
+              alert('請登入')
+              this.$router.push('/login')
+            }).catch((error) => { console.error(error) })
+          }
+        }).catch((error) => { console.error(error) })
+
         return true
       }
     },
