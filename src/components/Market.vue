@@ -7,11 +7,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3 basketImg">
+      <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 basketImg">
        <img src="../../public/images/company/fruitBasket.png" >
       </div>
 
-      <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+      <div class="col-sm-12 col-md-12 col-lg-10 col-xl-10">
       <!-- 蔬果上下輪播圖 上面式說明卡 -->
        <VueSlickCarousel
          ref="c1"
@@ -23,7 +23,7 @@
       </VueSlickCarousel>
 
       <!-- 下面是蔬果 -->
-      <div class="items">
+      <div class="marketItems">
       <VueSlickCarousel
          ref="c2"
          :asNavFor="$refs.c1"
@@ -39,8 +39,8 @@
     <!-- Btn -->
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-       <div class="workerBtn">
-         <a href="">挑選蔬果Go</a>
+       <div class="workerBtn diyBtn">
+         <a href="#sec6">挑選蔬果Go</a>
          </div>
       </div>
     </div>
@@ -65,8 +65,8 @@ export default {
       arrows: false,
       dots: true, // 顯示下方小圓點
       infinite: true, // 滑到最後一張，是否要同向循環
-      slidesToShow: 2, // 一次主要顯現幾個slides
-      slidesToScroll: 2,
+      slidesToShow: 3, // 一次主要顯現幾個slides
+      slidesToScroll: 3,
       autoplay: true,
       speed: 3000, // 播放速度
       autoplaySpeed: 2000,
@@ -83,15 +83,14 @@ export default {
           }
         },
         {
-          breakpoint: 600,
+          breakpoint: 768,
           settings: {
             slidesToShow: 2,
-            slidesToScroll: 2,
-            initialSlide: 2
+            slidesToScroll: 2
           }
         },
         {
-          breakpoint: 480,
+          breakpoint: 576,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1
