@@ -148,10 +148,6 @@
         {
           "id": 7,
           "element": "膳食纖維"
-        },
-        {
-          "id": 8,
-          "element": "胡蘿蔔素"
         }
       ],
       "goodEffect": [
@@ -200,7 +196,7 @@
         }
       ],
       "price": "10",
-      "unit": "隻"
+      "unit": "支"
     },
     {
       "id": 2,
@@ -235,10 +231,6 @@
         {
           "id": 7,
           "element": "膳食纖維"
-        },
-        {
-          "id": 8,
-          "element": "胡蘿蔔素"
         }
       ],
       "goodEffect": [
@@ -322,10 +314,6 @@
         {
           "id": 7,
           "element": "膳食纖維"
-        },
-        {
-          "id": 8,
-          "element": "胡蘿蔔素"
         }
       ],
       "goodEffect": [
@@ -409,10 +397,6 @@
         {
           "id": 7,
           "element": "膳食纖維"
-        },
-        {
-          "id": 8,
-          "element": "胡蘿蔔素"
         }
       ],
       "goodEffect": [
@@ -496,10 +480,6 @@
         {
           "id": 7,
           "element": "膳食纖維"
-        },
-        {
-          "id": 8,
-          "element": "胡蘿蔔素"
         }
       ],
       "goodEffect": [
@@ -583,10 +563,6 @@
         {
           "id": 7,
           "element": "膳食纖維"
-        },
-        {
-          "id": 8,
-          "element": "胡蘿蔔素"
         }
       ],
       "goodEffect": [
@@ -670,10 +646,6 @@
         {
           "id": 7,
           "element": "膳食纖維"
-        },
-        {
-          "id": 8,
-          "element": "胡蘿蔔素"
         }
       ],
       "goodEffect": [
@@ -757,10 +729,6 @@
         {
           "id": 7,
           "element": "膳食纖維"
-        },
-        {
-          "id": 8,
-          "element": "胡蘿蔔素"
         }
       ],
       "goodEffect": [
