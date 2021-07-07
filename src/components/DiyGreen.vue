@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12">
-        <h6 class="wordFruit">*下方為已勾選蔬果</h6>
+      <div class="col-sm-12 col-md-12 col-lg-12 wordFruit">
+        <h6>*下方為已勾選蔬果</h6>
         <div class="actDiyVg">
           <div v-for="(item,index) in userDiyImg.diyVgFruit" :key="index" class="diy-productCard">
             <!-- 資料庫傳回產品卡片 -->
@@ -14,7 +14,7 @@
     <div class="row">
       <div class="col-sm-12 col-md-6 col-lg-6 diy-glass">
         <!-- muted 控制靜音，loop循環播放 -->
-        <video  width="750" autoplay  muted="false" loop="true">
+        <video height="400" autoplay  muted="false" loop="true">
           <source src="../../public/video/GreenLatteVideo.mp4" type="video/mp4">
         </video>
       </div>
