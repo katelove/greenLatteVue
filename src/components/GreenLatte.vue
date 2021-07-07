@@ -3,8 +3,8 @@
           <div class="row align-items-center">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
               <div class="greenTitle">
-                <h4>什麼是</h4>
-                <h2>綠拿鐵</h2>
+                <h3>什麼是</h3>
+                <h1>綠拿鐵</h1>
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -38,9 +38,9 @@
             <h3>*注意水果攝取不要太多，以免果糖攝取過量。</h3>
           </div>
           <div class="col-sm-12 col-md-12">
-            <div class="workerBtn">
+            <div class="workerBtn diyBtn">
               <a href="#sec5">DIY</a>
-              <a href="#sec6">三餐規劃</a>
+              <a href="#sec7">三餐規劃</a>
             </div>
           </div>
         </div>

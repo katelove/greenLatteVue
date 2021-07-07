@@ -38,9 +38,9 @@
             </div>
 
           </div>
-          <div class="workerBtn" @click="loginSty()">
+          <div class="workerBtn diyBtn" @click="loginSty()">
             <a href="#sec3">檢視自己健康</a>
-            <a href="#sec5">改善飲食大作戰</a>
+            <a href="#sec4">改善飲食大作戰</a>
           </div>
         </div>
 
@@ -196,7 +196,7 @@ img{width: 300px;}
 
 /* Btn */
 .workerBtn {
-  padding-top: 50px;
+  margin-top:30px ;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -212,6 +212,18 @@ img{width: 300px;}
   }
 }
 
+.diyBtn {
+  padding: 0;
+
+  a:hover {
+    color: #2f5a28;
+    background-color: #dce7dd;
+    border: 3px solid #2f5a28;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
 .img-word h4{
   display: none;
 }

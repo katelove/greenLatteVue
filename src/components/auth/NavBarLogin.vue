@@ -1,7 +1,7 @@
 <template>
     <nav>
     <b-navbar toggleable="lg" type="dark" class="nature-bg fixed-top">
-    <router-link to="/#sec1">
+    <router-link to="/">
     <b-navbar-brand>
       <img src="../../../public/images/company/logo-small.png" alt="健康綠生活" />
           <div class="nature-word">
@@ -15,6 +15,7 @@
 
       <!-- Right nav items -->
       <b-navbar-nav class="ml-auto">
+        <b-nav-item href="#sec1">天然蔬菜力</b-nav-item>
         <b-nav-item class="navWord" href="#sec2">身體分析</b-nav-item>
         <b-nav-item class="nature-account"><font-awesome-icon icon="user-circle"></font-awesome-icon><router-link to="/login">{{userLogin}}</router-link></b-nav-item>
       </b-navbar-nav>
