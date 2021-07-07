@@ -16,7 +16,7 @@
       <!-- Right nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-item class="navWord" href="#sec2">身體分析</b-nav-item>
-        <b-nav-item class="nature-account"><font-awesome-icon icon="user-circle"></font-awesome-icon><router-link to="/login">會員登入</router-link></b-nav-item>
+        <b-nav-item class="nature-account"><font-awesome-icon icon="user-circle"></font-awesome-icon><router-link to="/login">{{userLogin}}</router-link></b-nav-item>
       </b-navbar-nav>
 
     </b-collapse>
@@ -25,6 +25,25 @@
   </nav>
 </template>
 
+<script>
+export default {
+  data () {
+    return {
+      userLogin: ''
+    }
+  },
+  mounted () {
+    var loginUser = localStorage.getItem('user')
+    console.log('navLogin user:' + loginUser)
+    if (loginUser === null) {
+      // this.$router.push('/register')
+      this.userLogin = '登入'
+    } else {
+      this.$router.push('/loginRegister')
+    }
+  }
+}
+</script>
 <style lang="scss">
 
 nav{
