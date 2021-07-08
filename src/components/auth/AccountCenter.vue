@@ -302,10 +302,9 @@ export default {
         this.caseID = year + month + day + '000' + this.loginID
         console.log('this.caseID:' + this.caseID)
         axios.get('http://localhost:3000/register', {
-          // URL参數放在params屬性裏面
           params: {
             // eslint-disable-next-line no-undef
-            actName: this.$store.state.user.actName
+            actName: this.$store.getters.getUser.actName
           }
         }).then((response) => {
           if (response.data.length !== 0) {

@@ -91,11 +91,13 @@ export default {
   },
   methods: {
     sitGroup: function () {
+      console.log('this.longSitChair:' + this.longSitChair + ' ,this.longSitWC:' + this.longSitWC +
+                  ',this.longSitWalk: ' + this.longSitWalk)
       if (this.longSitChair === '8小時' || this.longSitChair === '8~12小時') {
-        if (this.longSitWC === '2~3次') {
-          if (this.longSitWalk === '5~10分鐘') {
-            return '你是標準久坐族'
-          }
+        if (this.longSitWC === '2~3次' && this.longSitWalk === '5~10分鐘') {
+          return '你是標準久坐族'
+        } else {
+          return '恭喜你不是久坐族'
         }
       } else {
         return '恭喜你不是久坐族'
@@ -115,7 +117,7 @@ export default {
         axios.get('http://localhost:3000/register', {
           params: {
           // eslint-disable-next-line no-undef
-            actName: this.$store.state.user[0].actName
+            actName: this.$store.getters.getUser.actName
           }
         }).then((response) => {
           axios.post('http://localhost:3000/sitTest/', {
