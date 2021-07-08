@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "backend": "json-server --watch ./src/data/db.json",
-    "start": "npm-run-all -p build backend"
+    "start": "npm-run-all -p serve backend"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
