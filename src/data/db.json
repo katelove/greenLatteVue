@@ -20,13 +20,13 @@
       "actName": "abc123",
       "userName": "小玉",
       "userMail": "kate1234@gmail.com",
-      "selectedDate": "02.03.1960",
-      "myCounty": "宜蘭縣",
-      "cityValue": "261宜蘭縣頭城鎮",
-      "userAddress": "宜蘭路234號3樓",
+      "selectedDate": "03.02.1961",
+      "myCounty": "新北市",
+      "cityValue": "208新北市金山區",
+      "userAddress": "金山路234號3樓",
       "userPhoneNum": "03",
       "userPhone": "22334455",
-      "userMobile": "0988678456",
+      "userMobile": "0977897567",
       "image": "img/user-ion.5476b731.png",
       "id": 2
     }
@@ -95,11 +95,11 @@
       "id": 1
     },
     {
-      "caseId": "202107080005",
+      "caseId": "202107080007",
       "heigh": 155,
       "weight": 55,
       "selectedGender": "女生",
-      "ageFat": 34,
+      "ageFat": 32,
       "bodyFat": 23,
       "choleValue": 234,
       "id": 2
@@ -120,6 +120,20 @@
       "longSitWC": "3~5次",
       "longSitWalk": "10~30分鐘",
       "id": 2
+    },
+    {
+      "caseId": "202107080007",
+      "longSitChair": "8小時",
+      "longSitWC": "3~5次",
+      "longSitWalk": "10~30分鐘",
+      "id": 3
+    },
+    {
+      "caseId": "202107080007",
+      "longSitChair": "8小時",
+      "longSitWC": "3~5次",
+      "longSitWalk": "10~30分鐘",
+      "id": 4
     }
   ],
   "proImg": [
@@ -889,6 +903,20 @@
         }
       ],
       "id": 1
+    },
+    {
+      "caseId": "202107080007",
+      "weekDate": [
+        {
+          "id": 1,
+          "datePlan": "20210708"
+        },
+        {
+          "id": 2,
+          "datePlan": "20210714"
+        }
+      ],
+      "id": 2
     }
   ]
 }

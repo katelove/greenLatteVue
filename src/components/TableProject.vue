@@ -232,82 +232,87 @@ export default {
       axios.get('http://localhost:3000/accountDate', {
         params: { caseId: response.data[0].caseId }
       }).then((res) => {
-        console.log('diy id:' + res.data[0].data)
+        console.log('table id:' + res.data[0].id)
         var id = response.data[0].id
         axios.get(`http://localhost:3000/accountDate/${id}`)
-          .then((diyres) => { this.datePlan = response.data[0].data })
+          .then((dateNum) => {
+            console.log('this.datePlan:' + dateNum.data.weekDate)
+            this.datePlan = dateNum.data.weekDate
+            // eslint-disable-next-line no-undef
+            console.log('this.datePlan:' + this.datePlan)
+            var startDay = this.datePlan[0].datePlan
+            console.log('startDay:' + startDay)
+            var stYear = startDay.substr(0, 4)
+            var stMonth = startDay.substr(4, 2)
+            var stDay = startDay.substr(6, 2)
+            this.weekTilte = stYear + '年' + stMonth + '月'
+            console.log('起始日stYear:' + stYear + ' ,stMonth:' + stMonth + ' ,stDay:' + stDay)
+
+            var endDay = this.datePlan[1].datePlan
+            console.log('endDay:' + endDay)
+            var edMonth = endDay.substr(4, 2)
+            var edDay = endDay.substr(6, 2)
+            console.log('終止日 endMonth:' + edMonth + ' ,endDay:' + edDay)
+
+            // 1)先判斷起始日月份 30,31
+            // eslint-disable-next-line no-unused-vars
+            var strNum
+            var monthNum = stMonth.substr(1, 1)
+            if (monthNum === '1' || monthNum === '3' ||
+    monthNum === '5' || monthNum === '7' ||
+    monthNum === '8' || monthNum === '10' ||
+    monthNum === '12') {
+              strNum = 31
+            } else if (monthNum === '4' || monthNum === '6' ||
+       monthNum === '9' || monthNum === '11') {
+              strNum = 30
+            } else if (monthNum === '2') {
+              strNum = 28
+            }
+
+            // 2)起始日最後一天減起始日
+            var sevenNum = strNum - stDay + 1
+            console.log('離起始日最後一天剩幾天:' + sevenNum)
+            if (sevenNum < 7) {
+              // 3)確認選的周日期會跨月份
+              for (stDay; stDay <= strNum; stDay++) {
+                // eslint-disable-next-line no-redeclare
+                for (var i = 1; i <= sevenNum; i++) {
+                  this.everyWeek.push(stMonth + '/' + stDay)
+                  break
+                }
+              }
+              console.log('起始日最後一天) this.everyWeek:' + this.everyWeek)
+              var stWeek = this.everyWeek.length - 1// 陣列起始位置
+              // 4)新的月份起始日為1
+              stDay = parseInt('01')
+              stMonth = parseInt(stMonth) + 1
+              console.log('新月)stDay:' + stDay + ' ,stMonth:' + stMonth)
+              for (stDay; stDay <= edDay; stDay++) {
+                for (var e = stWeek; e <= 7; e++) {
+                  this.everyWeek.push(stMonth + '/' + stDay)
+                  break
+                }
+              }
+              console.log('有下個月) this.everyWeek:' + this.everyWeek)
+            } else {
+              for (stDay; stDay <= edDay; stDay++) {
+                // eslint-disable-next-line no-redeclare
+                for (var i = 1; i <= 7; i++) {
+                  this.everyWeek.push(stMonth + '/' + stDay)
+                  break
+                }
+              }
+            }
+
+            console.log('this.everyWeek:' + this.everyWeek)
+          })
           .catch((error) => { console.error(error) })
       }).catch((res) => { console.error(res) })
     }).catch((error) => { console.error(error) })
 
     // eslint-disable-next-line no-redeclare
-    // 之後改寫，要用caseId取資料
-    var startDay = this.datePlan[0].weekDate[0].datePlan.toString()
-    console.log('startDay:' + startDay)
-    var stYear = startDay.substr(0, 4)
-    var stMonth = startDay.substr(4, 2)
-    var stDay = startDay.substr(6, 2)
-    this.weekTilte = stYear + '年' + stMonth + '月'
-    console.log('起始日stYear:' + stYear + ' ,stMonth:' + stMonth + ' ,stDay:' + stDay)
-
-    var endDay = this.datePlan[0].weekDate[1].datePlan.toString()
-    console.log('endDay:' + endDay)
-    var edMonth = endDay.substr(4, 2)
-    var edDay = endDay.substr(6, 2)
-    console.log('終止日 endMonth:' + edMonth + ' ,endDay:' + edDay)
-
-    // 1)先判斷起始日月份 30,31
-    // eslint-disable-next-line no-unused-vars
-    var strNum
-    var monthNum = stMonth.substr(1, 1)
-    if (monthNum === '1' || monthNum === '3' ||
-    monthNum === '5' || monthNum === '7' ||
-    monthNum === '8' || monthNum === '10' ||
-    monthNum === '12') {
-      strNum = 31
-    } else if (monthNum === '4' || monthNum === '6' ||
-       monthNum === '9' || monthNum === '11') {
-      strNum = 30
-    } else if (monthNum === '2') {
-      strNum = 28
-    }
-
-    // 2)起始日最後一天減起始日
-    var sevenNum = strNum - stDay + 1
-    console.log('離起始日最後一天剩幾天:' + sevenNum)
-    if (sevenNum < 7) {
-      // 3)確認選的周日期會跨月份
-      for (stDay; stDay <= strNum; stDay++) {
-      // eslint-disable-next-line no-redeclare
-        for (var i = 1; i <= sevenNum; i++) {
-          this.everyWeek.push(stMonth + '/' + stDay)
-          break
-        }
-      }
-      console.log('起始日最後一天) this.everyWeek:' + this.everyWeek)
-      var stWeek = this.everyWeek.length - 1// 陣列起始位置
-      // 4)新的月份起始日為1
-      stDay = parseInt('01')
-      stMonth = parseInt(stMonth) + 1
-      console.log('新月)stDay:' + stDay + ' ,stMonth:' + stMonth)
-      for (stDay; stDay <= edDay; stDay++) {
-        for (var e = stWeek; e <= 7; e++) {
-          this.everyWeek.push(stMonth + '/' + stDay)
-          break
-        }
-      }
-      console.log('有下個月) this.everyWeek:' + this.everyWeek)
-    } else {
-      for (stDay; stDay <= edDay; stDay++) {
-        // eslint-disable-next-line no-redeclare
-        for (var i = 1; i <= 7; i++) {
-          this.everyWeek.push(stMonth + '/' + stDay)
-          break
-        }
-      }
-    }
-
-    console.log('this.everyWeek:' + this.everyWeek)
+    console.log('this.datePlan[0].datePlan:' + this.datePlan[0].datePlan)
 
     // =============拖曳功能============
     var sitckers = document.getElementById('sitckers')
