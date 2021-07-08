@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 -col-md-12 col-lg-12">
-      <div class="chk_Title">
+      <div class="date-Title">
         <img src="../../public/images/company/leaf.png" />
           <div class="chk_Word">
             <h2>健康綠生活-三餐規劃</h2>
@@ -52,7 +52,7 @@
   </div>
   <div class="row">
     <div class="col-sm-12 -col-md-12 col-lg-12">
-      <div class="workerBtn" @click="dateAnswer()">
+      <div class="workerBtn diyBtn" @click="dateAnswer()">
         <a>下一步</a>
       </div>
     </div>
@@ -141,6 +141,13 @@ export default {
 }
 </script>
 <style lang="scss">
+.date-Title{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
  .chk_Word h2 {
   background-color: #2f5a28;
   color: white;
@@ -186,4 +193,8 @@ export default {
 .workerBtn{
   color: white;
 }
+
+.diyBtn:hover{
+    color: #2f5a28;
+  }
 </style>
