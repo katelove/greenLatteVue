@@ -29,15 +29,15 @@
                  :key="item.id"
                  class="col-lg-4" >
               <div class="img-div">
-              <img :src=item.image />
-               <div class="img-word">
-                 <h4>{{item.word}}</h4>
-               </div>
+                <img :src=item.image />
+                  <div class="img-word">
+                    <h4>{{item.word}}</h4>
+                  </div>
               </div>
               <h2 >{{item.text}}</h2>
             </div>
-
           </div>
+
           <div class="workerBtn diyBtn" @click="loginSty()">
             <a href="#sec3">檢視自己健康</a>
             <a href="#sec4">改善飲食大作戰</a>
@@ -70,25 +70,20 @@ export default {
         }
       ]
     }
-  }
-}
-</script>
-
-<script>
-export default {
-
-  methods:{
-    loginSty(){
+  },
+  methods: {
+    loginSty () {
       var loginUser = localStorage.getItem('user')
       console.log('bodyDA user:' + loginUser)
-      if(loginUser===null){
-        alert("尚未登入，請登入")
+      if (loginUser === null) {
+        alert('尚未登入，請登入')
         this.$router.push('/login')
       }
     }
   }
 }
 </script>
+
 <style lang="scss">
 .office-worker {
   margin-bottom: 30px;
