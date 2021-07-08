@@ -74,7 +74,7 @@ router.beforeEach((to, from, next) => {
   if (isLogin) {
     next()
     if (to.path === '/home') {
-      alert('歡迎來到健康綠生活 :)')
+      // alert('歡迎來到健康綠生活 :)')
     }
   } else {
     if (to.path !== '/login' &&

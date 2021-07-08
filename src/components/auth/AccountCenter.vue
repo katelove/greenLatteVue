@@ -349,8 +349,8 @@ export default {
                 image: this.image// 用base64字串的方式上傳
               }).then((res) => {
                 console.table(res.data)
-                alert('請登入')
-                this.$router.push('/login')
+                alert('謝謝您的註冊，開始DIY綠拿鐵吧~')
+                this.$router.push('/home')
               }).catch((error) => { console.error(error) })
             }).catch((error) => { console.error(error) })
           }
