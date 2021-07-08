@@ -215,9 +215,6 @@ export default {
         this.actName = response.data[0].actName
         this.actPwd = response.data[0].actPwd
         this.actConfirmPwd = response.data[0].actConfirmPwd
-        // 取login ID
-        this.loginID = response.data[0].id
-        console.log('mount loginID:' + this.loginID)
       }
     }).catch((error) => console.log(error))
     // 2)從db get資料
@@ -271,13 +268,24 @@ export default {
           if (response.data.length !== 0) {
             alert('這帳號已有人使用，請重新填寫，謝謝')
           } else {
-            axios.post('http://localhost:3000/login', {
-              actName: this.actName,
-              actPwd: this.actPwd,
-              actConfirmPwd: this.actConfirmPwd
-            }).then((res) => {
-              alert('請登入')
-              this.$router.push('/login')
+            // 新會員post data，產會員caseID
+            axios.get('http://localhost:3000/login').then((response) => {
+              var today = new Date()
+              var year = today.getFullYear()
+              var month = ('0' + (today.getMonth() + 1)).slice(-2)
+              var day = ('0' + today.getDate()).slice(-2)
+              this.loginID = response.data.length - 1
+              console.log('login this.loginID:' + this.loginID)
+              this.caseID = year + month + day + '000' + this.loginID
+              console.log('this.caseID:' + this.caseID)
+              axios.post('http://localhost:3000/login', {
+                caseId: this.caseID,
+                actName: this.actName,
+                actPwd: this.actPwd,
+                actConfirmPwd: this.actConfirmPwd
+              }).then((res) => {
+                alert('你的會員資料尚未填寫完成!!')
+              }).catch((error) => { console.error(error) })
             }).catch((error) => { console.error(error) })
           }
         }).catch((error) => { console.error(error) })
@@ -293,18 +301,10 @@ export default {
         console.log('驗證失敗' + success)
         return false
       } else {
-        // 新會員post data，產會員caseID
-        var today = new Date()
-        var year = today.getFullYear()
-        var month = ('0' + (today.getMonth() + 1)).slice(-2)
-        var day = ('0' + today.getDate()).slice(-2)
-        console.log('login this.loginID:' + this.loginID)
-        this.caseID = year + month + day + '000' + this.loginID
-        console.log('this.caseID:' + this.caseID)
         axios.get('http://localhost:3000/register', {
           params: {
             // eslint-disable-next-line no-undef
-            actName: this.$store.getters.getUser.actName
+            actName: this.actName
           }
         }).then((response) => {
           if (response.data.length !== 0) {
@@ -327,25 +327,34 @@ export default {
               console.table(res.data)
             }).catch((error) => { console.error(error) })
           } else {
+            axios.get('http://localhost:3000/login', {
+              params: {
+                // eslint-disable-next-line no-undef
+                actName: this.actName
+              }
+            }).then((response) => {
             // post
-            axios.post('http://localhost:3000/register', {
-              caseId: this.caseID,
-              actName: this.actName,
-              userName: this.userName,
-              userMail: this.userMail,
-              selectedDate: this.selectedDate,
-              myCounty: this.myCounty,
-              cityValue: this.cityValue,
-              userAddress: this.userAddress,
-              userPhoneNum: this.userPhoneNum,
-              userPhone: this.userPhone,
-              userMobile: this.userMobile,
-              image: this.image// 用base64字串的方式上傳
-            }).then((res) => {
-              console.table(res.data)
+              axios.post('http://localhost:3000/register', {
+                caseId: response.data[0].caseId,
+                actName: this.actName,
+                userName: this.userName,
+                userMail: this.userMail,
+                selectedDate: this.selectedDate,
+                myCounty: this.myCounty,
+                cityValue: this.cityValue,
+                userAddress: this.userAddress,
+                userPhoneNum: this.userPhoneNum,
+                userPhone: this.userPhone,
+                userMobile: this.userMobile,
+                image: this.image// 用base64字串的方式上傳
+              }).then((res) => {
+                console.table(res.data)
+                alert('請登入')
+                this.$router.push('/login')
+              }).catch((error) => { console.error(error) })
             }).catch((error) => { console.error(error) })
           }
-        }).catch((error) => console.log(error))
+        }).catch((error) => { console.error(error) })
       }
       return true
     },
