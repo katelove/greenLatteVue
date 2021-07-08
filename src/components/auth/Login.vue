@@ -98,10 +98,6 @@ export default {
                   actName: this.actName
                 }
               }).then((response) => {
-                console.log('1) register actName data:' + response.data[0])
-                if (response.data[0] === undefined) {
-                  alert('你的會員資料尚未填寫完成!!')
-                }
                 var userData = {
                   actName: this.actName,
                   actPwd: this.actPwd
@@ -109,6 +105,10 @@ export default {
                 localStorage.setItem('user', JSON.stringify(userData))
                 this.$store.commit('SET_USER_DATA', userData)
                 this.$router.push('/home')
+                console.log('1) register actName data:' + response.data[0])
+                if (response.data[0] === undefined) {
+                  alert('你的會員資料尚未填寫完成!!')
+                }
               }).catch((error) => console.log('regiaster error:' + error))
             }
           }

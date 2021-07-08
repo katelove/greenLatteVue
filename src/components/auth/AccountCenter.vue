@@ -40,7 +40,6 @@
           <input
           type="password"
           v-model="actConfirmPwd"
-          @input="chkPwd()"
           class="form-control"
           placeholder="請再確認密碼" />
           <span v-if="isShow"></span>
@@ -48,7 +47,7 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <input type="submit" class="baseBtn" value="儲存">
+        <input type="submit" class="baseBtn" value="儲存" @click="chkPwd()">
       </div>
       </div>
       </div>
@@ -303,10 +302,9 @@ export default {
         this.caseID = year + month + day + '000' + this.loginID
         console.log('this.caseID:' + this.caseID)
         axios.get('http://localhost:3000/register', {
-          // URL参數放在params屬性裏面
           params: {
             // eslint-disable-next-line no-undef
-            actName: this.$store.state.user[0].actName
+            actName: this.$store.getters.getUser.actName
           }
         }).then((response) => {
           if (response.data.length !== 0) {

@@ -29,7 +29,6 @@
             <h4>確認新密碼: </h4>
             <input type="password" :class="classes" class="form-control"
             v-model="actConfirmPwd"
-            @input="chkPwd()"
             placeholder="請輸入新密碼">
           </div>
             <span v-if="isShow"></span>
@@ -38,7 +37,7 @@
           <span style="color:red">{{errors[0]}}</span>
           </ValidationProvider>
           <div class="col-md-12 col-lg-12 login-button">
-            <button type="submit" class="btn btn-login">登入</button>
+            <button type="submit" class="btn btn-login" @click="chkPwd()">登入</button>
           </div>
         </form>
         </ValidationObserver>
@@ -105,6 +104,7 @@ export default {
               actConfirmPwd: this.actConfirmPwd
             }).then((res) => {
               console.table(res.data)
+              this.$router.push('/login')
             }).catch((error) => { console.error(error) })
           } else {
             alert('你還不是會員，請前往註冊!')

@@ -88,13 +88,15 @@ export default {
   },
   methods: {
     meatGroup: function () {
-      console.log('this.meatThreeMeals:' + this.meatThreeMeals + 'this.vgPlate:' + this.vgPlate +
-                  'this.PlateOptions:' + this.meatPlate)
       if (this.meatThreeMeals === '蔬菜少，多肉') {
         if (this.vgPlate === '幾片葉子' || this.vgPlate === '少量') {
           if (this.meatPlate === '一大盤') {
             return '你是標準肉食族'
+          } else {
+            return '恭喜你不是肉食族'
           }
+        } else {
+          return '恭喜你不是肉食族'
         }
       } else {
         return '恭喜你不是肉食族'
