@@ -104,10 +104,12 @@ export default {
                 }
                 localStorage.setItem('user', JSON.stringify(userData))
                 this.$store.commit('SET_USER_DATA', userData)
-                this.$router.push('/home')
                 console.log('1) register actName data:' + response.data[0])
                 if (response.data[0] === undefined) {
                   alert('你的會員資料尚未填寫完成!!')
+                  this.$router.push('/loginRegister')
+                } else {
+                  this.$router.push('/home')
                 }
               }).catch((error) => console.log('regiaster error:' + error))
             }

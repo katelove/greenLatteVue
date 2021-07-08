@@ -77,7 +77,8 @@ export default {
       isShow: 'false',
       pwdError: {
         word: '兩個密碼須一致，請重新輸入'
-      }
+      },
+      caseId: ''
     }
   },
   methods: {
@@ -99,6 +100,7 @@ export default {
             console.log('確認login是否有:' + response.data.length + '忘記密碼的 id:' + id)
             // put
             axios.put(`http://localhost:3000/login/${id}`, {
+              caseId: response.data[0].caseId,
               actName: this.actName,
               actPwd: this.actPwd,
               actConfirmPwd: this.actConfirmPwd

@@ -20,7 +20,7 @@ import BodyDA from '../../components/BodyDA'
 // import ParaagraphOne from '../../components/ParaagraphOne'
 
 export default {
-  name: 'greenLatte',
+  name: 'HomeLogin',
   components: {
     Carousel,
     BodyDA

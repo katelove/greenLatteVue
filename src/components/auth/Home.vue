@@ -39,7 +39,7 @@ import DiyGreen from '../../components/DiyGreen'
 import DatePlan from '../../components/DatePlan'
 
 export default {
-  name: 'greenLatte',
+  name: 'Home',
   components: {
     Carousel,
     BodyDA,
