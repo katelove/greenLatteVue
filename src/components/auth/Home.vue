@@ -1,19 +1,19 @@
 <template>
 <div class="carousel">
 <section id="sec1"><Carousel/></section>
-<!-- <ParaagraphOne/> -->
+
 <section id="sec2"><BodyDA/></section>
-<!-- <div class="site"></div> -->
+
 <section id="sec3" v-if="$store.getters.getSiteNum>=1"><HealthTest/></section>
-<!-- <div class="site"></div> -->
+
 <section id="sec4" v-if="$store.getters.getSiteNum>=2"><GreenLatte/></section>
-<!-- <div class="site"></div> -->
+
 <section id="sec5" v-if="$store.getters.getSiteNum>=3"><Market/></section>
-<!-- <div class="site"></div> -->
+
 <section id="sec6" v-if="$store.getters.getSiteNum>=4"><ProductShop/></section>
-<!-- <div class="site"></div> -->
+
 <section id="sec7" v-if="$store.getters.getSiteNum>=5" ><DiyGreen/></section>
-<!-- <div class="site"></div> -->
+
 <section id="sec8" v-if="$store.getters.getSiteNum>=6"><DatePlan/></section>
 <section id="sec9" v-if="$store.getters.getSiteNum>=7"><TableProject/></section>
 <section id="sec10">
@@ -29,7 +29,7 @@
 <script>
 import Carousel from '../../components/Carousel'
 import BodyDA from '../../components/BodyDA'
-// import ParaagraphOne from '../../components/ParaagraphOne'
+
 import HealthTest from '../../components/HealthTest'
 import TableProject from '../../components/TableProject.vue'
 import GreenLatte from '../../components/GreenLatte'
@@ -37,13 +37,12 @@ import Market from '../../components/Market'
 import ProductShop from '../../components/ProductShop.vue'
 import DiyGreen from '../../components/DiyGreen'
 import DatePlan from '../../components/DatePlan'
-// import axios from 'axios'
+
 export default {
   name: 'Home',
   components: {
     Carousel,
     BodyDA,
-    // ParaagraphOne,
     HealthTest,
     TableProject,
     GreenLatte,
