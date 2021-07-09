@@ -123,7 +123,7 @@ export default {
             actName: this.$store.getters.getUser.actName
           }
         }).then((response) => {
-          axios.post('http://localhost:3000/accountDate/', {
+          axios.post('http://localhost:3000/accountDate', {
             caseId: response.data[0].caseId,
             weekDate: this.weekDate
           }).then((res) => {

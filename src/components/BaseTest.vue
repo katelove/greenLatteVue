@@ -223,10 +223,8 @@ export default {
         }).then((res) => { console.table(res.data) })
           .catch((error) => { console.error(error) })
         this.display = 'block'
+        return true
       }
-
-      console.log('heigh確認值:' + this.heigh + ' weightV確認值:' + this.weightV + ' selectedGender確認值:' + this.selectedGender +
-                  ' ageFat確認值:' + this.ageFat + ' bodyFat確認值:' + this.bodyFat + ' choleValue確認值:' + this.choleValue)
     }
   }
 

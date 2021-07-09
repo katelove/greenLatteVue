@@ -120,7 +120,7 @@ export default {
             actName: this.$store.getters.getUser.actName
           }
         }).then((response) => {
-          axios.post('http://localhost:3000/sitTest/', {
+          axios.post('http://localhost:3000/sitTest', {
             caseId: response.data[0].caseId,
             longSitChair: this.longSitChair,
             longSitWC: this.longSitWC,
@@ -130,6 +130,7 @@ export default {
           }).catch((error) => { console.error(error) })
         }).catch((error) => { console.error(error) })
         this.display = 'block'
+        return true
       }
     }
   }

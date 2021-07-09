@@ -118,7 +118,7 @@ export default {
             actName: this.$store.getters.getUser.actName
           }
         }).then((response) => {
-          axios.post('http://localhost:3000/meatTest/', {
+          axios.post('http://localhost:3000/meatTest', {
             caseId: response.data[0].caseId,
             meatThreeMeals: this.meatThreeMeals,
             vgPlate: this.vgPlate,
@@ -128,6 +128,7 @@ export default {
           }).catch((error) => { console.error(error) })
         }).catch((error) => { console.error(error) })
         this.display = 'block'
+        return true
       }
     }
   }

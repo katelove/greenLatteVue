@@ -100,7 +100,7 @@ export default {
           actName: this.$store.state.user[0].actName
         }
       }).then((response) => {
-        axios.post('http://localhost:3000/diyGreen/', {
+        axios.post('http://localhost:3000/diyGreen', {
           caseId: response.data[0].caseId,
           diyGreenName: this.diyGreenName,
           diyProduct: this.diyProduct
