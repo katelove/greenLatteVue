@@ -47,8 +47,7 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="workerBtn diyBtn">
-           <a href="#sec5">返回</a>
-           <a href="#sec8">三餐計畫</a>
+           <a href="#sec8" @click="greenPlan()">三餐計畫</a>
         </div>
       </div>
     </div>
@@ -97,10 +96,10 @@ export default {
       axios.get('http://localhost:3000/register', {
         params: {
           // eslint-disable-next-line no-undef
-          actName: this.$store.state.user[0].actName
+          actName: this.$store.state.user.actName
         }
       }).then((response) => {
-        axios.post('http://localhost:3000/diyGreen/', {
+        axios.post('http://localhost:3000/diyGreen', {
           caseId: response.data[0].caseId,
           diyGreenName: this.diyGreenName,
           diyProduct: this.diyProduct
@@ -114,7 +113,7 @@ export default {
       axios.get('http://localhost:3000/register', {
         params: {
           // eslint-disable-next-line no-undef
-          actName: this.$store.state.user[0].actName
+          actName: this.$store.state.user.actName
         }
       }).then((response) => {
         axios.get('http://localhost:3000/diyGreen', {
@@ -130,6 +129,10 @@ export default {
           }).catch((error) => { console.error(error) })
         }).catch((error) => { console.error(error) })
       }).catch((error) => { console.error(error) })
+    },
+    greenPlan () {
+      this.$store.dispatch('progressSite', 6)
+      return this.$store.getters.getSiteNum
     }
   }
 }

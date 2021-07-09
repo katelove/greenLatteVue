@@ -4,12 +4,13 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-// 初始化會有user data、errors
+// 初始化會有user data
 // 登入成功後，會將登陸資料存在本地 localstorage,保持登入
 export default new Vuex.Store({
   state: {
     user: null,
-    errors: []
+    progress: 0
+
   },
   mutations: {
     // 每個Mutation都有一個字串型態的事件類型(type)和一個回調函數(handler)
@@ -30,6 +31,10 @@ export default new Vuex.Store({
       console.log('清除localStorage')
       // reload這個頁面 重置所有vue檔案
       location.reload()
+    },
+    SET_PROGRESS_NUM (state, status) {
+      state.progress = status
+      console.log('進入更改狀態:' + state.progress)
     }
   },
   actions: {
@@ -56,6 +61,11 @@ export default new Vuex.Store({
     logout ({ commit }) {
       console.log('index.js store logout')
       commit('CLEAR_USER_DATA')
+    },
+    // 狀態區況
+    progressSite (context, status) {
+      console.log('index.js store progressSite' + status)
+      context.commit('SET_PROGRESS_NUM', status)
     }
   },
   // 創造一個Getter取值
@@ -66,6 +76,10 @@ export default new Vuex.Store({
     },
     getUser: state => {
       return state.user
+    },
+    getSiteNum: state => {
+      console.log('getSiteNum state: ' + state.progress)
+      return state.progress
     }
   }
 })

@@ -204,7 +204,7 @@ export default {
       // 顯示回答
         console.log('驗證成功' + success)
         // 1)先取caseId
-        axios.get('http://localhost:3000/register', {
+        await axios.get('http://localhost:3000/register', {
           params: {
             // eslint-disable-next-line no-undef
             actName: this.$store.getters.getUser.actName
@@ -223,10 +223,8 @@ export default {
         }).then((res) => { console.table(res.data) })
           .catch((error) => { console.error(error) })
         this.display = 'block'
+        return true
       }
-
-      console.log('heigh確認值:' + this.heigh + ' weightV確認值:' + this.weightV + ' selectedGender確認值:' + this.selectedGender +
-                  ' ageFat確認值:' + this.ageFat + ' bodyFat確認值:' + this.bodyFat + ' choleValue確認值:' + this.choleValue)
     }
   }
 

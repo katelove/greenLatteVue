@@ -40,7 +40,7 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
        <div class="workerBtn diyBtn">
-         <a href="#sec6">挑選蔬果Go</a>
+         <a href="#sec6" @click="buyFruit()">挑選蔬果Go</a>
          </div>
       </div>
     </div>
@@ -104,7 +104,6 @@ export default {
     // 產品參數
     proNum: '0'
   }),
-
   mounted () {
     // 傳 db資料
     axios.get('http://localhost:3000/proImg')
@@ -119,6 +118,10 @@ export default {
   methods: {
     showDetail (index) {
       this.proNum = index
+    },
+    buyFruit () {
+      this.$store.dispatch('progressSite', 4)
+      return this.$store.getters.getSiteNum
     }
 
   },

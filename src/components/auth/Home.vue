@@ -1,21 +1,21 @@
 <template>
 <div class="carousel">
 <section id="sec1"><Carousel/></section>
-<!-- <ParaagraphOne/> -->
+
 <section id="sec2"><BodyDA/></section>
-<!-- <div class="site"></div> -->
-<section id="sec3"><HealthTest/></section>
-<!-- <div class="site"></div> -->
-<section id="sec4"><GreenLatte/></section>
-<!-- <div class="site"></div> -->
-<section id="sec5"><Market/></section>
-<!-- <div class="site"></div> -->
-<section id="sec6"><ProductShop/></section>
-<!-- <div class="site"></div> -->
-<section id="sec7"><DiyGreen/></section>
-<!-- <div class="site"></div> -->
-<section id="sec8"><DatePlan/></section>
-<section id="sec9"><TableProject/></section>
+
+<section id="sec3" v-if="$store.getters.getSiteNum>=1"><HealthTest/></section>
+
+<section id="sec4" v-if="$store.getters.getSiteNum>=2"><GreenLatte/></section>
+
+<section id="sec5" v-if="$store.getters.getSiteNum>=3"><Market/></section>
+
+<section id="sec6" v-if="$store.getters.getSiteNum>=4"><ProductShop/></section>
+
+<section id="sec7" v-if="$store.getters.getSiteNum>=5" ><DiyGreen/></section>
+
+<section id="sec8" v-if="$store.getters.getSiteNum>=6"><DatePlan/></section>
+<section id="sec9" v-if="$store.getters.getSiteNum>=7"><TableProject/></section>
 <section id="sec10">
   <footer class="footer-style">
     Copyright © 2021 TopStyle Watch Web | 建議使用 Chrome 瀏覽器 | Maintain by Kate <br />
@@ -29,7 +29,7 @@
 <script>
 import Carousel from '../../components/Carousel'
 import BodyDA from '../../components/BodyDA'
-// import ParaagraphOne from '../../components/ParaagraphOne'
+
 import HealthTest from '../../components/HealthTest'
 import TableProject from '../../components/TableProject.vue'
 import GreenLatte from '../../components/GreenLatte'
@@ -43,7 +43,6 @@ export default {
   components: {
     Carousel,
     BodyDA,
-    // ParaagraphOne,
     HealthTest,
     TableProject,
     GreenLatte,

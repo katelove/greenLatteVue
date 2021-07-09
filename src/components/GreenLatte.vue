@@ -39,10 +39,25 @@
           </div>
           <div class="col-sm-12 col-md-12">
             <div class="workerBtn diyBtn">
-              <a href="#sec5">DIY</a>
-              <a href="#sec7">三餐規劃</a>
+              <a href="#sec5" @click="goDiy()">DIY</a>
+              <a href="#sec7" @click="threeMeat()">三餐規劃</a>
             </div>
           </div>
         </div>
 </template>
+<script>
+export default {
+  methods: {
+    goDiy () {
+      this.$store.dispatch('progressSite', 3)
+      return this.$store.getters.getSiteNum
+    },
+    threeMeat () {
+      this.$store.dispatch('progressSite', 6)
+      return this.$store.getters.getSiteNum
+    }
+  }
+}
+</script>
+
 <style lang="scss">@import "../scss/greenLatte.scss"; </style>
