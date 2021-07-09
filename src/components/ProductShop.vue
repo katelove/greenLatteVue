@@ -47,7 +47,7 @@
           <div v-for="(item,index) in cart" :key="index" class="diyImg">
             <img :src="item" @click="deletePic(index)" :value="checkCart">
           </div>
-          <input type="submit" method="post" value="DIY" @click="diyGreen">
+          <input type="submit" method="post" value="DIY" @click="diyGreen()">
       </div>
     </div>
   </div>
@@ -118,10 +118,11 @@ export default {
             data: this.accoutDiyImg
           }).then(function (response) {
             console.table('post data' + response)
-          })
-            .catch((error) => { console.error(error) })
+          }).catch((error) => { console.error(error) })
         }).then((res) => { console.table(res) })
           .catch((error) => { console.error(error) })
+        this.$store.dispatch('progressSite', 5)
+        return this.$store.getters.getSiteNum
       }
     }
   },
