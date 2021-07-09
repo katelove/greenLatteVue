@@ -39,7 +39,7 @@
 
           <div class="workerBtn diyBtn" @click="loginSty()">
             <a href="#sec3" @click="healthBtn()">檢視自己健康</a>
-            <a href="#sec4">改善飲食大作戰</a>
+            <a href="#sec4" @click="improveEat()">改善飲食大作戰</a>
           </div>
         </div>
 
@@ -80,9 +80,11 @@ export default {
       }
     },
     healthBtn () {
-      console.log('一開始檢視健康 progress:' + this.$store.getters.getSiteNum)
       this.$store.dispatch('progressSite', 1)
-      console.log('更新 檢視健康 progress:' + this.$store.getters.getSiteNum)
+      return this.$store.getters.getSiteNum
+    },
+    improveEat () {
+      this.$store.dispatch('progressSite', 2)
       return this.$store.getters.getSiteNum
     }
   }
