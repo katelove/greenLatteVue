@@ -110,17 +110,17 @@ export default {
         axios.get('http://localhost:3000/register', {
           params: {
             // eslint-disable-next-line no-undef
-            actName: this.$store.state.user[0].actName
+            actName: this.$store.state.user.actName
           }
         }).then((response) => {
           axios.post('http://localhost:3000/accoutDiyImg', {
             caseId: response.data[0].caseId,
             data: this.accoutDiyImg
           }).then(function (response) {
-            console.log('post data' + response)
+            console.table('post data' + response)
           })
             .catch((error) => { console.error(error) })
-        }).then((res) => { console.table(res.data) })
+        }).then((res) => { console.table(res) })
           .catch((error) => { console.error(error) })
       }
     }
