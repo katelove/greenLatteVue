@@ -39,7 +39,7 @@
           </div>
 
           <div class="workerBtn diyBtn" @click="loginSty()">
-            <a href="#sec3">檢視自己健康</a>
+            <a href="#sec3" @click="healthBtn()">檢視自己健康</a>
             <a href="#sec4">改善飲食大作戰</a>
           </div>
         </div>
@@ -79,6 +79,13 @@ export default {
         alert('尚未登入，請登入')
         this.$router.push('/login')
       }
+    },
+    healthBtn () {
+      console.log('一開始檢視健康 progress:' + this.$store.getters.getSiteNum)
+      this.$store.dispatch('progressSite', 1)
+      // this.$router.push('/')
+      console.log('更新 檢視健康 progress:' + this.$store.getters.getSiteNum)
+      return this.$store.getters.getSiteNum
     }
   }
 }
