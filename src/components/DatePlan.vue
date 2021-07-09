@@ -52,8 +52,8 @@
   </div>
   <div class="row">
     <div class="col-sm-12 -col-md-12 col-lg-12">
-      <div class="workerBtn diyBtn" @click="dateAnswer()">
-        <a>下一步</a>
+      <div class="workerBtn diyBtn">
+        <a href="#sec9" @click="dateAnswer()">下一步</a>
       </div>
     </div>
   </div>
@@ -130,8 +130,9 @@ export default {
             console.table(res.data)
           }).catch((error) => { console.error(error) })
         }).catch((error) => { console.error(error) })
-
-        return true
+        this.$store.dispatch('progressSite', 9)
+        return this.$store.getters.getSiteNum
+        // return true
       }
     }
   },
