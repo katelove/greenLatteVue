@@ -82,7 +82,6 @@ export default {
     healthBtn () {
       console.log('一開始檢視健康 progress:' + this.$store.getters.getSiteNum)
       this.$store.dispatch('progressSite', 1)
-      // this.$router.push('/')
       console.log('更新 檢視健康 progress:' + this.$store.getters.getSiteNum)
       return this.$store.getters.getSiteNum
     }

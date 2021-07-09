@@ -112,9 +112,9 @@ export default {
       } else {
       // 顯示回答
         console.log('驗證成功' + success)
-
+        this.display = 'block'
         // 1)先取caseId
-        axios.get('http://localhost:3000/register', {
+        await axios.get('http://localhost:3000/register', {
           params: {
           // eslint-disable-next-line no-undef
             actName: this.$store.getters.getUser.actName
@@ -129,7 +129,7 @@ export default {
             console.table(res.data)
           }).catch((error) => { console.error(error) })
         }).catch((error) => { console.error(error) })
-        this.display = 'block'
+
         return true
       }
     }
