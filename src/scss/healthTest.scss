@@ -99,8 +99,6 @@
   }
 }
 
-
-
 .base_one,
 .base_two,
 .base_third {
@@ -121,7 +119,6 @@
   }
 }
 
-
 .choice_block {
   padding-bottom: 10px;
   padding-left: 10px;
@@ -131,7 +128,6 @@
     padding-left: 10px;
   }
 }
-
 
 /* 檢視健康-送出按鈕 */
 
@@ -170,7 +166,7 @@
   border-radius: 15px;
 
   .bodyAswer {
-    height: 900px;
+    height: 100%;
 
     div {
       font-size: 100px;
@@ -181,11 +177,11 @@
 
 // ==================驗證=====================
 .invalid {
-  color: #EB0600;
+  color: #eb0600;
 }
 
 .invalid input {
-  border: 1px #EB0600 solid
+  border: 1px #eb0600 solid;
 }
 
 .valid {
@@ -193,5 +189,5 @@
 }
 
 .valid input {
-  border: 1px solid green
+  border: 1px solid green;
 }
