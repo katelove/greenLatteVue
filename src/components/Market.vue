@@ -1,5 +1,4 @@
 <template>
-
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 market-title">
@@ -7,51 +6,40 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2 basketImg">
-       <img src="../../public/images/company/fruitBasket.png" >
+      <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 basketImg">
+        <img src="../../public/images/company/fruitBasket.png" />
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-10 col-xl-10">
-      <!-- 蔬果上下輪播圖 上面式說明卡 -->
-       <VueSlickCarousel
-         ref="c1"
-         :asNavFor="$refs.c2"
-         :focusOnSelect="true">
-        <ProductDetail
-        v-bind="proDetail[proNum]">
-        </ProductDetail>
-      </VueSlickCarousel>
+        <!-- 蔬果上下輪播圖 上面式說明卡 -->
+        <VueSlickCarousel ref="c1" :asNavFor="$refs.c2" :focusOnSelect="true">
+          <ProductDetail v-bind="proDetail[proNum]"> </ProductDetail>
+        </VueSlickCarousel>
 
-      <!-- 下面是蔬果 -->
-      <div class="marketItems">
-      <VueSlickCarousel
-         ref="c2"
-         :asNavFor="$refs.c1"
-         v-bind="settings">
-        <div v-for="(item,index) in proImg" :key="index">
-          <img :src="item.vImg" @click="showDetail(index)">
+        <!-- 下面是蔬果 -->
+        <div class="marketItems">
+          <VueSlickCarousel ref="c2" :asNavFor="$refs.c1" v-bind="settings">
+            <div v-for="(item, index) in proImg" :key="index">
+              <img :src="item.vImg" @click="showDetail(index)" />
+            </div>
+          </VueSlickCarousel>
         </div>
-      </VueSlickCarousel>
       </div>
-     </div>
-   </div>
+    </div>
 
     <!-- Btn -->
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-       <div class="workerBtn diyBtn">
-         <a href="#sec6" @click="buyFruit()">挑選蔬果Go</a>
-         </div>
+        <div class="workerBtn diyBtn">
+          <a href="#sec6" @click="buyFruit()">挑選蔬果Go</a>
+        </div>
       </div>
     </div>
-    <div>
-    </div>
-</div>
-
+    <div></div>
+  </div>
 </template>
 
 <script>
-
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
@@ -106,14 +94,12 @@ export default {
   }),
   mounted () {
     // 傳 db資料
-    axios.get('http://localhost:3000/proImg')
-      .then(response => {
-        this.proImg = response.data
-      })
-    axios.get('http://localhost:3000/proDetail')
-      .then(response => {
-        this.proDetail = response.data
-      })
+    axios.get('http://localhost:3000/proImg').then(response => {
+      this.proImg = response.data
+    })
+    axios.get('http://localhost:3000/proDetail').then(response => {
+      this.proDetail = response.data
+    })
   },
   methods: {
     showDetail (index) {
@@ -123,16 +109,13 @@ export default {
       this.$store.dispatch('progressSite', 4)
       return this.$store.getters.getSiteNum
     }
-
   },
   name: 'Market',
   components: { VueSlickCarousel, ProductDetail }
-
 }
-
 </script>
 
 <style lang="scss">
-@import "../scss/market.scss";
-@import "../scss/productDetail.scss";
+@import '../scss/market.scss';
+@import '../scss/productDetail.scss';
 </style>
